@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>GameLords</title>
+    </head>
+
+    <body>
+        <div class="activity-indicator">
+            <div id="loader">
+              <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="200" height="192">
+                <defs>
+                  <style>
+                    @-webkit-keyframes draw{50%{stroke-dashoffset:0}}@keyframes draw{50%{stroke-dashoffset:0}}
+                  </style>
+                </defs>
+                <path stroke="#fff" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="1400" stroke-dashoffset="1200" fill="none" d="M80.76 116.168l-.005-.006-.005-.006c-4.66-4.662-7.543-11.1-7.543-18.199 0-7.097 2.882-13.534 7.543-18.198l.005-.005.005-.006c4.663-4.659 11.1-7.542 18.198-7.543v.002h.009l.03.008.061.001v-.009h62.114v-.002h12.448c-1.819-5.272-4.185-10.295-7.024-14.999a79.3384 79.3384 0 0 0-12.388-15.656c-7.259-7.113-15.878-12.835-25.423-16.734l-.004.009C119.584 21.07 109.515 19 98.958 19c-21.804 0-41.544 8.837-55.833 23.125S20 76.154 20 97.957c0 21.803 8.837 41.543 23.125 55.83 14.288 14.289 34.028 23.127 55.833 23.127 21.803 0 41.542-8.838 55.83-23.127 14.288-14.287 23.126-34.027 23.126-55.83 0-1.924-.067-3.807-.199-5.638-.085-1.181-.193-2.353-.328-3.513H98.958v-.01c-2.521 0-4.812 1.03-6.471 2.69l-.005-.005c-1.651 1.654-2.675 3.945-2.675 6.475 0 2.527 1.025 4.816 2.68 6.471 1.655 1.656 3.943 2.68 6.471 2.68h60.035l-.604 2.969c-2.836 13.975-10.474 26.205-21.11 34.891-10.45 8.529-23.791 13.646-38.321 13.646-16.749 0-31.914-6.791-42.89-17.766-10.975-10.977-17.766-26.141-17.766-42.891 0-16.748 6.791-31.913 17.766-42.889 10.976-10.976 26.141-17.766 42.89-17.766h3.33v.104c11.135.604 21.467 4.206 30.199 10.011a60.75 60.75 0 0 1 8.188 6.528h-39.79a45.634 45.634 0 0 0-1.928-.042c-12.165 0-23.179 4.932-31.15 12.903s-12.903 18.987-12.903 31.15c0 12.164 4.932 23.18 12.903 31.152 7.971 7.971 18.985 12.902 31.15 12.902 8.023 0 15.535-2.135 21.997-5.865 5.415-3.127 10.107-7.379 13.756-12.438H99.058v-.01l-.061.002-.038.01c-7.098.003-13.535-2.88-18.199-7.54z" style="animation:draw 3s infinite"/>
+              </svg>
+            </div>
+        </div>
+        <style type="text/css">
+            body .activity-indicator {
+                position: fixed;
+                opacity: .9;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, .7);
+                z-index: 5000
+            }
+            body .activity-indicator div#loader {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: block;
+                border-radius: 50%;
+                border: 2px solid transparent;
+            }
+            body .activity-indicator div#loader:before {
+                content: "";
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
+                border-radius: 50%;
+                border: 2px solid transparent;
+            }
+            body .activity-indicator div#loader:after {
+                content: "";
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+                border-radius: 50%;
+                border: 2px solid transparent;
+            }
+        </style>
+    </body>
+</html>
