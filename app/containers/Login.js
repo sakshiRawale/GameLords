@@ -21,11 +21,6 @@ import { show, hide } from '../actions/ActivityIndicatorActions';
 import { loginLogo, background, logo } from "../assets/Images";
 import { console_log } from "../utils/helper";
 import * as vars from '../constants/api';
-// import {PaymentAndroid} from '../components/Payment/PaymentAndroid';
-// import {PaymentIOS} from '../components/Payment/PaymentIOS';
-// global.PaymentRequest = require('react-native-payments').PaymentRequest;
-import Globals from  '../constants/Globals';
-//import PaymentRequest from 'react-native-payments';
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -48,6 +43,8 @@ class Login extends Component {
                     if (res.data.success === true) {
                         this.props.checkAccess(res.data.data.token);
                         AsyncStorage.setItem('@AccessToken:key', res.data.data.token);
+                        console.log("====================");
+                        console.log(res.data);
                         //NavigationService.reset("Drawer");
                         NavigationService.reset("DrawerVOD");
                     } else {
@@ -70,7 +67,7 @@ class Login extends Component {
                         <Image source={logo} style={loginStyles.logo} />
                     </View>
                     <View style={loginStyles.inputView}>
-                        <Text style={[styles.avRegular, loginStyles.userNameText]}>{Globals.type == 'es' ? "CÓDIGO DE ACCESO" : 'ACCESS CODE'}</Text>
+                        <Text style={[styles.avRegular, loginStyles.userNameText]}>ACCESS CODE</Text>
                         <View style={loginStyles.usernameView}>
                             {(this.state.error != '') ?
                                 <Text style={[loginStyles.errorStyles]}>{this.state.error}</Text>
@@ -92,16 +89,10 @@ class Login extends Component {
                         <TouchableHighlight underlayColor="transparent" activeOpacity={0.6} onPress={() => this.getAccessToken()}>
                             <View style={loginStyles.loginButton}>
                                 <Text style={[loginStyles.buttonText, styles.avRegular]}>
-                                    {Globals.type == 'es' ? 'CONTINUAR' : 'CONTINUE'}
+                                  CONTINUE
                                 </Text>
                             </View>
                         </TouchableHighlight>
-
-                        {/* <TouchableOpacity style={{marginTop: 20, height: 40, alignSelf:'center'}} onPress = {()=> this.inAppPayment()}>
-                            <Text style = {{color: '#fff'}}>{Globals.type == 'es' ? "Nuevo usuario" : "New User?" }?
-                                <Text style = {{color: 'red'}}>{Globals.type == 'es' ?  " Suscríbete aquí" : " Subscribe here" }</Text>
-                            </Text>
-                        </TouchableOpacity> */}
 
                     </View>
 

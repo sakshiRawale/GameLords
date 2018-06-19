@@ -10,6 +10,8 @@ export const AccountReducer = (state = initialState, action = {}) => {
     //console_log(action.type, action.data);
     switch (action.type) {
         case action_types.GET_DETAILS:
+            console.log("reducer ma che");
+            console.log(action.data.user);
             return {
                 ...state,
                 user: action.data.user

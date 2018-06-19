@@ -17,7 +17,6 @@ import { background, avatar, thumbnail1 } from "../../assets/Images";
 import NavigationService from '../../utils/NavigationService';
 import { console_log } from '../../utils/helper';
 import * as vars from '../../constants/api';
-import Globals from '../../constants/Globals';
 
 let menuArray = [];
 
@@ -39,20 +38,22 @@ class SideBar extends Component {
         { menuName: 'My Account', iconName: 'user-circle', icon: 'FA', route: 'Accounts' },
 				{ menuName: 'Notifications', iconName: 'notifications-active', icon: 'material', route: 'Notification' },
         { menuName: 'HTML Games', iconName: 'html5', icon: 'FA', route: 'HtmlGames' },
-				{ menuName: 'Favoritos', iconName: 'star', icon: 'FA', route: 'Favoritos' },
+				{ menuName: 'Favorite', iconName: 'star', icon: 'FA', route: 'Favorite' },
     ]
 
 	}
 
-    componentDidMount(){
-        this.setState({profilePic: (this.props.account.user.profilePic) ? vars.BASE_URL_PP +'uploads/'+this.props.account.user.profilePic : 'http://43.241.63.15:3003/uploads/1520249460987_thumbnail-3.jpg'})
-    }
+  componentDidMount(){
+			console.log("===============================");
+			console.log(this.props.account);
+      this.setState({profilePic: (this.props.account.user.profilePic) ? vars.BASE_URL_PP +'uploads/'+this.props.account.user.profilePic : 'http://43.241.63.15:3003/uploads/1520249460987_thumbnail-3.jpg'})
+  }
 
 	componentWillReceiveProps(newProps){
         //console.log(newProps.account.user.profilePic, '*before**',this.state.profilePic )
 		if(newProps.account.user.profilePic !== this.state.profilePic){
 			//console.log(newProps.account.user.profilePic, '***',this.state.profilePic )
-			this.setState({profilePic: vars.BASE_URL+'uploads/' + newProps.account.user.profilePic, newProfilePic: 'sd'});
+			this.setState({profilePic: vars.BASE_URL_PP+'uploads/' + newProps.account.user.profilePic, newProfilePic: 'sd'});
 		}
 			//console.log('newProps:', newProps.account.user.profilePic);
 	}
@@ -131,7 +132,7 @@ class SideBar extends Component {
 													<Text style={[styles.avRegular, sidebarStyles.menuText]}>
 														{menu.menuName}
 													</Text>
-													{menu.menuName === 'Notificaciones' ?
+													{menu.menuName === 'Notifications' ?
 													 <View style = {sidebarStyles.notificationContainer}>
 													 	{/*<View style= {[sidebarStyles.notificationBadge]}>*/}
 													 		{/*<Text style = {sidebarStyles.notificationTxt}>1</Text>*/}
@@ -141,12 +142,12 @@ class SideBar extends Component {
 													 : null}
 												</View>
 											</View>
-                                            {menu.menuName === 'Notificaciones' ?
+                                            {menu.menuName === 'Notifications' ?
 												this.state.showNotification ?
 													<View style={sidebarStyles.menuStyle} key={index + 2}>
 														{/*<Image style = {{marginLeft: 10, height: 35, width: 50}} source={thumbnail1}/>*/}
 														<Text style={[styles.avRegular, sidebarStyles.menuText, {marginLeft: 30, }]}>
-                                                            {"No Notificaciones"}
+                                                            {"No Notifications"}
 														</Text>
 													</View>
                                                     : null
@@ -164,6 +165,8 @@ class SideBar extends Component {
 }
 
 const mapStateToProps = (state) => {
+		console.log("sidebar no state che");
+		console.log(state);
     return {
         accessToken: state.WelcomeReducer.token,
         account: state.AccountReducer,

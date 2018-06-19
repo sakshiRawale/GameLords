@@ -47,13 +47,64 @@ class VOD extends Component {
         axios.defaults.headers.common['authorization'] = this.props.accessToken;
     }
 
-    clickedButton() {
-
-    }
-
     componentWillMount(){
         axios.defaults.headers.common['authorization'] = this.props.accessToken;
+        // if(Globals.url ===  'http://uk.mobiotv.com' && this.props.category.categories.length === 0) {
+        if(this.props.category.categories.length === 0) {
+            this.props.show();
+            // axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile'), axios.get(vars.BASE_API_URL_GL + '/interests'), axios.get(vars.BASE_API_URL_GL + '/categories'), axios.get(vars.BASE_API_URL_GL + '/packages'), axios.get(vars.BASE_API_URL_GL + '/favorites'), axios.get(vars.BASE_API_URL_GL + '/likes')])
+            axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile')])
+                .then(axios.spread((userProfile) => {
+                  console.log("is ma ave che");
+                  console.log(userProfile.data.data);
+                    if (userProfile.data.data) {
+                        this.props.getDetails(userProfile.data.data);
+                    }
+
+                    // for interests
+                    // if (interests.data.data) {
+                    //     this.props.getInterests(interests.data.data);
+                    // }
+
+                    // for channel categories
+                    // if (categories.data.data) {
+                    //     this.props.getTVCategories(categories.data.data);
+                    // }
+
+                    // for packages of Video On Demand
+                    // if (packages.data.data.packages) {
+                    //     this.props.getVideosPackages(packages.data.data.packages);
+                    //
+                    //     // for Videos On Demand
+                    //     axios.all(packages.data.data.packages.map(l => axios.get(vars.BASE_API_URL_GL + '/packages/' + l.id)))
+                    //         .then(axios.spread((...res) => {
+                    //             // all requests are now complete
+                    //             res.map((packageDetails) => {
+                    //                 if (packageDetails) {
+                    //                     this.props.getVideos(packageDetails.data.data.package);
+                    //                 }
+                    //             });
+                    //         }));
+                    // }
+
+                    // for favorites
+                    // if (favorites.data.data) {
+                    //     this.props.addFavoriteChannel(favorites.data.data.channels);
+                    //     this.props.addFavoriteVideo(favorites.data.data.videos);
+                    // }
+
+                    // for likes
+                    // if (likes.data.data) {
+                    //     this.props.addLikesChannels(likes.data.data.channels);
+                    //     this.props.addLikesVideos(likes.data.data.videos);
+                    // }
+
+                    //this.props.hide();
+                    this.setState({dataLoad: true})
+                }));
+        }
     }
+
 
     componentDidMount(){
         this.setState({dataLoad: true})
@@ -111,6 +162,7 @@ const mapStateToProps = (state) => {
     return {
         accessToken: state.WelcomeReducer.token,
         account: state.AccountReducer,
+        category: state.CategoryReducer,
         favorite: state.FavoriteReducer,
         flashmessage: state.FlashMessageReducer,
         loader: state.ActivityIndicatorReducer,
