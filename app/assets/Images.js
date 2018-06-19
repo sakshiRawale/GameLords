@@ -25,6 +25,8 @@ export const vod2 = require('./images/slider/vod2.jpg');
 export const vod3 = require('./images/slider/vod3.jpg');
 export const vod4 = require('./images/slider/vod4.jpg');
 
+export const bannerImg = Globals.DeviceType === "Phone"? require('./images/mobile-html5-banner.jpg'): require('./images/html5-banner.jpg');
+
 export const bidioSlide1 = Globals.DeviceType === "Phone"? require('./images/slider/mobile-bidio-slide-1.jpeg'): require('./images/slider/bidio-slide-1.jpeg');
 export const bidioSlide2 = Globals.DeviceType === "Phone"? require('./images/slider/mobile-bidio-slide-2.jpeg'):  require('./images/slider/bidio-slide-2.jpeg');
 export const bidioSlide3 = Globals.DeviceType === "Phone"?  require('./images/slider/mobile-bidio-slide-3.jpeg'): require('./images/slider/bidio-slide-3.jpeg');

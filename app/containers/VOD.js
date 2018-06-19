@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 // Components
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
-// import Slider from '../components/Slider/Slider';
+import Banner from '../components/Banner/Banner';
 
 // Styles
 import { styles } from "../style/appStyles";
@@ -142,7 +142,7 @@ class VOD extends Component {
                     <ScrollView keyboardShouldPersistTaps={'always'} keyboardDismissMode='on-drag' contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 80}}>
                         <View style={{flex: 3}}>
                         <View style={VODStyle.sliderView}>
-
+                          <Banner />
                         </View>
 
                         <View>

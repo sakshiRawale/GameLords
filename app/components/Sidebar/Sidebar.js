@@ -44,8 +44,6 @@ class SideBar extends Component {
 	}
 
   componentDidMount(){
-			console.log("===============================");
-			console.log(this.props.account);
       this.setState({profilePic: (this.props.account.user.profilePic) ? vars.BASE_URL_PP +'uploads/'+this.props.account.user.profilePic : 'http://43.241.63.15:3003/uploads/1520249460987_thumbnail-3.jpg'})
   }
 
@@ -165,8 +163,6 @@ class SideBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-		console.log("sidebar no state che");
-		console.log(state);
     return {
         accessToken: state.WelcomeReducer.token,
         account: state.AccountReducer,

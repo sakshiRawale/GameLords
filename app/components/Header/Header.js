@@ -136,7 +136,7 @@ class HeaderComponent extends Component {
                             value= {this.props.search.searchText}
                             underlineColorAndroid={'transparent'}
                             style={headerStyle.searchTxt}
-                            placeholder={Globals.type === 'es'? "Buscar.." : 'Search..'}
+                            placeholder='Search..'
                             placeholderTextColor={'#fff'}
                             ref={(ref) => this.TextInput = ref}
                             onChangeText={(text)=> this.onChange(text)} />
@@ -145,7 +145,7 @@ class HeaderComponent extends Component {
                         </TouchableOpacity>
                     </View>
                     <Button style = {headerStyle.btn} onPress={()=>{this.props.showSearchBar(false); this.props.searchText(''); this.props.onShowSearchView(false); this.slideOut();  }} transparent>
-                        <Text style={headerStyle.cancelTxt}>{Globals.type === 'es'? "Cancelar" : "Cancel"}</Text>
+                        <Text style={headerStyle.cancelTxt}>Cancel</Text>
                     </Button>
                 </View>
                 </View>
