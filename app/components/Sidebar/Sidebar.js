@@ -20,7 +20,6 @@ import * as vars from '../../constants/api';
 import Globals from '../../constants/Globals';
 
 let menuArray = [];
-let staticMenuArray = [];
 
 class SideBar extends Component {
 	constructor(props) {
@@ -43,10 +42,6 @@ class SideBar extends Component {
 				{ menuName: 'Favoritos', iconName: 'star', icon: 'FA', route: 'Favoritos' },
     ]
 
-		staticMenuArray= [
-			{ menuName: 'Policy Privacy', iconName: 'lock', icon: 'FA', route: 'PolicyPrivacy' },
-			{ menuName: 'Terms & Conditions', iconName: 'file-text-o', icon: 'FA', route: 'TermCondition' },
-		]
 	}
 
     componentDidMount(){
@@ -105,10 +100,7 @@ class SideBar extends Component {
 	}
 
 	render() {
-        let iconTransform = {
-           // transform: [{ rotate: this.state.showNotification ? '180deg' : '90deg' }]
-        };
-        //console.log('in render:',this.state.profilePic, this.state.profilePic !== this.state.newProfilePic)
+
 		return (
 
 			<View style={sidebarStyles.drawerView}>
@@ -163,32 +155,6 @@ class SideBar extends Component {
 									)
 								})
 							}
-
-							<View style={sidebarStyles.menuDividerStyle}>
-							</View>
-
-							{
-								staticMenuArray.map((menu, index) => {
-									const route = menu.route;
-									return (
-										<TouchableOpacity key={index} onPress={this.menuClicked.bind(this, route)}>
-											<View style={sidebarStyles.menuStyle} key={index}>
-												<View style={sidebarStyles.iconView}>
-													{
-														this.renderIcon(menu.icon, menu.iconName)
-													}
-												</View>
-												<View style={sidebarStyles.menuTextView}>
-													<Text style={[styles.avRegular, sidebarStyles.menuText]}>
-														{menu.menuName}
-													</Text>
-												</View>
-											</View>
-										</TouchableOpacity>
-									)
-								})
-							}
-
 						</ScrollView>
 					</View>
 				</ImageBackground>
@@ -202,14 +168,9 @@ const mapStateToProps = (state) => {
         accessToken: state.WelcomeReducer.token,
         account: state.AccountReducer,
         category: state.CategoryReducer,
-        country: state.CountryReducer,
-        domain: state.DomainReducer,
         favorite: state.FavoriteReducer,
         flashmessage: state.FlashMessageReducer,
-        historyVideos: state.HistoryReducer,
         loader: state.ActivityIndicatorReducer,
-        play: state.PlayReducer,
-        smartTV: state.SmartTVReducer,
         splash: state.SplashScreenReducer,
         user: state.AuthenticationReducer
     };
