@@ -123,6 +123,32 @@ class VOD extends Component {
         this.setState({ favoriteSwitch: !this.state.favoriteSwitch });
     }
 
+    LoadHTMLGames = () =>{
+        // let favoriteVideosIds = this.props.favorite.videos.map((v) => v.videoId);
+        // let bidiotvfavourite = [].concat.apply([], bidiotvMovies.map((c) => c.videos)).filter((v) => {
+        //     if (~favoriteVideosIds.indexOf(v.id)) {
+        //         return v;
+        //     }
+        // });
+        //
+        return(
+            <View>
+                {!this.state.favoriteSwitch  ?
+                      <View>
+                        <Text style={{color: 'white'}}> Normal Screen </Text>
+                        
+                      </View>
+                    :
+                      <View>
+                        <Text style={{color: 'white'}}> Favorites Screen </Text>
+                      </View>
+                  }
+            </View>
+        )
+
+    }
+
+
     render() {
         return (
             <Container>
@@ -146,9 +172,23 @@ class VOD extends Component {
                         </View>
 
                         <View>
-                          <Text style={{color:'white'}}> Sagar </Text>
+                          <View style={{ height: 40, flexDirection: 'row', paddingTop: 10, paddingBottom: 5, paddingLeft: 10, paddingRight: 10, justifyContent: 'space-between', backgroundColor: 'black', alignItems: 'center' }}>
+                            <View style={{flexDirection: 'row', justifyContent: 'space-between' }}>
+                                <Image source={require('../assets/images/html5.png')} style={{width: 15, height: 15}}/>
+                                <Text> {' '} </Text>
+                                <Text style={[styles.avRegular, VODStyle.allCategory]}>
+                                    HTML5 GAMES
+                                </Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={[styles.avRegular, VODStyle.favoriteSwitchText]}>
+                                    Favorites
+                                </Text>
+                                <Switch style={{ transform: [{ scaleX: .85 }, { scaleY: .75 }] }} value={this.state.favoriteSwitch} onValueChange={this.switchFavorite} />
+                            </View>
+                          </View>
                         </View>
-
+                          { this.state.dataLoad ? this.LoadHTMLGames() : null}
                         </View>
                         <Footer />
                     </ScrollView>
