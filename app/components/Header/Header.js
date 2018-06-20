@@ -57,13 +57,13 @@ class HeaderComponent extends Component {
         if (isDrawer) {
             return (
                 <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => {NavigationService.navigate("DrawerOpen")}}>
-                    <FeatherIcon name="menu" size={26} style={{ backgroundColor: 'transparent', marginLeft: 10 }} color="#fff" />
+                    <FeatherIcon name="menu" size={26} style={{ backgroundColor: 'transparent', marginLeft: 10 }} color="#f6a50e" />
                 </TouchableHighlight>
             )
         } else {
             return (
                 <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => NavigationService.goBack()}>
-                    <Icon name="angle-left" size={26} style={{ backgroundColor: 'transparent', marginLeft: 10 }} color="#fff" />
+                    <Icon name="angle-left" size={26} style={{ backgroundColor: 'transparent', marginLeft: 10 }} color="#f6a50e" />
                 </TouchableHighlight>
             )
         }
@@ -98,7 +98,7 @@ class HeaderComponent extends Component {
                 <View style={headerStyle.header}>
             <View style={[headerStyle.header, {flexDirection: 'row', justifyContent: 'center'}]}>
                 {Platform.OS == 'ios'?
-                    <StatusBar backgroundColor="#fff" barStyle="light-content"/>
+                    <StatusBar backgroundColor="#f6a50e" barStyle="light-content"/>
                     : <StatusBar backgroundColor="#000000" barStyle="light-content"/>}
                 <View style={headerStyle.headerBg}>
                 <View style={headerStyle.leftIconView}>
@@ -115,7 +115,7 @@ class HeaderComponent extends Component {
                     {
                         isSearch ?
                             <TouchableHighlight onPress={this.searchOpen.bind(this)} underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} >
-                                <FeatherIcon style = {{ marginLeft: Globals.DeviceType === 'Phone'? 10: 50}} name="search" size={24} color="#fff" />
+                                <FeatherIcon style = {{ marginLeft: Globals.DeviceType === 'Phone'? 10: 50}} name="search" size={24} color="#f6a50e" />
                             </TouchableHighlight>
                             : <TouchableOpacity  style={[headerStyle.iconsView]} onPress={() => {rightClick()}}>
                                 <Text style={[headerStyle.rightText]}>{rightLabel}</Text>
@@ -128,10 +128,10 @@ class HeaderComponent extends Component {
 
                 <View searchBar style={[headerStyle.header, {flexDirection: 'row'}]}>
                     {Platform.OS == 'ios'?
-                        <StatusBar backgroundColor="#fff" barStyle="light-content"/>
+                        <StatusBar backgroundColor="#f6a50e" barStyle="light-content"/>
                         : <StatusBar backgroundColor="#000000" barStyle="light-content"/>}
                     <View style={headerStyle.headerSearch}>
-                        <FeatherIcon color="#fff" size={20} name="search" style={headerStyle.searchIcn} />
+                        <FeatherIcon color="#f6a50e" size={20} name="search" style={headerStyle.searchIcn} />
                         <TextInput
                             value= {this.props.search.searchText}
                             underlineColorAndroid={'transparent'}
@@ -141,7 +141,7 @@ class HeaderComponent extends Component {
                             ref={(ref) => this.TextInput = ref}
                             onChangeText={(text)=> this.onChange(text)} />
                         <TouchableOpacity onPress={()=> { this.props.searchText(''); }}>
-                            <Image source={require('../../assets/images/close.png')} style={{width: 15, height: 15, marginTop : Platform.OS == "ios" ? ((deviceHeight == 812) ? 19 : 11) : 11}}/>
+                            <Image source={require('../../assets/images/clear.png')} style={{width: 15, height: 15, marginTop : Platform.OS == "ios" ? ((deviceHeight == 812) ? 19 : 11) : 11}}/>
                         </TouchableOpacity>
                     </View>
                     <Button style = {headerStyle.btn} onPress={()=>{this.props.showSearchBar(false); this.props.searchText(''); this.props.onShowSearchView(false); this.slideOut();  }} transparent>

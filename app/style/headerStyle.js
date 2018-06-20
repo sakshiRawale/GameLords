@@ -60,7 +60,7 @@ export default headerStyle = StyleSheet.create({
         marginTop: Platform.OS == "ios" ? ((deviceHeight == 812) ? 35 : 20) : 5,
         flexDirection: 'row',
         backgroundColor: '#000',
-        borderColor: '#fff',
+        borderColor: '#ffa507',
         borderWidth: 1,
         borderRadius: 3,
         width:  Globals.DeviceType === 'Phone'? '80%': '85%',
@@ -74,7 +74,7 @@ export default headerStyle = StyleSheet.create({
         height: '100%'
     },
     cancelTxt: {
-        color: '#fff',
+        color: '#ffa507',
         fontSize: FontSizes.small,
     },
     searchTxt: {

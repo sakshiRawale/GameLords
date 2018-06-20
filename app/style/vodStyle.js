@@ -57,9 +57,9 @@ export default vodStyle = StyleSheet.create({
         height: '100%'
     },
     favoriteView: {
-        height: 25, 
-        width: 25, 
-        borderRadius: 20,   
+        height: 25,
+        width: 25,
+        borderRadius: 20,
         backgroundColor: '#00000090',
         marginLeft: deviceWidth / 4,
         marginTop: 10,
@@ -101,8 +101,8 @@ export default vodStyle = StyleSheet.create({
         flex: 1,
     },
     videoDurationView: {
-        flex: 1, 
-        flexDirection: 'row', 
+        flex: 1,
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-end'
     },
@@ -110,13 +110,13 @@ export default vodStyle = StyleSheet.create({
         fontSize: 16,
         color: 'white',
         paddingRight: 5,
-        paddingBottom: 5 
+        paddingBottom: 5
     },
     bannerText: {
         flex: 1,
-        alignItems: 'center', 
+        alignItems: 'center',
         justifyContent: 'center',
         paddingLeft: '3%',
-        width: '80%' 
+        width: '80%'
     }
 });
