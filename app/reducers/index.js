@@ -9,6 +9,7 @@ import { FavoriteReducer } from './FavoriteReducer';
 import { HeaderReducer } from './HeaderReducer';
 import { SearchReducer } from './SearchReducer';
 import { WelcomeReducer } from './WelcomeReducer';
+import { GamesReducer } from './GamesReducer';
 
 export default combineReducers({
     AccountReducer,
@@ -20,5 +21,6 @@ export default combineReducers({
     HeaderReducer,
     SearchReducer,
     WelcomeReducer,
-    splashScreen
+    splashScreen,
+    GamesReducer
 });

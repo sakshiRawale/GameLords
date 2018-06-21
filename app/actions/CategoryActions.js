@@ -1,38 +1,23 @@
 import * as action_types from './action_types';
 import {console_log} from '../utils/helper';
 
-export const getVideosPackages = (data) => {
+export const getGameTypes = (data) => {
     return {
-        type: action_types.GET_VOD_CATEGORIES,
-        data: {
-            packages: data
-        }
+        type: action_types.GET_GAME_TYPES,
+        data: data
     }
 };
 
-export const getVideos = (data) => {
-    return {
-        type: action_types.GET_VOD,
-        data: {
-            videos: data
-        }
-    }
-};
-
-export const getTVCategories = (data) => {
+export const getCategories = (data) => {
     return {
         type: action_types.GET_CATEGORIES,
-        data: {
-            categories: data
-        }
+        data: data
     }
 };
 
-export const getChannels = (data) => {
+export const getCategoryDetail = (data) => {
     return {
-        type: action_types.GET_CHANNELS,
-        data: {
-            channels: data
-        }
+        type: action_types.GET_CATEGORY_DETAIL,
+        data: data
     }
 };

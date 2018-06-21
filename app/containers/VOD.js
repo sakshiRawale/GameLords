@@ -19,7 +19,9 @@ import liveChannelStyle from "../style/liveChannelStyle";
 import { movie_1, movie_2, tv_1, tv_2, thumbnail } from "../assets/Images";
 import { showMessage } from '../actions/FlashMessageActions';
 import { show, hide } from '../actions/ActivityIndicatorActions';
+import {getFavouriteGames, getGames, setFavouriteGames} from "../actions/GamesActions";
 import { getDetails, getInterests } from '../actions/AccountActions';
+import { getCategories } from "../actions/CategoryActions";
 import * as vars from '../constants/api';
 import { messages } from '../constants/messages';
 import { console_log } from '../utils/helper';
@@ -31,6 +33,9 @@ import MessageBar from '../components/Message/Message';
 import Globals from  '../constants/Globals';
 import DeviceType from '../../App';
 
+import CategoryList from '../components/CategoryList/CategoryList';
+
+
 class VOD extends Component {
     constructor(props) {
         super(props);
@@ -41,6 +46,7 @@ class VOD extends Component {
             color: '',
             message:'',
             showMessage:false,
+            gameType: 'HTML5'
         };
 
         this.switchFavorite = this.switchFavorite.bind(this);
@@ -53,12 +59,15 @@ class VOD extends Component {
         if(this.props.category.categories.length === 0) {
             this.props.show();
             // axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile'), axios.get(vars.BASE_API_URL_GL + '/interests'), axios.get(vars.BASE_API_URL_GL + '/categories'), axios.get(vars.BASE_API_URL_GL + '/packages'), axios.get(vars.BASE_API_URL_GL + '/favorites'), axios.get(vars.BASE_API_URL_GL + '/likes')])
-            axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile')])
-                .then(axios.spread((userProfile) => {
-                  console.log("is ma ave che");
-                  console.log(userProfile.data.data);
+            axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile'), axios.get(vars.BASE_API_URL_GL+'/getGames'), axios.get(vars.BASE_API_URL_GL+'/getCategories')])
+                .then(axios.spread((userProfile, games, categories) => {
                     if (userProfile.data.data) {
                         this.props.getDetails(userProfile.data.data);
+                    }
+
+                    // for games
+                    if (games.data.data) {
+                        this.props.getGames(games.data.data);
                     }
 
                     // for interests
@@ -66,10 +75,10 @@ class VOD extends Component {
                     //     this.props.getInterests(interests.data.data);
                     // }
 
-                    // for channel categories
-                    // if (categories.data.data) {
-                    //     this.props.getTVCategories(categories.data.data);
-                    // }
+                    // for categories);
+                    if (categories.data.data) {
+                        this.props.getCategories(categories.data.data);
+                    }
 
                     // for packages of Video On Demand
                     // if (packages.data.data.packages) {
@@ -123,6 +132,28 @@ class VOD extends Component {
         this.setState({ favoriteSwitch: !this.state.favoriteSwitch });
     }
 
+    _onPressButton(data) {
+        console.log("_onPressButton click thayu che");
+        // NavigationService.navigate('PlayVOD');
+        // this.props.getVideoOrChannelRelatedData(data);
+    }
+
+    _handleFavoriteClicked(data) {
+      console.log("_handleFavoriteClicked click thayu che");
+      // this.videoFavorite(data.video);
+    }
+
+    isCategoryFavorite(categoryId) {
+      console.log("isCategoryFavorite click thayu che");
+      // let indexOf = this.props.favorite.videos.findIndex((f) => {
+      //     return f.videoId == videoId;
+      // });
+      // if (indexOf != -1) {
+      //     return true;
+      // }
+      // return false;
+    }
+
     LoadHTMLGames = () =>{
         // let favoriteVideosIds = this.props.favorite.videos.map((v) => v.videoId);
         // let bidiotvfavourite = [].concat.apply([], bidiotvMovies.map((c) => c.videos)).filter((v) => {
@@ -131,12 +162,48 @@ class VOD extends Component {
         //     }
         // });
         //
+        let categories = this.props.category.categories;
+        let html5CategoryList = categories.filter(c => {return c.categoryTypeName === this.state.gameType} );
+
+        console.log("nerkfghjrfgrferfeklj");
+        console.log(this.props.category.categories);
+        console.log(html5CategoryList);
         return(
             <View>
                 {!this.state.favoriteSwitch  ?
                       <View>
-                        <Text style={{color: 'white'}}> Normal Screen </Text>
-                        
+                        <Text style={{color: 'white'}}> Normal Screen {html5CategoryList.length}</Text>
+
+                        {html5CategoryList.length > 0 ?
+
+                            <ScrollView horizontal={true} >
+                                <View style={{ flexDirection: 'row' }}>
+                                    {
+                                        html5CategoryList.map((category, index) => {
+                                            return (
+                                                  <View style={liveChannelStyle.imageThmbnailCategory} key={index}>
+                                                    <TouchableOpacity onPress={this._onPressButton.bind(this, {cat: category})}>
+                                                        <ImageBackground style={liveChannelStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
+                                                            <TouchableOpacity style={liveChannelStyle.tvFavoriteBg} onPress={this._handleFavoriteClicked.bind(this, {cat: category})}>
+                                                                <View style={liveChannelStyle.tvFavoriteView}>
+                                                                <Icon name='star' size={15} style={{ backgroundColor: 'transparent' }} color={this.isCategoryFavorite(category.categoryId) ? "#FFC107" : "#fff"} />
+                                                                </View>
+                                                            </TouchableOpacity>
+                                                        </ImageBackground>
+                                                        <Text style={liveChannelStyle.categoryNameText}>{category.categoryName}</Text>
+
+                                                    </TouchableOpacity>
+                                                </View>
+                                            )
+                                        })
+                                    }
+                                </View>
+
+                            </ScrollView>
+                            :
+                            <Text style={{color: 'white'}}> nathi brbr error avr che </Text>
+
+                           }
                       </View>
                     :
                       <View>
@@ -199,6 +266,8 @@ class VOD extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log("mapStateToProps ma che");
+    console.log(state.GamesReducer);
     return {
         accessToken: state.WelcomeReducer.token,
         account: state.AccountReducer,
@@ -206,7 +275,8 @@ const mapStateToProps = (state) => {
         favorite: state.FavoriteReducer,
         flashmessage: state.FlashMessageReducer,
         loader: state.ActivityIndicatorReducer,
-        user: state.AuthenticationReducer
+        user: state.AuthenticationReducer,
+        games: state.GamesReducer,
     };
 };
 
@@ -217,6 +287,8 @@ const mapDispatchToProps = (dispatch) => {
         showMessage,
         getDetails,
         getInterests,
+        getGames,
+        getCategories,
     }, dispatch);
 };
 

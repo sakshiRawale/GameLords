@@ -1,38 +1,28 @@
-import * as action_types from '../actions/action_types';
+import { GET_GAME_TYPES, GET_CATEGORIES, GET_CATEGORY_DETAIL } from '../actions/action_types';
 import { console_log } from "../utils/helper";
 
 const initialState = {
-    packages: [],
-    videos: [],
-    categories: [],
-    channels: []
+    gameType: [],
+    category: [],
+    categories: []
 };
 
 export const CategoryReducer = (state = initialState, action = {}) => {
     switch (action.type) {
-        case action_types.GET_VOD_CATEGORIES:
+        case GET_GAME_TYPES:
             return {
                 ...state,
-                packages: action.data.packages
+                gameType: action.data.data
             };
-        case action_types.GET_VOD:
-            let videos = state.videos.filter((v) => v.id != action.data.videos.id);
+        case GET_CATEGORIES:
             return {
                 ...state,
-                videos: [
-                    ...videos,
-                    action.data.videos
-                ]
+                categories: action.data
             };
-        case action_types.GET_CATEGORIES:
-            return {
+        case GET_CATEGORY_DETAIL:
+            return{
                 ...state,
-                categories: action.data.categories
-            };
-        case action_types.GET_CHANNELS:
-            return {
-                ...state,
-                channels: action.data.channels
+                category: action.data.data
             };
         default:
             return state;

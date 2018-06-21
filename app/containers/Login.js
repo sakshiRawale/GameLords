@@ -89,11 +89,10 @@ class Login extends Component {
                         <TouchableHighlight underlayColor="transparent" activeOpacity={0.6} onPress={() => this.getAccessToken()}>
                             <View style={loginStyles.loginButton}>
                                 <Text style={[loginStyles.buttonText, styles.avRegular]}>
-                                  CONTINUE
+                                  {'CONTINUE'}
                                 </Text>
                             </View>
                         </TouchableHighlight>
-
                     </View>
 
                 </ImageBackground>

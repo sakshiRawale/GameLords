@@ -38,7 +38,7 @@ class Banner extends Component {
     render() {
         return (
           <View style={bannerStyles.indicatorViewPage}>
-              <Image style={[bannerStyles.slides]} resizeMode="contain"  source={ BannerImg.bannerImg } ></Image>
+              <Image style={[bannerStyles.slides]} resizeMode="cover"  source={ BannerImg.bannerImg } ></Image>
           </View>
         );
     }

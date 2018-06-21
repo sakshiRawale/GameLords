@@ -3,15 +3,13 @@ import { StyleSheet, Dimensions } from  'react-native';
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 
-console.log("width che aa");
-console.log(deviceWidth);
-
 export default bannerStyles = StyleSheet.create({
     indicatorViewPage: {
         //height: deviceHeight / 3,
         width: deviceWidth,
         //backgroundColor: 'red'
-        flex: 1
+        flex: 1,
+
     },
     dots: {
         width: 8,

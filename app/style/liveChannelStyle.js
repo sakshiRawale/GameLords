@@ -64,8 +64,25 @@ export default liveChannelStyle = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'stretch'
     },
+
+    imageThmbnailCategory: {
+        minWidth: 220,
+        height: posterHeight,
+        backgroundColor: 'transparent',
+        marginBottom: 20,
+        marginLeft: 5,
+        marginRight: 5,
+        flexDirection: 'row',
+        alignItems: 'stretch'
+    },
+
     imageBackground: {
         width: posterWidth,//Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
+        height: '100%'
+    },
+
+    imageBackgroundCategory: {
+        width: 220,
         height: '100%'
     },
 
@@ -127,7 +144,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
 
-    tvImageBackground: {     
+    tvImageBackground: {
         width: Globals.DeviceType === 'Phone'? deviceWidth / 1.8 : deviceWidth / 2.8,
         height: '100%',
         //resizeMode: 'center'
@@ -196,8 +213,8 @@ export default liveChannelStyle = StyleSheet.create({
         flex: 1
     },
     videoDurationView: {
-        flex: 1, 
-        flexDirection: 'row', 
+        flex: 1,
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-end'
     },
@@ -209,14 +226,22 @@ export default liveChannelStyle = StyleSheet.create({
     },
     bannerText: {
         flex: 1,
-        alignItems: 'center', 
+        alignItems: 'center',
         justifyContent: 'center',
         paddingLeft: '3%',
-        width: '80%' 
+        width: '80%'
     },
     liveNow: {
        flexDirection: 'row',
-       alignItems: 'center' 
+       alignItems: 'center'
+    },
+    categoryNameText: {
+      bottom: 0,
+      right: 5,
+      position: 'absolute',
+      color: 'white',
+      zIndex: 4,
+      fontWeight: 'bold',
     }
 
 });
