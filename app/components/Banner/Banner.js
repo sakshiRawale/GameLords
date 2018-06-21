@@ -21,14 +21,14 @@ class Banner extends Component {
         super(props);
     }
 
-    _openHTML5Game() {
+    _openHTML5Game = () => {
       console.log("openHTML5Game click");
     }
 
     render() {
         return (
-          <TouchableOpacity style={bannerStyles.indicatorViewPage}  onPress={this._openHTML5Game.bind(this)}>
-              <Image style={[bannerStyles.slides]} resizeMode="cover"  source={ BannerImg.bannerImg } ></Image>
+          <TouchableOpacity style={bannerStyles.indicatorViewPage}   onPress={this._openHTML5Game}>
+              <Image style={[bannerStyles.slides]} resizeMode="stretch"   source={ BannerImg.bannerImg } ></Image>
           </TouchableOpacity>
         );
     }

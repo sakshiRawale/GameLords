@@ -65,15 +65,24 @@ export default liveChannelStyle = StyleSheet.create({
         alignItems: 'stretch'
     },
 
-    imageThmbnailCategory: {
-        minWidth: 220,
+    imageThmbnailCategoryGames: {
+        width: posterWidth,
         height: posterHeight,
         backgroundColor: 'transparent',
         marginBottom: 20,
         marginLeft: 5,
         marginRight: 5,
         flexDirection: 'row',
-        alignItems: 'stretch'
+        alignItems: 'stretch',
+    },
+
+    imageThmbnailCategory: {
+        height: deviceHeight/4.5 ,
+        backgroundColor: 'transparent',
+        marginBottom: 20,
+        flexDirection: 'row',
+        alignItems: 'stretch',
+        width: deviceWidth/1.35
     },
 
     imageBackground: {
@@ -82,7 +91,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageBackgroundCategory: {
-        width: 220,
+        width: deviceWidth/1.5,
         height: '100%'
     },
 

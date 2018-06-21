@@ -5,10 +5,9 @@ const deviceWidth = Dimensions.get("window").width;
 
 export default bannerStyles = StyleSheet.create({
     indicatorViewPage: {
-        //height: deviceHeight / 3,
+        height: deviceHeight / 3,
         width: deviceWidth,
-        //backgroundColor: 'red'
-        flex: 1,
+      
 
     },
     dots: {
@@ -34,7 +33,7 @@ export default bannerStyles = StyleSheet.create({
     },
     slides: {
         width: deviceWidth,
-        height: '100%',
+height:"100%"
     },
     sliderText: {
         textAlign: 'left',

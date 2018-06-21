@@ -163,16 +163,16 @@ class VOD extends Component {
         // });
         //
         let categories = this.props.category.categories;
+        let getAllGames = this.props.games.games;
+
         let html5CategoryList = categories.filter(c => {return c.categoryTypeName === this.state.gameType} );
 
         return(
             <View>
                 {!this.state.favoriteSwitch  ?
                       <View>
-                        <Text style={{color: 'white'}}> Normal Screen {html5CategoryList.length}</Text>
-
-                        {html5CategoryList.length > 0 ?
-
+                          {
+                            html5CategoryList.length > 0 &&
                             <ScrollView horizontal={true} >
                                 <View style={{ flexDirection: 'row' }}>
                                     {
@@ -181,11 +181,6 @@ class VOD extends Component {
                                                   <View style={liveChannelStyle.imageThmbnailCategory} key={index}>
                                                     <TouchableOpacity onPress={this._onPressButton.bind(this, {cat: category})}>
                                                         <ImageBackground style={liveChannelStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
-                                                            <TouchableOpacity style={liveChannelStyle.tvFavoriteBg} onPress={this._handleFavoriteClicked.bind(this, {cat: category})}>
-                                                                <View style={liveChannelStyle.tvFavoriteView}>
-                                                                <Icon name='star' size={15} style={{ backgroundColor: 'transparent' }} color={this.isCategoryFavorite(category.categoryId) ? "#FFC107" : "#fff"} />
-                                                                </View>
-                                                            </TouchableOpacity>
                                                         </ImageBackground>
                                                         <Text style={liveChannelStyle.categoryNameText}>{category.categoryName}</Text>
 
@@ -195,12 +190,66 @@ class VOD extends Component {
                                         })
                                     }
                                 </View>
-
                             </ScrollView>
-                            :
-                            <Text style={{color: 'white'}}> nathi brbr error avr che </Text>
-
                            }
+
+                           {
+                             html5CategoryList.length > 0 &&
+                                 <View>
+                                     {
+                                         html5CategoryList.map((category, index) => {
+                                             return (
+                                               <View key = {index}>
+
+                                                <View
+
+                                                style={{ height: 35,flexDirection: 'row',  justifyContent: 'space-between', backgroundColor: 'black', alignItems: 'center', color:"white",borderColor:"yellow",borderWidth:1}}>
+
+                                                    <View style={{
+                                                      borderColor:"red",borderWidth:1,
+                                                      alignItems:"center",
+                                                    backgroundColor:"yellow",width:"60%",height:"100%",
+                                                transform:[{skewX:'25deg'}] }}>
+
+                                                        <Text numberOfLines={1}
+                                                        style={{}}>
+                                                            {category.categoryName}
+                                                        </Text>
+                                                    </View>
+
+                                                    <TouchableOpacity style={{borderColor:"green",borderWidth:1}}>
+                                                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                            <Icon name='th' size={15} style={{ backgroundColor: 'transparent', paddingRight: 5 }} color='#d51a92' />
+                                                            <Text style={[styles.avRegular, liveChannelStyle.browseAll]}>
+                                                                View All
+                                                            </Text>
+                                                        </View>
+                                                    </TouchableOpacity>
+
+                                                </View>
+
+                                               <ScrollView horizontal={true} >
+                                                   <View style={liveChannelStyle.imageThmbnailCategoryGames} key={index}>
+                                                     <TouchableOpacity onPress={this._onPressButton.bind(this, {cat: category})}>
+                                                         <ImageBackground style={liveChannelStyle.imageBackground} source={{uri: category.categoryImage}}>
+                                                             <TouchableOpacity style={liveChannelStyle.tvFavoriteBg} onPress={this._handleFavoriteClicked.bind(this, {cat: category})}>
+                                                                 <View style={liveChannelStyle.tvFavoriteView}>
+                                                                 <Icon name='star' size={15} style={{ backgroundColor: 'transparent' }} color={this.isCategoryFavorite(category.categoryId) ? "#FFC107" : "#fff"} />
+                                                                 </View>
+                                                             </TouchableOpacity>
+                                                         </ImageBackground>
+                                                         <Text style={liveChannelStyle.categoryNameText}>{category.categoryName}</Text>
+
+                                                     </TouchableOpacity>
+                                                   </View>
+                                                </ScrollView>
+                                              </View>
+
+                                             )
+                                         })
+                                     }
+                                 </View>
+                            }
                       </View>
                     :
                       <View>
@@ -231,28 +280,30 @@ class VOD extends Component {
                     <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
                     <ScrollView keyboardShouldPersistTaps={'always'} keyboardDismissMode='on-drag' contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 80}}>
                         <View style={{flex: 3}}>
-                        <View style={VODStyle.sliderView}>
-                          <Banner />
-                        </View>
+                          <View style={VODStyle.sliderView}>
+                            <Banner />
+                          </View>
 
-                        <View>
-                          <View style={{ height: 40, flexDirection: 'row', paddingTop: 10, paddingBottom: 5, paddingLeft: 10, paddingRight: 10, justifyContent: 'space-between', backgroundColor: 'black', alignItems: 'center' }}>
-                            <View style={{flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <Image source={require('../assets/images/html5.png')} style={{width: 15, height: 15}}/>
-                                <Text> {' '} </Text>
-                                <Text style={[styles.avRegular, VODStyle.allCategory]}>
-                                    HTML5 GAMES
-                                </Text>
-                            </View>
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Text style={[styles.avRegular, VODStyle.favoriteSwitchText]}>
-                                    Favorites
-                                </Text>
-                                <Switch style={{ transform: [{ scaleX: .85 }, { scaleY: .75 }] }} value={this.state.favoriteSwitch} onValueChange={this.switchFavorite} />
+                          <View>
+                            <View style={{ flexDirection: 'row', paddingVertical: 20, paddingHorizontal:20, justifyContent: 'space-between', backgroundColor: 'black', alignItems: 'center' }}>
+                              <View style={{flexDirection: 'row', justifyContent: 'space-between' }}>
+                                  <Image source={require('../assets/images/html5.png')} style={{width: 15, height: 15}}/>
+                                  <Text> {' '} </Text>
+                                  <Text style={[styles.avRegular, VODStyle.allCategory]}>
+                                      HTML5 GAMES
+                                  </Text>
+                              </View>
+                              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                  <Text style={[styles.avRegular, VODStyle.favoriteSwitchText]}>
+                                      Favorites
+                                  </Text>
+                                  <Switch style={{ transform: [{ scaleX: .85 }, { scaleY: .75 }] }} value={this.state.favoriteSwitch} onValueChange={this.switchFavorite} />
+                              </View>
                             </View>
                           </View>
-                        </View>
-                          { this.state.dataLoad ? this.LoadHTMLGames() : null}
+                          <View style={{paddingHorizontal: 20}}>
+                            { this.state.dataLoad ? this.LoadHTMLGames() : null}
+                          </View>
                         </View>
                         <Footer />
                     </ScrollView>
