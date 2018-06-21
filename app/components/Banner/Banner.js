@@ -19,27 +19,17 @@ import { bindActionCreators } from 'redux';
 class Banner extends Component {
     constructor(props) {
         super(props);
-        this.renderDot = this.renderDot.bind(this);
-        this.renderActiveDot = this.renderActiveDot.bind(this);
     }
 
-    renderDot() {
-        return (
-            <View style={[bannerStyles.dots]} />
-        )
-    }
-
-    renderActiveDot() {
-        return (
-            <View style={[bannerStyles.dotsActive]} />
-        )
+    _openHTML5Game() {
+      console.log("openHTML5Game click");
     }
 
     render() {
         return (
-          <View style={bannerStyles.indicatorViewPage}>
+          <TouchableOpacity style={bannerStyles.indicatorViewPage}  onPress={this._openHTML5Game.bind(this)}>
               <Image style={[bannerStyles.slides]} resizeMode="cover"  source={ BannerImg.bannerImg } ></Image>
-          </View>
+          </TouchableOpacity>
         );
     }
 }

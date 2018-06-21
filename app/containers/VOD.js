@@ -133,18 +133,18 @@ class VOD extends Component {
     }
 
     _onPressButton(data) {
-        console.log("_onPressButton click thayu che");
+        console.log("_onPressButton click");
         // NavigationService.navigate('PlayVOD');
         // this.props.getVideoOrChannelRelatedData(data);
     }
 
     _handleFavoriteClicked(data) {
-      console.log("_handleFavoriteClicked click thayu che");
+      console.log("_handleFavoriteClicked click");
       // this.videoFavorite(data.video);
     }
 
     isCategoryFavorite(categoryId) {
-      console.log("isCategoryFavorite click thayu che");
+      console.log("isCategoryFavorite click");
       // let indexOf = this.props.favorite.videos.findIndex((f) => {
       //     return f.videoId == videoId;
       // });
@@ -165,9 +165,6 @@ class VOD extends Component {
         let categories = this.props.category.categories;
         let html5CategoryList = categories.filter(c => {return c.categoryTypeName === this.state.gameType} );
 
-        console.log("nerkfghjrfgrferfeklj");
-        console.log(this.props.category.categories);
-        console.log(html5CategoryList);
         return(
             <View>
                 {!this.state.favoriteSwitch  ?
@@ -266,7 +263,7 @@ class VOD extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("mapStateToProps ma che");
+    console.log("mapStateoProps here");
     console.log(state.GamesReducer);
     return {
         accessToken: state.WelcomeReducer.token,
