@@ -154,6 +154,28 @@ class VOD extends Component {
       // return false;
     }
 
+    _onPressGameButton(data) {
+        console.log("_onPressGameButton click");
+        // NavigationService.navigate('PlayVOD');
+        // this.props.getVideoOrChannelRelatedData(data);
+    }
+
+    _handleFavoriteGameClicked(data) {
+      console.log("_handleFavoriteGameClicked click");
+      // this.videoFavorite(data.video);
+    }
+
+    isCategoryGameFavorite(categoryId) {
+      console.log("isCategoryGameFavorite click");
+      // let indexOf = this.props.favorite.videos.findIndex((f) => {
+      //     return f.videoId == videoId;
+      // });
+      // if (indexOf != -1) {
+      //     return true;
+      // }
+      // return false;
+    }
+
     LoadHTMLGames = () =>{
         // let favoriteVideosIds = this.props.favorite.videos.map((v) => v.videoId);
         // let bidiotvfavourite = [].concat.apply([], bidiotvMovies.map((c) => c.videos)).filter((v) => {
@@ -167,6 +189,8 @@ class VOD extends Component {
 
         let html5CategoryList = categories.filter(c => {return c.categoryTypeName === this.state.gameType} );
 
+        console.log("==============");
+        console.log(html5CategoryList);
         return(
             <View>
                 {!this.state.favoriteSwitch  ?
@@ -183,7 +207,6 @@ class VOD extends Component {
                                                         <ImageBackground style={liveChannelStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
                                                         </ImageBackground>
                                                         <Text style={liveChannelStyle.categoryNameText}>{category.categoryName}</Text>
-
                                                     </TouchableOpacity>
                                                 </View>
                                             )
@@ -198,51 +221,70 @@ class VOD extends Component {
                                  <View>
                                      {
                                          html5CategoryList.map((category, index) => {
+                                            let games = (getAllGames.length > 0 && getAllGames.filter((g) => {return g.categoryId == category.categoryId}).length > 0) ? getAllGames.filter((g) => {return g.categoryId == category.categoryId}).slice(0, 10) : []
+
+                                            console.log('==================');
+                                            console.log(games);
+
                                              return (
                                                <View key = {index}>
 
                                                 <View
 
-                                                style={{ height: 35,flexDirection: 'row',  justifyContent: 'space-between', backgroundColor: 'black', alignItems: 'center', color:"white",borderColor:"yellow",borderWidth:1}}>
+                                                style={{ height: 35,flexDirection: 'row',  justifyContent: 'space-between', backgroundColor: 'black', alignItems: 'center', color:"white",borderBottomColor:"#f4aa1c",borderBottomWidth:1}}>
 
-                                                    <View style={{
-                                                      borderColor:"red",borderWidth:1,
-                                                      alignItems:"center",
-                                                    backgroundColor:"yellow",width:"60%",height:"100%",
-                                                transform:[{skewX:'25deg'}] }}>
+                                                    <View style={liveChannelStyle.transformView}>
+                                                        <Icon name={category.categoryIcon.slice(6)} size={22} style={{ backgroundColor: 'transparent', paddingHorizontal: 15 }} color='#423620' />
 
                                                         <Text numberOfLines={1}
-                                                        style={{}}>
-                                                            {category.categoryName}
+                                                        style={{color: '#423620', fontSize: 14, fontWeight: '600'}}>
+                                                            {category.categoryName.toUpperCase()}
                                                         </Text>
                                                     </View>
+                                                    <View style={{transform: [{skewX: "30deg"}], width: '10%', backgroundColor:"#f4aa1c", marginLeft: -20, height: '100%'}} />
 
-                                                    <TouchableOpacity style={{borderColor:"green",borderWidth:1}}>
-                                                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                                            <Icon name='th' size={15} style={{ backgroundColor: 'transparent', paddingRight: 5 }} color='#d51a92' />
-                                                            <Text style={[styles.avRegular, liveChannelStyle.browseAll]}>
-                                                                View All
-                                                            </Text>
+                                                        <View style={{ flexDirection: 'row', alignItems: 'center', width: '30%', justifyContent: 'center'}}>
+                                                            <TouchableOpacity onPress={() => {}}>
+                                                              <Text style={[styles.avRegular, liveChannelStyle.browseAll],{color: "#f4aa1c"}}>
+                                                                  VIEW ALL
+                                                              </Text>
+                                                            </TouchableOpacity>
                                                         </View>
-                                                    </TouchableOpacity>
 
                                                 </View>
 
-                                               <ScrollView horizontal={true} >
-                                                   <View style={liveChannelStyle.imageThmbnailCategoryGames} key={index}>
-                                                     <TouchableOpacity onPress={this._onPressButton.bind(this, {cat: category})}>
-                                                         <ImageBackground style={liveChannelStyle.imageBackground} source={{uri: category.categoryImage}}>
-                                                             <TouchableOpacity style={liveChannelStyle.tvFavoriteBg} onPress={this._handleFavoriteClicked.bind(this, {cat: category})}>
-                                                                 <View style={liveChannelStyle.tvFavoriteView}>
-                                                                 <Icon name='star' size={15} style={{ backgroundColor: 'transparent' }} color={this.isCategoryFavorite(category.categoryId) ? "#FFC107" : "#fff"} />
-                                                                 </View>
-                                                             </TouchableOpacity>
-                                                         </ImageBackground>
-                                                         <Text style={liveChannelStyle.categoryNameText}>{category.categoryName}</Text>
+                                                <View style={{flexDirection: "row"}}>
+                                                  <ScrollView horizontal={true} >
+                                                    {
+                                                      games.map((game, gameIndex) => {
+                                                        return (
+                                                            <View style={liveChannelStyle.imageThmbnailGames} key={gameIndex}>
+                                                              <TouchableOpacity onPress={this._onPressGameButton.bind(this, {game: game})}>
 
-                                                     </TouchableOpacity>
-                                                   </View>
-                                                </ScrollView>
+                                                                  <View>
+                                                                    <TouchableOpacity onPress={this._openHTML5Game} >
+                                                                        <Image style={liveChannelStyle.imageGame} resizeMode="stretch" source={{uri: game.gameImage }} ></Image>
+                                                                    </TouchableOpacity>
+                                                                  </View>
+
+                                                                  <View>
+                                                                    <Text style={{color: 'white'}}> Sagar </Text>
+                                                                    <Text style={{color: 'white'}}> Sagar </Text>
+                                                                  </View>
+
+                                                                  <View>
+                                                                    <Text style={{color: 'white'}}> Sagar </Text>
+                                                                    <Text style={{color: 'white'}}> Sagar </Text>
+                                                                  </View>
+
+                                                              </TouchableOpacity>
+
+                                                            </View>
+                                                          )
+                                                      })
+                                                    }
+                                                  </ScrollView>
+                                                </View>
                                               </View>
 
                                              )

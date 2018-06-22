@@ -19,12 +19,12 @@ let posterHeight = (() => {
 let posterWidth = (() => {
     if (Globals.DeviceType === 'Phone') {
         if (Platform.OS == "ios" && deviceHeight === 812) {
-            return deviceWidth / 4.5;
+            return deviceWidth / 4;
         } else {
-            return deviceWidth / 3.3;
+            return deviceWidth / 3;
         }
     } else {
-        return deviceWidth / 4.8;
+        return deviceWidth / 4;
     }
 })();
 
@@ -48,8 +48,9 @@ export default liveChannelStyle = StyleSheet.create({
         fontSize: FontSizes.medium
     },
     browseAll: {
-        color: '#d51a92',
-        fontSize: FontSizes.large
+        color: '#f4aa1c',
+        fontSize: 16,
+        fontWeight: '600'
     },
     sliderView: {
         height: deviceHeight / 3.9
@@ -69,29 +70,47 @@ export default liveChannelStyle = StyleSheet.create({
         width: posterWidth,
         height: posterHeight,
         backgroundColor: 'transparent',
-        marginBottom: 20,
-        marginLeft: 5,
-        marginRight: 5,
+        marginVertical: 10,
+        marginHorizontal: 5,
         flexDirection: 'row',
         alignItems: 'stretch',
     },
 
+    imageThmbnailGames: {
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 2.6 :  deviceWidth / 2.5) :  deviceWidth / 2.5) : deviceWidth / 2.25,
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3.8 :  deviceHeight / 3) :  deviceHeight / 3) : deviceHeight / 2.4,
+        backgroundColor: 'transparent',
+        marginVertical: 20,
+        marginHorizontal: 10,
+        flexDirection: 'row',
+        alignItems: 'stretch',
+        borderColor:'#555',
+        borderWidth: 2
+    },
+
     imageThmbnailCategory: {
-        height: deviceHeight/4.5 ,
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4.7 :  deviceHeight / 4.5) :  deviceHeight / 3.2) : deviceHeight / 3.8, //deviceHeight/4.5, // Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.20 :  deviceWidth / 1.35) :  deviceWidth / 3.2) : deviceWidth / 1.6, //deviceWidth/1.35
         backgroundColor: 'transparent',
         marginBottom: 20,
         flexDirection: 'row',
         alignItems: 'stretch',
-        width: deviceWidth/1.35
     },
 
     imageBackground: {
-        width: posterWidth,//Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
-        height: '100%'
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
+        height: '100%',
+    },
+
+    imageGame: {
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 2.6,
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4.4 :  deviceHeight / 3.2) :  deviceHeight / 3.2) : deviceHeight / 6,
+        marginHorizontal: 10,
+        marginVertical: 10,
     },
 
     imageBackgroundCategory: {
-        width: deviceWidth/1.5,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.3 :  deviceWidth / 1.5) :  deviceWidth / 3.2) : deviceWidth / 1.75, //deviceWidth/1.5,
         height: '100%'
     },
 
@@ -251,6 +270,15 @@ export default liveChannelStyle = StyleSheet.create({
       color: 'white',
       zIndex: 4,
       fontWeight: 'bold',
-    }
+    },
+    transformView:{
+      flex: 2,
+      flexDirection: 'row',
+      alignItems:"center",
+      backgroundColor:"#f4aa1c",
+      width:'70%',
+      height:"100%",
+
+ }
 
 });

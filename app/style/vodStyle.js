@@ -27,7 +27,8 @@ export default vodStyle = StyleSheet.create({
         fontSize: FontSizes.large
     },
     sliderView: {
-        height: Globals.DeviceType === "Phone" ? deviceHeight / 3.0 :  deviceHeight / 3.8
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3 :  deviceHeight / 2.7 ) :  deviceHeight / 3) : deviceHeight / 2.7, //Globals.DeviceType === "Phone" ? deviceHeight / 3.0 :  deviceHeight / 3.8
+
     },
     imageThmbnail: {
         width: deviceWidth / 2.8,

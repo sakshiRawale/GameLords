@@ -28,7 +28,7 @@ class Banner extends Component {
     render() {
         return (
           <TouchableOpacity style={bannerStyles.indicatorViewPage}   onPress={this._openHTML5Game}>
-              <Image style={[bannerStyles.slides]} resizeMode="stretch"   source={ BannerImg.bannerImg } ></Image>
+              <Image style={[bannerStyles.bannerImage]} resizeMode="stretch"   source={ BannerImg.bannerImg } ></Image>
           </TouchableOpacity>
         );
     }
