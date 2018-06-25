@@ -103,10 +103,17 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageGame: {
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 2.6,
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4.4 :  deviceHeight / 3.2) :  deviceHeight / 3.2) : deviceHeight / 6,
-        marginHorizontal: 10,
-        marginVertical: 10,
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 5.2 :  deviceHeight / 4.2) :  deviceHeight / 3.2) : deviceHeight / 3.2,
+    },
+
+    gameImageView: {
+      marginHorizontal: Globals.DeviceType === 'Phone'? 8 : 12,
+      marginVertical: Globals.DeviceType === 'Phone'? 8 : 12,
+    },
+
+    gameNameFavorite: {
+      flexDirection: 'row',
+      justifyContent: 'space-between'
     },
 
     imageBackgroundCategory: {

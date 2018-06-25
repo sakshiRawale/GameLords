@@ -14,9 +14,8 @@ import Banner from '../components/Banner/Banner';
 // Styles
 import { styles } from "../style/appStyles";
 import VODStyle from "../style/vodStyle";
-import liveChannelStyle from "../style/liveChannelStyle";
+import welcomeStyle from "../style/welcomeStyle";
 // Other data/helper functions
-import { movie_1, movie_2, tv_1, tv_2, thumbnail } from "../assets/Images";
 import { showMessage } from '../actions/FlashMessageActions';
 import { show, hide } from '../actions/ActivityIndicatorActions';
 import {getFavouriteGames, getGames, setFavouriteGames} from "../actions/GamesActions";
@@ -176,6 +175,11 @@ class VOD extends Component {
       // return false;
     }
 
+    isGameFavorite(gameId)
+    {
+      console.log('isGameFavorite clicked');
+    }
+
     LoadHTMLGames = () =>{
         // let favoriteVideosIds = this.props.favorite.videos.map((v) => v.videoId);
         // let bidiotvfavourite = [].concat.apply([], bidiotvMovies.map((c) => c.videos)).filter((v) => {
@@ -202,11 +206,11 @@ class VOD extends Component {
                                     {
                                         html5CategoryList.map((category, index) => {
                                             return (
-                                                  <View style={liveChannelStyle.imageThmbnailCategory} key={index}>
+                                                  <View style={welcomeStyle.imageThmbnailCategory} key={index}>
                                                     <TouchableOpacity onPress={this._onPressButton.bind(this, {cat: category})}>
-                                                        <ImageBackground style={liveChannelStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
+                                                        <ImageBackground style={welcomeStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
                                                         </ImageBackground>
-                                                        <Text style={liveChannelStyle.categoryNameText}>{category.categoryName}</Text>
+                                                        <Text style={welcomeStyle.categoryNameText}>{category.categoryName}</Text>
                                                     </TouchableOpacity>
                                                 </View>
                                             )
@@ -229,23 +233,19 @@ class VOD extends Component {
                                              return (
                                                <View key = {index}>
 
-                                                <View
+                                                <View style={welcomeStyle.gameListBox}>
 
-                                                style={{ height: 35,flexDirection: 'row',  justifyContent: 'space-between', backgroundColor: 'black', alignItems: 'center', color:"white",borderBottomColor:"#f4aa1c",borderBottomWidth:1}}>
+                                                    <View style={welcomeStyle.transformView}>
+                                                        <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={welcomeStyle.iconStyle} color='#423620' />
 
-                                                    <View style={liveChannelStyle.transformView}>
-                                                        <Icon name={category.categoryIcon.slice(6)} size={22} style={{ backgroundColor: 'transparent', paddingHorizontal: 15 }} color='#423620' />
-
-                                                        <Text numberOfLines={1}
-                                                        style={{color: '#423620', fontSize: 14, fontWeight: '600'}}>
+                                                        <Text numberOfLines={1} style={welcomeStyle.headingText}>
                                                             {category.categoryName.toUpperCase()}
                                                         </Text>
                                                     </View>
-                                                    <View style={{transform: [{skewX: "30deg"}], width: '10%', backgroundColor:"#f4aa1c", marginLeft: -20, height: '100%'}} />
-
-                                                        <View style={{ flexDirection: 'row', alignItems: 'center', width: '30%', justifyContent: 'center'}}>
+                                                    <View style={welcomeStyle.viewAllStyle} />
+                                                        <View style={welcomeStyle.viewAllViewStyle}>
                                                             <TouchableOpacity onPress={() => {}}>
-                                                              <Text style={[styles.avRegular, liveChannelStyle.browseAll],{color: "#f4aa1c"}}>
+                                                              <Text style={[styles.avRegular, welcomeStyle.browseAll]}>
                                                                   VIEW ALL
                                                               </Text>
                                                             </TouchableOpacity>
@@ -258,27 +258,39 @@ class VOD extends Component {
                                                     {
                                                       games.map((game, gameIndex) => {
                                                         return (
-                                                            <View style={liveChannelStyle.imageThmbnailGames} key={gameIndex}>
-                                                              <TouchableOpacity onPress={this._onPressGameButton.bind(this, {game: game})}>
+                                                            <View style={welcomeStyle.imageThmbnailGames} key={gameIndex}>
+                                                              <View style={{flex: 3}}>
 
-                                                                  <View>
+                                                                  <View style={welcomeStyle.gameImageView}>
                                                                     <TouchableOpacity onPress={this._openHTML5Game} >
-                                                                        <Image style={liveChannelStyle.imageGame} resizeMode="stretch" source={{uri: game.gameImage }} ></Image>
+                                                                        <Image style={welcomeStyle.imageGame} resizeMode="stretch" source={{uri: game.gameImage }} ></Image>
                                                                     </TouchableOpacity>
                                                                   </View>
 
-                                                                  <View>
-                                                                    <Text style={{color: 'white'}}> Sagar </Text>
-                                                                    <Text style={{color: 'white'}}> Sagar </Text>
+                                                                  <View style={welcomeStyle.gameNameFavorite}>
+                                                                    <View>
+                                                                      <Text style={welcomeStyle.gameTitleText}> {game.gameTitle} </Text>
+                                                                    </View>
+                                                                    <View>
+                                                                      <Icon name={this.isGameFavorite(game.gameId) ? "star" : "star-o"} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={welcomeStyle.iconStyle} color="#f4aa1c" />
+                                                                    </View>
                                                                   </View>
 
-                                                                  <View>
-                                                                    <Text style={{color: 'white'}}> Sagar </Text>
-                                                                    <Text style={{color: 'white'}}> Sagar </Text>
+                                                                  <View style={welcomeStyle.gameRatingIcon}>
+                                                                    <View style={{flexDirection: 'row'}}>
+                                                                      {
+                                                                        [1,2,3,4,5].map((rate) => {
+                                                                          return (
+                                                                            <Icon name={game.userRating < rate ? 'star-o' : 'star'} size={ Globals.DeviceType === 'Phone'? 18 : 28 } style={welcomeStyle.iconRatingStyle} color='#f4aa1c' />
+                                                                          )
+                                                                        })
+                                                                      }
+                                                                    </View>
+                                                                    <View>
+                                                                      <Icon name='html5' size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={welcomeStyle.iconStyle} color='#fff' />
+                                                                    </View>
                                                                   </View>
-
-                                                              </TouchableOpacity>
-
+                                                              </View>
                                                             </View>
                                                           )
                                                       })
