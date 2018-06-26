@@ -94,7 +94,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageGame: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 5.2 :  deviceHeight / 4.9) :  deviceHeight / 3.2) : deviceHeight / 3.5,
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 6.3 :  deviceHeight / 4.9) :  deviceHeight / 3.2) : deviceHeight / 3.5,
     },
 
     gameImageView: {
@@ -104,9 +104,11 @@ export default liveChannelStyle = StyleSheet.create({
 
     gameNameFavorite: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginHorizontal: Globals.DeviceType === 'Phone'? 8 : 12,
-      marginVertical: Globals.DeviceType === 'Phone'? 8 : 12,
+      //justifyContent: 'space-between',
+      borderColor:"blue",
+      borderWidth:4,
+      //marginHorizontal: Globals.DeviceType === 'Phone'? 16 : 12,
+      //marginVertical: Globals.DeviceType === 'Phone'? 8 : 12,
     },
 
     imageBackgroundCategory: {
@@ -183,7 +185,10 @@ export default liveChannelStyle = StyleSheet.create({
     },
     gameTitleText: {
       color: '#fff',
-      fontSize: FontSizes.large
+      fontSize: FontSizes.large,
+      width: '90%',
+      height:20,
+
     }
 
 });

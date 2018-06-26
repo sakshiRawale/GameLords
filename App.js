@@ -7,6 +7,7 @@ import { StackNavigator } from "react-navigation";
 import SplashScreen from "./app/containers/SplashScreen";
 import { splashBg, background } from "./app/assets/Images";
 import Login from "./app/containers/Login";
+import Accounts from "./app/containers/Accounts";
 import DrawerVOD from "./app/components/Navigator/DrawerVOD";
 
 
@@ -41,6 +42,14 @@ const RootNavigator = StackNavigator({
         screen: DrawerVOD,
         navigationOptions: {
             title: 'DrawerVOD',
+            header: null,
+            gesturesEnabled: true
+        }
+    },
+    Accounts: {
+        screen: Accounts,
+        navigationOptions: {
+            title: 'My Account',
             header: null,
             gesturesEnabled: true
         }

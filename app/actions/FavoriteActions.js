@@ -1,30 +1,16 @@
 import * as action_types from './action_types';
 import {console_log} from "../utils/helper";
 
-export const addFavoriteChannel = (channels) => {
+export const getFavouriteGames = (data) => {
     return {
-        type: action_types.ADD_FAVORITE_CHANNELS,
-        data: channels
+        type: action_types.GET_FAVOURITE_GAMES,
+        data: data
     }
 };
 
-export const addFavoriteVideo = (videos) => {
+export const setFavouriteGames = (data) => {
     return {
-        type: action_types.ADD_FAVORITE_VIDEOS,
-        data: videos
-    }
-};
-
-export const addLikesChannels = (channels) => {
-    return {
-        type: action_types.ADD_LIKE_CHANNELS,
-        data: channels
-    }
-};
-
-export const addLikesVideos = (videos) => {
-    return {
-        type: action_types.ADD_LIKE_VIDEOS,
-        data: videos
+        type: action_types.SET_FAVOURITE_GAME,
+        data: data
     }
 };
