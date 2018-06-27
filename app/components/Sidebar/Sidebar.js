@@ -37,7 +37,6 @@ class SideBar extends Component {
         { menuName: 'Home', iconName: 'home', icon: 'FA', route: 'Home' },
         { menuName: 'My Account', iconName: 'user-circle', icon: 'FA', route: 'Accounts' },
 				{ menuName: 'Notifications', iconName: 'notifications-active', icon: 'material', route: 'Notification' },
-        { menuName: 'HTML Games', iconName: 'html5', icon: 'FA', route: 'HtmlGames' },
 				{ menuName: 'Favorite', iconName: 'star', icon: 'FA', route: 'Favorite' },
     ]
 

@@ -16,7 +16,7 @@ export default (accountStyles = StyleSheet.create({
     paddingRight: "4%"
   },
   sectionHeaders: {
-    color: "#d51a92",
+    color: "#f6a50e",
     fontSize: FontSizes.small
   },
   sectionSubHeaders: {

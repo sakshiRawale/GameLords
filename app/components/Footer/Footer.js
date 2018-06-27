@@ -34,7 +34,7 @@ class Footer extends Component {
         return (
             <View style={footerStyle.footerView}>
                 <View>
-                    <Text style={[styles.avRegular, footerStyle.footerCopyRightsText, {paddingTop: 5}]}>{Globals.type === 'es'? "2018 © GameLords. Todos los derechos reservados" : '2018 © GameLords. All Rights Reserved.'}</Text>
+                    <Text style={[styles.avRegular, footerStyle.footerCopyRightsText, {paddingTop: 5}]}>{'2018 © GameLords. All Rights Reserved.'}</Text>
                 </View>
             </View>
         );

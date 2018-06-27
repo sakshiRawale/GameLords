@@ -105,8 +105,6 @@ export default liveChannelStyle = StyleSheet.create({
     gameNameFavorite: {
       flexDirection: 'row',
       //justifyContent: 'space-between',
-      borderColor:"blue",
-      borderWidth:4,
       //marginHorizontal: Globals.DeviceType === 'Phone'? 16 : 12,
       //marginVertical: Globals.DeviceType === 'Phone'? 8 : 12,
     },
