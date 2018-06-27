@@ -80,8 +80,8 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageThmbnailCategory: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4.7 :  deviceHeight / 4.5) :  deviceHeight / 3.2) : deviceHeight / 3.8, //deviceHeight/4.5, // Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.20 :  deviceWidth / 1.35) :  deviceWidth / 3.2) : deviceWidth / 1.6, //deviceWidth/1.35
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4.7 :  deviceHeight / 4.5) :  deviceHeight / 4.5) : deviceHeight / 3.8, //deviceHeight/4.5, // Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.20 :  deviceWidth / 1.35) :  deviceWidth / 1.35) : deviceWidth / 1.6, //deviceWidth/1.35
         backgroundColor: 'transparent',
         marginBottom: 20,
         flexDirection: 'row',
@@ -94,7 +94,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageGame: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 6.3 :  deviceHeight / 4.9) :  deviceHeight / 3.2) : deviceHeight / 3.5,
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 6.3 :  deviceHeight / 4.9) :  deviceHeight / 4.9) : deviceHeight / 3.5,
     },
 
     gameImageView: {
@@ -110,7 +110,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageBackgroundCategory: {
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.3 :  deviceWidth / 1.5) :  deviceWidth / 3.2) : deviceWidth / 1.75, //deviceWidth/1.5,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.3 :  deviceWidth / 1.5) :  deviceWidth / 1.5) : deviceWidth / 1.75, //deviceWidth/1.5,
         height: '100%'
     },
 
@@ -164,10 +164,10 @@ export default liveChannelStyle = StyleSheet.create({
       fontSize: FontSizes.medium
     },
     viewAllStyle: {
-      transform: [{skewX: "30deg"}],
-      width: '10%',
+      transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '45deg'}],
+      width: Platform.OS == "ios" ? '10%' :  '20%',
       backgroundColor:"#f4aa1c",
-      marginLeft: -20,
+      marginLeft: Platform.OS == "ios" ? -16 :  -27,
       height: '100%'
     },
     viewAllViewStyle: {
