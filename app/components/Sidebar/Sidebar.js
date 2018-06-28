@@ -34,7 +34,7 @@ class SideBar extends Component {
 
 	componentWillMount(){
     menuArray = [
-        { menuName: 'Home', iconName: 'home', icon: 'FA', route: 'Home' },
+        { menuName: 'Home', iconName: 'home', icon: 'FA', route: 'DrawerVOD' },
         { menuName: 'My Account', iconName: 'user-circle', icon: 'FA', route: 'Accounts' },
 				{ menuName: 'Notifications', iconName: 'notifications-active', icon: 'material', route: 'Notification' },
 				{ menuName: 'Favorite', iconName: 'star', icon: 'FA', route: 'Favorite' },

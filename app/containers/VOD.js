@@ -110,6 +110,11 @@ class VOD extends Component {
         console.log("_onPressButton click");
     }
 
+    viewCategoryGames(category)
+    {
+      NavigationService.navigate('Category',{category: category});
+    }
+
     getFavouriteGames =()=>
     {
       axios.get(vars.BASE_API_URL_GL+'/getFavorites?uid='+this.props.account.user.uid)
@@ -155,7 +160,7 @@ class VOD extends Component {
                                         html5CategoryList.map((category, index) => {
                                             return (
                                                   <View style={welcomeStyle.imageThmbnailCategory} key={index}>
-                                                    <TouchableOpacity onPress={this._onPressButton.bind(this, {cat: category})}>
+                                                    <TouchableOpacity onPress={() => this.viewCategoryGames(category)}>
                                                         <ImageBackground style={welcomeStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
                                                         </ImageBackground>
                                                         <Text style={welcomeStyle.categoryNameText}>{category.categoryName}</Text>
@@ -179,24 +184,22 @@ class VOD extends Component {
                                                <View key = {index}>
 
                                                 <View style={welcomeStyle.gameListBox}>
-
                                                     <View style={welcomeStyle.transformView}>
-                                                        <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={welcomeStyle.iconStyle} color='#423620' />
+                                                      <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={welcomeStyle.iconStyle} color='#423620' />
 
-                                                        <Text numberOfLines={1} style={welcomeStyle.headingText}>
-                                                            {category.categoryName.toUpperCase()}
-                                                        </Text>
+                                                      <Text numberOfLines={1} style={welcomeStyle.headingText}>
+                                                          {category.categoryName.toUpperCase()}
+                                                      </Text>
                                                     </View>
                                                     <View style={welcomeStyle.viewAllStyle} />
-                                                        <View style={welcomeStyle.viewAllViewStyle}>
-                                                            <TouchableOpacity onPress={() => {}}>
-                                                              <Text style={[styles.avRegular, welcomeStyle.browseAll]}>
-                                                                  VIEW ALL
-                                                              </Text>
-                                                            </TouchableOpacity>
-                                                        </View>
-
-                                                </View>
+                                                    <View style={welcomeStyle.viewAllViewStyle}>
+                                                      <TouchableOpacity onPress={() => this.viewCategoryGames(category) }>
+                                                        <Text style={[styles.avRegular, welcomeStyle.browseAll]}>
+                                                            VIEW ALL
+                                                        </Text>
+                                                      </TouchableOpacity>
+                                                    </View>
+                                                  </View>
 
                                                 <View style={{flexDirection: "row"}}>
                                                   <ScrollView horizontal={true} >
@@ -249,7 +252,7 @@ class VOD extends Component {
                 <ImageBackground  style={{ zIndex: 999 }}>
                 <Header
                     isDrawer={true}
-                    isTitle= {Globals.url !==  'http://uk.mobiotv.com' ? true : false}
+                    isTitle= {false}
                     title='VOD'
                     isSearch={true}
                     rightLabel=''
@@ -257,6 +260,7 @@ class VOD extends Component {
                 </ImageBackground>
                 <Loader visible={this.props.loader.isLoading}/>
                 {/* <Search from={"videos"}/> */}
+
                 <View style={VODStyle.contentView}>
                     <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
                     <ScrollView keyboardShouldPersistTaps={'always'} keyboardDismissMode='on-drag' contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 80}}>
