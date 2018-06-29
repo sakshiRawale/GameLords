@@ -1,40 +1,29 @@
 import React, {Component} from 'react';
 import { Image, View, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, TouchableOpacity } from "react-native";
 
-import {connect} from "react-redux";
-
-// import {bindActionCreators} from "redux/index";
+import WelcomeStyle from "../../style/welcomeStyle";
 
 class CategoryList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            gameType: props.gametype,
-        };
-    }
-
-    componentDidMount() {
-
     }
 
     render(){
-        console.log("==============");
-        console.log(this.props.games);
+        const {category, index} = this.props;
+
         return (
-            <View>
-              <Text style={{color: 'white'}} > sagar </Text>
-            </View>
+          <View style={WelcomeStyle.imageThmbnailCategory} key={index}>
+            <TouchableOpacity onPress={() => this.props.viewCategoryGames(category)} >
+                <ImageBackground style={WelcomeStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
+                </ImageBackground>
+                <Text style={WelcomeStyle.categoryNameText}>{category.categoryName}</Text>
+            </TouchableOpacity>
+          </View>
 
         )
     }
 
 
 }
-const mapStateToProps = (state) => {
-    return {
-        categories: state.CategoryReducer,
-        games: state.GamesReducer
-    };
-};
 
-export default connect(mapStateToProps)(CategoryList);
+export default CategoryList;

@@ -14,7 +14,7 @@ import Banner from '../components/Banner/Banner';
 // Styles
 import { styles } from "../style/appStyles";
 import VODStyle from "../style/vodStyle";
-import welcomeStyle from "../style/welcomeStyle";
+import WelcomeStyle from "../style/welcomeStyle";
 // Other data/helper functions
 import { showMessage } from '../actions/FlashMessageActions';
 import { show, hide } from '../actions/ActivityIndicatorActions';
@@ -31,11 +31,9 @@ import Search from '../components/Search/Search';
 
 import MessageBar from '../components/Message/Message';
 import GameView from '../components/GameView/GameView';
+import CategoryList from '../components/CategoryList/CategoryList';
 import Globals from  '../constants/Globals';
 import DeviceType from '../../App';
-
-import CategoryList from '../components/CategoryList/CategoryList';
-
 
 class VOD extends Component {
     constructor(props) {
@@ -106,10 +104,6 @@ class VOD extends Component {
         this.getFavouriteGames();
     }
 
-    _onPressButton(data) {
-        console.log("_onPressButton click");
-    }
-
     viewCategoryGames(category)
     {
       NavigationService.navigate('Category',{category: category});
@@ -159,13 +153,7 @@ class VOD extends Component {
                                     {
                                         html5CategoryList.map((category, index) => {
                                             return (
-                                                  <View style={welcomeStyle.imageThmbnailCategory} key={index}>
-                                                    <TouchableOpacity onPress={() => this.viewCategoryGames(category)}>
-                                                        <ImageBackground style={welcomeStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
-                                                        </ImageBackground>
-                                                        <Text style={welcomeStyle.categoryNameText}>{category.categoryName}</Text>
-                                                    </TouchableOpacity>
-                                                </View>
+                                                  <CategoryList key={index} index={index} category={category} viewCategoryGames={this.viewCategoryGames}/>
                                             )
                                         })
                                     }
@@ -183,18 +171,18 @@ class VOD extends Component {
                                              return (
                                                <View key = {index}>
 
-                                                <View style={welcomeStyle.gameListBox}>
-                                                    <View style={welcomeStyle.transformView}>
-                                                      <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={welcomeStyle.iconStyle} color='#423620' />
+                                                <View style={WelcomeStyle.gameListBox}>
+                                                    <View style={WelcomeStyle.transformView}>
+                                                      <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={WelcomeStyle.iconStyle} color='#423620' />
 
-                                                      <Text numberOfLines={1} style={welcomeStyle.headingText}>
+                                                      <Text numberOfLines={1} style={WelcomeStyle.headingText}>
                                                           {category.categoryName.toUpperCase()}
                                                       </Text>
                                                     </View>
-                                                    <View style={welcomeStyle.viewAllStyle} />
-                                                    <View style={welcomeStyle.viewAllViewStyle}>
+                                                    <View style={WelcomeStyle.viewAllStyle} />
+                                                    <View style={WelcomeStyle.viewAllViewStyle}>
                                                       <TouchableOpacity onPress={() => this.viewCategoryGames(category) }>
-                                                        <Text style={[styles.avRegular, welcomeStyle.browseAll]}>
+                                                        <Text style={[styles.avRegular, WelcomeStyle.browseAll]}>
                                                             VIEW ALL
                                                         </Text>
                                                       </TouchableOpacity>
