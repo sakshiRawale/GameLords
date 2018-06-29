@@ -42,6 +42,7 @@ class GameView extends Component {
 
     _openHTML5Game(game) {
         console.log("_openHTML5Game click");
+        NavigationService.navigate('Detail',{game: game});
     }
 
     _handleFavoriteClicked=(data,current)=> {
