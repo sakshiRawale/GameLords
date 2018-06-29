@@ -6,7 +6,6 @@ const initialState = {
     gameDetail: [],
     similarGames: [],
     searchedGames: [],
-    favorite:[]
 };
 
 export const GamesReducer = (state = initialState, action = {}) => {

@@ -133,9 +133,9 @@ class GameView extends Component {
                   <View style={welcomeStyle.gameRatingIcon}>
                     <View style={{flexDirection: 'row'}}>
                       {
-                        [1,2,3,4,5].map((rate) => {
+                        [1,2,3,4,5].map((rate, index) => {
                           return (
-                            <Icon name={game.userRating < rate ? 'star-o' : 'star'} size={ Globals.DeviceType === 'Phone'? 18 : 28 } style={welcomeStyle.iconRatingStyle} color='#f4aa1c' />
+                            <Icon key={index} name={game.userRating < rate ? 'star-o' : 'star'} size={ Globals.DeviceType === 'Phone'? 18 : 28 } style={welcomeStyle.iconRatingStyle} color='#f4aa1c' />
                           )
                         })
                       }

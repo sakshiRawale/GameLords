@@ -33,10 +33,10 @@ export default liveChannelStyle = StyleSheet.create({
     contentView: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'black'
+        backgroundColor: '#000000'
     },
     allCategory: {
-        color: 'white',
+        color: '#FFFFFF',
         fontSize: FontSizes.medium
     },
     categoryName: {
@@ -44,7 +44,7 @@ export default liveChannelStyle = StyleSheet.create({
         fontSize: FontSizes.large
     },
     favoriteSwitchText: {
-        color: 'white',
+        color: '#FFFFFF',
         fontSize: FontSizes.medium
     },
     browseAll: {
@@ -126,7 +126,7 @@ export default liveChannelStyle = StyleSheet.create({
       bottom: 0,
       right: 5,
       position: 'absolute',
-      color: 'white',
+      color: '#FFFFFF',
       zIndex: 4,
       fontWeight: 'bold',
       fontSize: FontSizes.large
@@ -143,9 +143,9 @@ export default liveChannelStyle = StyleSheet.create({
       height: 35,
       flexDirection: 'row',
       justifyContent: 'space-between',
-      backgroundColor: 'black',
+      backgroundColor: '#000000',
       alignItems: 'center',
-      color:"white",
+      // color:"#FFFFFF",
       borderBottomColor:"#f4aa1c",
       borderBottomWidth:1
     },

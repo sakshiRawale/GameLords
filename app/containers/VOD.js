@@ -27,7 +27,7 @@ import { messages } from '../constants/messages';
 import { console_log } from '../utils/helper';
 import NavigationService from "../utils/NavigationService";
 import Loader from '../components/Loader/Loader';
-// import Search from '../components/Search/Search';
+import Search from '../components/Search/Search';
 
 import MessageBar from '../components/Message/Message';
 import GameView from '../components/GameView/GameView';
@@ -206,7 +206,7 @@ class VOD extends Component {
                                                     {
                                                       games.map((game, gameIndex) => {
                                                         return (
-                                                            <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
                                                           )
                                                       })
                                                     }
@@ -259,7 +259,7 @@ class VOD extends Component {
                 />
                 </ImageBackground>
                 <Loader visible={this.props.loader.isLoading}/>
-                {/* <Search from={"videos"}/> */}
+                <Search from={"html5"}/>
 
                 <View style={VODStyle.contentView}>
                     <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
