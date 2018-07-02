@@ -41,8 +41,19 @@ class GameView extends Component {
     }
 
     _openHTML5Game(game) {
-        console.log("_openHTML5Game click");
-        NavigationService.navigate('Detail',{game: game});
+        // this.props.handleGame(game);
+        if (this.props.handleGame)
+        {
+          this.props.handleGame(game);
+        }
+        else{
+          NavigationService.navigate('Detail',{game: game});
+        }
+    }
+
+    _changeHTML5Game(game) {
+        this.props.handleGame(game);
+        // NavigationService.navigate('Detail',{game: game});
     }
 
     _handleFavoriteClicked=(data,current)=> {

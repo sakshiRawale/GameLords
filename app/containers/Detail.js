@@ -67,6 +67,10 @@ class Detail extends Component {
             });
     }
 
+    handleGame= (game) => {
+      this.getGameDetail(game.gameId);
+    }
+
     getFavouriteGames =()=>
     {
       axios.get(vars.BASE_API_URL_GL+'/getFavorites?uid='+this.props.account.user.uid)
@@ -365,7 +369,7 @@ class Detail extends Component {
                           {
                             html5RelatedList.map((game, gameIndex) => {
                             return (
-                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} handleGame={this.handleGame} />
                                 )
                             })
                           }
