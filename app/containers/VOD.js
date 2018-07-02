@@ -14,12 +14,12 @@ import Banner from '../components/Banner/Banner';
 // Styles
 import { styles } from "../style/appStyles";
 import VODStyle from "../style/vodStyle";
-import liveChannelStyle from "../style/liveChannelStyle";
+import WelcomeStyle from "../style/welcomeStyle";
 // Other data/helper functions
-import { movie_1, movie_2, tv_1, tv_2, thumbnail } from "../assets/Images";
 import { showMessage } from '../actions/FlashMessageActions';
 import { show, hide } from '../actions/ActivityIndicatorActions';
-import {getFavouriteGames, getGames, setFavouriteGames} from "../actions/GamesActions";
+import { getGames } from "../actions/GamesActions";
+import { getFavouriteGames, setFavouriteGames } from "../actions/FavoriteActions";
 import { getDetails, getInterests } from '../actions/AccountActions';
 import { getCategories } from "../actions/CategoryActions";
 import * as vars from '../constants/api';
@@ -27,14 +27,13 @@ import { messages } from '../constants/messages';
 import { console_log } from '../utils/helper';
 import NavigationService from "../utils/NavigationService";
 import Loader from '../components/Loader/Loader';
-// import Search from '../components/Search/Search';
+import Search from '../components/Search/Search';
 
 import MessageBar from '../components/Message/Message';
+import GameView from '../components/GameView/GameView';
+import CategoryList from '../components/CategoryList/CategoryList';
 import Globals from  '../constants/Globals';
 import DeviceType from '../../App';
-
-import CategoryList from '../components/CategoryList/CategoryList';
-
 
 class VOD extends Component {
     constructor(props) {
@@ -54,13 +53,15 @@ class VOD extends Component {
     }
 
     componentWillMount(){
+
         axios.defaults.headers.common['authorization'] = this.props.accessToken;
         // if(Globals.url ===  'http://uk.mobiotv.com' && this.props.category.categories.length === 0) {
         if(this.props.category.categories.length === 0) {
             this.props.show();
             // axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile'), axios.get(vars.BASE_API_URL_GL + '/interests'), axios.get(vars.BASE_API_URL_GL + '/categories'), axios.get(vars.BASE_API_URL_GL + '/packages'), axios.get(vars.BASE_API_URL_GL + '/favorites'), axios.get(vars.BASE_API_URL_GL + '/likes')])
-            axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile'), axios.get(vars.BASE_API_URL_GL+'/getGames'), axios.get(vars.BASE_API_URL_GL+'/getCategories')])
-                .then(axios.spread((userProfile, games, categories) => {
+
+            axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile'), axios.get(vars.BASE_API_URL_GL+'/getGames'), axios.get(vars.BASE_API_URL_GL+'/getCategories'), axios.get(vars.BASE_API_URL_GL + '/interests')])
+                .then(axios.spread((userProfile, games, categories, interests) => {
                     if (userProfile.data.data) {
                         this.props.getDetails(userProfile.data.data);
                     }
@@ -68,49 +69,23 @@ class VOD extends Component {
                     // for games
                     if (games.data.data) {
                         this.props.getGames(games.data.data);
+                        this.getFavouriteGames(); //1
                     }
-
-                    // for interests
-                    // if (interests.data.data) {
-                    //     this.props.getInterests(interests.data.data);
-                    // }
 
                     // for categories);
                     if (categories.data.data) {
                         this.props.getCategories(categories.data.data);
                     }
 
-                    // for packages of Video On Demand
-                    // if (packages.data.data.packages) {
-                    //     this.props.getVideosPackages(packages.data.data.packages);
-                    //
-                    //     // for Videos On Demand
-                    //     axios.all(packages.data.data.packages.map(l => axios.get(vars.BASE_API_URL_GL + '/packages/' + l.id)))
-                    //         .then(axios.spread((...res) => {
-                    //             // all requests are now complete
-                    //             res.map((packageDetails) => {
-                    //                 if (packageDetails) {
-                    //                     this.props.getVideos(packageDetails.data.data.package);
-                    //                 }
-                    //             });
-                    //         }));
-                    // }
+                    // for interests
+                    if (interests.data.data) {
+                        this.props.getInterests(interests.data.data);
+                    }
 
-                    // for favorites
-                    // if (favorites.data.data) {
-                    //     this.props.addFavoriteChannel(favorites.data.data.channels);
-                    //     this.props.addFavoriteVideo(favorites.data.data.videos);
-                    // }
 
-                    // for likes
-                    // if (likes.data.data) {
-                    //     this.props.addLikesChannels(likes.data.data.channels);
-                    //     this.props.addLikesVideos(likes.data.data.videos);
-                    // }
-
-                    //this.props.hide();
                     this.setState({dataLoad: true})
                 }));
+
         }
     }
 
@@ -123,74 +98,50 @@ class VOD extends Component {
         }, 1500);
     }
 
-    componentWillReceiveProps(newProps){
-
-    }
-
 
     switchFavorite() {
         this.setState({ favoriteSwitch: !this.state.favoriteSwitch });
+        this.getFavouriteGames();
     }
 
-    _onPressButton(data) {
-        console.log("_onPressButton click");
-        // NavigationService.navigate('PlayVOD');
-        // this.props.getVideoOrChannelRelatedData(data);
+    viewCategoryGames(category)
+    {
+      NavigationService.navigate('Category',{category: category});
     }
 
-    _handleFavoriteClicked(data) {
-      console.log("_handleFavoriteClicked click");
-      // this.videoFavorite(data.video);
+    getFavouriteGames =()=>
+    {
+      axios.get(vars.BASE_API_URL_GL+'/getFavorites?uid='+this.props.account.user.uid)
+        .then((response) => {
+          console.log(response);
+            if (response.data.success) {
+                this.props.getFavouriteGames(response.data);
+            }
+        })
+        .catch((error) => {
+            this.setState({ isValid: false, errorMessage: 'Unable to fetch the data.'});
+        });
     }
 
-    isCategoryFavorite(categoryId) {
-      console.log("isCategoryFavorite click");
-      // let indexOf = this.props.favorite.videos.findIndex((f) => {
-      //     return f.videoId == videoId;
-      // });
-      // if (indexOf != -1) {
-      //     return true;
-      // }
-      // return false;
-    }
-
-    _onPressGameButton(data) {
-        console.log("_onPressGameButton click");
-        // NavigationService.navigate('PlayVOD');
-        // this.props.getVideoOrChannelRelatedData(data);
-    }
-
-    _handleFavoriteGameClicked(data) {
-      console.log("_handleFavoriteGameClicked click");
-      // this.videoFavorite(data.video);
-    }
-
-    isCategoryGameFavorite(categoryId) {
-      console.log("isCategoryGameFavorite click");
-      // let indexOf = this.props.favorite.videos.findIndex((f) => {
-      //     return f.videoId == videoId;
-      // });
-      // if (indexOf != -1) {
-      //     return true;
-      // }
-      // return false;
+    handleMessageBar = (success) => {
+      if (success)
+      {
+        this.setState({color:'green', message: messages.addToFavorites, showMessage: !this.state.showMessage})
+      }
+      else
+      {
+        this.setState({color:'red', message: messages.removeFromFavorites, showMessage: !this.state.showMessage})
+      }
     }
 
     LoadHTMLGames = () =>{
-        // let favoriteVideosIds = this.props.favorite.videos.map((v) => v.videoId);
-        // let bidiotvfavourite = [].concat.apply([], bidiotvMovies.map((c) => c.videos)).filter((v) => {
-        //     if (~favoriteVideosIds.indexOf(v.id)) {
-        //         return v;
-        //     }
-        // });
-        //
         let categories = this.props.category.categories;
         let getAllGames = this.props.games.games;
 
+        let favoriteGames = this.props.favorite.games.filter(g => { return g.gameType === this.state.gameType });
+
         let html5CategoryList = categories.filter(c => {return c.categoryTypeName === this.state.gameType} );
 
-        console.log("==============");
-        console.log(html5CategoryList);
         return(
             <View>
                 {!this.state.favoriteSwitch  ?
@@ -202,13 +153,7 @@ class VOD extends Component {
                                     {
                                         html5CategoryList.map((category, index) => {
                                             return (
-                                                  <View style={liveChannelStyle.imageThmbnailCategory} key={index}>
-                                                    <TouchableOpacity onPress={this._onPressButton.bind(this, {cat: category})}>
-                                                        <ImageBackground style={liveChannelStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
-                                                        </ImageBackground>
-                                                        <Text style={liveChannelStyle.categoryNameText}>{category.categoryName}</Text>
-                                                    </TouchableOpacity>
-                                                </View>
+                                                  <CategoryList key={index} index={index} category={category} viewCategoryGames={this.viewCategoryGames}/>
                                             )
                                         })
                                     }
@@ -223,63 +168,33 @@ class VOD extends Component {
                                          html5CategoryList.map((category, index) => {
                                             let games = (getAllGames.length > 0 && getAllGames.filter((g) => {return g.categoryId == category.categoryId}).length > 0) ? getAllGames.filter((g) => {return g.categoryId == category.categoryId}).slice(0, 10) : []
 
-                                            console.log('==================');
-                                            console.log(games);
-
                                              return (
                                                <View key = {index}>
 
-                                                <View
+                                                <View style={WelcomeStyle.gameListBox}>
+                                                    <View style={WelcomeStyle.transformView}>
+                                                      <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={WelcomeStyle.iconStyle} color='#423620' />
 
-                                                style={{ height: 35,flexDirection: 'row',  justifyContent: 'space-between', backgroundColor: 'black', alignItems: 'center', color:"white",borderBottomColor:"#f4aa1c",borderBottomWidth:1}}>
-
-                                                    <View style={liveChannelStyle.transformView}>
-                                                        <Icon name={category.categoryIcon.slice(6)} size={22} style={{ backgroundColor: 'transparent', paddingHorizontal: 15 }} color='#423620' />
-
-                                                        <Text numberOfLines={1}
-                                                        style={{color: '#423620', fontSize: 14, fontWeight: '600'}}>
-                                                            {category.categoryName.toUpperCase()}
-                                                        </Text>
+                                                      <Text numberOfLines={1} style={WelcomeStyle.headingText}>
+                                                          {category.categoryName.toUpperCase()}
+                                                      </Text>
                                                     </View>
-                                                    <View style={{transform: [{skewX: "30deg"}], width: '10%', backgroundColor:"#f4aa1c", marginLeft: -20, height: '100%'}} />
-
-                                                        <View style={{ flexDirection: 'row', alignItems: 'center', width: '30%', justifyContent: 'center'}}>
-                                                            <TouchableOpacity onPress={() => {}}>
-                                                              <Text style={[styles.avRegular, liveChannelStyle.browseAll],{color: "#f4aa1c"}}>
-                                                                  VIEW ALL
-                                                              </Text>
-                                                            </TouchableOpacity>
-                                                        </View>
-
-                                                </View>
+                                                    <View style={WelcomeStyle.viewAllStyle} />
+                                                    <View style={WelcomeStyle.viewAllViewStyle}>
+                                                      <TouchableOpacity onPress={() => this.viewCategoryGames(category) }>
+                                                        <Text style={[styles.avRegular, WelcomeStyle.browseAll]}>
+                                                            VIEW ALL
+                                                        </Text>
+                                                      </TouchableOpacity>
+                                                    </View>
+                                                  </View>
 
                                                 <View style={{flexDirection: "row"}}>
                                                   <ScrollView horizontal={true} >
                                                     {
                                                       games.map((game, gameIndex) => {
                                                         return (
-                                                            <View style={liveChannelStyle.imageThmbnailGames} key={gameIndex}>
-                                                              <TouchableOpacity onPress={this._onPressGameButton.bind(this, {game: game})}>
-
-                                                                  <View>
-                                                                    <TouchableOpacity onPress={this._openHTML5Game} >
-                                                                        <Image style={liveChannelStyle.imageGame} resizeMode="stretch" source={{uri: game.gameImage }} ></Image>
-                                                                    </TouchableOpacity>
-                                                                  </View>
-
-                                                                  <View>
-                                                                    <Text style={{color: 'white'}}> Sagar </Text>
-                                                                    <Text style={{color: 'white'}}> Sagar </Text>
-                                                                  </View>
-
-                                                                  <View>
-                                                                    <Text style={{color: 'white'}}> Sagar </Text>
-                                                                    <Text style={{color: 'white'}}> Sagar </Text>
-                                                                  </View>
-
-                                                              </TouchableOpacity>
-
-                                                            </View>
+                                                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
                                                           )
                                                       })
                                                     }
@@ -295,7 +210,22 @@ class VOD extends Component {
                       </View>
                     :
                       <View>
-                        <Text style={{color: 'white'}}> Favorites Screen </Text>
+                      {
+                        favoriteGames.length > 0 &&
+                            <View>
+                               <View style={{flexDirection: "row"}}>
+                                 <ScrollView horizontal={true} >
+                                 {
+                                   favoriteGames.map((game, gameIndex) => {
+                                     return (
+                                        <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                        )
+                                    })
+                                  }
+                                 </ScrollView>
+                               </View>
+                            </View>
+                       }
                       </View>
                   }
             </View>
@@ -310,14 +240,15 @@ class VOD extends Component {
                 <ImageBackground  style={{ zIndex: 999 }}>
                 <Header
                     isDrawer={true}
-                    isTitle= {Globals.url !==  'http://uk.mobiotv.com' ? true : false}
+                    isTitle= {false}
                     title='VOD'
                     isSearch={true}
                     rightLabel=''
                 />
                 </ImageBackground>
                 <Loader visible={this.props.loader.isLoading}/>
-                {/* <Search from={"videos"}/> */}
+                <Search from={"html5"}/>
+
                 <View style={VODStyle.contentView}>
                     <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
                     <ScrollView keyboardShouldPersistTaps={'always'} keyboardDismissMode='on-drag' contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 80}}>
@@ -356,8 +287,6 @@ class VOD extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("mapStateoProps here");
-    console.log(state.GamesReducer);
     return {
         accessToken: state.WelcomeReducer.token,
         account: state.AccountReducer,
@@ -378,6 +307,8 @@ const mapDispatchToProps = (dispatch) => {
         getDetails,
         getInterests,
         getGames,
+        getFavouriteGames,
+        setFavouriteGames,
         getCategories,
     }, dispatch);
 };

@@ -7,7 +7,6 @@ var initialState = {
 };
 
 export const WelcomeReducer = (state = initialState, action = {}) => {
-    console.log(action)
     switch (action.type) {
         case action_types.HAS_ACCESS:
             return {

@@ -5,8 +5,12 @@ import { StackNavigator } from "react-navigation";
 
 // Components
 import SplashScreen from "./app/containers/SplashScreen";
+import Favorite from "./app/containers/Favorite";
+import Category from "./app/containers/Category";
+
 import { splashBg, background } from "./app/assets/Images";
 import Login from "./app/containers/Login";
+import Accounts from "./app/containers/Accounts";
 import DrawerVOD from "./app/components/Navigator/DrawerVOD";
 
 
@@ -45,6 +49,31 @@ const RootNavigator = StackNavigator({
             gesturesEnabled: true
         }
     },
+    Accounts: {
+        screen: Accounts,
+        navigationOptions: {
+            title: 'My Account',
+            header: null,
+            gesturesEnabled: true
+        }
+    },
+    Favorite: {
+        screen: Favorite,
+        navigationOptions: {
+            title: 'Favorite',
+            header: null,
+            gesturesEnabled: true
+        }
+    },
+    Category: {
+        screen: Category,
+        navigationOptions: {
+            title: 'Category',
+            header: null,
+            gesturesEnabled: true
+        }
+    },
+
 });
 
 export default class GameLordAdmin extends Component {

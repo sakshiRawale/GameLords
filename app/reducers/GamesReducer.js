@@ -1,12 +1,11 @@
-import {GET_GAMES, GET_GAME_DETAIL, GET_SIMILAR_GAMES, GET_SEARCHED_GAMES, GET_FAVOURITE_GAMES, SET_FAVOURITE_GAME} from '../actions/action_types';
+import {GET_GAMES, GET_GAME_DETAIL, GET_SIMILAR_GAMES, GET_SEARCHED_GAMES, SET_FAVOURITE_GAME,GET_FAVOURITE_GAMES } from '../actions/action_types';
 import { console_log } from "../utils/helper";
 
 const initialState = {
     games: [],
     gameDetail: [],
     similarGames: [],
-    favoriteGames:[],
-    searchedGames: []
+    searchedGames: [],
 };
 
 export const GamesReducer = (state = initialState, action = {}) => {
@@ -30,17 +29,6 @@ export const GamesReducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 searchedGames: action.data
-            };
-        case GET_FAVOURITE_GAMES:
-            return {
-                ...state,
-                favoriteGames: action.data
-            };
-        case SET_FAVOURITE_GAME:
-            return {
-                ...state,
-                games: action.data.games,
-                favoriteGames: action.data.favoriteGames
             };
         default:
             return state;
