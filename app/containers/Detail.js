@@ -15,7 +15,7 @@ import GameView from '../components/GameView/GameView';
 import { styles } from "../style/appStyles";
 import DetailStyles from "../style/detailStyle";
 import { show, hide } from '../actions/ActivityIndicatorActions';
-import { setFavouriteGames, getFavouriteGames } from '../actions/FavoriteActions';
+import { getLikesGames, getFavouriteGames } from '../actions/FavoriteActions';
 import { showMessage } from '../actions/FlashMessageActions';
 import NavigationService from "../utils/NavigationService";
 import { messages } from '../constants/messages';
@@ -34,13 +34,37 @@ class Detail extends Component {
             color: '',
             message:'',
             showMessage:false,
-            game: this.props.navigation.state.params.game,
-            categoryId: this.props.navigation.state.params.game.categoryId,
+            game: '',
+            categoryId: '',
+            categoryName: '',
+            liked: false,
+            // game: this.props.navigation.state.params.game,
+            // categoryId: this.props.navigation.state.params.game.categoryId,
+            // categoryName: this.props.navigation.state.params.game.categoryName,
         }
     }
 
     componentWillMount(){
-      // this.getFavouriteGames();
+      this.getGameDetail(this.props.navigation.state.params.game.gameId);
+      this.getGameLikes(this.props.account.user.uid)
+    }
+
+    getGameDetail(gameId)
+    {
+      axios.get(vars.BASE_API_URL_GL+'/getGames?gameId='+gameId)
+            .then((response) => {
+                if (response.data.success) {
+                    this.setState({
+                      game: response.data.data[0],
+                      categoryId: response.data.data[0].categoryId,
+                      categoryName: response.data.data[0].categoryName,
+                    });
+                }
+            })
+            .catch((error) => {
+                this.props.hide();
+                this.setState({ isValid: false, errorMessage: 'Unable to fetch the data.'});
+            });
     }
 
     getFavouriteGames =()=>
@@ -50,6 +74,19 @@ class Detail extends Component {
           console.log(response);
             if (response.data.success) {
                 this.props.getFavouriteGames(response.data);
+            }
+        })
+        .catch((error) => {
+            this.setState({ isValid: false, errorMessage: 'Unable to fetch the data.'});
+        });
+    }
+
+    getGameLikes(userId){
+      axios.get(vars.BASE_API_URL_GL+'/getUserLikes?uid='+userId)
+        .then((response) => {
+          console.log(response);
+            if (response.data.success) {
+                this.props.getLikesGames(response.data);
             }
         })
         .catch((error) => {
@@ -76,22 +113,134 @@ class Detail extends Component {
       }
     }
 
+    handleLikeMessageBar = (success) => {
+      if (success)
+      {
+        this.setState({color:'green', message: messages.addToLikes, showMessage: !this.state.showMessage})
+      }
+      else
+      {
+        this.setState({color:'red', message: messages.removeFromLikes, showMessage: !this.state.showMessage})
+      }
+    }
+
+    _handleFavoriteClicked=(data,current)=> {
+      this.gameFavorite(data);
+    }
+
+
+
+    _handleRateClicked=(data,current)=> {
+      this.gameRate(data);
+    }
+
+    gameRate(data){
+      let likeGames = this.props.favorite.likeGames;
+      let indexOf = likeGames.findIndex((f) => {
+          return f.gameId == data.gameId;
+      });
+
+      let gameData = {
+        uid: this.props.account.user.uid,
+        gameId: data.gameId,
+        liked: !this.isGameLike(data.gameId)
+      };
+
+      if (indexOf == -1) {
+        likeGames.push(gameData);
+        this.handleLikeMessageBar(true)
+
+      }
+      else {
+        likeGames.splice(indexOf, 1);
+        this.handleLikeMessageBar(false)
+      }
+
+      axios.post(vars.BASE_API_URL_GL+'/userLike', gameData)
+          .then((response) => {
+              if(response.status){
+                this.props.showMessage({
+                    message: messages.addToLikes,
+                    type: true
+                });
+              }
+          })
+          .catch((error) => {
+              console.log(error);
+          });
+    }
+
+    gameFavorite(data) {
+        let favoriteGames = this.props.favorite.games;
+        let indexOf = favoriteGames.findIndex((f) => {
+            return f.gameId == data.gameId;
+        });
+
+        let gameData = {
+          uid: this.props.account.user.uid,
+          gameId: data.gameId,
+          isFavorite: !this.isGameFavorite(data.gameId)
+        };
+
+        if (indexOf == -1) {
+          favoriteGames.push(gameData);
+          this.handleMessageBar(true)
+
+        }
+        else {
+          favoriteGames.splice(indexOf, 1);
+          this.handleMessageBar(false)
+        }
+
+        axios.post(vars.BASE_API_URL_GL+"/favorite", gameData)
+            .then((response) => {
+                this.props.showMessage({
+                    message: messages.addToFavorites,
+                    type: true
+                });
+                console.log(response);
+            })
+            .catch((error) => {
+                console_log(error);
+            });
+    }
+
+
+    isGameFavorite(gameId)
+    {
+      let indexOf = this.props.favorite.games.findIndex((f) => {
+            return f.gameId == gameId;
+        });
+        if (indexOf != -1) {
+            return true;
+        }
+        return false;
+    }
+
+    isGameLike(gameId)
+    {
+      let indexOf = this.props.favorite.likeGames.findIndex((f) => {
+            return f.gameId == gameId;
+        });
+        if (indexOf != -1) {
+            return true;
+        }
+        return false;
+    }
 
 
     render() {
         let getAllGames = this.props.games.games;
         let html5RelatedList = getAllGames.filter(g => {return g.gameType === this.state.gameType && g.categoryId === this.state.categoryId && g.gameId !== this.state.game.gameId} );
-        console.log(html5RelatedList);
-        const { game, categoryId } = this.state;
-        console.log(game);
-        console.log(categoryId);
+        const { game, categoryId, categoryName, liked } = this.state;
+        console.log(this.state);
         return (
             <Container>
               <ImageBackground  style={{ zIndex: 999 }}>
               <Header
                   isDrawer={false}
-                  isTitle={false}
-                  title={'Category'}
+                  isTitle={true}
+                  title={game.gameTitle}
                   isSearch={true}
                   rightLabel=''
               />
@@ -108,17 +257,95 @@ class Detail extends Component {
                             <Image style={DetailStyles.imageGameStyle} source={{uri: game.gameImage}} />
                           </View>
                           <View style={{alignItems: 'flex-start', paddingHorizontal: 15, paddingVertical: 10}}>
-                            <Text style={DetailStyles.gameTextStyle} > {game.gameTitle.toUpperCase()} </Text>
+                            <Text style={DetailStyles.gameTextStyle} > {game.gameTitle} </Text>
                             <View style={{flexDirection: 'row'}}>
                               {
                                 [1,2,3,4,5].map((rate, index) => {
                                   return (
-                                    <Icon key={index} name={game.userRating < rate ? 'star-o' : 'star'} size={ Globals.DeviceType === 'Phone'? 18 : 28 } style={DetailStyles.iconRatingStyle} color='#f4aa1c' />
+                                    <Icon key={index} name={game.userRating < rate ? 'star-o' : 'star'} size={ Globals.DeviceType === 'Phone'? 25 : 35 } style={DetailStyles.iconRatingStyle} color='#f4aa1c' />
                                   )
                                 })
                               }
                             </View>
                             <Text style={DetailStyles.gameDetailTextStyle} > {parseFloat(game.userRating).toFixed('1')} average user rating based on {game.totalUserReview} reviews </Text>
+
+                            <View style={DetailStyles.gameDetailsView}>
+
+                              <View style={DetailStyles.gameDetailsViewCol}>
+                                <View style={DetailStyles.gameDetailsViewLeft}>
+                                  <Text style={DetailStyles.gameDetailTextStyle} > Category </Text>
+                                  <Text style={DetailStyles.gameDetailTextStyle} >{':'}</Text>
+                                </View>
+                                <View style={DetailStyles.gameDetailsViewRight}>
+                                  <Text style={DetailStyles.gameDetailTextStyle} >{categoryName} </Text>
+                                </View>
+                              </View>
+
+                              <View style={DetailStyles.gameDetailsViewCol}>
+                                <View style={DetailStyles.gameDetailsViewLeft}>
+                                  <Text style={DetailStyles.gameDetailTextStyle} > Platforms </Text>
+                                  <Text style={DetailStyles.gameDetailTextStyle} >{':'}</Text>
+                                </View>
+                                <View style={DetailStyles.gameDetailsViewRight}>
+                                  <Text style={DetailStyles.gameDetailTextStyle} >{game.platforms} </Text>
+                                </View>
+                              </View>
+
+                              <View style={DetailStyles.gameDetailsViewCol}>
+                                <View style={DetailStyles.gameDetailsViewLeft}>
+                                  <Text style={DetailStyles.gameDetailTextStyle} > Type </Text>
+                                  <Text style={DetailStyles.gameDetailTextStyle} >{':'}</Text>
+                                </View>
+                                <View style={DetailStyles.gameDetailsViewRight}>
+                                  <Text style={DetailStyles.gameDetailTextStyle} >{game.gameType} </Text>
+                                </View>
+                              </View>
+
+                              <View style={DetailStyles.gameDetailsViewCol}>
+                                <View style={DetailStyles.gameDetailsViewLeft}>
+                                  <Text style={DetailStyles.gameDetailTextStyle} > Description </Text>
+                                  <Text style={DetailStyles.gameDetailTextStyle} >{':'}</Text>
+                                </View>
+                                <View style={[DetailStyles.gameDetailsViewRight]}>
+                                  <Text style={DetailStyles.gameDetailTextStyle} >{game.gameDesc} </Text>
+                                </View>
+                              </View>
+
+                              <View style={DetailStyles.gameDetailsViewCol}>
+                                <View style={DetailStyles.gameDetailsViewLeft}>
+                                  <Text style={DetailStyles.gameDetailTextStyle} >  </Text>
+                                  <Text style={DetailStyles.gameDetailTextStyle} ></Text>
+                                </View>
+                                <View style={DetailStyles.gameDetailsViewRight}>
+                                  <View style={DetailStyles.gameDetailsViewFavRate}>
+                                    <TouchableOpacity onPress={(e)=> this._handleFavoriteClicked(game,e)} >
+                                      <Icon
+                                      name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
+                                      size={ Globals.DeviceType === 'Phone'? 33 : 40 }
+                                      style={[DetailStyles.iconStyle, DetailStyles.gameFavRateIcon]} color="#f4aa1c" />
+                                    </TouchableOpacity>
+
+                                    <TouchableOpacity onPress={(e)=> this._handleRateClicked(game,e)} >
+                                      <Icon
+                                      name={this.isGameLike(game.gameId) ? "thumbs-up" : "thumbs-o-up"}
+                                      size={ Globals.DeviceType === 'Phone'? 33 : 40 }
+                                      style={[DetailStyles.iconStyle,DetailStyles.gameFavRateIcon]} color="#f4aa1c" />
+                                    </TouchableOpacity>
+                                  </View>
+
+                                  <View style={DetailStyles.gameDetailsViewFavRate}>
+                                    <View style={{paddingRight: 40}}>
+                                      <Text style={[DetailStyles.gameDetailTextStyle]} > Favorite </Text>
+                                    </View>
+                                    <View style={{paddingRight: 10}}>
+                                      <Text style={[DetailStyles.gameDetailTextStyle]} > Rate </Text>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+
+                            </View>
+
                           </View>
                       </View>
 
@@ -174,7 +401,7 @@ const mapDispatchToProps = (dispatch) => {
         show,
         hide,
         getFavouriteGames,
-        setFavouriteGames,
+        getLikesGames,
         showMessage,
     }, dispatch);
 };

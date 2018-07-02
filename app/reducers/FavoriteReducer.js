@@ -3,6 +3,7 @@ import { console_log } from "../utils/helper";
 
 const initialState = {
     games: [],
+    likeGames: []
 };
 
 export const FavoriteReducer = (state = initialState, action = {}) => {
@@ -17,6 +18,11 @@ export const FavoriteReducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 games: action.data
+            };
+        case action_types.SET_LIKES_GAME:
+            return {
+                ...state,
+                likeGames: action.data.data
             };
         default:
             return state;

@@ -21,7 +21,7 @@ import NavigationService from "../utils/NavigationService";
 import { messages } from '../constants/messages';
 import { console_log } from '../utils/helper';
 import * as vars from '../constants/api';
-// import Search from '../components/Search/Search';
+import Search from '../components/Search/Search';
 // Other data/helper functions
 import MessageBar from '../components/Message/Message';
 import Globals from "../constants/Globals";
@@ -91,7 +91,7 @@ class Favorite extends Component {
               />
               </ImageBackground>
               <Loader visible={this.props.loader.isLoading} />
-                {/* <Search from={""}/> */}
+                <Search from={"html5"}/>
                 <View style={favoriteStyles.content}>
                   <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
                   <ScrollView style={{marginTop: 15}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>

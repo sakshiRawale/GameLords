@@ -14,3 +14,10 @@ export const setFavouriteGames = (data) => {
         data: data
     }
 };
+
+export const getLikesGames = (data) => {
+    return {
+        type: action_types.SET_LIKES_GAME,
+        data: data
+    }
+};

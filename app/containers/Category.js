@@ -86,8 +86,8 @@ class Category extends Component {
               <ImageBackground  style={{ zIndex: 999 }}>
               <Header
                   isDrawer={false}
-                  isTitle={false}
-                  title={'Category'}
+                  isTitle={true}
+                  title={category.categoryName.toUpperCase()}
                   isSearch={true}
                   rightLabel=''
               />

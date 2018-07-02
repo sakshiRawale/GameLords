@@ -15,7 +15,7 @@ export default detailStyle = StyleSheet.create({
       flexDirection: 'row',
       backgroundColor: 'black',
       alignItems: 'center',
-      color:"white",
+      color:"#FFFFFF",
       borderBottomColor:"#f4aa1c",
       borderBottomWidth:1,
       width: '88%',
@@ -47,30 +47,61 @@ export default detailStyle = StyleSheet.create({
       height: '100%'
     },
     imageGameStyle: {
-      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  220 :  150) :  150) : 250,
-      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  155 :  150) :  150) : 160,
-      borderRadius: 20,
+      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  220 :  175) :  175) : 250,
+      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  155 :  175) :  175) : 160,
+      borderRadius: 10,
     },
     detailViewStyle: {
       paddingBottom: 10,
     },
     gameTextStyle: {
       color: '#FFFFFF',
-      fontSize: FontSizes.large,
+      fontSize: FontSizes.xLarge,
       fontWeight: '600',
     },
     gameDetailTextStyle: {
       color: '#FFFFFF',
-      fontSize: FontSizes.medium,
+      fontSize: FontSizes.small,
     },
     relatedStyle: {
       backgroundColor: 'black',
       flexDirection: 'row',
-      paddingHorizontal: 20,
     },
     iconRatingStyle: {
       backgroundColor: 'transparent',
       paddingHorizontal: 2,
       paddingVertical: 2
+    },
+    gameDetailsView: {
+      paddingVertical: 20,
+    },
+    gameDetailsViewCol: {
+        flexDirection: 'row',
+        paddingVertical: 5
+    },
+    gameDetailsViewLeft:{
+      width: '28%',
+      justifyContent: 'space-between',
+      flexDirection: 'row'
+    },
+    gameDetailsViewRight:{
+      width: '72%',
+      paddingHorizontal: 10
+    },
+    gameDetailsDescription:{
+      textAlign: 'justify',
+    },
+    gameDetailsViewFavRate: {
+      width: '60%',
+      justifyContent: 'center',
+      flexDirection: 'row'
+    },
+    gameFavRateIcon: {
+      zIndex:1,
+      paddingHorizontal: 25
+    },
+    gameFavRateText: {
+      marginRight: 25
+      // paddingHorizontal: 15,
     },
 });
