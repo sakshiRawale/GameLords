@@ -39,6 +39,7 @@ class Category extends Component {
     }
 
     componentWillMount(){
+      console.log(this.props.navigation);
       this.getFavouriteGames();
     }
 

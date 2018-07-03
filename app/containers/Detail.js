@@ -25,6 +25,8 @@ import Search from '../components/Search/Search';
 // Other data/helper functions
 import MessageBar from '../components/Message/Message';
 import Globals from "../constants/Globals";
+import * as Images from "../assets/Images";
+
 
 class Detail extends Component {
     constructor(props) {
@@ -38,6 +40,7 @@ class Detail extends Component {
             categoryId: '',
             categoryName: '',
             liked: false,
+            backgroundImage: '',
             // game: this.props.navigation.state.params.game,
             // categoryId: this.props.navigation.state.params.game.categoryId,
             // categoryName: this.props.navigation.state.params.game.categoryName,
@@ -47,10 +50,14 @@ class Detail extends Component {
     componentWillMount(){
       this.getGameDetail(this.props.navigation.state.params.game.gameId);
       this.getGameLikes(this.props.account.user.uid)
+
+      const bgImages = ["", Images.rpg, Images.augmentedReality, Images.virtualReality, Images.action, Images.adventure, Images.arcade, Images.racing, Images.sports, Images.utilities, Images.action, Images.adventure, Images.arcade, Images.racing, Images.sports, Images.rts, "", Images.premium, Images.premium, "", Images.premium, Images.premium];
+      this.setState({backgroundImage: bgImages[this.props.navigation.state.params.game.categoryId]})
     }
 
     getGameDetail(gameId)
     {
+
       axios.get(vars.BASE_API_URL_GL+'/getGames?gameId='+gameId)
             .then((response) => {
                 if (response.data.success) {
@@ -232,15 +239,22 @@ class Detail extends Component {
         return false;
     }
 
+    viewCategoryGames(categoryId)
+    {
+      let category = this.props.category.categories.filter(c => {return c.categoryId === categoryId} );
+      NavigationService.navigate('Category',{category: category[0]});
+    }
 
     render() {
         let getAllGames = this.props.games.games;
         let html5RelatedList = getAllGames.filter(g => {return g.gameType === this.state.gameType && g.categoryId === this.state.categoryId && g.gameId !== this.state.game.gameId} );
         const { game, categoryId, categoryName, liked } = this.state;
-        console.log(this.state);
+
+        console.log("image path avo bane che ok");
+        console.log(this.state.backgroundImage);
         return (
             <Container>
-              <ImageBackground  style={{ zIndex: 999 }}>
+              <ImageBackground style={{ zIndex: 999 }}>
               <Header
                   isDrawer={false}
                   isTitle={true}
@@ -252,6 +266,13 @@ class Detail extends Component {
               <Loader visible={this.props.loader.isLoading} />
                 <Search from={"html5"}/>
                 <View style={DetailStyles.content}>
+
+                  {/*
+                    <View style={{ position: 'absolute', top: 0, left: 0, width: Globals.deviceWidth, height: Globals.deviceHeight, zIndex: -1 }}>
+                    <Image style={{ height: Globals.deviceHeight, width: Globals.deviceWidth }} source={{uri: game.gameImage}} />
+                  </View>
+                */}
+
                   <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
                   <ScrollView style={{marginTop: 15}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
                     <View style={{ flex: 3, width: '100%', backgroundColor: 'black' }}>
@@ -361,6 +382,13 @@ class Detail extends Component {
                            </Text>
                          </View>
                          <View style={DetailStyles.viewAllStyle} />
+                         <View style={DetailStyles.viewAllViewStyle}>
+                           <TouchableOpacity onPress={() => this.viewCategoryGames(categoryId)} >
+                             <Text style={[styles.avRegular, DetailStyles.browseAll]}>
+                                 VIEW ALL
+                             </Text>
+                           </TouchableOpacity>
+                         </View>
                       </View>
 
 
@@ -369,7 +397,7 @@ class Detail extends Component {
                           {
                             html5RelatedList.map((game, gameIndex) => {
                             return (
-                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} handleGame={this.handleGame} />
+                                  <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} handleGame={this.handleGame} />
                                 )
                             })
                           }
@@ -379,7 +407,7 @@ class Detail extends Component {
                     </View>
 
                     <Footer />
-                </ScrollView>
+                  </ScrollView>
               </View>
             </Container>
         );

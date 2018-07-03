@@ -31,7 +31,6 @@ class GameView extends Component {
         super(props);
         this.state = {
             data: '',
-            color: '',
             message:'',
             showMessage:false,
             gameType: 'HTML5'

@@ -8,14 +8,13 @@ export default detailStyle = StyleSheet.create({
     content: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'black'
+        backgroundColor: '#000000'
     },
     gameListBox: {
       height: 35,
       flexDirection: 'row',
-      backgroundColor: 'black',
+      backgroundColor: '#000000',
       alignItems: 'center',
-      color:"#FFFFFF",
       borderBottomColor:"#f4aa1c",
       borderBottomWidth:1,
       width: '88%',
@@ -64,8 +63,9 @@ export default detailStyle = StyleSheet.create({
       fontSize: FontSizes.small,
     },
     relatedStyle: {
-      backgroundColor: 'black',
+      backgroundColor: '#000000',
       flexDirection: 'row',
+      paddingHorizontal: 20
     },
     iconRatingStyle: {
       backgroundColor: 'transparent',
@@ -103,5 +103,16 @@ export default detailStyle = StyleSheet.create({
     gameFavRateText: {
       marginRight: 25
       // paddingHorizontal: 15,
+    },
+    viewAllViewStyle: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      width: '56%',
+      justifyContent: 'center'
+    },
+    browseAll: {
+        color: '#f4aa1c',
+        fontSize: FontSizes.medium,
+        fontWeight: '600'
     },
 });

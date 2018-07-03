@@ -8,6 +8,7 @@ module.exports = {
     url : '',
     type: 'es',
     deviceHeight: deviceHeight,
+    deviceWidth: deviceWidth,
     DeviceType: (deviceHeight / deviceWidth) > 1.6 ? 'Phone' : 'Tablet',
     IphoneX: deviceHeight == 812 ? true : false
 };
