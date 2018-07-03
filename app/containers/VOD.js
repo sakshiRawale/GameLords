@@ -134,6 +134,14 @@ class VOD extends Component {
       }
     }
 
+    _openBannerHTML5Game = () =>{
+      let game = this.props.games.games.filter(g => { return g.gameId === 34 && g.gameType === 'HTML5'});
+      console.log('aa call thai che');
+      // console.log(this.props);
+      console.log(game);
+      NavigationService.navigate('Detail',{game: game[0]});
+    }
+
     LoadHTMLGames = () =>{
         let categories = this.props.category.categories;
         let getAllGames = this.props.games.games;
@@ -254,7 +262,7 @@ class VOD extends Component {
                     <ScrollView keyboardShouldPersistTaps={'always'} keyboardDismissMode='on-drag' contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 80}}>
                         <View style={{flex: 3}}>
                           <View style={VODStyle.sliderView}>
-                            <Banner />
+                            <Banner openBannerHTML5Game={this._openBannerHTML5Game}/>
                           </View>
 
                           <View>

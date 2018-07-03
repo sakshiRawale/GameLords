@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dimensions,View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
+import { WebView, Dimensions,View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import { Container } from "native-base";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -10,6 +10,7 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Loader from '../components/Loader/Loader';
 import GameView from '../components/GameView/GameView';
+import { background } from "../assets/Images";
 
 // Styles
 import { styles } from "../style/appStyles";
@@ -41,6 +42,7 @@ class Detail extends Component {
             categoryName: '',
             liked: false,
             backgroundImage: '',
+            openGame: false,
             // game: this.props.navigation.state.params.game,
             // categoryId: this.props.navigation.state.params.game.categoryId,
             // categoryName: this.props.navigation.state.params.game.categoryName,
@@ -245,13 +247,21 @@ class Detail extends Component {
       NavigationService.navigate('Category',{category: category[0]});
     }
 
+    loadGame() {
+        this.props.show();
+        this.setState({
+            openGame: !this.state.openGame
+        });
+            setTimeout(() => {
+                this.props.hide();
+            }, 2000);
+        }
+
     render() {
         let getAllGames = this.props.games.games;
         let html5RelatedList = getAllGames.filter(g => {return g.gameType === this.state.gameType && g.categoryId === this.state.categoryId && g.gameId !== this.state.game.gameId} );
         const { game, categoryId, categoryName, liked } = this.state;
-
-        console.log("image path avo bane che ok");
-        console.log(this.state.backgroundImage);
+        console.log(game);
         return (
             <Container>
               <ImageBackground style={{ zIndex: 999 }}>
@@ -267,13 +277,11 @@ class Detail extends Component {
                 <Search from={"html5"}/>
                 <View style={DetailStyles.content}>
 
-                  {/*
-                    <View style={{ position: 'absolute', top: 0, left: 0, width: Globals.deviceWidth, height: Globals.deviceHeight, zIndex: -1 }}>
-                    <Image style={{ height: Globals.deviceHeight, width: Globals.deviceWidth }} source={{uri: game.gameImage}} />
-                  </View>
-                */}
-
                   <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
+                  <ImageBackground source={background} style={{ flex: 1 }}>
+                  {
+                    !this.state.openGame ?
+
                   <ScrollView style={{marginTop: 15}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
                     <View style={{ flex: 3, width: '100%', backgroundColor: 'black' }}>
 
@@ -369,6 +377,19 @@ class Detail extends Component {
                                 </View>
                               </View>
 
+                              <View style={DetailStyles.gameDetailsViewCol}>
+                                <View style={DetailStyles.gameDetailsViewLeft}>
+
+                                </View>
+                              </View>
+                              <View style={[DetailStyles.gameDetailsViewPlayGameRight]}>
+                                <TouchableOpacity onPress={() => this.loadGame(game)} >
+                                  <View style={DetailStyles.gamePlayGameView}>
+                                      <Text style={DetailStyles.gameDetailPlayGameTextStyle} > PLAY GAME </Text>
+                                  </View>
+                                </TouchableOpacity>
+                              </View>
+
                             </View>
 
                           </View>
@@ -408,6 +429,18 @@ class Detail extends Component {
 
                     <Footer />
                   </ScrollView>
+                  :
+                    <View style={{height: Globals.deviceHeight, width: Globals.deviceWidth, backgroundColor: 'black' }}>
+                      <WebView
+                          source={{ html: "<object data=" + game.gameFile + "></object>" }}
+                          style={{backgroundColor: 'red'}}
+                          initialScale="100%"
+                      />
+
+                    </View>
+                }
+                </ImageBackground>
+
               </View>
             </Container>
         );

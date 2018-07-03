@@ -26,7 +26,6 @@ export default detailStyle = StyleSheet.create({
       backgroundColor:"#f4aa1c",
       width:'44%',
       height:"100%",
-      paddingHorizontal: 8
     },
     iconStyle: {
       backgroundColor: 'transparent',
@@ -36,7 +35,8 @@ export default detailStyle = StyleSheet.create({
       color: '#423620',
       fontSize: 14,
       fontWeight: '600',
-      fontSize: FontSizes.medium
+      fontSize: FontSizes.medium,
+      paddingHorizontal: 10
     },
     viewAllStyle: {
       transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '45deg'}],
@@ -114,5 +114,24 @@ export default detailStyle = StyleSheet.create({
         color: '#f4aa1c',
         fontSize: FontSizes.medium,
         fontWeight: '600'
+    },
+    gameDetailPlayGameTextStyle: {
+      color: '#FFFFFF',
+      fontSize: FontSizes.xLarge,
+    },
+    gamePlayGameViewCol: {
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
+    gamePlayGameView: {
+      width: Globals.deviceWidth/1.8,
+      paddingVertical: 20,
+      justifyContent: 'center',
+      backgroundColor: '#a92d2d',
+      alignItems: 'center',
+      borderRadius: 10
+    },
+    gameDetailsViewPlayGameRight:{
+      alignItems: 'center',
     },
 });
