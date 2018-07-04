@@ -140,5 +140,11 @@ export default detailStyle = StyleSheet.create({
     gameViewAllText: {
       justifyContent: "center",
       alignItems: 'center'
+    },
+    gameDetailView: {
+      flex: 3,
+      width: '100%',
+      backgroundColor: 'rgba(0,0,0, 0.8)',
+      paddingTop: 15
     }
 });

@@ -280,7 +280,7 @@ class Detail extends Component {
                     !this.state.openGame ?
                       <ImageBackground source={this.state.bgImages[categoryId]} style={{ flex: 1 }}>
                         <ScrollView style={{}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
-                            <View style={{ flex: 3, width: '100%',backgroundColor: 'rgba(0,0,0, 0.8)', }}>
+                            <View style={DetailStyles.gameDetailView}>
 
                               <View style={DetailStyles.detailViewStyle}>
                                   <View style={{ alignItems: 'center' }}>
