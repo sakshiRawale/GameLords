@@ -7,6 +7,7 @@ import { StackNavigator } from "react-navigation";
 import SplashScreen from "./app/containers/SplashScreen";
 import Favorite from "./app/containers/Favorite";
 import Category from "./app/containers/Category";
+import Detail from "./app/containers/Detail";
 
 import { splashBg, background } from "./app/assets/Images";
 import Login from "./app/containers/Login";
@@ -71,6 +72,14 @@ const RootNavigator = StackNavigator({
             title: 'Category',
             header: null,
             gesturesEnabled: true
+        }
+    },
+    Detail: {
+        screen: Detail,
+        navigationOptions: {
+            title: 'Detail',
+            header: null,
+            gesturesEnabled: true,
         }
     },
 

@@ -13,7 +13,7 @@ import GameView from '../components/GameView/GameView';
 
 // Styles
 import { styles } from "../style/appStyles";
-import favoriteStyles from "../style/favoriteStyle";
+import CategoryStyles from "../style/categoryStyle";
 import { show, hide } from '../actions/ActivityIndicatorActions';
 import { setFavouriteGames, getFavouriteGames } from '../actions/FavoriteActions';
 import { showMessage } from '../actions/FlashMessageActions';
@@ -30,7 +30,6 @@ class Category extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gameType: 'HTML5',
             color: '',
             message:'',
             showMessage:false,
@@ -40,6 +39,7 @@ class Category extends Component {
     }
 
     componentWillMount(){
+      console.log(this.props.navigation);
       this.getFavouriteGames();
     }
 
@@ -79,7 +79,6 @@ class Category extends Component {
 
 
     render() {
-        let favoriteGames = this.props.favorite.games.filter(g => { return g.gameType === this.state.gameType });
         let getAllGames = this.props.games.games;
         const category = this.state.category
         let html5CategoryList = getAllGames.filter(g => {return g.gameType === this.state.gameType && g.categoryId === this.state.category.categoryId} );
@@ -88,28 +87,28 @@ class Category extends Component {
               <ImageBackground  style={{ zIndex: 999 }}>
               <Header
                   isDrawer={false}
-                  isTitle={false}
-                  title={'Category'}
+                  isTitle={true}
+                  title={category.categoryName.toUpperCase()}
                   isSearch={true}
                   rightLabel=''
               />
               </ImageBackground>
               <Loader visible={this.props.loader.isLoading} />
                 <Search from={"html5"}/>
-                <View style={favoriteStyles.content}>
+                <View style={CategoryStyles.content}>
                   <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
                   <ScrollView style={{marginTop: 15}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
                     <View style={{ flex: 3, width: '100%', backgroundColor: 'black', alignItems: 'center' }}>
 
-                      <View style={favoriteStyles.gameListBox}>
-                         <View style={favoriteStyles.transformView}>
-                           <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={favoriteStyles.iconStyle} color='#423620' />
+                      <View style={CategoryStyles.gameListBox}>
+                         <View style={CategoryStyles.transformView}>
+                           <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={CategoryStyles.iconStyle} color='#423620' />
 
-                           <Text numberOfLines={1} style={favoriteStyles.headingText}>
+                           <Text numberOfLines={1} style={CategoryStyles.headingText}>
                                {category.categoryName.toUpperCase()}
                            </Text>
                          </View>
-                         <View style={favoriteStyles.viewAllStyle} />
+                         <View style={CategoryStyles.viewAllStyle} />
                       </View>
 
                       <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingHorizontal: 15 }}>
