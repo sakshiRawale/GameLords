@@ -104,6 +104,8 @@ export default liveChannelStyle = StyleSheet.create({
 
     gameNameFavorite: {
       flexDirection: 'row',
+      paddingVertical: 2.5
+
       //justifyContent: 'space-between',
       //marginHorizontal: Globals.DeviceType === 'Phone'? 16 : 12,
       //marginVertical: Globals.DeviceType === 'Phone'? 8 : 12,
@@ -178,8 +180,10 @@ export default liveChannelStyle = StyleSheet.create({
     },
     gameRatingIcon: {
       flexDirection: 'row',
-      justifyContent: 'space-between',
-      marginHorizontal: Globals.DeviceType === 'Phone'? 8 : 12,
+      paddingVertical: 2.5,
+      paddingHorizontal: 8
+      // justifyContent: 'space-between',
+      // marginHorizontal: Globals.DeviceType === 'Phone'? 8 : 12,
     },
     gameTitleText: {
       color: '#fff',
