@@ -1,3 +1,0 @@
-Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3 :  deviceHeight / 3) :  deviceHeight / 3.2) : deviceHeight / 3,
-
-iphone x  | iphone | android | ipad

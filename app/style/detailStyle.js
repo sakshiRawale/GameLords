@@ -15,17 +15,15 @@ export default detailStyle = StyleSheet.create({
       flexDirection: 'row',
       backgroundColor: '#000000',
       alignItems: 'center',
-      borderBottomColor:"#f4aa1c",
-      borderBottomWidth:1,
-      width: '88%',
+      width: '100%',
       alignSelf: 'center'
     },
     transformView:{
       flexDirection: 'row',
       alignItems:"center",
-      backgroundColor:"#f4aa1c",
       width:'44%',
       height:"100%",
+      paddingLeft: 20
     },
     iconStyle: {
       backgroundColor: 'transparent',
@@ -40,9 +38,9 @@ export default detailStyle = StyleSheet.create({
     },
     viewAllStyle: {
       transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '45deg'}],
-      width: Platform.OS == "ios" ? '10%' :  '20%',
+      width: Platform.OS == "ios" ? '22%' :  '20%',
       backgroundColor:"#f4aa1c",
-      marginLeft: Platform.OS == "ios" ? -16 :  -27,
+      marginLeft: Platform.OS == "ios" ? -10 :  -27,
       height: '100%'
     },
     imageGameStyle: {
@@ -102,13 +100,11 @@ export default detailStyle = StyleSheet.create({
     },
     gameFavRateText: {
       marginRight: 25
-      // paddingHorizontal: 15,
     },
     viewAllViewStyle: {
       flexDirection: 'row',
-      alignItems: 'center',
       width: '56%',
-      justifyContent: 'center'
+      justifyContent: 'center',
     },
     browseAll: {
         color: '#f4aa1c',
@@ -134,4 +130,21 @@ export default detailStyle = StyleSheet.create({
     gameDetailsViewPlayGameRight:{
       alignItems: 'center',
     },
+    gameViewAllView: {
+      paddingVertical:10,
+      borderBottomWidth:1,
+      width: '80%',
+      borderBottomColor:"#f4aa1c",
+      paddingRight: 20
+    },
+    gameViewAllText: {
+      justifyContent: "center",
+      alignItems: 'center'
+    },
+    gameDetailView: {
+      flex: 3,
+      width: '100%',
+      backgroundColor: 'rgba(0,0,0, 0.8)',
+      paddingTop: 15
+    }
 });
