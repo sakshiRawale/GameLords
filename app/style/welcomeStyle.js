@@ -138,7 +138,7 @@ export default liveChannelStyle = StyleSheet.create({
       flexDirection: 'row',
       alignItems:"center",
       backgroundColor:"#f4aa1c",
-      width:'55%',
+      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '50%' :  '60%') :  '60%') : '35%',
       height:"100%",
     },
     gameListBox: {
@@ -153,8 +153,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
     iconStyle: {
       backgroundColor: 'transparent',
-      paddingHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  10 :  15) :  15) : 15,
-      paddingRight: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  5 :  15) :  15) : 15,
+      paddingHorizontal: 10
     },
     iconRatingStyle: {
       backgroundColor: 'transparent',
@@ -168,16 +167,17 @@ export default liveChannelStyle = StyleSheet.create({
     },
     viewAllStyle: {
       transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '45deg'}],
-      width: Platform.OS == "ios" ? '10%' :  '20%',
+      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '9%' :  '9%') :  '20%') : '5%',
       backgroundColor:"#f4aa1c",
-      marginLeft: Platform.OS == "ios" ? -16 :  -27,
+      marginLeft: Platform.OS == "ios" ? -18 :  -27,
       height: '100%'
     },
     viewAllViewStyle: {
       flexDirection: 'row',
       alignItems: 'center',
-      width: '45%',
-      justifyContent: 'center'
+      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '43%' :  '43%') :  '40%') : '59%',
+      justifyContent: 'flex-end',
+      paddingRight: 10
     },
     gameRatingIcon: {
       flexDirection: 'row',
