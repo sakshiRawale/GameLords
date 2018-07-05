@@ -12,22 +12,22 @@ export default vodStyle = StyleSheet.create({
     },
     allCategory: {
         color: 'white',
-        fontSize: FontSizes.medium
+        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.medium) :  FontSizes.medium) : FontSizes.xLarge,
     },
     categoryName: {
         color: '#d51a92',
-        fontSize: FontSizes.large
+        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.large :  FontSizes.large) :  FontSizes.large) : FontSizes.xLarge,
     },
     favoriteSwitchText: {
         color: 'white',
-        fontSize: FontSizes.medium
+        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.medium) :  FontSizes.medium) : FontSizes.xLarge,
     },
     browseAll: {
         color: '#d51a92',
         fontSize: FontSizes.large
     },
-    sliderView: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3 :  deviceHeight / 2.7 ) :  deviceHeight / 3) : deviceHeight / 2.7, //Globals.DeviceType === "Phone" ? deviceHeight / 3.0 :  deviceHeight / 3.8
+    bannerView: {
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3 :  deviceHeight / 2.7 ) :  deviceHeight / 3) : deviceHeight / 3, //Globals.DeviceType === "Phone" ? deviceHeight / 3.0 :  deviceHeight / 3.8
 
     },
     imageThmbnail: {
@@ -119,5 +119,17 @@ export default vodStyle = StyleSheet.create({
         justifyContent: 'center',
         paddingLeft: '3%',
         width: '80%'
+    },
+    html5iconStyle: {
+      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  20 :  15) :  15) : 30,
+      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  20 :  15) :  15) : 30,
+    },
+    html5FavoriteView: {
+      flexDirection: 'row',
+      paddingVertical: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  20 :  20) :  20) : 30,
+      paddingHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  20 :  20) :  20) : 30,
+      justifyContent: 'space-between',
+      backgroundColor: 'black',
+      alignItems: 'center'
     }
 });

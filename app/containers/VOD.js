@@ -261,15 +261,15 @@ class VOD extends Component {
                     <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
                     <ScrollView keyboardShouldPersistTaps={'always'} keyboardDismissMode='on-drag' contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 80}}>
                         <View style={{flex: 3}}>
-                          <View style={VODStyle.sliderView}>
+                          <View style={VODStyle.bannerView}>
                             <Banner openBannerHTML5Game={this._openBannerHTML5Game}/>
                           </View>
 
                           <View>
-                            <View style={{ flexDirection: 'row', paddingVertical: 20, paddingHorizontal:20, justifyContent: 'space-between', backgroundColor: 'black', alignItems: 'center' }}>
+                            <View style={VODStyle.html5FavoriteView}>
                               <View style={{flexDirection: 'row', justifyContent: 'space-between' }}>
-                                  <Image source={require('../assets/images/html5.png')} style={{width: 15, height: 15}}/>
-                                  <Text> {' '} </Text>
+                                  <Image source={require('../assets/images/html5.png')} style={VODStyle.html5iconStyle}/>
+                                  <Text> {'  '} </Text>
                                   <Text style={[styles.avRegular, VODStyle.allCategory]}>
                                       HTML5 GAMES
                                   </Text>
@@ -282,7 +282,7 @@ class VOD extends Component {
                               </View>
                             </View>
                           </View>
-                          <View style={{paddingHorizontal: 20}}>
+                          <View style={{paddingHorizontal:  Globals.DeviceType === 'Phone'? 20 : 30}}>
                             { this.state.dataLoad ? this.LoadHTMLGames() : null}
                           </View>
                         </View>

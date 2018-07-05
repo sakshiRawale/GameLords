@@ -1,7 +1,8 @@
-import { StyleSheet, Dimensions } from  'react-native';
-
+import { StyleSheet, Dimensions, Platform } from  'react-native';
+import * as FontSizes from '../utils/fontsSizes';
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
+import Globals from '../constants/Globals';
 
 export default bannerStyles = StyleSheet.create({
     indicatorViewPage: {
@@ -10,7 +11,7 @@ export default bannerStyles = StyleSheet.create({
     },
     bannerImage: {
         width: deviceWidth,
-        height:"100%"
+        height: "100%"
     },
     bannerText: {
         flex: 1,
