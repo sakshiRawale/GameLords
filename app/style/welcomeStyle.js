@@ -49,7 +49,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
     browseAll: {
         color: '#f4aa1c',
-        fontSize: FontSizes.medium,
+        fontSize: Globals.DeviceType === 'Phone'?  FontSizes.medium : FontSizes.xLarge,
         fontWeight: '600'
     },
     bannerView: {
@@ -80,10 +80,10 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageThmbnailCategory: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4.7 :  deviceHeight / 4.5) :  deviceHeight / 4.5) : deviceHeight / 3.8, //deviceHeight/4.5, // Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.20 :  deviceWidth / 1.35) :  deviceWidth / 1.35) : deviceWidth / 1.6, //deviceWidth/1.35
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 6.1 :  deviceHeight / 4.5) :  deviceHeight / 4.5) : deviceHeight / 5.2, //deviceHeight/4.5, // Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.55 :  deviceWidth / 1.35) :  deviceWidth / 1.35) : deviceWidth / 2.2, //deviceWidth/1.35
         backgroundColor: 'transparent',
-        marginBottom: 20,
+        marginBottom: Globals.DeviceType === 'Phone'? 40 : 60,
         flexDirection: 'row',
         alignItems: 'stretch',
     },
@@ -112,7 +112,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageBackgroundCategory: {
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.3 :  deviceWidth / 1.5) :  deviceWidth / 1.5) : deviceWidth / 1.75, //deviceWidth/1.5,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.7 :  deviceWidth / 1.5) :  deviceWidth / 1.5) : deviceWidth / 2.4, //deviceWidth/1.5,
         height: '100%'
     },
 
@@ -138,11 +138,11 @@ export default liveChannelStyle = StyleSheet.create({
       flexDirection: 'row',
       alignItems:"center",
       backgroundColor:"#f4aa1c",
-      width:'70%',
+      width:'55%',
       height:"100%",
     },
     gameListBox: {
-      height: 35,
+      height: Globals.DeviceType === 'Phone'? 45 : 65,
       flexDirection: 'row',
       justifyContent: 'space-between',
       backgroundColor: '#000000',
@@ -153,7 +153,8 @@ export default liveChannelStyle = StyleSheet.create({
     },
     iconStyle: {
       backgroundColor: 'transparent',
-      paddingHorizontal: 15
+      paddingHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  10 :  15) :  15) : 15,
+      paddingRight: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  5 :  15) :  15) : 15,
     },
     iconRatingStyle: {
       backgroundColor: 'transparent',
@@ -163,7 +164,7 @@ export default liveChannelStyle = StyleSheet.create({
       color: '#423620',
       fontSize: 14,
       fontWeight: '600',
-      fontSize: FontSizes.medium
+      fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.medium) :  FontSizes.medium) : FontSizes.xLarge,
     },
     viewAllStyle: {
       transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '45deg'}],
@@ -175,7 +176,7 @@ export default liveChannelStyle = StyleSheet.create({
     viewAllViewStyle: {
       flexDirection: 'row',
       alignItems: 'center',
-      width: '30%',
+      width: '45%',
       justifyContent: 'center'
     },
     gameRatingIcon: {

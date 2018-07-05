@@ -161,7 +161,7 @@ class VOD extends Component {
                                     {
                                         html5CategoryList.map((category, index) => {
                                             return (
-                                                  <CategoryList key={index} index={index} category={category} viewCategoryGames={this.viewCategoryGames}/>
+                                                  <CategoryList key={index} index={index} category={category} viewCategoryGames={this.viewCategoryGames} />
                                             )
                                         })
                                     }
@@ -181,7 +181,7 @@ class VOD extends Component {
 
                                                 <View style={WelcomeStyle.gameListBox}>
                                                     <View style={WelcomeStyle.transformView}>
-                                                      <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={WelcomeStyle.iconStyle} color='#423620' />
+                                                      <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={WelcomeStyle.iconStyle} color='#423620' />
 
                                                       <Text numberOfLines={1} style={WelcomeStyle.headingText}>
                                                           {category.categoryName.toUpperCase()}
