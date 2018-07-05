@@ -279,7 +279,7 @@ class Detail extends Component {
                   {
                     !this.state.openGame ?
                       <ImageBackground source={this.state.bgImages[categoryId]} style={{ flex: 1 }}>
-                        <ScrollView style={{}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
+                        <ScrollView bounces={false} style={{}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
                             <View style={DetailStyles.gameDetailView}>
 
                               <View style={DetailStyles.detailViewStyle}>
@@ -442,6 +442,8 @@ class Detail extends Component {
                     :
                       <View style={{height: Globals.deviceHeight, width: Globals.deviceWidth, backgroundColor: 'black' }}>
                         <WebView
+                            javaScriptEnabled={true}
+                            domStorageEnabled={true}
                             source={{ html: "<object width='100%' height='100%' data=" + game.gameFile + "></object>" }}
                             style={{width: Dimensions.get("window").width, height: Dimensions.get("window").height, backgroundColor: 'transparent' }}
                         />

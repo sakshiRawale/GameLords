@@ -18,6 +18,8 @@ import { getGames } from "../../actions/GamesActions";
 import { getFavouriteGames, setFavouriteGames } from "../../actions/FavoriteActions";
 import { getDetails, getInterests } from '../../actions/AccountActions';
 import { getCategories } from "../../actions/CategoryActions";
+import { showSearchBar, HideSearchBar, onShowSearchView } from '../../actions/HeaderActions';
+import { searchText } from '../../actions/SearchActions';
 import * as vars from '../../constants/api';
 import { messages } from '../../constants/messages';
 import { console_log } from '../../utils/helper';
@@ -46,7 +48,13 @@ class GameView extends Component {
           this.props.handleGame(game);
         }
         else{
-          NavigationService.navigate('Detail',{game: game});
+            // NavigationService.goBack();
+            if(this.props.from === 'Search'){
+                this.props.onShowSearchView(false);
+                this.props.searchText('');
+                this.props.showSearchBar(false);
+            }
+            NavigationService.navigate('Detail',{game: game});
         }
     }
 
@@ -136,7 +144,7 @@ class GameView extends Component {
                           ref={game.gameId}
                           name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
                           size={ Globals.DeviceType === 'Phone'? 24 : 30 }
-                          style={WelcomeStyle.iconStyle,{zIndex:1}} color="#f4aa1c" />
+                          style={[WelcomeStyle.iconStyle,{zIndex:1}]} color="#f4aa1c" />
                         </TouchableOpacity>
                       </View>
                     </View>
@@ -194,6 +202,10 @@ const mapDispatchToProps = (dispatch) => {
         getFavouriteGames,
         setFavouriteGames,
         getCategories,
+        showSearchBar,
+        HideSearchBar,
+        onShowSearchView,
+        searchText
     }, dispatch);
 };
 

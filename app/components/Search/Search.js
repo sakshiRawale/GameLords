@@ -107,7 +107,7 @@ class SearchPage extends Component {
 
                           {html5Search.map((game, gameIndex) => {
                             return (
-                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from = {'Search'} />
                                 )
                             })
                           }
