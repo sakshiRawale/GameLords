@@ -74,7 +74,7 @@ class SearchPage extends Component {
             <View
                 style={{flex: 1,
                     backgroundColor: '#000',
-                    top: Platform.OS == "ios" ? ((deviceHeight == 812) ? 95 : 65) : 45,
+                    top: Platform.OS == "ios" ? ((deviceHeight == 812) ? 80 : 65) : 45,
                     left: 0,
                     right: 0,
                     bottom: 0,

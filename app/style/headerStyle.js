@@ -9,7 +9,7 @@ export default headerStyle = StyleSheet.create({
         backgroundColor: '#000000',
         borderBottomColor: 'transparent',
         borderBottomWidth: 0,
-        height: Platform.OS == "ios" ? ((deviceHeight == 812) ? 95 : 65) : 45
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  80 :  65) :  45) : 75,
     },
     title: {
         color: 'white',
@@ -75,14 +75,14 @@ export default headerStyle = StyleSheet.create({
     },
     cancelTxt: {
         color: '#ffa507',
-        fontSize: FontSizes.small,
+        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.small) :  FontSizes.small) : FontSizes.large,
     },
     searchTxt: {
         color: '#fff',
         width: Globals.DeviceType === 'Phone'? '80%': '90%',
         marginLeft: 5,
         height: '100%',
-        fontSize: FontSizes.small,
+        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.small) :  FontSizes.small) : FontSizes.large,
     },
     searchIcn: {
         marginTop: Platform.OS == "ios" ? ((deviceHeight == 812) ? 15 : 7) : 7,
