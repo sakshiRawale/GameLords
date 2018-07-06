@@ -121,7 +121,7 @@ class GameView extends Component {
     render() {
         const {game, gameIndex} = this.props;
         return (
-            <View style={WelcomeStyle.imageThmbnailGames} key={gameIndex}>
+            <View style={[WelcomeStyle.imageThmbnailGames,this.props.for === 'favorite' ? WelcomeStyle.setPaddingFavorite : WelcomeStyle.setPaddingSlider]} key={gameIndex}>
               <View style={{flex: 3}}>
 
                   <View style={{height: '70%'}}>
@@ -136,7 +136,7 @@ class GameView extends Component {
                     <View style={{width:"100%",flexDirection:"row"}}>
                       <View style={{width: '80%',paddingHorizontal: 5}}>
                         <TouchableOpacity onPress={() => this._openHTML5Game(game) } >
-                          <Text style={WelcomeStyle.gameTitleText} numberOfLines={1}> {game.gameTitle} </Text>
+                          <Text style={WelcomeStyle.gameTitleText} numberOfLines={1}> {game.gameTitle.toUpperCase()} </Text>
                         </TouchableOpacity>
                       </View>
                       <View style={{width:'20%'}}>

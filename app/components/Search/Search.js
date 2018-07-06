@@ -115,7 +115,7 @@ class SearchPage extends Component {
                         }
                         {(html5Search.length <= 0 ) &&
                             <View style = {{alignItems : 'center', flex: 1}}>
-                                <Text style={[styles.avRegular, {color: '#fff', marginTop: 20, alignSelf: 'center'}]}>No Results Found</Text>
+                                <Text style={[styles.avRegular, {color: '#fff', marginTop: 20, alignSelf: 'center'}]}>No Game Found</Text>
                             </View>
 
                         }

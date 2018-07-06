@@ -74,10 +74,14 @@ class Favorite extends Component {
       }
     }
 
+    discoverClick = () => {
+      console.log('discoverClick click..!!!');
+    }
 
 
     render() {
         let favoriteGames = this.props.favorite.games.filter(g => { return g.gameType === this.state.gameType });
+        console.log(favoriteGames);
 
         return (
             <Container>
@@ -97,12 +101,44 @@ class Favorite extends Component {
                   <ScrollView style={{marginTop: 15}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
                     <View style={{ flex: 3, backgroundColor: 'black' }}>
 
-                      <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingHorizontal: 15 }}>
+                      <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? 20 : 35 }}>
                         {favoriteGames.map((game, gameIndex) => {
                             return (
-                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} for='favorite'/>
                                 )
                             })
+                          }
+                          {(favoriteGames.length <= 0 ) &&
+                              <View style = {{alignItems : 'center', flex: 4, paddingVertical: 30}}>
+                                <View>
+                                  <Image source={require('../assets/images/html5.png')} style={favoriteStyles.html5iconStyle}/>
+                                </View>
+                                <View>
+                                  <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle,{color: '#fff', marginTop: 20, alignSelf: 'center'}]}>No Favorite Game Yet</Text>
+                                </View>
+
+                                <View>
+                                  <View style={{justifyContent: 'center'}}>
+                                    <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, {color: '#fff', marginTop: 20, alignSelf: 'center'}]}>Add your favorite games to access</Text>
+                                  </View>
+                                  <View style={{justifyContent: 'center'}}>
+                                    <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, {color: '#fff', marginTop: 20, alignSelf: 'center'}]}>and</Text>
+                                  </View>
+                                  <View style={{justifyContent: 'center'}}>
+                                    <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, {color: '#fff', marginTop: 20, alignSelf: 'center'}]}>play easily without any hassels</Text>
+                                  </View>
+                                </View>
+
+
+                                <View style={{paddingVertical: 40}}>
+                                  <TouchableOpacity onPress={() => this.discoverClick()} >
+                                    <View style={favoriteStyles.discoverButton}>
+                                        <Text style={favoriteStyles.discoverButtonText} > DISCOVER </Text>
+                                    </View>
+                                  </TouchableOpacity>
+                                </View>
+                              </View>
+
                           }
                       </View>
                     </View>

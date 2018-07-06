@@ -382,7 +382,7 @@ class Detail extends Component {
                                       <View style={[DetailStyles.gameDetailsViewPlayGameRight]}>
                                         <TouchableOpacity onPress={() => this.loadGame(game)} >
                                           <View style={DetailStyles.gamePlayGameView}>
-                                              <Text style={DetailStyles.gameDetailPlayGameTextStyle} > PLAY GAME </Text>
+                                              <Text style={DetailStyles.gameDetailPlayGameTextStyle} > PLAY NOW </Text>
                                           </View>
                                         </TouchableOpacity>
                                       </View>

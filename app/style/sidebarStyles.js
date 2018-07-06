@@ -2,6 +2,7 @@ import { StyleSheet, Platform, Dimensions } from "react-native";
 import * as FontSizes from "../utils/fontsSizes";
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
+import Globals from '../constants/Globals';
 
 export default sidebarStyles = StyleSheet.create({
     container: {
@@ -68,7 +69,7 @@ export default sidebarStyles = StyleSheet.create({
         marginTop: Platform.OS === "android" ? -3 : undefined
     },
     drawerView: {
-        backgroundColor: "#22022a",
+        backgroundColor: "#000000",
         height: deviceHeight,
         flex: 1,
         flexDirection: "column"
@@ -106,7 +107,7 @@ export default sidebarStyles = StyleSheet.create({
     },
     menuText: {
         color: "white",
-        fontSize: FontSizes.medium,
+        fontSize: Globals.DeviceType === 'Phone'?  FontSizes.large : FontSizes.large,
         paddingLeft: 5
     },
     menuDividerStyle: {
