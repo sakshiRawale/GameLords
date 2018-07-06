@@ -68,15 +68,15 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageThmbnailGames: {
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 2.6 :  deviceWidth / 2.5) :  deviceWidth / 2.5) : deviceWidth / 2.25,
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3.8 :  deviceHeight / 3) :  deviceHeight / 3) : deviceHeight / 2.4,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 2.5 :  deviceWidth / 2.45) :  deviceWidth / 2.45) : deviceWidth / 3.8,
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4 :  deviceHeight / 3.2) :  deviceHeight / 3.2) : deviceHeight / 3.6,
         backgroundColor: 'transparent',
         marginVertical: 20,
-        marginHorizontal: 10,
+        marginRight: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  30 :  28) : 28) : 42,
         flexDirection: 'row',
         alignItems: 'stretch',
         borderColor:'#555',
-        borderWidth: 2
+        borderWidth: 2,
     },
 
     imageThmbnailCategory: {
@@ -94,28 +94,22 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageGame: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 6.3 :  deviceHeight / 4.9) :  deviceHeight / 4.9) : deviceHeight / 3.5,
+        height: '100%'
     },
 
     gameImageView: {
-      marginHorizontal: Globals.DeviceType === 'Phone'? 8 : 12,
-      marginVertical: Globals.DeviceType === 'Phone'? 8 : 12,
+      marginHorizontal: Globals.DeviceType === 'Phone'? 10 : 14,
+      marginVertical: Globals.DeviceType === 'Phone'? 10 : 14,
     },
 
     gameNameFavorite: {
       flexDirection: 'row',
-      paddingVertical: 2.5
-
-      //justifyContent: 'space-between',
-      //marginHorizontal: Globals.DeviceType === 'Phone'? 16 : 12,
-      //marginVertical: Globals.DeviceType === 'Phone'? 8 : 12,
+      height: '15%',
     },
-
     imageBackgroundCategory: {
         width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.7 :  deviceWidth / 1.5) :  deviceWidth / 1.5) : deviceWidth / 2.4, //deviceWidth/1.5,
         height: '100%'
     },
-
     bannerText: {
         flex: 1,
         alignItems: 'center',
@@ -123,7 +117,6 @@ export default liveChannelStyle = StyleSheet.create({
         paddingLeft: '3%',
         width: '80%'
     },
-
     categoryNameText: {
       bottom: 0,
       right: 5,
@@ -131,7 +124,7 @@ export default liveChannelStyle = StyleSheet.create({
       color: '#FFFFFF',
       zIndex: 4,
       fontWeight: 'bold',
-      fontSize: FontSizes.large
+      fontSize:  Globals.DeviceType === 'Phone'?  FontSizes.large : FontSizes.xLarge,
     },
     transformView:{
       flex: 2,
@@ -153,7 +146,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
     iconStyle: {
       backgroundColor: 'transparent',
-      paddingHorizontal: 10
+      paddingHorizontal: 10,
     },
     iconRatingStyle: {
       backgroundColor: 'transparent',
@@ -181,17 +174,15 @@ export default liveChannelStyle = StyleSheet.create({
     },
     gameRatingIcon: {
       flexDirection: 'row',
-      paddingVertical: 2.5,
-      paddingHorizontal: 8
-      // justifyContent: 'space-between',
-      // marginHorizontal: Globals.DeviceType === 'Phone'? 8 : 12,
+      height: '15%'
     },
     gameTitleText: {
       color: '#fff',
-      fontSize: FontSizes.large,
-      width: '90%',
-      height:20,
-
+      fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.large :  FontSizes.large) :  FontSizes.large) : FontSizes.xLarge,
+    },
+    gameView: {
+      paddingTop: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  7 :  7) :  7) : 20,
+      paddingBottom: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  28) :  28) : 50,
     }
 
 });

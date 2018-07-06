@@ -197,16 +197,18 @@ class VOD extends Component {
                                                     </View>
                                                   </View>
 
-                                                <View style={{flexDirection: "row"}}>
-                                                  <ScrollView horizontal={true} >
-                                                    {
-                                                      games.map((game, gameIndex) => {
-                                                        return (
-                                                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
-                                                          )
-                                                      })
-                                                    }
-                                                  </ScrollView>
+                                                <View style={WelcomeStyle.gameView}>
+                                                  <View style={{flexDirection: "row"}}>
+                                                    <ScrollView horizontal={true} >
+                                                      {
+                                                        games.map((game, gameIndex) => {
+                                                          return (
+                                                              <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                                            )
+                                                        })
+                                                      }
+                                                    </ScrollView>
+                                                  </View>
                                                 </View>
                                               </View>
 
