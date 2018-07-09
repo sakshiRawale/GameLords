@@ -213,8 +213,8 @@ export default favoriteStyles = StyleSheet.create({
       fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge
     },
     discoverButton: {
-      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth/2.1 :  deviceWidth/2.2) :  deviceWidth/1.6) : deviceWidth/2.9,// Globals.deviceWidth/1.8,
-      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight/14 :  deviceHeight/11) :  deviceHeight/1.6) : deviceHeight/13,// Globals.deviceWidth/1.8,
+      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth/2.1 :  deviceWidth/2.2) :  deviceWidth/2.2) : deviceWidth/2.9,// Globals.deviceWidth/1.8,
+      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight/14 :  deviceHeight/11) :  deviceHeight/11) : deviceHeight/13,// Globals.deviceWidth/1.8,
       paddingVertical: 20,
       justifyContent: 'center',
       backgroundColor: "#f2a11b",

@@ -57,7 +57,7 @@ export default headerStyle = StyleSheet.create({
         width: '100%',
     },
     headerSearch: {
-        marginTop: Platform.OS == "ios" ? ((deviceHeight == 812) ? 35 : 20) : 5,
+        marginTop: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  35 :  20) :  0) : 30,
         flexDirection: 'row',
         backgroundColor: '#000',
         borderColor: '#ffa507',
@@ -68,10 +68,11 @@ export default headerStyle = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: Globals.DeviceType === 'Phone'? 3 : 10,
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '50%' :  '60%') :  '60%') : '80%',
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '50%' :  '60%') :  '80%') : '80%',
     },
     btn: {
-        marginTop: Platform.OS == "ios" ? ((deviceHeight == 812) ? 35 : 20) : 5,
+
+        marginTop: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  35 :  20) :  0) : 0,
         width: Globals.DeviceType === 'Phone'? '20%' : '15%',
         flexDirection: 'row',
         alignSelf: 'center',

@@ -177,25 +177,31 @@ class VOD extends Component {
                                             let games = (getAllGames.length > 0 && getAllGames.filter((g) => {return g.categoryId == category.categoryId}).length > 0) ? getAllGames.filter((g) => {return g.categoryId == category.categoryId}).slice(0, 10) : []
 
                                              return (
-                                               <View key = {index}>
+                                               <View key = {index} style={{flex: 3}}>
 
                                                   <View style={WelcomeStyle.gameListBox}>
-                                                    <View style={WelcomeStyle.transformView}>
-                                                      <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={WelcomeStyle.iconStyle} color='#423620' />
 
-                                                      <Text numberOfLines={1} style={WelcomeStyle.headingText}>
-                                                          {category.categoryName.toUpperCase()}
-                                                      </Text>
-                                                    </View>
-                                                    <View style={WelcomeStyle.viewAllStyle} />
-                                                    <View style={WelcomeStyle.viewAllViewStyle}>
-                                                      <TouchableOpacity onPress={() => this.viewCategoryGames(category) }>
-                                                        <Text style={[styles.avRegular, WelcomeStyle.browseAll]}>
-                                                            VIEW ALL
+                                                    <View style={{flexDirection: 'row', width: '50%', height: '100%'}}>
+                                                      <View style={WelcomeStyle.transformView}>
+                                                        <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={WelcomeStyle.iconStyle} color='#423620' />
+                                                        <Text numberOfLines={1} style={WelcomeStyle.headingText}>
+                                                            {category.categoryName.toUpperCase()}
                                                         </Text>
-                                                      </TouchableOpacity>
+                                                      </View>
+                                                      <View style={WelcomeStyle.viewAllStyle} />
                                                     </View>
+                                                    <View style={{ justifyContent: 'flex-end', alignItems: 'flex-end', width: '50%'}}>
+                                                      <View style={WelcomeStyle.viewAllViewStyle}>
+                                                        <TouchableOpacity onPress={() => this.viewCategoryGames(category) }>
+                                                          <Text style={[styles.avRegular, WelcomeStyle.browseAll]}>
+                                                              VIEW ALL
+                                                          </Text>
+                                                        </TouchableOpacity>
+                                                      </View>
+                                                    </View>
+
                                                   </View>
+
 
                                                 <View style={WelcomeStyle.gameView}>
                                                   <View style={{flexDirection: "row"}}>
