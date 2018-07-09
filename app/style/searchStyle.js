@@ -35,9 +35,8 @@ export default StyleSheet.create({
     },
     headingText: {
       color: '#423620',
-      fontSize: 14,
       fontWeight: '600',
-      fontSize: FontSizes.medium
+      fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge,
     },
     viewAllStyle: {
       transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '45deg'}],
@@ -46,4 +45,10 @@ export default StyleSheet.create({
       marginLeft: Platform.OS == "ios" ? -16 :  -27,
       height: '100%'
     },
+    noSearchText: {
+      color: '#fff',
+      marginTop: 20,
+      alignSelf: 'center',
+      fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge,
+    }
 });

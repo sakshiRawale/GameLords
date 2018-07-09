@@ -102,8 +102,7 @@ class Category extends Component {
 
                       <View style={CategoryStyles.gameListBox}>
                          <View style={CategoryStyles.transformView}>
-                           <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={CategoryStyles.iconStyle} color='#423620' />
-
+                           <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={CategoryStyles.iconStyle} color='#423620' />
                            <Text numberOfLines={1} style={CategoryStyles.headingText}>
                                {category.categoryName.toUpperCase()}
                            </Text>
@@ -111,14 +110,17 @@ class Category extends Component {
                          <View style={CategoryStyles.viewAllStyle} />
                       </View>
 
-                      <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingHorizontal: 15 }}>
+                      <View style={{ flex: 3, backgroundColor: 'black' }}>
+
+                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? 20 : 35, paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20 }}>
 
                         {html5CategoryList.map((game, gameIndex) => {
                             return (
-                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} for='favoriteCategory' />
                                 )
                             })
                           }
+                        </View>
                       </View>
                     </View>
 

@@ -206,8 +206,8 @@ export default favoriteStyles = StyleSheet.create({
       height: '100%'
     },
     html5iconStyle: {
-      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  50 :  40) :  40) : 70,
-      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  50 :  40) :  40) : 70,
+      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  45 :  40) :  40) : 70,
+      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  45 :  40) :  40) : 70,
     },
     favoriteTextStyle: {
       fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge

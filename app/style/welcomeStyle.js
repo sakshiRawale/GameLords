@@ -71,7 +71,7 @@ export default liveChannelStyle = StyleSheet.create({
         width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 2.5 :  deviceWidth / 2.45) :  deviceWidth / 2.45) : deviceWidth / 3.8,
         height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4 :  deviceHeight / 3.2) :  deviceHeight / 3.2) : deviceHeight / 3.6,
         backgroundColor: 'transparent',
-        marginVertical: 20,
+        marginVertical: Globals.DeviceType === 'Phone'? 20 : 25,
         flexDirection: 'row',
         alignItems: 'stretch',
         borderColor:'#555',
@@ -144,7 +144,6 @@ export default liveChannelStyle = StyleSheet.create({
       justifyContent: 'space-between',
       backgroundColor: '#000000',
       alignItems: 'center',
-      // color:"#FFFFFF",
       borderBottomColor:"#f4aa1c",
       borderBottomWidth:1
     },
@@ -158,7 +157,6 @@ export default liveChannelStyle = StyleSheet.create({
     },
     headingText: {
       color: '#423620',
-      fontSize: 14,
       fontWeight: '600',
       fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.medium) :  FontSizes.medium) : FontSizes.xLarge,
     },

@@ -179,7 +179,7 @@ class VOD extends Component {
                                              return (
                                                <View key = {index}>
 
-                                                <View style={WelcomeStyle.gameListBox}>
+                                                  <View style={WelcomeStyle.gameListBox}>
                                                     <View style={WelcomeStyle.transformView}>
                                                       <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={WelcomeStyle.iconStyle} color='#423620' />
 

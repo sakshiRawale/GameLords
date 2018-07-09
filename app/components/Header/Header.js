@@ -125,31 +125,33 @@ class HeaderComponent extends Component {
                 </View>
             </View>
                 <View searchBar style={[headerStyle.header, { right: 0, width : this.state.x, backgroundColor:'#000', position: 'absolute', zIndex: this.props.header.showSearchBar === false? 0 : 10 } ]}>
-
-                <View searchBar style={[headerStyle.header, {flexDirection: 'row'}]}>
-                    {Platform.OS == 'ios'?
-                        <StatusBar backgroundColor="#f6a50e" barStyle="light-content"/>
-                        : <StatusBar backgroundColor="#000000" barStyle="light-content"/>}
-                    <View style={headerStyle.headerSearch}>
-                        <FeatherIcon color="#f6a50e" size={20} name="search" style={headerStyle.searchIcn} />
-                        <TextInput
-                            value= {this.props.search.searchText}
-                            underlineColorAndroid={'transparent'}
-                            style={headerStyle.searchTxt}
-                            placeholder='Search..'
-                            placeholderTextColor={'#fff'}
-                            ref={(ref) => this.TextInput = ref}
-                            onChangeText={(text)=> this.onChange(text)} />
-                        <TouchableOpacity onPress={()=> { this.props.searchText(''); }}>
-                            <Image source={require('../../assets/images/clear.png')} style={{width: 15, height: 15, marginTop : Platform.OS == "ios" ? ((deviceHeight == 812) ? 19 : 11) : 11}}/>
+                  <View searchBar style={[headerStyle.header, {flexDirection: 'row', justifyContent: 'space-between',paddingHorizontal: Globals.DeviceType === 'Phone'? 20: 30}]}>
+                      {Platform.OS == 'ios'?
+                          <StatusBar backgroundColor="#f6a50e" barStyle="light-content"/>
+                          : <StatusBar backgroundColor="#000000" barStyle="light-content"/>
+                        }
+                      <View style={headerStyle.headerSearch}>
+                          <FeatherIcon color="#f6a50e" size={Globals.DeviceType === 'Phone'? 20: 30} name="search" style={headerStyle.searchIcn} />
+                          <TextInput
+                              value= {this.props.search.searchText}
+                              underlineColorAndroid={'transparent'}
+                              style={headerStyle.searchTxt}
+                              placeholder='Search..'
+                              placeholderTextColor={'#fff'}
+                              ref={(ref) => this.TextInput = ref}
+                              onChangeText={(text)=> this.onChange(text)} />
+                          <TouchableOpacity onPress={()=> { this.props.searchText(''); }}>
+                              <Image source={require('../../assets/images/clear.png')} style={headerStyle.cancelIcon}/>
+                          </TouchableOpacity>
+                      </View>
+                      <View style={headerStyle.btn}>
+                        <TouchableOpacity onPress={()=>{this.props.showSearchBar(false); this.props.searchText(''); this.props.onShowSearchView(false); this.slideOut();  }} transparent>
+                            <Text style={headerStyle.cancelTxt}>Cancel</Text>
                         </TouchableOpacity>
-                    </View>
-                    <Button style = {headerStyle.btn} onPress={()=>{this.props.showSearchBar(false); this.props.searchText(''); this.props.onShowSearchView(false); this.slideOut();  }} transparent>
-                        <Text style={headerStyle.cancelTxt}>Cancel</Text>
-                    </Button>
+                      </View>
+                  </View>
                 </View>
-                </View>
-                </View>
+              </View>
 
         );
     }

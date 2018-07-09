@@ -43,8 +43,6 @@ class Login extends Component {
                     if (res.data.success === true) {
                         this.props.checkAccess(res.data.data.token);
                         AsyncStorage.setItem('@AccessToken:key', res.data.data.token);
-                        console.log("====================");
-                        console.log(res.data);
                         //NavigationService.reset("Drawer");
                         NavigationService.reset("DrawerVOD");
                     } else {
