@@ -12,37 +12,35 @@ export default StyleSheet.create({
     },
 
     gameListBox: {
-      height: 35,
+      height: Globals.DeviceType === 'Phone'? 42 : 62,
       flexDirection: 'row',
-      backgroundColor: 'black',
       alignItems: 'center',
       color:"white",
       borderBottomColor:"#f4aa1c",
       borderBottomWidth:1,
-      width: '88%',
-
+      // width: '88%',
     },
     transformView:{
       flexDirection: 'row',
       alignItems:"center",
       backgroundColor:"#f4aa1c",
-      width:'61%',
       height:"100%",
+      paddingRight: Globals.DeviceType === 'Phone'? 15 : 20,
     },
     iconStyle: {
       backgroundColor: 'transparent',
-      paddingHorizontal: 15
+      paddingHorizontal: 10
     },
     headingText: {
       color: '#423620',
       fontWeight: '600',
-      fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge,
+      fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.medium) :  FontSizes.medium) : FontSizes.large,
     },
     viewAllStyle: {
       transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '45deg'}],
-      width: Platform.OS == "ios" ? '10%' :  '20%',
+      width: Globals.DeviceType === 'Phone'? '8%' : '5%',
       backgroundColor:"#f4aa1c",
-      marginLeft: Platform.OS == "ios" ? -16 :  -27,
+      marginLeft: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  -12 :  -12) :  -18) : -18, //Platform.OS == "ios" ? -18 :  -27,
       height: '100%'
     },
     noSearchText: {

@@ -71,8 +71,7 @@ export default headerStyle = StyleSheet.create({
         height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '50%' :  '60%') :  '80%') : '80%',
     },
     btn: {
-
-        marginTop: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  35 :  20) :  0) : 0,
+        marginTop: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  35 :  20) :  0) : 30,
         width: Globals.DeviceType === 'Phone'? '20%' : '15%',
         flexDirection: 'row',
         alignSelf: 'center',

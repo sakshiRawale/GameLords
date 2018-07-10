@@ -116,7 +116,7 @@ class Category extends Component {
 
                         {html5CategoryList.map((game, gameIndex) => {
                             return (
-                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} for='favoriteCategory' />
+                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} for='forFavoriteCategorySearch' />
                                 )
                             })
                           }

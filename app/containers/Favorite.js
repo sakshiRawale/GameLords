@@ -104,7 +104,7 @@ class Favorite extends Component {
                       <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? 20 : 35 }}>
                         {favoriteGames.map((game, gameIndex) => {
                           return (
-                                <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} for='favoriteCategory'/>
+                                <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} for='forFavoriteCategorySearch'/>
                               )
                           })
                         }

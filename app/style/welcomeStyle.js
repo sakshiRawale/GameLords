@@ -161,8 +161,8 @@ export default liveChannelStyle = StyleSheet.create({
     viewAllStyle: {
       transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '135deg'}],
       width: Globals.DeviceType === 'Phone'? '15%' : '10%',
-      // backgroundColor:"#f4aa1c",
-      backgroundColor:"red",
+      backgroundColor:"#f4aa1c",
+      // backgroundColor:"red",
       marginLeft: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  -12 :  -12) :  -18) : -18, //Platform.OS == "ios" ? -18 :  -27,
       height: '100%',
     },
