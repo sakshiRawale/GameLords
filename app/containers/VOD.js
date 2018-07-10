@@ -34,6 +34,7 @@ import GameView from '../components/GameView/GameView';
 import CategoryList from '../components/CategoryList/CategoryList';
 import Globals from  '../constants/Globals';
 import DeviceType from '../../App';
+import favoriteStyles from "../style/favoriteStyle";
 
 class VOD extends Component {
     constructor(props) {
@@ -142,6 +143,10 @@ class VOD extends Component {
       NavigationService.navigate('Detail',{game: game[0]});
     }
 
+    discoverClick = () => {
+      this.switchFavorite();
+    }
+
     LoadHTMLGames = () =>{
         let categories = this.props.category.categories;
         let getAllGames = this.props.games.games;
@@ -238,11 +243,40 @@ class VOD extends Component {
                                         )
                                     })
                                   }
+
                                  </ScrollView>
                                </View>
                             </View>
                        }
-                       
+
+                       {(favoriteGames.length <= 0 ) &&
+                           <View style = {{alignItems : 'center', flex: 4,paddingTop: 30}}>
+                             <View>
+                               <Image source={require('../assets/images/html5.png')} style={favoriteStyles.html5iconStyle}/>
+                             </View>
+                             <View style={{paddingVertical: 30}}>
+                               <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle,{color: '#fff', marginTop: 20, alignSelf: 'center'}]}>No Favorite Game Yet</Text>
+                             </View>
+
+                             <View>
+                               <View style={{justifyContent: 'center'}}>
+                                 <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, {color: '#fff',alignSelf: 'center'}]}>Add your favorite games to access</Text>
+                                 <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, {color: '#fff',alignSelf: 'center'}]}>and</Text>
+                                 <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, {color: '#fff',alignSelf: 'center'}]}>Play easily without any hassels.</Text>
+                               </View>
+                             </View>
+
+
+                             <View style={{paddingVertical: 40}}>
+                               <TouchableOpacity onPress={() => this.discoverClick()} >
+                                 <View style={favoriteStyles.discoverButton}>
+                                     <Text style={favoriteStyles.discoverButtonText} > DISCOVER </Text>
+                                 </View>
+                               </TouchableOpacity>
+                             </View>
+                           </View>
+
+                       }
                       </View>
                   }
             </View>
@@ -291,7 +325,7 @@ class VOD extends Component {
                               </View>
                             </View>
                           </View>
-                          <View style={{paddingHorizontal:  Globals.DeviceType === 'Phone'? 20 : 30}}>
+                          <View style={{paddingHorizontal:  Globals.DeviceType === 'Phone'? 15 : 30}}>
                             { this.state.dataLoad ? this.LoadHTMLGames() : null}
                           </View>
                         </View>

@@ -121,7 +121,7 @@ class GameView extends Component {
     render() {
         const {game, gameIndex} = this.props;
         return (
-            <View style={[WelcomeStyle.imageThmbnailGames,this.props.for === 'forFavoriteCategorySearch' ? WelcomeStyle.setPaddingFavorite : WelcomeStyle.setPaddingSlider]} key={gameIndex}>
+            <View style={[WelcomeStyle.imageThmbnailGames,this.props.for === 'forFavoriteCategorySearch' ? WelcomeStyle.setPaddingFavoriteCategorySearch : WelcomeStyle.setPaddingSlider]} key={gameIndex}>
               <View style={{flex: 3}}>
 
                   <View style={{height: '70%'}}>

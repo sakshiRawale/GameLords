@@ -214,8 +214,8 @@ export default favoriteStyles = StyleSheet.create({
     },
     discoverButton: {
       width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth/2.1 :  deviceWidth/2.2) :  deviceWidth/2.2) : deviceWidth/2.9,// Globals.deviceWidth/1.8,
-      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight/14 :  deviceHeight/11) :  deviceHeight/11) : deviceHeight/13,// Globals.deviceWidth/1.8,
-      paddingVertical: 20,
+      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight/14 :  deviceHeight/14) :  deviceHeight/14) : deviceHeight/13,// Globals.deviceWidth/1.8,
+      paddingVertical: 14,
       justifyContent: 'center',
       backgroundColor: "#f2a11b",
       alignItems: 'center',

@@ -96,34 +96,34 @@ class HeaderComponent extends Component {
         const { isDrawer, isTitle, title, isSearch, rightLabel, rightClick } = this.props;
         return (
                 <View style={headerStyle.header}>
-            <View style={[headerStyle.header, {flexDirection: 'row', justifyContent: 'center'}]}>
-                {Platform.OS == 'ios'?
-                    <StatusBar backgroundColor="#f6a50e" barStyle="light-content"/>
-                    : <StatusBar backgroundColor="#000000" barStyle="light-content"/>}
-                <View style={headerStyle.headerBg}>
-                <View style={headerStyle.leftIconView}>
-                    {this._renderLeftSection()}
-                </View>
-                <View style={ [headerStyle.titleView, {justifyContent: 'center', height: '100%'}]}>
-                    {
-                        isTitle ?
-                            <Text style={[styles.avRegular, headerStyle.title]}>{title}</Text>
-                            : <Image style={[headerStyle.logo]} source={loginLogo} />
-                    }
-                </View>
-                <View style={ headerStyle.rightIconView}>
-                    {
-                        isSearch ?
-                            <TouchableHighlight onPress={this.searchOpen.bind(this)} underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} >
-                                <FeatherIcon style = {{ marginLeft: Globals.DeviceType === 'Phone'? 10: 50}} name="search" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  24) :  24) : 35} color="#f6a50e" />
-                            </TouchableHighlight>
-                            : <TouchableOpacity  style={[headerStyle.iconsView]} onPress={() => {rightClick()}}>
-                                <Text style={[headerStyle.rightText]}>{rightLabel}</Text>
-                            </TouchableOpacity>
-                    }
-                </View>
-                </View>
-            </View>
+                  <View style={[headerStyle.header, {flexDirection: 'row', justifyContent: 'center'}]}>
+                    {Platform.OS == 'ios'?
+                        <StatusBar backgroundColor="#f6a50e" barStyle="light-content"/>
+                        : <StatusBar backgroundColor="#000000" barStyle="light-content"/>}
+                    <View style={headerStyle.headerBg}>
+                      <View style={headerStyle.leftIconView}>
+                        {this._renderLeftSection()}
+                      </View>
+                      <View style={ [headerStyle.titleView, {justifyContent: 'center', height: '100%'}]}>
+                      {
+                          isTitle ?
+                              <Text style={[styles.avRegular, headerStyle.title]}>{title}</Text>
+                              : <Image style={[headerStyle.logo]} source={loginLogo} />
+                      }
+                    </View>
+                    <View style={ headerStyle.rightIconView}>
+                        {
+                            isSearch ?
+                                <TouchableHighlight onPress={this.searchOpen.bind(this)} underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} >
+                                    <FeatherIcon style = {{ marginLeft: Globals.DeviceType === 'Phone'? 10: 50}} name="search" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  24) :  24) : 35} color="#f6a50e" />
+                                </TouchableHighlight>
+                                : <TouchableOpacity  style={[headerStyle.iconsView]} onPress={() => {rightClick()}}>
+                                    <Text style={[headerStyle.rightText]}>{rightLabel}</Text>
+                                </TouchableOpacity>
+                        }
+                    </View>
+                  </View>
+              </View>
                 <View searchBar style={[headerStyle.header, { right: 0, width : this.state.x, backgroundColor:'#000', position: 'absolute', zIndex: this.props.header.showSearchBar === false? 0 : 10 } ]}>
                   <View searchBar style={[headerStyle.header, {flexDirection: 'row', justifyContent: 'space-between',paddingHorizontal: Globals.DeviceType === 'Phone'? 20: 30}]}>
                       {Platform.OS == 'ios'?

@@ -94,14 +94,17 @@ class SearchPage extends Component {
 
                         <View style={{paddingHorizontal: Globals.DeviceType === 'Phone'? 20: 30, marginTop: Globals.DeviceType === 'Phone'? 40: 80}}>
                           <View style={SearchStyles.gameListBox}>
-                            <View style={SearchStyles.transformView}>
-                              <Icon name={'rocket'} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={SearchStyles.iconStyle} color='#423620' />
+                            <View style={{flexDirection: 'row', width: '50%', height: '100%'}}>
 
-                              <Text numberOfLines={1} style={SearchStyles.headingText}>
-                                  {'GAME DIRECTORIES'}
-                              </Text>
+                              <View style={SearchStyles.transformView}>
+                                <Icon name={'rocket'} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={SearchStyles.iconStyle} color='#423620' />
+
+                                <Text numberOfLines={1} style={SearchStyles.headingText}>
+                                    {'GAME DIRECTORIES'}
+                                </Text>
+                              </View>
+                              <View style={SearchStyles.viewAllStyle} />
                             </View>
-                            <View style={SearchStyles.viewAllStyle} />
                           </View>
                         </View>
 

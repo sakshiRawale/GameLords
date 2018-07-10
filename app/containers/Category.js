@@ -101,18 +101,21 @@ class Category extends Component {
                     <View style={{ flex: 3, width: '100%', backgroundColor: 'black', alignItems: 'center' }}>
 
                       <View style={CategoryStyles.gameListBox}>
-                         <View style={CategoryStyles.transformView}>
-                           <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={CategoryStyles.iconStyle} color='#423620' />
-                           <Text numberOfLines={1} style={CategoryStyles.headingText}>
-                               {category.categoryName.toUpperCase()}
-                           </Text>
+                        <View style={{flexDirection: 'row', width: '50%', height: '100%'}}>
+                           <View style={CategoryStyles.transformView}>
+                             <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={CategoryStyles.iconStyle} color='#423620' />
+                             <Text numberOfLines={1} style={CategoryStyles.headingText}>
+                                 {category.categoryName.toUpperCase()}
+                             </Text>
+                           </View>
+                           <View style={CategoryStyles.viewAllStyle} />
                          </View>
-                         <View style={CategoryStyles.viewAllStyle} />
+
                       </View>
 
                       <View style={{ flex: 3, backgroundColor: 'black' }}>
 
-                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? 20 : 35, paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20 }}>
+                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? 15 : 35, paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20 }}>
 
                         {html5CategoryList.map((game, gameIndex) => {
                             return (

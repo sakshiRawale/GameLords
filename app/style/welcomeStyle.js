@@ -77,8 +77,8 @@ export default liveChannelStyle = StyleSheet.create({
         borderColor:'#555',
         borderWidth: 2,
     },
-    setPaddingFavorite: {
-      marginHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  8.5 :  7) : 7) : 15,
+    setPaddingFavoriteCategorySearch: {
+      marginHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  8.5 :  deviceWidth / 45 ) : deviceWidth / 45 ) : 15,
     },
     setPaddingSlider: {
       marginRight: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  30 :  28) : 30) : 42,
@@ -128,7 +128,7 @@ export default liveChannelStyle = StyleSheet.create({
       color: '#FFFFFF',
       zIndex: 4,
       fontWeight: 'bold',
-      fontSize:  Globals.DeviceType === 'Phone'?  FontSizes.large : FontSizes.xLarge,
+      fontSize:  Globals.DeviceType === 'Phone'?  FontSizes.medium : FontSizes.xLarge,
     },
     transformView:{
       flexDirection: 'row',
@@ -163,7 +163,7 @@ export default liveChannelStyle = StyleSheet.create({
       width: Globals.DeviceType === 'Phone'? '15%' : '10%',
       backgroundColor:"#f4aa1c",
       // backgroundColor:"red",
-      marginLeft: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  -12 :  -12) :  -18) : -18, //Platform.OS == "ios" ? -18 :  -27,
+      marginLeft: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  -12 :  -12) :  -14) : -18, //Platform.OS == "ios" ? -18 :  -27,
       height: '100%',
     },
     viewAllViewStyle: {
