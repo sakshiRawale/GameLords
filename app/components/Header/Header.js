@@ -57,13 +57,13 @@ class HeaderComponent extends Component {
         if (isDrawer) {
             return (
                 <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => {NavigationService.navigate("DrawerOpen")}}>
-                    <FeatherIcon name="menu" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  26) :  26) : 35} style={{ backgroundColor: 'transparent', marginLeft: 10 }} color="#f6a50e" />
+                    <FeatherIcon name="menu" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  26) :  26) : 35} style={{ backgroundColor: 'transparent', marginLeft: 15 }} color="#f6a50e" />
                 </TouchableHighlight>
             )
         } else {
             return (
                 <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => NavigationService.goBack()}>
-                    <Icon name="angle-left" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  26) :  26) : 35} style={{ backgroundColor: 'transparent', marginLeft: 10 }} color="#f6a50e" />
+                    <Icon name="angle-left" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  26) :  26) : 35} style={{ backgroundColor: 'transparent', marginLeft: 15 }} color="#f6a50e" />
                 </TouchableHighlight>
             )
         }
