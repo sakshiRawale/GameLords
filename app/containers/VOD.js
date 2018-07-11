@@ -34,6 +34,7 @@ import GameView from '../components/GameView/GameView';
 import CategoryList from '../components/CategoryList/CategoryList';
 import Globals from  '../constants/Globals';
 import DeviceType from '../../App';
+import favoriteStyles from "../style/favoriteStyle";
 
 class VOD extends Component {
     constructor(props) {
@@ -142,6 +143,10 @@ class VOD extends Component {
       NavigationService.navigate('Detail',{game: game[0]});
     }
 
+    discoverClick = () => {
+      this.switchFavorite();
+    }
+
     LoadHTMLGames = () =>{
         let categories = this.props.category.categories;
         let getAllGames = this.props.games.games;
@@ -161,7 +166,7 @@ class VOD extends Component {
                                     {
                                         html5CategoryList.map((category, index) => {
                                             return (
-                                                  <CategoryList key={index} index={index} category={category} viewCategoryGames={this.viewCategoryGames}/>
+                                                  <CategoryList key={index} index={index} category={category} viewCategoryGames={this.viewCategoryGames} />
                                             )
                                         })
                                     }
@@ -177,36 +182,44 @@ class VOD extends Component {
                                             let games = (getAllGames.length > 0 && getAllGames.filter((g) => {return g.categoryId == category.categoryId}).length > 0) ? getAllGames.filter((g) => {return g.categoryId == category.categoryId}).slice(0, 10) : []
 
                                              return (
-                                               <View key = {index}>
+                                               <View key = {index} style={{flex: 3}}>
 
-                                                <View style={WelcomeStyle.gameListBox}>
-                                                    <View style={WelcomeStyle.transformView}>
-                                                      <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={WelcomeStyle.iconStyle} color='#423620' />
+                                                  <View style={WelcomeStyle.gameListBox}>
 
-                                                      <Text numberOfLines={1} style={WelcomeStyle.headingText}>
-                                                          {category.categoryName.toUpperCase()}
-                                                      </Text>
-                                                    </View>
-                                                    <View style={WelcomeStyle.viewAllStyle} />
-                                                    <View style={WelcomeStyle.viewAllViewStyle}>
-                                                      <TouchableOpacity onPress={() => this.viewCategoryGames(category) }>
-                                                        <Text style={[styles.avRegular, WelcomeStyle.browseAll]}>
-                                                            VIEW ALL
+                                                    <View style={{flexDirection: 'row', width: '50%', height: '100%'}}>
+                                                      <View style={WelcomeStyle.transformView}>
+                                                        <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={WelcomeStyle.iconStyle} color='#423620' />
+                                                        <Text numberOfLines={1} style={WelcomeStyle.headingText}>
+                                                            {category.categoryName.toUpperCase()}
                                                         </Text>
-                                                      </TouchableOpacity>
+                                                      </View>
+                                                      <View style={WelcomeStyle.viewAllStyle} />
                                                     </View>
+                                                    <View style={{ justifyContent: 'flex-end', alignItems: 'flex-end', width: '50%'}}>
+                                                      <View style={WelcomeStyle.viewAllViewStyle}>
+                                                        <TouchableOpacity onPress={() => this.viewCategoryGames(category) }>
+                                                          <Text style={[styles.avRegular, WelcomeStyle.browseAll]}>
+                                                              VIEW ALL
+                                                          </Text>
+                                                        </TouchableOpacity>
+                                                      </View>
+                                                    </View>
+
                                                   </View>
 
-                                                <View style={{flexDirection: "row"}}>
-                                                  <ScrollView horizontal={true} >
-                                                    {
-                                                      games.map((game, gameIndex) => {
-                                                        return (
-                                                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
-                                                          )
-                                                      })
-                                                    }
-                                                  </ScrollView>
+
+                                                <View style={WelcomeStyle.gameView}>
+                                                  <View style={{flexDirection: "row"}}>
+                                                    <ScrollView horizontal={true} >
+                                                      {
+                                                        games.map((game, gameIndex) => {
+                                                          return (
+                                                              <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                                            )
+                                                        })
+                                                      }
+                                                    </ScrollView>
+                                                  </View>
                                                 </View>
                                               </View>
 
@@ -230,9 +243,39 @@ class VOD extends Component {
                                         )
                                     })
                                   }
+
                                  </ScrollView>
                                </View>
                             </View>
+                       }
+
+                       {(favoriteGames.length <= 0 ) &&
+                           <View style = {{alignItems : 'center', flex: 4,paddingTop: 30}}>
+                             <View>
+                               <Image source={require('../assets/images/html5.png')} style={favoriteStyles.html5iconStyle}/>
+                             </View>
+                             <View style={{paddingVertical: 30}}>
+                               <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle,{color: '#fff', marginTop: 20, alignSelf: 'center'}]}>No Favorite Game Yet</Text>
+                             </View>
+
+                             <View>
+                               <View style={{justifyContent: 'center'}}>
+                                 <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, {color: '#fff',alignSelf: 'center'}]}>Add your favorite games to access</Text>
+                                 <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, {color: '#fff',alignSelf: 'center'}]}>and</Text>
+                                 <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, {color: '#fff',alignSelf: 'center'}]}>Play easily without any hassels.</Text>
+                               </View>
+                             </View>
+
+
+                             <View style={{paddingVertical: 40}}>
+                               <TouchableOpacity onPress={() => this.discoverClick()} >
+                                 <View style={favoriteStyles.discoverButton}>
+                                     <Text style={favoriteStyles.discoverButtonText} > DISCOVER </Text>
+                                 </View>
+                               </TouchableOpacity>
+                             </View>
+                           </View>
+
                        }
                       </View>
                   }
@@ -282,7 +325,7 @@ class VOD extends Component {
                               </View>
                             </View>
                           </View>
-                          <View style={{paddingHorizontal:  Globals.DeviceType === 'Phone'? 20 : 30}}>
+                          <View style={{paddingHorizontal:  Globals.DeviceType === 'Phone'? 15 : 30}}>
                             { this.state.dataLoad ? this.LoadHTMLGames() : null}
                           </View>
                         </View>

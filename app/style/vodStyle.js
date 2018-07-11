@@ -20,7 +20,7 @@ export default vodStyle = StyleSheet.create({
     },
     favoriteSwitchText: {
         color: 'white',
-        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.medium) :  FontSizes.medium) : FontSizes.xLarge,
+        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.large :  FontSizes.large) :  FontSizes.large) : FontSizes.xLarge,
     },
     browseAll: {
         color: '#d51a92',

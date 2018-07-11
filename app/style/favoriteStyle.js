@@ -205,4 +205,24 @@ export default favoriteStyles = StyleSheet.create({
       marginLeft: Platform.OS == "ios" ? -16 :  -27,
       height: '100%'
     },
+    html5iconStyle: {
+      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  45 :  40) :  40) : 70,
+      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  45 :  40) :  40) : 70,
+    },
+    favoriteTextStyle: {
+      fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge
+    },
+    discoverButton: {
+      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth/2.1 :  deviceWidth/2.2) :  deviceWidth/2.2) : deviceWidth/2.9,// Globals.deviceWidth/1.8,
+      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight/14 :  deviceHeight/14) :  deviceHeight/14) : deviceHeight/13,// Globals.deviceWidth/1.8,
+      paddingVertical: 14,
+      justifyContent: 'center',
+      backgroundColor: "#f2a11b",
+      alignItems: 'center',
+      borderRadius: 15
+    },
+    discoverButtonText: {
+      color: '#000',
+      fontSize: Globals.DeviceType == 'Phone' ? FontSizes.xLarge : FontSizes.xxLarge,
+    },
 });

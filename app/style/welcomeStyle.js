@@ -49,7 +49,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
     browseAll: {
         color: '#f4aa1c',
-        fontSize: FontSizes.medium,
+        fontSize: Globals.DeviceType === 'Phone'?  FontSizes.medium : FontSizes.xLarge,
         fontWeight: '600'
     },
     bannerView: {
@@ -68,22 +68,26 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageThmbnailGames: {
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 2.6 :  deviceWidth / 2.5) :  deviceWidth / 2.5) : deviceWidth / 2.25,
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3.8 :  deviceHeight / 3) :  deviceHeight / 3) : deviceHeight / 2.4,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 2.5 :  deviceWidth / 2.45) :  deviceWidth / 2.45) : deviceWidth / 3.8,
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4 :  deviceHeight / 3.2) :  deviceHeight / 3.2) : deviceHeight / 3.6,
         backgroundColor: 'transparent',
-        marginVertical: 20,
-        marginHorizontal: 10,
+        marginVertical: Globals.DeviceType === 'Phone'? 20 : 25,
         flexDirection: 'row',
         alignItems: 'stretch',
         borderColor:'#555',
-        borderWidth: 2
+        borderWidth: 2,
     },
-
+    setPaddingFavoriteCategorySearch: {
+      marginHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  8.5 :  deviceWidth / 45 ) : deviceWidth / 45 ) : 15,
+    },
+    setPaddingSlider: {
+      marginRight: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  30 :  28) : 30) : 42,
+    },
     imageThmbnailCategory: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4.7 :  deviceHeight / 4.5) :  deviceHeight / 4.5) : deviceHeight / 3.8, //deviceHeight/4.5, // Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.20 :  deviceWidth / 1.35) :  deviceWidth / 1.35) : deviceWidth / 1.6, //deviceWidth/1.35
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 6.1 :  deviceHeight / 4.5) :  deviceHeight / 4.5) : deviceHeight / 5.2, //deviceHeight/4.5, // Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.55 :  deviceWidth / 1.35) :  deviceWidth / 1.35) : deviceWidth / 2.2, //deviceWidth/1.35
         backgroundColor: 'transparent',
-        marginBottom: 20,
+        marginBottom: Globals.DeviceType === 'Phone'? 40 : 60,
         flexDirection: 'row',
         alignItems: 'stretch',
     },
@@ -94,28 +98,22 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageGame: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 6.3 :  deviceHeight / 4.9) :  deviceHeight / 4.9) : deviceHeight / 3.5,
+        height: '100%'
     },
 
     gameImageView: {
-      marginHorizontal: Globals.DeviceType === 'Phone'? 8 : 12,
-      marginVertical: Globals.DeviceType === 'Phone'? 8 : 12,
+      marginHorizontal: Globals.DeviceType === 'Phone'? 10 : 14,
+      marginVertical: Globals.DeviceType === 'Phone'? 10 : 14,
     },
 
     gameNameFavorite: {
       flexDirection: 'row',
-      paddingVertical: 2.5
-
-      //justifyContent: 'space-between',
-      //marginHorizontal: Globals.DeviceType === 'Phone'? 16 : 12,
-      //marginVertical: Globals.DeviceType === 'Phone'? 8 : 12,
+      height: '15%',
     },
-
     imageBackgroundCategory: {
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.3 :  deviceWidth / 1.5) :  deviceWidth / 1.5) : deviceWidth / 1.75, //deviceWidth/1.5,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.7 :  deviceWidth / 1.5) :  deviceWidth / 1.5) : deviceWidth / 2.4, //deviceWidth/1.5,
         height: '100%'
     },
-
     bannerText: {
         flex: 1,
         alignItems: 'center',
@@ -123,7 +121,6 @@ export default liveChannelStyle = StyleSheet.create({
         paddingLeft: '3%',
         width: '80%'
     },
-
     categoryNameText: {
       bottom: 0,
       right: 5,
@@ -131,66 +128,62 @@ export default liveChannelStyle = StyleSheet.create({
       color: '#FFFFFF',
       zIndex: 4,
       fontWeight: 'bold',
-      fontSize: FontSizes.large
+      fontSize:  Globals.DeviceType === 'Phone'?  FontSizes.medium : FontSizes.xLarge,
     },
     transformView:{
-      flex: 2,
       flexDirection: 'row',
-      alignItems:"center",
-      backgroundColor:"#f4aa1c",
-      width:'70%',
-      height:"100%",
+      backgroundColor: '#f4aa1c',
+      paddingRight: Globals.DeviceType === 'Phone'? 15 : 20
     },
     gameListBox: {
-      height: 35,
+      height: Globals.DeviceType === 'Phone'? 45 : 65,
       flexDirection: 'row',
-      justifyContent: 'space-between',
       backgroundColor: '#000000',
       alignItems: 'center',
-      // color:"#FFFFFF",
       borderBottomColor:"#f4aa1c",
-      borderBottomWidth:1
+      borderBottomWidth:1,
     },
     iconStyle: {
+      alignSelf: 'center',
       backgroundColor: 'transparent',
-      paddingHorizontal: 15
+      paddingHorizontal: 10,
     },
     iconRatingStyle: {
       backgroundColor: 'transparent',
       paddingHorizontal: 2
     },
     headingText: {
+      alignSelf: 'center',
       color: '#423620',
-      fontSize: 14,
       fontWeight: '600',
-      fontSize: FontSizes.medium
+      fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.medium) :  FontSizes.medium) : FontSizes.xLarge,
     },
     viewAllStyle: {
-      transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '45deg'}],
-      width: Platform.OS == "ios" ? '10%' :  '20%',
+      transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '135deg'}],
+      width: Globals.DeviceType === 'Phone'? '15%' : '10%',
       backgroundColor:"#f4aa1c",
-      marginLeft: Platform.OS == "ios" ? -16 :  -27,
-      height: '100%'
+      // backgroundColor:"red",
+      marginLeft: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  -12 :  -12) :  -14) : -18, //Platform.OS == "ios" ? -18 :  -27,
+      height: '100%',
     },
     viewAllViewStyle: {
       flexDirection: 'row',
-      alignItems: 'center',
-      width: '30%',
-      justifyContent: 'center'
+      alignItems: 'flex-end',
+      alignSelf: 'flex-end',
+      justifyContent: 'flex-end',
+      paddingRight: 10,
     },
     gameRatingIcon: {
       flexDirection: 'row',
-      paddingVertical: 2.5,
-      paddingHorizontal: 8
-      // justifyContent: 'space-between',
-      // marginHorizontal: Globals.DeviceType === 'Phone'? 8 : 12,
+      height: '15%'
     },
     gameTitleText: {
       color: '#fff',
-      fontSize: FontSizes.large,
-      width: '90%',
-      height:20,
-
+      fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.large :  FontSizes.large) :  FontSizes.large) : FontSizes.xLarge,
+    },
+    gameView: {
+      paddingTop: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  7 :  7) :  7) : 20,
+      paddingBottom: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  28) :  28) : 50,
     }
 
 });

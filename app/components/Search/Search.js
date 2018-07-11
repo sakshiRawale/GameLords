@@ -90,24 +90,34 @@ class SearchPage extends Component {
 
                 <View style={{flex: 3}}>
                   {this.props.search.searchText !=='' &&
-                      <View style={{alignItems: 'center', marginTop: 10}}>
-                        <View style={SearchStyles.gameListBox}>
-                           <View style={SearchStyles.transformView}>
-                             <Icon name={'rocket'} size={ Globals.DeviceType === 'Phone'? 22 : 30 } style={SearchStyles.iconStyle} color='#423620' />
+                      <View>
 
-                             <Text numberOfLines={1} style={SearchStyles.headingText}>
-                                 GAME DIRECTORIES
-                             </Text>
-                           </View>
-                           <View style={SearchStyles.viewAllStyle} />
+                        <View style={{paddingHorizontal: Globals.DeviceType === 'Phone'? 20: 30, marginTop: Globals.DeviceType === 'Phone'? 40: 80}}>
+                          <View style={SearchStyles.gameListBox}>
+                            <View style={{flexDirection: 'row', width: '50%', height: '100%'}}>
+
+                              <View style={SearchStyles.transformView}>
+                                <Icon name={'rocket'} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={SearchStyles.iconStyle} color='#423620' />
+
+                                <Text numberOfLines={1} style={SearchStyles.headingText}>
+                                    {'GAME DIRECTORIES'}
+                                </Text>
+                              </View>
+                              <View style={SearchStyles.viewAllStyle} />
+                            </View>
+                          </View>
                         </View>
 
                         {((this.state.type == '' || this.state.type == "html5")  && (html5Search.length > 0 )) &&
-                          <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', paddingHorizontal: 15 }}>
+                          <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? 15 : 35 }}>
 
                           {html5Search.map((game, gameIndex) => {
                             return (
+<<<<<<< HEAD
                                   <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from = {'Search'} />
+=======
+                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from = {'Search'} for='forFavoriteCategorySearch' />
+>>>>>>> ca4e7866d8077f4347800d37a3c3ddcbd0402c61
                                 )
                             })
                           }
@@ -115,7 +125,7 @@ class SearchPage extends Component {
                         }
                         {(html5Search.length <= 0 ) &&
                             <View style = {{alignItems : 'center', flex: 1}}>
-                                <Text style={[styles.avRegular, {color: '#fff', marginTop: 20, alignSelf: 'center'}]}>No Results Found</Text>
+                                <Text style={[styles.avRegular,SearchStyles.noSearchText]}>No Game Found</Text>
                             </View>
 
                         }

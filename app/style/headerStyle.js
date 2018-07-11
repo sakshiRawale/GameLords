@@ -57,25 +57,31 @@ export default headerStyle = StyleSheet.create({
         width: '100%',
     },
     headerSearch: {
-        marginTop: Platform.OS == "ios" ? ((deviceHeight == 812) ? 35 : 20) : 5,
+        marginTop: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  35 :  20) :  0) : 30,
         flexDirection: 'row',
         backgroundColor: '#000',
         borderColor: '#ffa507',
         borderWidth: 1,
-        borderRadius: 3,
-        width:  Globals.DeviceType === 'Phone'? '80%': '85%',
-        height: Platform.OS == "ios" ? '60%' : '85%',
-        marginLeft: 10
+        borderRadius: Globals.DeviceType === 'Phone'? 3 : 6,
+        width: Globals.DeviceType === 'Phone'? '80%' : '85%',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: Globals.DeviceType === 'Phone'? 3 : 10,
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '50%' :  '60%') :  '80%') : '80%',
     },
     btn: {
-        marginLeft: 10,
-        marginTop: Platform.OS == "ios" ? ((deviceHeight == 812) ? 15 : 5) : 0,
-        width: '20%',
-        height: '100%'
+        marginTop: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  35 :  20) :  0) : 30,
+        width: Globals.DeviceType === 'Phone'? '20%' : '15%',
+        flexDirection: 'row',
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '50%' :  '60%') :  '60%') : '80%',
     },
     cancelTxt: {
         color: '#ffa507',
-        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.small) :  FontSizes.small) : FontSizes.large,
+        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.medium) :  FontSizes.medium) : FontSizes.large,
     },
     searchTxt: {
         color: '#fff',
@@ -85,7 +91,17 @@ export default headerStyle = StyleSheet.create({
         fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.small) :  FontSizes.small) : FontSizes.large,
     },
     searchIcn: {
-        marginTop: Platform.OS == "ios" ? ((deviceHeight == 812) ? 15 : 7) : 7,
-        marginLeft: 5
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        // marginLeft: Globals.DeviceType === 'Phone'? 5 : 41
     },
+    cancelIcon: {
+      width: Globals.DeviceType === 'Phone'? 15: 25,
+      height: Globals.DeviceType === 'Phone'? 15: 25,
+      alignSelf: 'center',
+      justifyContent: 'center',
+      alignItems: 'center',
+      // marginRight: Globals.DeviceType === 'Phone'? 10: 45,
+    }
 });

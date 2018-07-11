@@ -279,7 +279,7 @@ class Detail extends Component {
                   {
                     !this.state.openGame ?
                       <ImageBackground source={this.state.bgImages[categoryId]} style={{ flex: 1 }}>
-                        <ScrollView bounces={false} style={{}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
+                        <ScrollView bounces={false} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
                             <View style={DetailStyles.gameDetailView}>
 
                               <View style={DetailStyles.detailViewStyle}>
@@ -382,7 +382,7 @@ class Detail extends Component {
                                       <View style={[DetailStyles.gameDetailsViewPlayGameRight]}>
                                         <TouchableOpacity onPress={() => this.loadGame(game)} >
                                           <View style={DetailStyles.gamePlayGameView}>
-                                              <Text style={DetailStyles.gameDetailPlayGameTextStyle} > PLAY GAME </Text>
+                                              <Text style={DetailStyles.gameDetailPlayGameTextStyle} > PLAY NOW </Text>
                                           </View>
                                         </TouchableOpacity>
                                       </View>

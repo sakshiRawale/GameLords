@@ -5,6 +5,7 @@ import { Image, View, Text, TouchableOpacity, ScrollView, ImageBackground } from
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import FeatherIcon from 'react-native-vector-icons/dist/Feather';
 import MaterialIcon from 'react-native-vector-icons/dist/MaterialIcons';
+import Globals from  '../../constants/Globals';
 
 // Components
 
@@ -73,21 +74,21 @@ class SideBar extends Component {
 	    NavigationService.navigate("Accounts");
     }
 
-	renderIcon(icon, iconName) {
+	renderIcon(icon, iconName, open) {
 		switch (icon) {
 			case 'feather':
 				return (
-					<FeatherIcon name={iconName} size={24} style={{ backgroundColor: 'transparent' }} color="#fff" />
+					<FeatherIcon name={iconName} size={Globals.DeviceType === 'Phone'? 24 : 34} style={{ backgroundColor: 'transparent' }} color={ '#fff' } />
 				);
 				break;
 			case 'FA':
 				return (
-					<Icon name={iconName} size={24} style={{ backgroundColor: 'transparent' }} color="#fff" />
+					<Icon name={iconName} size={Globals.DeviceType === 'Phone'? 24 : 34} style={{ backgroundColor: 'transparent' }} color={'#fff' } />
 				);
 				break;
 			case 'material':
 				return (
-					<MaterialIcon name={iconName} size={24} style={{ backgroundColor: 'transparent' }} color="#fff" />
+					<MaterialIcon name={iconName} size={Globals.DeviceType === 'Phone'? 24 : 34} style={{ backgroundColor: 'transparent' }} color={open ? '#eaad43' : '#fff' } />
 				);
 				break;
 
@@ -102,7 +103,6 @@ class SideBar extends Component {
 		return (
 
 			<View style={sidebarStyles.drawerView}>
-				<ImageBackground source={background} style={{flex: 1}}>
 					<TouchableOpacity style={sidebarStyles.avtarStyle} onPress={() => this.openAccountsPage()}>
 						{this.state.profilePic !== this.state.newProfilePic ? <Image style={sidebarStyles.cover} source={{uri: this.state.profilePic, cache: 'reload'}} /> : null}
                     </TouchableOpacity>
@@ -118,44 +118,45 @@ class SideBar extends Component {
 								menuArray.map((menu, index) => {
 									const route = menu.route;
 									return (
-										<TouchableOpacity key={index} onPress={this.menuClicked.bind(this, route)}>
-											<View style={sidebarStyles.menuStyle} key={index}>
-												<View style={sidebarStyles.iconView}>
-													{
-														this.renderIcon(menu.icon, menu.iconName)
-													}
+										<View key={index}>
+											<TouchableOpacity key={index} onPress={this.menuClicked.bind(this, route)}>
+												<View style={sidebarStyles.menuStyle} key={index}>
+													<View style={sidebarStyles.iconView}>
+															{menu.menuName === 'Notifications' &&  this.state.showNotification ?
+																this.renderIcon(menu.icon, menu.iconName,open = true)
+																:
+																this.renderIcon(menu.icon, menu.iconName,open = false)
+															}
+													</View>
+													<View style={sidebarStyles.menuTextView}>
+														<Text style={[styles.avRegular, sidebarStyles.menuText,{color: this.state.showNotification && menu.menuName === 'Notifications' ? '#eaad43' : '#fff'}]}>
+															{menu.menuName}
+														</Text>
+														{menu.menuName === 'Notifications' ?
+														 <View style = {sidebarStyles.notificationContainer}>
+														 	<Icon name="angle-down" size={28} style={[sidebarStyles.notificationDownArow, {transform: [{ rotate: this.state.showNotification ? '180deg' : '0deg' }]}]} color="#fff" />
+														 </View>
+														 : null}
+													</View>
 												</View>
-												<View style={sidebarStyles.menuTextView}>
-													<Text style={[styles.avRegular, sidebarStyles.menuText]}>
-														{menu.menuName}
-													</Text>
-													{menu.menuName === 'Notifications' ?
-													 <View style = {sidebarStyles.notificationContainer}>
-													 	{/*<View style= {[sidebarStyles.notificationBadge]}>*/}
-													 		{/*<Text style = {sidebarStyles.notificationTxt}>1</Text>*/}
-														 {/*</View>*/}
-													 	<Icon name="angle-down" size={28} style={[sidebarStyles.notificationDownArow, {transform: [{ rotate: this.state.showNotification ? '180deg' : '0deg' }]}]} color="#fff" />
-													 </View>
-													 : null}
-												</View>
-											</View>
-                                            {menu.menuName === 'Notifications' ?
+											</TouchableOpacity>
+
+											{menu.menuName === 'Notifications' ?
 												this.state.showNotification ?
 													<View style={sidebarStyles.menuStyle} key={index + 2}>
-														{/*<Image style = {{marginLeft: 10, height: 35, width: 50}} source={thumbnail1}/>*/}
 														<Text style={[styles.avRegular, sidebarStyles.menuText, {marginLeft: 30, }]}>
-                                                            {"No Notifications"}
+															{"You have no notifications yet"}
 														</Text>
 													</View>
-                                                    : null
-                                            : null}
-										</TouchableOpacity>
+													: null
+											: null}
+										</View>
+
 									)
 								})
 							}
 						</ScrollView>
 					</View>
-				</ImageBackground>
 			</View>
 		);
 	}
