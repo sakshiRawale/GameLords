@@ -432,7 +432,7 @@ class Detail extends Component {
                                       {
                                         html5RelatedList.map((game, gameIndex) => {
                                         return (
-                                              <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} handleGame={this.handleGame} isSlider={true} />
+                                              <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} handleGame={this.handleGame} />
                                             )
                                         })
                                       }
@@ -447,8 +447,8 @@ class Detail extends Component {
                     :
                       <View style={{height: Globals.deviceHeight, width: Globals.deviceWidth, backgroundColor: 'black' }}>
                         <WebView
-                            source={{ html: "<object width='100%' height='100%' data=" + game.gameFile + "></object>" }}
-                            style={{width: Dimensions.get("window").width, height: Dimensions.get("window").height, backgroundColor: 'transparent' }}
+                            source={{ html: "<object width='100%' height='90%' data=" + game.gameFile + "></object>" }}
+                            style={{width: '100%', height: '100%', backgroundColor: 'transparent', paddingVertical: 200, paddingHorizontal: 15 }}
                         />
                       </View>
                     }

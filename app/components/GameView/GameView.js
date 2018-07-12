@@ -123,7 +123,6 @@ class GameView extends Component {
     render() {
         const {game, gameIndex} = this.props;
         return (
-            <View style={{paddingHorizontal: this.props.isSlider? deviceWidth / 90 : deviceWidth / 41 }}>
               <View style={[WelcomeStyle.imageThmbnailGames]} key={gameIndex}>
                 <View style={{flex: 3}}>
 
@@ -177,7 +176,6 @@ class GameView extends Component {
 
                 </View>
               </View>
-            </View>
 
         );
     }

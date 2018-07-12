@@ -25,6 +25,8 @@ import Search from '../components/Search/Search';
 // Other data/helper functions
 import MessageBar from '../components/Message/Message';
 import Globals from "../constants/Globals";
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
 
 class Category extends Component {
     constructor(props) {
@@ -114,11 +116,11 @@ class Category extends Component {
 
                       <View style={{ flex: 3, backgroundColor: 'black' }}>
 
-                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20 , borderColor: 'red', borderWidth: 1}}>
+                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20 , justifyContent: 'center'}}>
 
                         {html5CategoryList.map((game, gameIndex) => {
                             return (
-                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} isSlider={false} />
+                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
                                 )
                             })
                           }

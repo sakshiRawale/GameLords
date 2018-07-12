@@ -111,11 +111,11 @@ class SearchPage extends Component {
                         {((this.state.type == '' || this.state.type == "html5")  && (html5Search.length > 0 )) &&
                           <View style={{ flex: 3, backgroundColor: 'black',paddingHorizontal: Globals.DeviceType === 'Phone'? 15: 30 }}>
 
-                            <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', borderColor: 'red', borderWidth: 1}}>
+                            <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center'}}>
 
                             {html5Search.map((game, gameIndex) => {
                               return (
-                                    <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from = {'Search'} isSlider={false} />
+                                    <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from = {'Search'} />
                                   )
                               })
                             }
