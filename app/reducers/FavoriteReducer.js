@@ -11,18 +11,18 @@ export const FavoriteReducer = (state = initialState, action = {}) => {
         case action_types.GET_FAVOURITE_GAMES:
             return {
                 ...state,
-                games: action.data.data
+                games: action.data.data.filter(g => { return g.gameType === 'HTML5' })
             };
 
         case action_types.SET_FAVOURITE_GAME:
             return {
                 ...state,
-                games: action.data
+                games: action.data.filter(g => { return g.gameType === 'HTML5' })
             };
         case action_types.SET_LIKES_GAME:
             return {
                 ...state,
-                likeGames: action.data.data
+                likeGames: action.data.data.filter(g => { return g.gameType === 'HTML5' })
             };
         default:
             return state;

@@ -114,11 +114,11 @@ class Category extends Component {
 
                       <View style={{ flex: 3, backgroundColor: 'black' }}>
 
-                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20 }}>
+                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20 , borderColor: 'red', borderWidth: 1}}>
 
                         {html5CategoryList.map((game, gameIndex) => {
                             return (
-                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} for='forFavoriteCategorySearch' />
+                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} isSlider={false} />
                                 )
                             })
                           }

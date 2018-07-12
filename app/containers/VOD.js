@@ -214,7 +214,7 @@ class VOD extends Component {
                                                       {
                                                         games.map((game, gameIndex) => {
                                                           return (
-                                                              <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                                              <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} isSlider={true} />
                                                             )
                                                         })
                                                       }
@@ -239,7 +239,7 @@ class VOD extends Component {
                                  {
                                    favoriteGames.map((game, gameIndex) => {
                                      return (
-                                        <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                        <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} isSlider={true} />
                                         )
                                     })
                                   }

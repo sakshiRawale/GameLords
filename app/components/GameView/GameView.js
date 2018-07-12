@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
-import { Image, View, StatusBar, Linking, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, FlatList, TouchableOpacity } from "react-native";
+import {Dimensions, Image, View, StatusBar, Linking, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, FlatList, TouchableOpacity } from "react-native";
 import { Container, Content } from "native-base";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
@@ -27,6 +27,8 @@ import NavigationService from "../../utils/NavigationService";
 
 import Globals from  '../../constants/Globals';
 import DeviceType from '../../../App';
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
 
 class GameView extends Component {
     constructor(props) {
@@ -121,57 +123,59 @@ class GameView extends Component {
     render() {
         const {game, gameIndex} = this.props;
         return (
-            <View style={[WelcomeStyle.imageThmbnailGames,this.props.for === 'forFavoriteCategorySearch' ? WelcomeStyle.setPaddingFavoriteCategorySearch : WelcomeStyle.setPaddingSlider]} key={gameIndex}>
-              <View style={{flex: 3}}>
+            <View style={{paddingHorizontal: this.props.isSlider? deviceWidth / 90 : deviceWidth / 41 }}>
+              <View style={[WelcomeStyle.imageThmbnailGames]} key={gameIndex}>
+                <View style={{flex: 3}}>
 
-                  <View style={{height: '70%'}}>
-                    <View style={WelcomeStyle.gameImageView}>
-                      <TouchableOpacity onPress={() => this._openHTML5Game(game) } >
-                        <Image style={WelcomeStyle.imageGame} resizeMode="stretch" source={{uri: game.gameImage }} ></Image>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-
-                  <View style={WelcomeStyle.gameNameFavorite}>
-                    <View style={{width:"100%",flexDirection:"row"}}>
-                      <View style={{width: '80%',paddingHorizontal: 5}}>
+                    <View style={{height: '70%'}}>
+                      <View style={WelcomeStyle.gameImageView}>
                         <TouchableOpacity onPress={() => this._openHTML5Game(game) } >
-                          <Text style={WelcomeStyle.gameTitleText} numberOfLines={1}> {game.gameTitle.toUpperCase()} </Text>
-                        </TouchableOpacity>
-                      </View>
-                      <View style={{width:'20%'}}>
-                        <TouchableOpacity onPress={(e)=> this._handleFavoriteClicked(game,e)} >
-                          <Icon
-                          ref={game.gameId}
-                          name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
-                          size={ Globals.DeviceType === 'Phone'? 24 : 36 }
-                          style={WelcomeStyle.iconStyle,{zIndex:1}} color="#f4aa1c" />
+                          <Image style={WelcomeStyle.imageGame} resizeMode="stretch" source={{uri: game.gameImage }} ></Image>
                         </TouchableOpacity>
                       </View>
                     </View>
-                  </View>
 
-                  <View style={WelcomeStyle.gameRatingIcon}>
-                    <View style={{width:"100%",flexDirection:"row"}}>
-                      <View style={{width: '77%', paddingLeft: 10, flexDirection: 'row'}}>
-
-                        {
-                          [1,2,3,4,5].map((rate, index) => {
-                            return (
-                              <Icon key={index} name={game.userRating < rate ? 'star-o' : 'star'} size={ Globals.DeviceType === 'Phone'? 15 : 23 } color='#f4aa1c' style={{paddingHorizontal: 1.5 }}/>
-                            )
-                          })
-                        }
-
-                      </View>
-                      <View style={{width:'23%',alignItems: 'center'}}>
-                        <TouchableOpacity onPress={() => this._openHTML5Game(game) } >
-                          <Icon name='html5' size={ Globals.DeviceType === 'Phone'? 18 : 26 } color='#fff' />
-                        </TouchableOpacity>
+                    <View style={WelcomeStyle.gameNameFavorite}>
+                      <View style={{width:"100%",flexDirection:"row"}}>
+                        <View style={{width: '80%',paddingHorizontal: 5}}>
+                          <TouchableOpacity onPress={() => this._openHTML5Game(game) } >
+                            <Text style={WelcomeStyle.gameTitleText} numberOfLines={1}> {game.gameTitle.toUpperCase()} </Text>
+                          </TouchableOpacity>
+                        </View>
+                        <View style={{width:'20%'}}>
+                          <TouchableOpacity onPress={(e)=> this._handleFavoriteClicked(game,e)} >
+                            <Icon
+                            ref={game.gameId}
+                            name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
+                            size={ Globals.DeviceType === 'Phone'? 24 : 36 }
+                            style={WelcomeStyle.iconStyle,{zIndex:1}} color="#f4aa1c" />
+                          </TouchableOpacity>
+                        </View>
                       </View>
                     </View>
-                  </View>
 
+                    <View style={WelcomeStyle.gameRatingIcon}>
+                      <View style={{width:"100%",flexDirection:"row"}}>
+                        <View style={{width: '77%', paddingLeft: 10, flexDirection: 'row'}}>
+
+                          {
+                            [1,2,3,4,5].map((rate, index) => {
+                              return (
+                                <Icon key={index} name={game.userRating < rate ? 'star-o' : 'star'} size={ Globals.DeviceType === 'Phone'? 15 : 23 } color='#f4aa1c' style={{paddingHorizontal: 1.5 }}/>
+                              )
+                            })
+                          }
+
+                        </View>
+                        <View style={{width:'23%',alignItems: 'center'}}>
+                          <TouchableOpacity onPress={() => this._openHTML5Game(game) } >
+                            <Icon name='html5' size={ Globals.DeviceType === 'Phone'? 18 : 26 } color='#fff' />
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    </View>
+
+                </View>
               </View>
             </View>
 

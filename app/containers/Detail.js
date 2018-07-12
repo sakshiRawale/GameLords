@@ -432,7 +432,7 @@ class Detail extends Component {
                                       {
                                         html5RelatedList.map((game, gameIndex) => {
                                         return (
-                                              <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} handleGame={this.handleGame} />
+                                              <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} handleGame={this.handleGame} isSlider={true} />
                                             )
                                         })
                                       }
