@@ -54,6 +54,26 @@ export default detailStyle = StyleSheet.create({
     },
     detailViewStyle: {
       paddingBottom: 10,
+      backgroundColor: 'rgba(0,0,0, 0.8)',
+      paddingTop: Globals.DeviceType === 'Phone'? 15 : 25,
+    },
+    shadowViewTop:{
+      height: Globals.DeviceType === 'Phone'? 5 : 10,
+      shadowOffset: { width: 0, height: 5, },
+      // shadowColor: '#fff',
+      backgroundColor: '#000000',
+      shadowColor: '#000000',
+      shadowOpacity: 1,
+          elevation: 1,
+    },
+    shadowViewBottom:{
+      height: Globals.DeviceType === 'Phone'? 5 : 10,
+      shadowOffset: { width: 0, height: -5, },
+      // shadowColor: '#fff',
+      backgroundColor: '#000000',
+      shadowColor: '#000000',
+      shadowOpacity: 1,
+          elevation: 1,
     },
     gameTextStyle: {
       color: '#FFFFFF',
@@ -149,7 +169,7 @@ export default detailStyle = StyleSheet.create({
     gameDetailView: {
       flex: 3,
       width: '100%',
-      backgroundColor: 'rgba(0,0,0, 0.8)',
-      paddingTop: Globals.DeviceType === 'Phone'? 15 : 25
-    }
+      // backgroundColor: 'rgba(0,0,0, 0.8)',
+      // paddingTop: Globals.DeviceType === 'Phone'? 15 : 25,
+    },
 });

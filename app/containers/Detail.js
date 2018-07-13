@@ -279,9 +279,11 @@ class Detail extends Component {
                   {
                     !this.state.openGame ?
                         <ScrollView bounces={false} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
-                        <ImageBackground source={this.state.bgImages[categoryId]} style={{ flex: 1 }}>
                             <View style={DetailStyles.gameDetailView}>
 
+                            <ImageBackground source={this.state.bgImages[categoryId]} style={{ flex: 1 }}>
+
+                            <View style={DetailStyles.shadowViewTop} />
                               <View style={DetailStyles.detailViewStyle}>
                                   <View style={{alignSelf: 'center'}}>
                                     <View style={DetailStyles.gameImage}>
@@ -403,6 +405,10 @@ class Detail extends Component {
 
                                   </View>
                               </View>
+                            <View style={DetailStyles.shadowViewBottom} />
+
+
+                            </ImageBackground>
 
 
                               <View style={{backgroundColor: '#000000', paddingVertical: 20, paddingHorizontal: Globals.DeviceType === 'Phone'? 15 : 30}}>
@@ -440,7 +446,6 @@ class Detail extends Component {
                                   </View>
                                 </View>
                               </View>
-                              </ImageBackground>
 
                             <Footer />
                         </ScrollView>
