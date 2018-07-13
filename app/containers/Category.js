@@ -116,7 +116,7 @@ class Category extends Component {
 
                       <View style={{ flex: 3, backgroundColor: 'black' }}>
 
-                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20 , justifyContent: 'center'}}>
+                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20 , justifyContent: 'space-around'}}>
 
                         {html5CategoryList.map((game, gameIndex) => {
                             return (
