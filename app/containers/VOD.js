@@ -35,6 +35,7 @@ import CategoryList from '../components/CategoryList/CategoryList';
 import Globals from  '../constants/Globals';
 import DeviceType from '../../App';
 import favoriteStyles from "../style/favoriteStyle";
+import SplashScreen from 'react-native-splash-screen';
 
 class VOD extends Component {
     constructor(props) {
@@ -96,6 +97,7 @@ class VOD extends Component {
         this.props.show();
         setTimeout(() => {
             this.props.hide();
+            SplashScreen.hide();
         }, 1500);
     }
 

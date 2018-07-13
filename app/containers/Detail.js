@@ -442,8 +442,6 @@ class Detail extends Component {
                     :
                       <View style={{height: Globals.deviceHeight, width: Globals.deviceWidth, backgroundColor: 'black' }}>
                         <WebView
-                            javaScriptEnabled={true}
-                            domStorageEnabled={true}
                             source={{ html: "<object width='100%' height='100%' data=" + game.gameFile + "></object>" }}
                             style={{width: Dimensions.get("window").width, height: Dimensions.get("window").height, backgroundColor: 'transparent' }}
                         />

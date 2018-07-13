@@ -21,6 +21,7 @@ import { show, hide } from '../actions/ActivityIndicatorActions';
 import { loginLogo, background, logo } from "../assets/Images";
 import { console_log } from "../utils/helper";
 import * as vars from '../constants/api';
+import SplashScreen from 'react-native-splash-screen';
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -30,8 +31,8 @@ class Login extends Component {
         };
     }
 
-    componentWillMount() {
-
+    componentDidMount() {
+        SplashScreen.hide();
     }
 
     getAccessToken = () => {

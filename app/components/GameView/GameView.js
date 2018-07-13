@@ -145,7 +145,7 @@ class GameView extends Component {
                           ref={game.gameId}
                           name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
                           size={ Globals.DeviceType === 'Phone'? 24 : 36 }
-                          style={[WelcomeStyle.iconStyle,{zIndex:1}]} color="#f4aa1c" />
+                          style={WelcomeStyle.iconStyle,{zIndex:1}} color="#f4aa1c" />
                         </TouchableOpacity>
                       </View>
                     </View>
