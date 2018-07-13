@@ -13,22 +13,22 @@ export const GamesReducer = (state = initialState, action = {}) => {
         case GET_GAMES:
             return {
                 ...state,
-                games: action.data
+                games: action.data.filter(g => { return g.gameType === 'HTML5' })
             };
         case GET_GAME_DETAIL:
             return {
                 ...state,
-                gameDetail: action.data
+                gameDetail: action.data.filter(g => { return g.gameType === 'HTML5' })
             };
         case GET_SIMILAR_GAMES:
             return {
                 ...state,
-                similarGames: action.data
+                similarGames: action.data.filter(g => { return g.gameType === 'HTML5' })
             };
         case GET_SEARCHED_GAMES:
             return {
                 ...state,
-                searchedGames: action.data
+                searchedGames: action.data.filter(g => { return g.gameType === 'HTML5' })
             };
         default:
             return state;

@@ -13,7 +13,7 @@ export default headerStyle = StyleSheet.create({
     },
     title: {
         color: 'white',
-        fontSize: FontSizes.large,
+        fontSize: Globals.DeviceType === 'Phone'? FontSizes.large : FontSizes.xLarge,
         height: '100%',
         textAlign: 'center',
         textAlignVertical: 'center',
@@ -63,12 +63,12 @@ export default headerStyle = StyleSheet.create({
         borderColor: '#ffa507',
         borderWidth: 1,
         borderRadius: Globals.DeviceType === 'Phone'? 3 : 6,
-        width: Globals.DeviceType === 'Phone'? '80%' : '85%',
+        width: Globals.DeviceType === 'Phone'? '83%' : '87%',
         alignSelf: 'center',
         justifyContent: 'center',
         alignItems: 'center',
         paddingHorizontal: Globals.DeviceType === 'Phone'? 3 : 10,
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '50%' :  '60%') :  '80%') : '80%',
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '50%' :  '60%') :  '80%') : '90%',
     },
     btn: {
         marginTop: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  35 :  20) :  0) : 30,

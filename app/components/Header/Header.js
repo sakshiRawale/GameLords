@@ -57,13 +57,13 @@ class HeaderComponent extends Component {
         if (isDrawer) {
             return (
                 <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => {NavigationService.navigate("DrawerOpen")}}>
-                    <FeatherIcon name="menu" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  26) :  26) : 35} style={{ backgroundColor: 'transparent', marginLeft: 10 }} color="#f6a50e" />
+                    <FeatherIcon name="menu" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  26) :  26) : 35} style={{ backgroundColor: 'transparent', marginLeft: Globals.DeviceType === 'Phone'? 15 : 25 }} color="#f6a50e" />
                 </TouchableHighlight>
             )
         } else {
             return (
                 <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => NavigationService.goBack()}>
-                    <Icon name="angle-left" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  26) :  26) : 35} style={{ backgroundColor: 'transparent', marginLeft: 10 }} color="#f6a50e" />
+                    <Icon name="angle-left" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  26) :  26) : 35} style={{ backgroundColor: 'transparent', marginLeft: Globals.DeviceType === 'Phone'? 15 : 25 }} color="#f6a50e" />
                 </TouchableHighlight>
             )
         }
@@ -115,7 +115,7 @@ class HeaderComponent extends Component {
                         {
                             isSearch ?
                                 <TouchableHighlight onPress={this.searchOpen.bind(this)} underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} >
-                                    <FeatherIcon style = {{ marginLeft: Globals.DeviceType === 'Phone'? 10: 50}} name="search" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  24) :  24) : 35} color="#f6a50e" />
+                                    <FeatherIcon style = {{ marginLeft: Globals.DeviceType === 'Phone'? 10: 40}} name="search" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  24) :  24) : 35} color="#f6a50e" />
                                 </TouchableHighlight>
                                 : <TouchableOpacity  style={[headerStyle.iconsView]} onPress={() => {rightClick()}}>
                                     <Text style={[headerStyle.rightText]}>{rightLabel}</Text>

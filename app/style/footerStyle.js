@@ -9,7 +9,7 @@ export default footerStyle = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderTopWidth: 1,
-        borderTopColor: '#7b7b7b',
+        borderTopColor: '#f4aa1c',
         paddingTop: 10,
         paddingBottom: 10,
     },

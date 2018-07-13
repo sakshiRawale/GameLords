@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -64,7 +63,11 @@
 		DBC1A952B7D6495099B5DBC9 /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A472DA0F7A0A4542B0B53FB7 /* Roboto.ttf */; };
 		E5DA1B06A23C4CA88E653F83 /* libInAppUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0748E3F4EB164EBBBFE3E25F /* libInAppUtils.a */; };
 		F059AF474C56429CBFB811D5 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E63E826985A482B9546DC84 /* Foundation.ttf */; };
+<<<<<<< HEAD
 		FF9281A1419445EEA36ADF24 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 247BEBB85F0E4A559D103A9E /* libSplashScreen.a */; };
+=======
+		620A1D8C02C34F2A88EEC7B2 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA394977653485AACAEAAD8 /* libSplashScreen.a */; };
+>>>>>>> 9ead07d93fd171835961d0b0f2a6f0c3b64d254a
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -497,6 +500,8 @@
 		EB159272771E4757BB57B2EA /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		EBBE9EF98BFB454C848DAD6C /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		FFF8F83F475A48218982DBC4 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/native-base/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		2ADF782E360742479DDF2A29 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; name = "SplashScreen.xcodeproj"; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		9AA394977653485AACAEAAD8 /* libSplashScreen.a */ = {isa = PBXFileReference; name = "libSplashScreen.a"; path = "libSplashScreen.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -534,7 +539,11 @@
 				936000103BA144EC99318263 /* libReactNativePayments.a in Frameworks */,
 				060D6D134D67412880A4268A /* libRNVectorIcons.a in Frameworks */,
 				C61BE7206007479495E57171 /* libRCTVideo.a in Frameworks */,
+<<<<<<< HEAD
 				FF9281A1419445EEA36ADF24 /* libSplashScreen.a in Frameworks */,
+=======
+				620A1D8C02C34F2A88EEC7B2 /* libSplashScreen.a in Frameworks */,
+>>>>>>> 9ead07d93fd171835961d0b0f2a6f0c3b64d254a
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -753,7 +762,11 @@
 				48AC7029BDE241A28BA71AB6 /* ReactNativePayments.xcodeproj */,
 				3A069809ECF84FB7B3F9101C /* RNVectorIcons.xcodeproj */,
 				9C7C9E49971948B1A849E893 /* RCTVideo.xcodeproj */,
+<<<<<<< HEAD
 				EB159272771E4757BB57B2EA /* SplashScreen.xcodeproj */,
+=======
+				2ADF782E360742479DDF2A29 /* SplashScreen.xcodeproj */,
+>>>>>>> 9ead07d93fd171835961d0b0f2a6f0c3b64d254a
 			);
 			name = Libraries;
 			sourceTree = "<group>";

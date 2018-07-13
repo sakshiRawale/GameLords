@@ -17,7 +17,7 @@ export default categoryStyle = StyleSheet.create({
       color:"white",
       borderBottomColor:"#f4aa1c",
       borderBottomWidth:1,
-      width: '88%',
+      width: '100%',
       marginTop: 30
     },
     transformView:{

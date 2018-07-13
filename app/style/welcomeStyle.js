@@ -76,6 +76,8 @@ export default liveChannelStyle = StyleSheet.create({
         alignItems: 'stretch',
         borderColor:'#555',
         borderWidth: 2,
+        // marginHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 37 :  deviceWidth / 44) :  deviceWidth / 44) : deviceWidth / 48,
+        marginHorizontal: deviceWidth / 90, 
     },
     setPaddingFavoriteCategorySearch: {
       marginHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  8.5 :  deviceWidth / 45 ) : deviceWidth / 45 ) : 15,
@@ -85,7 +87,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
     imageThmbnailCategory: {
         height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 6.1 :  deviceHeight / 4.5) :  deviceHeight / 4.5) : deviceHeight / 5.2, //deviceHeight/4.5, // Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.55 :  deviceWidth / 1.35) :  deviceWidth / 1.35) : deviceWidth / 2.2, //deviceWidth/1.35
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.6 :  deviceWidth / 1.4) :  deviceWidth / 1.4) : deviceWidth / 2.25, //deviceWidth/1.35
         backgroundColor: 'transparent',
         marginBottom: Globals.DeviceType === 'Phone'? 40 : 60,
         flexDirection: 'row',
@@ -111,7 +113,7 @@ export default liveChannelStyle = StyleSheet.create({
       height: '15%',
     },
     imageBackgroundCategory: {
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.7 :  deviceWidth / 1.5) :  deviceWidth / 1.5) : deviceWidth / 2.4, //deviceWidth/1.5,
+        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.7 :  deviceWidth / 1.5) :  deviceWidth / 1.5) : deviceWidth / 2.4,
         height: '100%'
     },
     bannerText: {
