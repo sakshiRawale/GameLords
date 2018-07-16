@@ -25,7 +25,7 @@ export default StyleSheet.create({
       alignItems:"center",
       backgroundColor:"#f4aa1c",
       height:"100%",
-      paddingRight: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  12 :  15) :  15) : 20
+      paddingRight: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  12 :  12) :  15) : 20
     },
     iconStyle: {
       backgroundColor: 'transparent',
@@ -41,7 +41,7 @@ export default StyleSheet.create({
       width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  '15%' :  '15%') :  '15%') : '10%',
       backgroundColor:"#f4aa1c",
       // backgroundColor:"red",
-      marginLeft: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  -12 :  -14) :  -14) : -18, //Platform.OS == "ios" ? -18 :  -27,
+      marginLeft: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  -12 :  -12) :  -14) : -18, //Platform.OS == "ios" ? -18 :  -27,
       height: '100%',
     },
     noSearchText: {
