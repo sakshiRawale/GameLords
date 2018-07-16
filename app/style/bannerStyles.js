@@ -6,7 +6,9 @@ import Globals from '../constants/Globals';
 
 export default bannerStyles = StyleSheet.create({
     indicatorViewPage: {
+        flex: 1,
         width: deviceWidth,
+        // borderColor: 'red', borderWidth: 2
         // height: deviceHeight / 3,
     },
     bannerImage: {
