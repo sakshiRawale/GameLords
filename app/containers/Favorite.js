@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dimensions,View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
+import {Platform, Dimensions,View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import { Container } from "native-base";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -25,6 +25,8 @@ import Search from '../components/Search/Search';
 // Other data/helper functions
 import MessageBar from '../components/Message/Message';
 import Globals from "../constants/Globals";
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
 
 class Favorite extends Component {
     constructor(props) {
@@ -101,7 +103,7 @@ class Favorite extends Component {
                   <ScrollView style={{marginTop: 15}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
                     <View style={{ flex: 3, backgroundColor: 'black' }}>
 
-                      <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? 15 : 35, justifyContent: 'center' }}>
+                      <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 14 :  deviceWidth / 15) :  deviceWidth / 15) : deviceWidth / 15 }}>
                         {favoriteGames.map((game, gameIndex) => {
                           return (
                                 <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />

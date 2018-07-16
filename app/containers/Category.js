@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dimensions,View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
+import {Platform, Dimensions,View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import { Container } from "native-base";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -116,7 +116,7 @@ class Category extends Component {
 
                       <View style={{ flex: 3, backgroundColor: 'black' }}>
 
-                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20 , justifyContent: 'space-around'}}>
+                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20, paddingHorizontal:  Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 28 :  deviceWidth / 48) :  deviceWidth / 48) : deviceWidth / 34 }}>
 
                         {html5CategoryList.map((game, gameIndex) => {
                             return (

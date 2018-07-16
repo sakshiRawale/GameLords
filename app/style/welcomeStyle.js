@@ -76,8 +76,9 @@ export default liveChannelStyle = StyleSheet.create({
         alignItems: 'stretch',
         borderColor:'#555',
         borderWidth: 2,
+        justifyContent: 'center',
         // marginHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 37 :  deviceWidth / 44) :  deviceWidth / 44) : deviceWidth / 48,
-        marginHorizontal: deviceWidth / 90, 
+        marginHorizontal: deviceWidth / 90,
     },
     setPaddingFavoriteCategorySearch: {
       marginHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  8.5 :  deviceWidth / 45 ) : deviceWidth / 45 ) : 15,
