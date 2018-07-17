@@ -41,7 +41,6 @@ class Login extends Component {
             this.props.show();
             axios.get(url)
                 .then(res => {
-                  console.log("here after then");
                     if (res.data.success === true) {
                         this.props.checkAccess(res.data.data.token);
                         AsyncStorage.setItem('@AccessToken:key', res.data.data.token);
