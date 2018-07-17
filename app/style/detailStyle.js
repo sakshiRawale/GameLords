@@ -23,7 +23,7 @@ export default detailStyle = StyleSheet.create({
     transformView:{
       flexDirection: 'row',
       backgroundColor: '#f4aa1c',
-      paddingHorizontal: Globals.DeviceType === 'Phone'? 12 : 20
+      paddingHorizontal: Globals.DeviceType === 'Phone'? 15 : 20
     },
     iconStyle: {
       backgroundColor: 'transparent',
@@ -37,7 +37,7 @@ export default detailStyle = StyleSheet.create({
     },
     viewAllStyle: {
       transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '135deg'}],
-      width: Globals.DeviceType === 'Phone'? '15%' : '10%',
+      width: Globals.DeviceType === 'Phone'? '18%' : '10%',
       backgroundColor:"#f4aa1c",
       // backgroundColor:"red",
       marginLeft: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  -12 :  -12) :  -14) : -18, //Platform.OS == "ios" ? -18 :  -27,

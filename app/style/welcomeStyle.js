@@ -76,8 +76,9 @@ export default liveChannelStyle = StyleSheet.create({
         alignItems: 'stretch',
         borderColor:'#555',
         borderWidth: 2,
+        justifyContent: 'center',
         // marginHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 37 :  deviceWidth / 44) :  deviceWidth / 44) : deviceWidth / 48,
-        marginHorizontal: deviceWidth / 90, 
+        marginHorizontal: deviceWidth / 90,
     },
     setPaddingFavoriteCategorySearch: {
       marginHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  8.5 :  deviceWidth / 45 ) : deviceWidth / 45 ) : 15,
@@ -162,7 +163,7 @@ export default liveChannelStyle = StyleSheet.create({
     },
     viewAllStyle: {
       transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '135deg'}],
-      width: Globals.DeviceType === 'Phone'? '15%' : '10%',
+      width: Globals.DeviceType === 'Phone'? '18%' : '10%',
       backgroundColor:"#f4aa1c",
       // backgroundColor:"red",
       marginLeft: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  -12 :  -12) :  -14) : -18, //Platform.OS == "ios" ? -18 :  -27,
