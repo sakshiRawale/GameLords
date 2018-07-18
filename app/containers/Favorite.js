@@ -115,8 +115,8 @@ class Favorite extends Component {
                               <View>
                                 <Image source={require('../assets/images/html5.png')} style={favoriteStyles.html5iconStyle}/>
                               </View>
-                              <View style={{paddingVertical: 30}}>
-                                <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle,{color: '#fff', marginTop: 20, alignSelf: 'center'}]}>No Favorite Game Yet</Text>
+                              <View style={{paddingVertical: 10}}>
+                                <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle,{color: '#fff', marginTop: 5, alignSelf: 'center'}]}>No Favorite Game Yet</Text>
                               </View>
 
                               <View>
