@@ -76,8 +76,10 @@ export default sidebarStyles = StyleSheet.create({
     },
     avtarStyle: {
         marginTop: 50,
-        width:  Globals.DeviceType === 'Phone'? deviceWidth / 2.9 : deviceWidth / 3.6,
-        height:  Globals.DeviceType === 'Phone'? deviceWidth / 2.9 : deviceWidth / 3.6,
+        width: deviceWidth / 2.9,
+        height: deviceWidth / 2.9,
+        // width:  Globals.DeviceType === 'Phone'? deviceWidth / 2.9 : deviceWidth / 3.6,
+        // height:  Globals.DeviceType === 'Phone'? deviceWidth / 2.9 : deviceWidth / 3.6,
         borderWidth: 3,
         borderColor: "#ffffff",
         borderRadius: deviceWidth / 5.8,

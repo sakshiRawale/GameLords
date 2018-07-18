@@ -22,3 +22,4 @@ export const rts = require('./images/backgrounds/rts.jpg');
 export const sports = require('./images/backgrounds/sports.jpg');
 export const utilities = require('./images/backgrounds/utilities.jpg');
 export const virtualReality = require('./images/backgrounds/virtual-reality.jpg');
+export const html5 = require('./images/html5.png');

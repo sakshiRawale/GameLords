@@ -11,6 +11,8 @@ import Footer from '../components/Footer/Footer';
 import Loader from '../components/Loader/Loader';
 import GameView from '../components/GameView/GameView';
 
+import * as Images from "../assets/Images";
+
 // Styles
 import { styles } from "../style/appStyles";
 import favoriteStyles from "../style/favoriteStyle";
@@ -113,7 +115,7 @@ class Favorite extends Component {
                         {(favoriteGames.length <= 0 ) &&
                             <View style = {{alignItems : 'center', flex: 4,paddingTop: 30}}>
                               <View>
-                                <Image source={require('../assets/images/html5.png')} style={favoriteStyles.html5iconStyle}/>
+                                <Image source={Images.html5} style={favoriteStyles.html5iconStyle}/>
                               </View>
                               <View style={{paddingVertical: 10}}>
                                 <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle,{color: '#fff', marginTop: 5, alignSelf: 'center'}]}>No Favorite Game Yet</Text>
