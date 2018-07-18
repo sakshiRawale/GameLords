@@ -115,7 +115,7 @@ class Favorite extends Component {
                         {(favoriteGames.length <= 0 ) &&
                             <View style = {{alignItems : 'center', flex: 4,paddingTop: 30}}>
                               <View>
-                                <Image source={Images.html5} style={favoriteStyles.html5iconStyle}/>
+                                <Icon name={'html5'} size={ Globals.DeviceType === 'Phone'? 50 : 80 } style={favoriteStyles.html5iconStyle} color='#f2a11b' />
                               </View>
                               <View style={{paddingVertical: 10}}>
                                 <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle,{color: '#fff', marginTop: 5, alignSelf: 'center'}]}>No Favorite Game Yet</Text>
