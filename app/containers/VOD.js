@@ -314,7 +314,7 @@ class VOD extends Component {
 
                               <View style={VODStyle.html5FavoriteViewLeft}>
                                 <View style={{paddingRight: Globals.DeviceType === 'Phone'? 5 : 10}}>
-                                  <Icon name={'html5'} size={ Globals.DeviceType === 'Phone'? 30 : 80 } style={favoriteStyles.html5iconStyle} color='#f2a11b' />
+                                  <Icon name={'html5'} size={ Globals.DeviceType === 'Phone'? 30 : 45 } style={favoriteStyles.html5iconStyle} color='#f2a11b' />
                                 </View>
                                 <View>
                                   <Text style={[styles.avRegular, VODStyle.allCategory]}>
