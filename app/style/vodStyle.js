@@ -124,11 +124,20 @@ export default vodStyle = StyleSheet.create({
       height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  20 :  15) :  15) : 30,
     },
     html5FavoriteView: {
+      flex: 2,
       flexDirection: 'row',
-      paddingVertical: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  20 :  20) :  20) : 30,
-      paddingHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  20 :  20) :  20) : 30,
-      justifyContent: 'space-between',
-      backgroundColor: 'black',
+      paddingHorizontal: Globals.DeviceType === 'Phone'? 15 : 30,
+      paddingVertical: Globals.DeviceType === 'Phone'? 20 : 30,
+    },
+    html5FavoriteViewLeft: {
+      width: '50%',
+      flexDirection: 'row',
       alignItems: 'center'
+    },
+    html5FavoriteViewRight: {
+      width: '50%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'flex-end'
     }
 });

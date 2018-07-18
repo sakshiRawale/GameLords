@@ -254,7 +254,7 @@ class VOD extends Component {
                        {(favoriteGames.length <= 0 ) &&
                            <View style = {{alignItems : 'center', flex: 4,paddingTop: 30}}>
                              <View>
-                                <Icon name={'html5'} size={ Globals.DeviceType === 'Phone'? 50 : 80 } style={favoriteStyles.html5iconStyle} color='#f2a11b' />
+                               <Image source={require('../assets/images/html5.png')} style={favoriteStyles.html5iconStyle}/>
                              </View>
                              <View style={{paddingVertical: 10}}>
                                <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle,{color: '#fff', marginTop: 5, alignSelf: 'center'}]}>No Favorite Game Yet</Text>
@@ -310,23 +310,32 @@ class VOD extends Component {
                             <Banner openBannerHTML5Game={this._openBannerHTML5Game}/>
                           </View>
 
-                          <View>
-                            <View style={VODStyle.html5FavoriteView}>
-                              <View style={{flexDirection: 'row', justifyContent: 'space-between' }}>
-                                  <Image source={require('../assets/images/html5.png')} style={VODStyle.html5iconStyle}/>
-                                  <Text> {'  '} </Text>
+                          <View style={VODStyle.html5FavoriteView}>
+
+                              <View style={VODStyle.html5FavoriteViewLeft}>
+                                <View style={{paddingRight: Globals.DeviceType === 'Phone'? 5 : 10}}>
+                                  <Icon name={'html5'} size={ Globals.DeviceType === 'Phone'? 30 : 80 } style={favoriteStyles.html5iconStyle} color='#f2a11b' />
+                                </View>
+                                <View>
                                   <Text style={[styles.avRegular, VODStyle.allCategory]}>
                                       HTML5 GAMES
                                   </Text>
+                                </View>
                               </View>
-                              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+
+                              <View style={VODStyle.html5FavoriteViewRight}>
+                                <View style={{paddingRight: Globals.DeviceType === 'Phone'? 5 : 10}}>
                                   <Text style={[styles.avRegular, VODStyle.favoriteSwitchText]}>
                                       Favorites
                                   </Text>
+                                </View>
+                                <View>
                                   <Switch style={{ transform: [{ scaleX: .85 }, { scaleY: .75 }] }} value={this.state.favoriteSwitch} onValueChange={this.switchFavorite} />
+                                </View>
                               </View>
-                            </View>
+
                           </View>
+
                           <View style={{paddingHorizontal:  Globals.DeviceType === 'Phone'? 15 : 30}}>
                             { this.state.dataLoad ? this.LoadHTMLGames() : null}
                           </View>
