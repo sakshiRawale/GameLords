@@ -71,7 +71,7 @@ export default liveChannelStyle = StyleSheet.create({
         width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 2.5 :  deviceWidth / 2.45) :  deviceWidth / 2.45) : deviceWidth / 3.8,
         height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4 :  deviceHeight / 3.2) :  deviceHeight / 3.2) : deviceHeight / 3.6,
         backgroundColor: 'transparent',
-        marginVertical: Globals.DeviceType === 'Phone'? 20 : 25,
+        marginVertical: Globals.DeviceType === 'Phone'? 15 : 25,
         flexDirection: 'row',
         alignItems: 'stretch',
         borderColor:'#555',

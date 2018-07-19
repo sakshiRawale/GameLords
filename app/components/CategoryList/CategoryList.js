@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Image, View, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, TouchableOpacity } from "react-native";
+import { styles } from "../../style/appStyles";
 
 import WelcomeStyle from "../../style/welcomeStyle";
 
