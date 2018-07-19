@@ -3,15 +3,12 @@ package com.gamelords;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.brentvatne.react.ReactVideoPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
-import com.reactnativepayments.ReactNativePaymentsPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
-import com.idehub.Billing.InAppBillingBridgePackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -32,15 +29,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ReactVideoPackage(),
             new VectorIconsPackage(),
             new SplashScreenReactPackage(),
-            new ReactNativePaymentsPackage(),
             new OrientationPackage(),
             new LinearGradientPackage(),
             new ImagePickerPackage(),
-            new RNDeviceInfo(),
-            new InAppBillingBridgePackage()
+            new RNDeviceInfo()
       );
     }
 
