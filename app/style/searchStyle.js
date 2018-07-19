@@ -8,14 +8,12 @@ export default StyleSheet.create({
     content: {
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'black'
     },
 
     gameListBox: {
       height: Globals.DeviceType === 'Phone'? 42 : 62,
       flexDirection: 'row',
       alignItems: 'center',
-      color:"white",
       borderBottomColor:"#f4aa1c",
       borderBottomWidth:1,
       // width: '88%',

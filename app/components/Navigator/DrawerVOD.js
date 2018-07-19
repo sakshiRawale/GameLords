@@ -27,7 +27,7 @@ const DrawerVOD = DrawerNavigator(
             activeTintColor: "#e91e63",
         },
         contentComponent: SideBar,
-        drawerWidth: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.4:  deviceWidth / 1.4) :  deviceWidth / 2.5) : deviceWidth / 1.8,
+        drawerWidth: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.4:  deviceWidth / 1.4) :  deviceWidth / 1.4) : deviceWidth / 1.8,
     }
 );
 

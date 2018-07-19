@@ -111,7 +111,7 @@ class SearchPage extends Component {
                         {((this.state.type == '' || this.state.type == "html5")  && (html5Search.length > 0 )) &&
                           <View style={{ flex: 3, backgroundColor: 'black',paddingHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 14 :  deviceWidth / 15) :  deviceWidth / 15) : deviceWidth / 15 }}>
 
-                            <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', justifyContent: ''}}>
+                            <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap'}}>
 
                             {html5Search.map((game, gameIndex) => {
                               return (
