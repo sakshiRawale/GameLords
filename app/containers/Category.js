@@ -106,7 +106,7 @@ class Category extends Component {
                           <View style={{flexDirection: 'row', width: '50%', height: '100%'}}>
                              <View style={CategoryStyles.transformView}>
                                <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={CategoryStyles.iconStyle} color='#423620' />
-                               <Text numberOfLines={1} style={CategoryStyles.headingText}>
+                               <Text numberOfLines={1} style={[styles.avRegular,CategoryStyles.headingText]}>
                                    {category.categoryName.toUpperCase()}
                                </Text>
                              </View>

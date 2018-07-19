@@ -16,7 +16,7 @@ class CategoryList extends Component {
             <TouchableOpacity onPress={() => this.props.viewCategoryGames(category)} >
                 <ImageBackground style={WelcomeStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
                 </ImageBackground>
-                <Text style={WelcomeStyle.categoryNameText}>{category.categoryName}</Text>
+                <Text style={[styles.avRegular, WelcomeStyle.categoryNameText]}>{category.categoryName}</Text>
             </TouchableOpacity>
           </View>
 

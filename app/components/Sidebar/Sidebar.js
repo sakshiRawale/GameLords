@@ -107,7 +107,7 @@ class SideBar extends Component {
 						{this.state.profilePic !== this.state.newProfilePic ? <Image style={sidebarStyles.cover} source={{uri: this.state.profilePic, cache: 'reload'}} /> : null}
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.openAccountsPage()}>
-                        <Text style={sidebarStyles.userName}>
+                        <Text style={[styles.avRegular,sidebarStyles.userName]}>
                             {this.props.account.user.name}
                         </Text>
                     </TouchableOpacity>

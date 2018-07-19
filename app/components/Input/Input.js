@@ -18,7 +18,7 @@ export default class Input extends React.Component {
                         <Icon style={styles.icon} name={this.props.icon} />
                         : null
                 }
-                <Text style={styles.errorText}>{this.props.errorText}</Text>
+                <Text style={[styles.avRegular,styles.errorText]}>{this.props.errorText}</Text>
                 <TextInput
                     style={[styles.input,this.props.style]}
                     placeholder={this.props.placeholder}
@@ -36,4 +36,3 @@ export default class Input extends React.Component {
         )
     }
 }
-

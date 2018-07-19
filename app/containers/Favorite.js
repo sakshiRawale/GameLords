@@ -133,7 +133,7 @@ class Favorite extends Component {
                               <View style={{paddingVertical: 40}}>
                                 <TouchableOpacity onPress={() => this.discoverClick()} >
                                   <View style={favoriteStyles.discoverButton}>
-                                      <Text style={favoriteStyles.discoverButtonText} > DISCOVER </Text>
+                                      <Text style={[styles.avRegular, favoriteStyles.discoverButtonText]} > DISCOVER </Text>
                                   </View>
                                 </TouchableOpacity>
                               </View>

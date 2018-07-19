@@ -139,9 +139,6 @@ class VOD extends Component {
 
     _openBannerHTML5Game = () =>{
       let game = this.props.games.games.filter(g => { return g.gameId === 34 && g.gameType === 'HTML5'});
-      console.log('aa call thai che');
-      // console.log(this.props);
-      console.log(game);
       NavigationService.navigate('Detail',{game: game[0]});
     }
 
@@ -191,7 +188,7 @@ class VOD extends Component {
                                                     <View style={{flexDirection: 'row', width: '50%', height: '100%'}}>
                                                       <View style={WelcomeStyle.transformView}>
                                                         <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={WelcomeStyle.iconStyle} color='#423620' />
-                                                        <Text numberOfLines={1} style={WelcomeStyle.headingText}>
+                                                        <Text numberOfLines={1} style={[styles.avRegular,WelcomeStyle.headingText]}>
                                                             {category.categoryName.toUpperCase()}
                                                         </Text>
                                                       </View>
@@ -272,7 +269,7 @@ class VOD extends Component {
                              <View style={{paddingVertical: 40}}>
                                <TouchableOpacity onPress={() => this.discoverClick()} >
                                  <View style={favoriteStyles.discoverButton}>
-                                     <Text style={favoriteStyles.discoverButtonText} > DISCOVER </Text>
+                                     <Text style={[styles.avRegular,favoriteStyles.discoverButtonText]} > DISCOVER </Text>
                                  </View>
                                </TouchableOpacity>
                              </View>

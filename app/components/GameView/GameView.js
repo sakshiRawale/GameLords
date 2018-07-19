@@ -138,7 +138,7 @@ class GameView extends Component {
                       <View style={{width:"100%",flexDirection:"row"}}>
                         <View style={{width: '80%',paddingHorizontal: 5}}>
                           <TouchableOpacity onPress={() => this._openHTML5Game(game) } >
-                            <Text style={WelcomeStyle.gameTitleText} numberOfLines={1}> {game.gameTitle.toUpperCase()} </Text>
+                            <Text style={[styles.avRegular,WelcomeStyle.gameTitleText]} numberOfLines={1}> {game.gameTitle.toUpperCase()} </Text>
                           </TouchableOpacity>
                         </View>
                         <View style={{width:'20%'}}>

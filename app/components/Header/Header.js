@@ -118,7 +118,7 @@ class HeaderComponent extends Component {
                                     <FeatherIcon style = {{ marginLeft: Globals.DeviceType === 'Phone'? 10: 40}} name="search" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  24) :  24) : 35} color="#f6a50e" />
                                 </TouchableHighlight>
                                 : <TouchableOpacity  style={[headerStyle.iconsView]} onPress={() => {rightClick()}}>
-                                    <Text style={[headerStyle.rightText]}>{rightLabel}</Text>
+                                    <Text style={[styles.avRegular,headerStyle.rightText]}>{rightLabel}</Text>
                                 </TouchableOpacity>
                         }
                     </View>
@@ -146,7 +146,7 @@ class HeaderComponent extends Component {
                       </View>
                       <View style={headerStyle.btn}>
                         <TouchableOpacity onPress={()=>{this.props.showSearchBar(false); this.props.searchText(''); this.props.onShowSearchView(false); this.slideOut();  }} transparent>
-                            <Text style={headerStyle.cancelTxt}>Cancel</Text>
+                            <Text style={[styles.avRegular, headerStyle.cancelTxt]}>Cancel</Text>
                         </TouchableOpacity>
                       </View>
                   </View>

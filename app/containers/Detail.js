@@ -292,7 +292,7 @@ class Detail extends Component {
                                   </View>
 
                                   <View style={{alignItems: 'flex-start', paddingHorizontal: 15, paddingVertical: 20}}>
-                                    <Text style={DetailStyles.gameTextStyle} > {game.gameTitle && game.gameTitle.toUpperCase()} </Text>
+                                    <Text style={[styles.avRegular,DetailStyles.gameTextStyle]} > {game.gameTitle && game.gameTitle.toUpperCase()} </Text>
                                     <View style={{paddingHorizontal: 5, paddingVertical: 5}}>
                                       <View style={{flexDirection: 'row'}}>
                                         {
@@ -305,54 +305,54 @@ class Detail extends Component {
                                       </View>
                                     </View>
 
-                                    <Text style={DetailStyles.gameDetailTextStyle} > {parseFloat(game.userRating).toFixed('1')} average user rating based on {game.totalUserReview} reviews </Text>
+                                    <Text style={[styles.avRegular,DetailStyles.gameDetailTextStyle]} > {parseFloat(game.userRating).toFixed('1')} average user rating based on {game.totalUserReview} reviews </Text>
 
                                     <View style={DetailStyles.gameDetailsView}>
 
                                       <View style={DetailStyles.gameDetailsViewCol}>
                                         <View style={DetailStyles.gameDetailsViewLeft}>
-                                          <Text style={DetailStyles.gameDetailTextStyle} > Category </Text>
-                                          <Text style={DetailStyles.gameDetailTextStyle} >{':'}</Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Category </Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
                                         </View>
                                         <View style={DetailStyles.gameDetailsViewRight}>
-                                          <Text style={DetailStyles.gameDetailTextStyle} >{categoryName} </Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{categoryName} </Text>
                                         </View>
                                       </View>
 
                                       <View style={DetailStyles.gameDetailsViewCol}>
                                         <View style={DetailStyles.gameDetailsViewLeft}>
-                                          <Text style={DetailStyles.gameDetailTextStyle} > Platforms </Text>
-                                          <Text style={DetailStyles.gameDetailTextStyle} >{':'}</Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Platforms </Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
                                         </View>
                                         <View style={DetailStyles.gameDetailsViewRight}>
-                                          <Text style={DetailStyles.gameDetailTextStyle} >{game.platforms} </Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{game.platforms} </Text>
                                         </View>
                                       </View>
 
                                       <View style={DetailStyles.gameDetailsViewCol}>
                                         <View style={DetailStyles.gameDetailsViewLeft}>
-                                          <Text style={DetailStyles.gameDetailTextStyle} > Type </Text>
-                                          <Text style={DetailStyles.gameDetailTextStyle} >{':'}</Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Type </Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
                                         </View>
                                         <View style={DetailStyles.gameDetailsViewRight}>
-                                          <Text style={DetailStyles.gameDetailTextStyle} >{game.gameType} </Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{game.gameType} </Text>
                                         </View>
                                       </View>
 
                                       <View style={DetailStyles.gameDetailsViewCol}>
                                         <View style={DetailStyles.gameDetailsViewLeft}>
-                                          <Text style={DetailStyles.gameDetailTextStyle} > Description </Text>
-                                          <Text style={DetailStyles.gameDetailTextStyle} >{':'}</Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Description </Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
                                         </View>
                                         <View style={[DetailStyles.gameDetailsViewRight]}>
-                                          <Text style={DetailStyles.gameDetailTextStyle} >{game.gameDesc} </Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{game.gameDesc} </Text>
                                         </View>
                                       </View>
 
                                       <View style={DetailStyles.gameDetailsViewCol}>
                                         <View style={DetailStyles.gameDetailsViewLeft}>
-                                          <Text style={DetailStyles.gameDetailTextStyle} >  </Text>
-                                          <Text style={DetailStyles.gameDetailTextStyle} ></Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >  </Text>
+                                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} ></Text>
                                         </View>
                                         <View style={DetailStyles.gameDetailsViewRight}>
                                           <View style={DetailStyles.gameDetailsViewFavRate}>
@@ -379,10 +379,10 @@ class Detail extends Component {
 
                                           <View style={DetailStyles.gameDetailsViewFavRate}>
                                             <View style={{width: '50%', alignItems: 'flex-start'}}>
-                                              <Text style={[DetailStyles.gameDetailTextStyle]} > Favorite </Text>
+                                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Favorite </Text>
                                             </View>
                                             <View style={{width: '50%', alignItems: 'flex-start', paddingHorizontal: 7}}>
-                                              <Text style={[DetailStyles.gameDetailTextStyle]} > Rate </Text>
+                                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Rate </Text>
                                             </View>
                                           </View>
                                         </View>
@@ -396,7 +396,7 @@ class Detail extends Component {
                                       <View style={[DetailStyles.gameDetailsViewPlayGameRight]}>
                                         <TouchableOpacity onPress={() => this.loadGame(game)} >
                                           <View style={DetailStyles.gamePlayGameView}>
-                                              <Text style={DetailStyles.gameDetailPlayGameTextStyle} > PLAY NOW </Text>
+                                              <Text style={[styles.avRegular, DetailStyles.gameDetailPlayGameTextStyle]} > PLAY NOW </Text>
                                           </View>
                                         </TouchableOpacity>
                                       </View>
@@ -416,7 +416,7 @@ class Detail extends Component {
                                   <View style={DetailStyles.gameListBox}>
                                     <View style={{flexDirection: 'row', width: '50%', height: '100%'}}>
                                       <View style={DetailStyles.transformView}>
-                                        <Text numberOfLines={1} style={DetailStyles.headingText}>
+                                        <Text numberOfLines={1} style={[styles.avRegular,DetailStyles.headingText]}>
                                             {'RELATED GAMES'}
                                         </Text>
                                       </View>
