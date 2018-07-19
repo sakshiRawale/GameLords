@@ -45,6 +45,8 @@ class GameView extends Component {
 
     _openHTML5Game(game) {
         // this.props.handleGame(game);
+        debugger;
+        this.props.parentProps();
         if (this.props.handleGame)
         {
           this.props.handleGame(game);

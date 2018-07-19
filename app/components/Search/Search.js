@@ -99,7 +99,7 @@ class SearchPage extends Component {
                               <View style={SearchStyles.transformView}>
                                 <Icon name={'rocket'} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={SearchStyles.iconStyle} color='#423620' />
 
-                                <Text numberOfLines={1} style={SearchStyles.headingText}>
+                                <Text numberOfLines={1} style={SearchStyles.headingText} >
                                     {'GAME DIRECTORIES'}
                                 </Text>
                               </View>
@@ -115,7 +115,7 @@ class SearchPage extends Component {
 
                             {html5Search.map((game, gameIndex) => {
                               return (
-                                    <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from = {'Search'} />
+                                    <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from = {'Search'} parentProps={this.props.hideHeader} />
                                   )
                               })
                             }

@@ -26,6 +26,7 @@ class HeaderComponent extends Component {
         this.state = {
             showSearchBar: false,
             x: new Animated.Value(0),
+            propsSearchBar : this.props.header.showSearchBar,
         };
     }
 
@@ -38,6 +39,33 @@ class HeaderComponent extends Component {
     }
 
     componentWillReceiveProps(newProps){
+      console.log("newProps",newProps);
+      console.log(this.state.propsSearchBar)
+
+      if(newProps.hideHeader){
+      this.slideOut();
+        // this.props.showSearchBar(false);
+        // this.props.searchText('');
+        // this.props.onShowSearchView(false);
+        //this.slideOut();
+      }
+
+
+      // if(newProps.hideHeader && this.state.propsSearchBar){
+      //   this.setState({
+      //     x:0 ,
+      //     propsSearchBar:false
+      //   });
+      // }
+      // else if(newProps.hideHeader && !this.state.propsSearchBar){
+      //   this.setState({
+      //     x:0 ,
+      //     propsSearchBar:true
+      //   });
+      // }
+
+
+
         //console.log('this.props.showSearchBar:', newProps.header.hideSearchBar);
         if(newProps.header.hideSearchBar){
             this.slideOut();
@@ -62,7 +90,7 @@ class HeaderComponent extends Component {
             )
         } else {
             return (
-                <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => NavigationService.goBack()}>
+                <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => {NavigationService.goBack();   this.slideOut();}}>
                     <Icon name="angle-left" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  26) :  26) : 35} style={{ backgroundColor: 'transparent', marginLeft: Globals.DeviceType === 'Phone'? 15 : 25 }} color="#f6a50e" />
                 </TouchableHighlight>
             )
@@ -124,7 +152,7 @@ class HeaderComponent extends Component {
                     </View>
                   </View>
               </View>
-                <View searchBar style={[headerStyle.header, { right: 0, width : this.state.x, backgroundColor:'#000', position: 'absolute', zIndex: this.props.header.showSearchBar === false? 0 : 10 } ]}>
+                <View searchBar style={[headerStyle.header, { right: 0, width : this.state.x, backgroundColor:'#000', position: 'absolute', zIndex: this.state.propsSearchBar === false? 0 : 10 } ]}>
                   <View searchBar style={[headerStyle.header, {flexDirection: 'row', justifyContent: 'space-between',paddingHorizontal: Globals.DeviceType === 'Phone'? 20: 30}]}>
                       {Platform.OS == 'ios'?
                           <StatusBar backgroundColor="#f6a50e" barStyle="light-content"/>
@@ -145,7 +173,13 @@ class HeaderComponent extends Component {
                           </TouchableOpacity>
                       </View>
                       <View style={headerStyle.btn}>
-                        <TouchableOpacity onPress={()=>{this.props.showSearchBar(false); this.props.searchText(''); this.props.onShowSearchView(false); this.slideOut();  }} transparent>
+                        <TouchableOpacity onPress={()=>{
+                          this.setState({x:0});
+                          this.props.showSearchBar(false);
+                          this.props.searchText('');
+                          this.props.onShowSearchView(false);
+
+                         }} transparent>
                             <Text style={[styles.avRegular, headerStyle.cancelTxt]}>Cancel</Text>
                         </TouchableOpacity>
                       </View>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
-import { Image, View, StatusBar, Linking, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, FlatList, TouchableOpacity } from "react-native";
+import {BackHandler, Image, View, StatusBar, Linking, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, FlatList, TouchableOpacity } from "react-native";
 import { Container, Content } from "native-base";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
@@ -28,6 +28,7 @@ import { console_log } from '../utils/helper';
 import NavigationService from "../utils/NavigationService";
 import Loader from '../components/Loader/Loader';
 import Search from '../components/Search/Search';
+import { showSearchBar, HideSearchBar, onShowSearchView } from '../actions/HeaderActions';
 
 import MessageBar from '../components/Message/Message';
 import GameView from '../components/GameView/GameView';
@@ -47,7 +48,8 @@ class VOD extends Component {
             color: '',
             message:'',
             showMessage:false,
-            gameType: 'HTML5'
+            gameType: 'HTML5',
+            hideHeader : false
         };
 
         this.switchFavorite = this.switchFavorite.bind(this);
@@ -99,8 +101,15 @@ class VOD extends Component {
             this.props.hide();
             SplashScreen.hide();
         }, 1500);
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 
+    handleBackPress = () => {
+       this.props.showSearchBar(false);
+       this.props.onShowSearchView(false);
+       this.testCallback();
+       return true;
+     }
 
     switchFavorite() {
         this.setState({ favoriteSwitch: !this.state.favoriteSwitch });
@@ -283,6 +292,18 @@ class VOD extends Component {
 
     }
 
+testCallback =()=>{
+  console.log("into VOD");
+  this.setState({hideHeader: !this.state.hideHeader});
+
+  // if(!this.state.hideHeader){
+  //   this.setState({hideHeader:true});
+  // }
+  // else{
+  //   this.setState({hideHeader:false});
+  // }
+
+}
 
     render() {
         return (
@@ -294,10 +315,11 @@ class VOD extends Component {
                     title='VOD'
                     isSearch={true}
                     rightLabel=''
+                    hideHeader={this.state.hideHeader}
                 />
                 </ImageBackground>
                 <Loader visible={this.props.loader.isLoading}/>
-                <Search from={"html5"}/>
+                <Search from={"html5"} hideHeader={()=>this.testCallback()}/>
 
                 <View style={VODStyle.contentView}>
                     <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
@@ -369,6 +391,9 @@ const mapDispatchToProps = (dispatch) => {
         getFavouriteGames,
         setFavouriteGames,
         getCategories,
+        showSearchBar,
+        HideSearchBar,
+        onShowSearchView,
     }, dispatch);
 };
 

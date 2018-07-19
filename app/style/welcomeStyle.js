@@ -50,7 +50,6 @@ export default liveChannelStyle = StyleSheet.create({
     browseAll: {
         color: '#f4aa1c',
         fontSize: Globals.DeviceType === 'Phone'?  FontSizes.medium : FontSizes.xLarge,
-        fontWeight: '600'
     },
     bannerView: {
         height: deviceHeight / 3.9

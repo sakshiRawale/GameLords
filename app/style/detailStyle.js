@@ -134,7 +134,6 @@ export default detailStyle = StyleSheet.create({
     browseAll: {
         color: '#f4aa1c',
         fontSize: FontSizes.medium,
-        fontWeight: '600'
     },
     gameDetailPlayGameTextStyle: {
       color: '#FFFFFF',
