@@ -108,7 +108,7 @@ class Favorite extends Component {
                       <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? 15 : 30 }}>
                         {favoriteGames.map((game, gameIndex) => {
                           return (
-                                <View style={{paddingHorizontal: Globals.DeviceType === 'Phone'? deviceWidth / 39 : deviceWidth / 47}}>
+                                <View style={{paddingHorizontal: Globals.DeviceType === 'Phone'? deviceWidth / 40 : deviceWidth / 47}}>
                                   <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
                                 </View>
 
