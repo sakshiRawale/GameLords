@@ -45,8 +45,6 @@ class GameView extends Component {
 
     _openHTML5Game(game) {
         // this.props.handleGame(game);
-        debugger;
-        this.props.parentProps();
         if (this.props.handleGame)
         {
           this.props.handleGame(game);
@@ -56,6 +54,7 @@ class GameView extends Component {
               this.props.onShowSearchView(false);
               this.props.searchText('');
               this.props.showSearchBar(false);
+              this.props.parentProps();
           }
           NavigationService.navigate('Detail',{game: game});
         }

@@ -109,13 +109,15 @@ class SearchPage extends Component {
                         </View>
 
                         {((this.state.type == '' || this.state.type == "html5")  && (html5Search.length > 0 )) &&
-                          <View style={{ flex: 3, backgroundColor: 'black',paddingHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 14 :  deviceWidth / 15) :  deviceWidth / 15) : deviceWidth / 15 }}>
+                          <View style={{ flex: 3, backgroundColor: 'black',paddingHorizontal: Globals.DeviceType === 'Phone'? 15: 30 }}>
 
                             <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap'}}>
 
                             {html5Search.map((game, gameIndex) => {
                               return (
-                                    <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from = {'Search'} parentProps={this.props.hideHeader} />
+                                    <View style={{paddingHorizontal: Globals.DeviceType === 'Phone'? deviceWidth / 39 : deviceWidth / 50}}>
+                                      <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from = {'Search'} parentProps={this.props.hideHeader} />
+                                    </View>
                                   )
                               })
                             }

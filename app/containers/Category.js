@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import axios from 'axios';
+
 // Components
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
@@ -116,14 +117,18 @@ class Category extends Component {
 
                       <View style={{ flex: 3, backgroundColor: 'black' }}>
 
-                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20, paddingHorizontal:  Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 28 :  deviceWidth / 48) :  deviceWidth / 48) : deviceWidth / 34 }}>
+                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20}}>
 
                         {html5CategoryList.map((game, gameIndex) => {
                             return (
-                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                  <View style={{paddingHorizontal: Globals.DeviceType === 'Phone'? deviceWidth / 39 : deviceWidth / 50}}>
+                                    <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                  </View>
                                 )
                             })
                           }
+
+
                         </View>
                       </View>
                     </View>

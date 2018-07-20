@@ -105,10 +105,13 @@ class Favorite extends Component {
                   <ScrollView style={{marginTop: 15}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
                     <View style={{ flex: 3, backgroundColor: 'black' }}>
 
-                      <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 14 :  deviceWidth / 15) :  deviceWidth / 15) : deviceWidth / 15 }}>
+                      <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone'? 15 : 30 }}>
                         {favoriteGames.map((game, gameIndex) => {
                           return (
-                                <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                <View style={{paddingHorizontal: Globals.DeviceType === 'Phone'? deviceWidth / 39 : deviceWidth / 47}}>
+                                  <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                </View>
+
                               )
                           })
                         }

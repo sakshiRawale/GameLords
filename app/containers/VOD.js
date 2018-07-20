@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
-import {BackHandler, Image, View, StatusBar, Linking, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, FlatList, TouchableOpacity } from "react-native";
+import {Dimensions, BackHandler, Image, View, StatusBar, Linking, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, FlatList, TouchableOpacity } from "react-native";
 import { Container, Content } from "native-base";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
@@ -37,6 +37,7 @@ import Globals from  '../constants/Globals';
 import DeviceType from '../../App';
 import favoriteStyles from "../style/favoriteStyle";
 import SplashScreen from 'react-native-splash-screen';
+const deviceWidth = Dimensions.get("window").width;
 
 class VOD extends Component {
     constructor(props) {
@@ -222,7 +223,9 @@ class VOD extends Component {
                                                       {
                                                         games.map((game, gameIndex) => {
                                                           return (
-                                                              <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                                              <View style={{marginHorizontal: deviceWidth / 90}}>
+                                                                <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                                              </View>
                                                             )
                                                         })
                                                       }
@@ -292,18 +295,9 @@ class VOD extends Component {
 
     }
 
-testCallback =()=>{
-  console.log("into VOD");
-  this.setState({hideHeader: !this.state.hideHeader});
-
-  // if(!this.state.hideHeader){
-  //   this.setState({hideHeader:true});
-  // }
-  // else{
-  //   this.setState({hideHeader:false});
-  // }
-
-}
+    testCallback =()=>{
+      this.setState({hideHeader: !this.state.hideHeader});
+    }
 
     render() {
         return (
@@ -316,10 +310,11 @@ testCallback =()=>{
                     isSearch={true}
                     rightLabel=''
                     hideHeader={this.state.hideHeader}
+                    statusHeader={()=> this.testCallback() }
                 />
                 </ImageBackground>
                 <Loader visible={this.props.loader.isLoading}/>
-                <Search from={"html5"} hideHeader={()=>this.testCallback()}/>
+                <Search from={"html5"} hideHeader={()=> this.testCallback() } />
 
                 <View style={VODStyle.contentView}>
                     <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>

@@ -27,6 +27,7 @@ import Search from '../components/Search/Search';
 import MessageBar from '../components/Message/Message';
 import Globals from "../constants/Globals";
 import * as Images from "../assets/Images";
+const deviceWidth = Dimensions.get("window").width;
 
 
 class Detail extends Component {
@@ -438,7 +439,9 @@ class Detail extends Component {
                                       {
                                         html5RelatedList.map((game, gameIndex) => {
                                         return (
-                                              <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} handleGame={this.handleGame} />
+                                              <View style={{marginHorizontal: deviceWidth / 90}}>
+                                                <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} handleGame={this.handleGame} />
+                                              </View>
                                             )
                                         })
                                       }

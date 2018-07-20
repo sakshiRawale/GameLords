@@ -27,6 +27,7 @@ class HeaderComponent extends Component {
             showSearchBar: false,
             x: new Animated.Value(0),
             propsSearchBar : this.props.header.showSearchBar,
+            status: false,
         };
     }
 
@@ -35,41 +36,31 @@ class HeaderComponent extends Component {
         this.props.showSearchBar(!this.props.header.showSearchBar);
         this.props.HideSearchBar(false);
         this.props.onShowSearchView(true);
+        if (this.state.status)
+        {
+          this.props.statusHeader();
+          this.setState({
+              status: false
+            });
+        }
         this.clearText();
     }
 
     componentWillReceiveProps(newProps){
-      console.log("newProps",newProps);
-      console.log(this.state.propsSearchBar)
-
       if(newProps.hideHeader){
-      this.slideOut();
-        // this.props.showSearchBar(false);
-        // this.props.searchText('');
-        // this.props.onShowSearchView(false);
-        //this.slideOut();
+        this.slideOut();
+        this.setState({
+            status: true
+          });
       }
 
-
-      // if(newProps.hideHeader && this.state.propsSearchBar){
-      //   this.setState({
-      //     x:0 ,
-      //     propsSearchBar:false
-      //   });
-      // }
-      // else if(newProps.hideHeader && !this.state.propsSearchBar){
-      //   this.setState({
-      //     x:0 ,
-      //     propsSearchBar:true
-      //   });
-      // }
-
-
-
         //console.log('this.props.showSearchBar:', newProps.header.hideSearchBar);
-        if(newProps.header.hideSearchBar){
-            this.slideOut();
-        }
+        // if(newProps.header.hideSearchBar){
+        //     this.slideOut();
+        //     this.setState({
+        //         status: false
+        //       });
+        // }
     }
 
     clearText() {
@@ -90,7 +81,7 @@ class HeaderComponent extends Component {
             )
         } else {
             return (
-                <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => {NavigationService.goBack();   this.slideOut();}}>
+                <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => {NavigationService.goBack();}}>
                     <Icon name="angle-left" size={Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  28 :  26) :  26) : 35} style={{ backgroundColor: 'transparent', marginLeft: Globals.DeviceType === 'Phone'? 15 : 25 }} color="#f6a50e" />
                 </TouchableHighlight>
             )
@@ -101,33 +92,25 @@ class HeaderComponent extends Component {
     slide = () => {
         this.setState({x: deviceWidth});
         this.TextInput.focus();
-        // Animated.timing(this.state.x, {
-        //     toValue: deviceWidth,
-        //     duration: 400,
-        // }).start(()=> this.TextInput.focus());
-
     };
 
     slideOut = () => {
         this.setState({x: 0});
         this.TextInput.blur();
-
-        // Animated.timing(this.state.x, {
-        //     toValue: 0,
-        //     duration: 300,
-        // }).start(()=> this.TextInput.blur());
-        //this.TextInput.blur();
-
     };
 
     render() {
         const { isDrawer, isTitle, title, isSearch, rightLabel, rightClick } = this.props;
         return (
                 <View style={headerStyle.header}>
+
                   <View style={[headerStyle.header, {flexDirection: 'row', justifyContent: 'center'}]}>
-                    {Platform.OS == 'ios'?
+                    {
+                      Platform.OS == 'ios'?
                         <StatusBar backgroundColor="#f6a50e" barStyle="light-content"/>
-                        : <StatusBar backgroundColor="#000000" barStyle="light-content"/>}
+                        :
+                        <StatusBar backgroundColor="#000000" barStyle="light-content"/>
+                      }
                     <View style={headerStyle.headerBg}>
                       <View style={headerStyle.leftIconView}>
                         {this._renderLeftSection()}
@@ -138,8 +121,8 @@ class HeaderComponent extends Component {
                               <Text style={[styles.avRegular, headerStyle.title]}>{title}</Text>
                               : <Image style={[headerStyle.logo]} source={loginLogo} />
                       }
-                    </View>
-                    <View style={ headerStyle.rightIconView}>
+                      </View>
+                      <View style={ headerStyle.rightIconView}>
                         {
                             isSearch ?
                                 <TouchableHighlight onPress={this.searchOpen.bind(this)} underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} >
@@ -149,42 +132,44 @@ class HeaderComponent extends Component {
                                     <Text style={[styles.avRegular,headerStyle.rightText]}>{rightLabel}</Text>
                                 </TouchableOpacity>
                         }
+                      </View>
                     </View>
                   </View>
-              </View>
-                <View searchBar style={[headerStyle.header, { right: 0, width : this.state.x, backgroundColor:'#000', position: 'absolute', zIndex: this.state.propsSearchBar === false? 0 : 10 } ]}>
-                  <View searchBar style={[headerStyle.header, {flexDirection: 'row', justifyContent: 'space-between',paddingHorizontal: Globals.DeviceType === 'Phone'? 20: 30}]}>
-                      {Platform.OS == 'ios'?
-                          <StatusBar backgroundColor="#f6a50e" barStyle="light-content"/>
-                          : <StatusBar backgroundColor="#000000" barStyle="light-content"/>
+                  <View searchBar style={[headerStyle.header, { right: 0, width : this.state.x, backgroundColor:'#000', position: 'absolute' } ]}>
+                    <View searchBar style={[headerStyle.header, {flexDirection: 'row', justifyContent: 'space-between',paddingHorizontal: Globals.DeviceType === 'Phone'? 20: 30}]}>
+                        {
+                          Platform.OS == 'ios'?
+                            <StatusBar backgroundColor="#f6a50e" barStyle="light-content"/>
+                            :
+                            <StatusBar backgroundColor="#000000" barStyle="light-content"/>
                         }
-                      <View style={headerStyle.headerSearch}>
-                          <FeatherIcon color="#f6a50e" size={Globals.DeviceType === 'Phone'? 20: 30} name="search" style={headerStyle.searchIcn} />
-                          <TextInput
-                              value= {this.props.search.searchText}
-                              underlineColorAndroid={'transparent'}
-                              style={headerStyle.searchTxt}
-                              placeholder='Search..'
-                              placeholderTextColor={'#fff'}
-                              ref={(ref) => this.TextInput = ref}
-                              onChangeText={(text)=> this.onChange(text)} />
-                          <TouchableOpacity onPress={()=> { this.props.searchText(''); }}>
-                              <Image source={require('../../assets/images/clear.png')} style={headerStyle.cancelIcon}/>
-                          </TouchableOpacity>
-                      </View>
-                      <View style={headerStyle.btn}>
-                        <TouchableOpacity onPress={()=>{
-                          this.setState({x:0});
-                          this.props.showSearchBar(false);
-                          this.props.searchText('');
-                          this.props.onShowSearchView(false);
+                        <View style={headerStyle.headerSearch}>
+                            <FeatherIcon color="#f6a50e" size={Globals.DeviceType === 'Phone'? 20: 30} name="search" style={headerStyle.searchIcn} />
+                            <TextInput
+                                value= {this.props.search.searchText}
+                                underlineColorAndroid={'transparent'}
+                                style={headerStyle.searchTxt}
+                                placeholder='Search..'
+                                placeholderTextColor={'#fff'}
+                                ref={(ref) => this.TextInput = ref}
+                                onChangeText={(text)=> this.onChange(text)} />
+                            <TouchableOpacity onPress={()=> { this.props.searchText(''); }}>
+                                <Image source={require('../../assets/images/clear.png')} style={headerStyle.cancelIcon}/>
+                            </TouchableOpacity>
+                        </View>
+                        <View style={headerStyle.btn}>
+                          <TouchableOpacity onPress={()=>{
+                            this.props.showSearchBar(false);
+                            this.props.searchText('');
+                            this.props.onShowSearchView(false);
+                            this.slideOut();
 
-                         }} transparent>
-                            <Text style={[styles.avRegular, headerStyle.cancelTxt]}>Cancel</Text>
-                        </TouchableOpacity>
-                      </View>
+                           }} transparent>
+                              <Text style={[styles.avRegular, headerStyle.cancelTxt]}>Cancel</Text>
+                          </TouchableOpacity>
+                        </View>
+                    </View>
                   </View>
-                </View>
               </View>
 
         );
