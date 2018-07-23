@@ -119,7 +119,7 @@ class Accounts extends Component {
             this.setState({color:'red', message: messages.locationEmpty, showMessage: !this.state.showMessage})
             return false;
         }
-        if (this.state.interests.length != 3) {
+        if (this.state.interests.length != 5) {
             this.props.showMessage({
                 message: messages.interests,
                 type: false
@@ -244,8 +244,6 @@ class Accounts extends Component {
     };
 
     render() {
-        console.log("my account che aa");
-        console.log(this.props);
         return (
             <Container>
                 <ImageBackground  style={{ zIndex: 999 }}>
@@ -261,111 +259,108 @@ class Accounts extends Component {
                 <Loader visible={this.props.loader.isLoading}/>
                 <View style={accountStyles.content}>
                     <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
-                    <ImageBackground source={background} style={{ flex: 1 }}>
-                        <ScrollView contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 80}}>
-                            <View style={[accountStyles.viewWrapper]}>
-                                <View style={{ flex: 3, paddingTop: 20 }}>
-                                    <View>
-                                        <View style={{ paddingBottom: '3%' }}>
-                                            <Text style={[styles.avRegular, accountStyles.sectionHeaders]}>{"ACCOUNT DETAILS "}</Text>
-                                        </View>
-                                        <View style={accountStyles.inputView}>
-                                            <Text style={[styles.avRegular, accountStyles.userNameText]}>{"NAME"}</Text>
-                                            <View style={accountStyles.usernameView}>
-                                                <TextInput
-                                                    value={this.state.accessCode}
-                                                    style={[accountStyles.input,{color: '#fff'}]}
-                                                    errorText={this.state.error}
-                                                    placeholderTextColor={'#606060'}
-                                                    onChangeText={(name) => this.setState({ name })}
-                                                    defaultValue={this.state.name}
-                                                    photoStyle={{ resizeMode: 'contain' }}
-                                                    maxLength={40}
-                                                    multiline={false}
-                                                    underlineColorAndroid={'transparent'}
-                                                />
-                                            </View>
-                                        </View>
-                                        <View style={[accountStyles.inputView,{marginTop: 20}]}>
-                                            <Text style={[styles.avRegular, accountStyles.userNameText]}>{"EMAIL ADDRESS"}</Text>
-                                            <View style={accountStyles.usernameView}>
-                                                <TextInput
-                                                    value={this.state.accessCode}
-                                                    style={[accountStyles.input,{color: '#fff'}]}
-                                                    errorText={this.state.error}
-                                                    placeholderTextColor={'#606060'}
-                                                    onChangeText={(email) => this.setState({ emailAddress: email})}
-                                                    defaultValue={this.state.emailAddress}
-                                                    photoStyle={{ padding: 10, resizeMode: 'contain' }}
-                                                    maxLength={40}
-                                                    multiline={false}
-                                                    underlineColorAndroid={'transparent'}
-                                                />
-                                            </View>
-                                        </View>
-                                        <View style={[accountStyles.inputView,{marginTop: 20}]}>
-                                            <Text style={[styles.avRegular, accountStyles.userNameText]}>{"LOCATION"}</Text>
-                                            <View style={accountStyles.usernameView}>
-                                                <TextInput
-                                                    value={this.state.accessCode}
-                                                    style={[accountStyles.input,{color: '#fff'}]}
-                                                    errorText={this.state.error}
-                                                    placeholderTextColor={'#606060'}
-                                                    onChangeText={(location) => this.setState({ location: location})}
-                                                    defaultValue={this.state.location}
-                                                    photoStyle={{ padding: 10, resizeMode: 'contain' }}
-                                                    maxLength={40}
-                                                    multiline={false}
-                                                    underlineColorAndroid={'transparent'}
-                                                />
-                                            </View>
-                                        </View>
-                                    </View>
+                      <ScrollView contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 80}}>
+                          <View style={[accountStyles.viewWrapper]}>
+                              <View style={{ flex: 3, paddingTop: 20 }}>
+                                  <View>
+                                      <View style={{ paddingBottom: '3%' }}>
+                                          <Text style={[styles.avRegular, accountStyles.sectionHeaders]}>{"ACCOUNT DETAILS "}</Text>
+                                      </View>
+                                      <View style={accountStyles.inputView}>
+                                          <Text style={[styles.avRegular, accountStyles.userNameText]}>{"NAME"}</Text>
+                                          <View style={accountStyles.usernameView}>
+                                              <TextInput
+                                                  value={this.state.accessCode}
+                                                  style={[accountStyles.input,{color: '#fff'}]}
+                                                  errorText={this.state.error}
+                                                  placeholderTextColor={'#606060'}
+                                                  onChangeText={(name) => this.setState({ name })}
+                                                  defaultValue={this.state.name}
+                                                  photoStyle={{ resizeMode: 'contain' }}
+                                                  maxLength={40}
+                                                  multiline={false}
+                                                  underlineColorAndroid={'transparent'}
+                                              />
+                                          </View>
+                                      </View>
+                                      <View style={[accountStyles.inputView,{marginTop: 20}]}>
+                                          <Text style={[styles.avRegular, accountStyles.userNameText]}>{"EMAIL ADDRESS"}</Text>
+                                          <View style={accountStyles.usernameView}>
+                                              <TextInput
+                                                  value={this.state.accessCode}
+                                                  style={[accountStyles.input,{color: '#fff'}]}
+                                                  errorText={this.state.error}
+                                                  placeholderTextColor={'#606060'}
+                                                  onChangeText={(email) => this.setState({ emailAddress: email})}
+                                                  defaultValue={this.state.emailAddress}
+                                                  photoStyle={{ padding: 10, resizeMode: 'contain' }}
+                                                  maxLength={40}
+                                                  multiline={false}
+                                                  underlineColorAndroid={'transparent'}
+                                              />
+                                          </View>
+                                      </View>
+                                      <View style={[accountStyles.inputView,{marginTop: 20}]}>
+                                          <Text style={[styles.avRegular, accountStyles.userNameText]}>{"LOCATION"}</Text>
+                                          <View style={accountStyles.usernameView}>
+                                              <TextInput
+                                                  value={this.state.accessCode}
+                                                  style={[accountStyles.input,{color: '#fff'}]}
+                                                  errorText={this.state.error}
+                                                  placeholderTextColor={'#606060'}
+                                                  onChangeText={(location) => this.setState({ location: location})}
+                                                  defaultValue={this.state.location}
+                                                  photoStyle={{ padding: 10, resizeMode: 'contain' }}
+                                                  maxLength={40}
+                                                  multiline={false}
+                                                  underlineColorAndroid={'transparent'}
+                                              />
+                                          </View>
+                                      </View>
+                                  </View>
 
-                                            {(this.props.account.interests)?
-                                                <View style={{ paddingTop: '10%' }}>
-                                                    <View>
-                                                        <Text style={[styles.avRegular, accountStyles.sectionHeaders]}>{"INTERESTS"}</Text>
-                                                    </View>
-                                                    <View style={{ paddingTop: '7%' }}>
-                                                        <Text style={[styles.avRegular, accountStyles.sectionSubHeaders]}>{"CHOOSE 3 CATEGORIES"}</Text>
-                                                    </View>
-                                                    <View style={{ paddingLeft: '2%', marginBottom: 15 }}>
-                                                        {this.props.account.interests.map((interest, k) => {
-                                                            return (
-                                                                <TouchableOpacity key={k}
-                                                                    onPress={this.onCategoryChange.bind(this, interest.interestId)}>
-                                                                    <View style={[accountStyles.radioView,{marginTop: k===0 ? 5 : 0}]}>
-                                                                        <CheckBox color='#496ebc'
-                                                                                  checked={this.state.interests.indexOf(interest.interestId) !== -1 ? true : false}/>
-                                                                        <Text
-                                                                            style={[styles.avRegular, accountStyles.categoryText]}>{interest.name}</Text>
-                                                                    </View>
-                                                                </TouchableOpacity>
-                                                            )
-                                                        })
-                                                        }
-                                                    </View>
-                                                </View>
-                                                :
-                                                null
-                                            }
-                                </View>
-                                <View style={{ flex: 2 }}>
-                                    <TouchableOpacity style={accountStyles.avtarStyle} onPress={this._OpenGallery.bind(this)}>
-                                        <Image style={accountStyles.cover} source={(this.state.photo) ? this.state.photo : ((this.props.account.user.profilePic)? {uri: vars.BASE_URL_PP+'uploads/'+this.props.account.user.profilePic} : {uri: 'http://43.241.63.15:3003/uploads/1520249460987_thumbnail-3.jpg'})} />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={this._OpenGallery.bind(this)} style={{ alignItems: 'center', justifyContent: 'center' }}>
-                                        <Text style={{ color: '#bbb', marginTop: '8%' }}>{"EDIT PHOTO"}</Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </View>
-                            <Footer />
-                        </ScrollView>
-
-                    </ImageBackground>
-                </View>
-            </Container>
+                                          {(this.props.account.interests)?
+                                              <View style={{ paddingTop: '10%' }}>
+                                                  <View>
+                                                      <Text style={[styles.avRegular, accountStyles.sectionHeaders]}>{"INTERESTS"}</Text>
+                                                  </View>
+                                                  <View style={{ paddingTop: '7%' }}>
+                                                      <Text style={[styles.avRegular, accountStyles.sectionSubHeaders]}>{"CHOOSE YOUR GENRE"}</Text>
+                                                  </View>
+                                                  <View style={{ paddingLeft: '2%', marginBottom: 15 }}>
+                                                      {this.props.account.interests.map((interest, k) => {
+                                                          return (
+                                                              <TouchableOpacity key={k}
+                                                                  onPress={this.onCategoryChange.bind(this, interest.interestId)}>
+                                                                  <View style={[accountStyles.radioView,{marginTop: k===0 ? 5 : 0}]}>
+                                                                      <CheckBox color='#496ebc'
+                                                                                checked={this.state.interests.indexOf(interest.interestId) !== -1 ? true : false}/>
+                                                                      <Text
+                                                                          style={[styles.avRegular, accountStyles.categoryText]}>{interest.name}</Text>
+                                                                  </View>
+                                                              </TouchableOpacity>
+                                                          )
+                                                      })
+                                                      }
+                                                  </View>
+                                              </View>
+                                              :
+                                              null
+                                          }
+                              </View>
+                              <View style={{ flex: 2 }}>
+                                  <TouchableOpacity style={accountStyles.avtarStyle} onPress={this._OpenGallery.bind(this)}>
+                                      <Image style={accountStyles.cover} source={(this.state.photo) ? this.state.photo : ((this.props.account.user.profilePic)? {uri: vars.BASE_URL_PP+'uploads/'+this.props.account.user.profilePic} : {uri: 'http://43.241.63.15:3003/uploads/1520249460987_thumbnail-3.jpg'})} />
+                                  </TouchableOpacity>
+                                  <TouchableOpacity onPress={this._OpenGallery.bind(this)} style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                      <Text style={{ color: '#bbb', marginTop: '8%' }}>{"EDIT PHOTO"}</Text>
+                                  </TouchableOpacity>
+                              </View>
+                          </View>
+                          <Footer />
+                      </ScrollView>
+                  </View>
+              </Container>
         );
     }
 }

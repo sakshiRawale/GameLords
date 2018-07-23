@@ -27,7 +27,8 @@ export default vodStyle = StyleSheet.create({
         fontSize: FontSizes.large
     },
     bannerView: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3 :  deviceHeight / 2.7 ) :  deviceHeight / 3) : deviceHeight / 3, //Globals.DeviceType === "Phone" ? deviceHeight / 3.0 :  deviceHeight / 3.8
+        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3.8 :  deviceHeight / 3.12 ) :  deviceHeight / 2.9) : deviceHeight / 4.4,
+         // height: Globals.DeviceType === "Phone" ? deviceHeight / 3.15 :  deviceHeight / 3.8
     },
     imageThmbnail: {
         width: deviceWidth / 2.8,

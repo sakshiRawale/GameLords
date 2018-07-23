@@ -99,6 +99,12 @@ export default detailStyle = StyleSheet.create({
         flexDirection: 'row',
         paddingVertical: 5
     },
+    gameDetailsViewColFavLikeIcon: {
+      width: Globals.DeviceType === 'Phone'? deviceWidth/ 3 : deviceWidth/ 3,
+    },
+    gameDetailsViewColFavLike: {
+      width: Globals.DeviceType === 'Phone'? deviceWidth/ 2.6 : deviceWidth/ 2.7,
+    },
     gameDetailsViewLeft:{
       width: '28%',
       justifyContent: 'space-between',
@@ -144,7 +150,7 @@ export default detailStyle = StyleSheet.create({
       alignItems: 'center'
     },
     gamePlayGameView: {
-      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?   deviceWidth/ 1.5 :  deviceWidth/1.5) :   deviceWidth/ 1.5) :  deviceWidth/ 1.9,
+      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?   deviceWidth/ 2 :  deviceWidth/ 1.9 ) :   deviceWidth/ 1.8 ) :  deviceWidth/ 2.2,
       paddingVertical: Globals.DeviceType === 'Phone'? 20 : 30,
       justifyContent: 'center',
       backgroundColor: '#a92d2d',

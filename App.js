@@ -94,8 +94,6 @@ export default class GameLordAdmin extends Component {
     }
 
     componentWillMount() {
-        Globals.url =  'http://uk.mobiotv.com';
-        Globals.lang = "spanish";
         NetInfo
             .getConnectionInfo()
             .then((connectionInfo) => {

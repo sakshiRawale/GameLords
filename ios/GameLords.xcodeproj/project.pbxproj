@@ -1481,7 +1481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Mohamad Okal (MFM2VF7828)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mohamad Okal (MFM2VF7828)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1509,7 +1509,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.GameLords.app;
 				PRODUCT_NAME = GameLords;
-				PROVISIONING_PROFILE = "96a42f49-e022-4a9f-a815-14876d18ac5b";
+				PROVISIONING_PROFILE = "21b4d560-6e01-4adf-aa13-02b196cd94fc";
 				PROVISIONING_PROFILE_SPECIFIER = Gamelords_Dev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1520,7 +1520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Mohamad Okal (V7P9FD3Y3Q)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mohamad Okal (V7P9FD3Y3Q)";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1547,7 +1547,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.GameLords.app;
 				PRODUCT_NAME = GameLords;
-				PROVISIONING_PROFILE = "ea81c974-46b7-421c-8690-498f7b33f1d1";
+				PROVISIONING_PROFILE = "95c2240b-7bba-409b-ab16-320d44e2a5cb";
 				PROVISIONING_PROFILE_SPECIFIER = GamelordsAdhocNew;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

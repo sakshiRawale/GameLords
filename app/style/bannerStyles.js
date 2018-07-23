@@ -13,7 +13,7 @@ export default bannerStyles = StyleSheet.create({
     },
     bannerImage: {
         width: deviceWidth,
-        height: "100%"
+        height: "100%",
     },
     bannerText: {
         flex: 1,

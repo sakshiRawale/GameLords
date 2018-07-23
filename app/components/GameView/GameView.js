@@ -89,25 +89,36 @@ class GameView extends Component {
 
         if (indexOf == -1) {
           favoriteGames.push(gameData);
+            axios.post(vars.BASE_API_URL_GL+"/favorite", gameData)
+            .then((response) => {
+              this.props.showMessage({
+                message: messages.addToFavorites,
+                type: true
+              });
+              console.log(response);
+            })
+            .catch((error) => {
+              console_log(error);
+            });
           this.props.handleMessageBar(true)
 
         }
         else {
           favoriteGames.splice(indexOf, 1);
+            axios.post(vars.BASE_API_URL_GL+"/favorite", gameData)
+            .then((response) => {
+              this.props.showMessage({
+                message: messages.addToFavorites,
+                type: true
+              });
+              console.log(response);
+            })
+            .catch((error) => {
+              console_log(error);
+            });
           this.props.handleMessageBar(false)
         }
 
-        axios.post(vars.BASE_API_URL_GL+"/favorite", gameData)
-            .then((response) => {
-                this.props.showMessage({
-                    message: messages.addToFavorites,
-                    type: true
-                });
-                console.log(response);
-            })
-            .catch((error) => {
-                console_log(error);
-            });
     }
 
     isGameFavorite(gameId)

@@ -60,10 +60,8 @@ class VOD extends Component {
     componentWillMount(){
 
         axios.defaults.headers.common['authorization'] = this.props.accessToken;
-        // if(Globals.url ===  'http://uk.mobiotv.com' && this.props.category.categories.length === 0) {
         if(this.props.category.categories.length === 0) {
             this.props.show();
-            // axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile'), axios.get(vars.BASE_API_URL_GL + '/interests'), axios.get(vars.BASE_API_URL_GL + '/categories'), axios.get(vars.BASE_API_URL_GL + '/packages'), axios.get(vars.BASE_API_URL_GL + '/favorites'), axios.get(vars.BASE_API_URL_GL + '/likes')])
 
             axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile'), axios.get(vars.BASE_API_URL_GL+'/getGames'), axios.get(vars.BASE_API_URL_GL+'/getCategories'), axios.get(vars.BASE_API_URL_GL + '/interests')])
                 .then(axios.spread((userProfile, games, categories, interests) => {
