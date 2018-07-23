@@ -17,7 +17,7 @@ export const CategoryReducer = (state = initialState, action = {}) => {
         case GET_CATEGORIES:
             return {
                 ...state,
-                categories: action.data.filter(g => { return g.categoryTypeName === 'HTML5' })
+                categories: action.data
             };
         case GET_CATEGORY_DETAIL:
             return{

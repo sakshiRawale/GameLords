@@ -63,7 +63,7 @@ class VOD extends Component {
         if(this.props.category.categories.length === 0) {
             this.props.show();
 
-            axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile'), axios.get(vars.BASE_API_URL_GL+'/getGames'), axios.get(vars.BASE_API_URL_GL+'/getCategories'), axios.get(vars.BASE_API_URL_GL + '/interests')])
+            axios.all([axios.get(vars.BASE_API_URL_GL + '/getUserProfile'), axios.get(vars.BASE_API_URL_GL+'/getGames?categoryTypeId=1'), axios.get(vars.BASE_API_URL_GL+'/getCategories?categoryTypeId=1'), axios.get(vars.BASE_API_URL_GL + '/interests')])
                 .then(axios.spread((userProfile, games, categories, interests) => {
                     if (userProfile.data.data) {
                         this.props.getDetails(userProfile.data.data);
@@ -146,7 +146,7 @@ class VOD extends Component {
     }
 
     _openBannerHTML5Game = () =>{
-      let game = this.props.games.games.filter(g => { return g.gameId === 34 && g.gameType === 'HTML5'});
+      let game = this.props.games.games.filter(g => { return g.gameId === 34 });
       NavigationService.navigate('Detail',{game: game[0]});
     }
 
@@ -155,12 +155,11 @@ class VOD extends Component {
     }
 
     LoadHTMLGames = () =>{
-        let categories = this.props.category.categories;
         let getAllGames = this.props.games.games;
 
-        let favoriteGames = this.props.favorite.games.filter(g => { return g.gameType === this.state.gameType });
+        let favoriteGames = this.props.favorite.games
 
-        let html5CategoryList = categories.filter(c => {return c.categoryTypeName === this.state.gameType} );
+        let html5CategoryList = this.props.category.categories;
 
         return(
             <View>
