@@ -11,6 +11,7 @@ import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Loader from '../components/Loader/Loader';
 import GameView from '../components/GameView/GameView';
+import Orientation from 'react-native-orientation';
 
 // Styles
 import { styles } from "../style/appStyles";
@@ -42,7 +43,7 @@ class Category extends Component {
     }
 
     componentWillMount(){
-      console.log(this.props.navigation);
+      Orientation.lockToPortrait();
       this.getFavouriteGames();
     }
 

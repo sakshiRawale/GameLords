@@ -27,6 +27,8 @@ import Search from '../components/Search/Search';
 // Other data/helper functions
 import MessageBar from '../components/Message/Message';
 import Globals from "../constants/Globals";
+import Orientation from 'react-native-orientation';
+
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 
@@ -42,6 +44,7 @@ class Favorite extends Component {
     }
 
     componentWillMount(){
+      Orientation.lockToPortrait();
       this.getFavouriteGames();
     }
 

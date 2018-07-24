@@ -37,6 +37,7 @@ import Globals from  '../constants/Globals';
 import DeviceType from '../../App';
 import favoriteStyles from "../style/favoriteStyle";
 import SplashScreen from 'react-native-splash-screen';
+import Orientation from 'react-native-orientation';
 const deviceWidth = Dimensions.get("window").width;
 
 class VOD extends Component {
@@ -58,7 +59,7 @@ class VOD extends Component {
     }
 
     componentWillMount(){
-
+        Orientation.lockToPortrait();
         axios.defaults.headers.common['authorization'] = this.props.accessToken;
         if(this.props.category.categories.length === 0) {
             this.props.show();
@@ -94,6 +95,7 @@ class VOD extends Component {
 
 
     componentDidMount(){
+
         this.setState({dataLoad: true})
         this.props.show();
         setTimeout(() => {

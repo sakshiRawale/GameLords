@@ -11,6 +11,7 @@ import Footer from '../components/Footer/Footer';
 import Loader from '../components/Loader/Loader';
 import GameView from '../components/GameView/GameView';
 import { background } from "../assets/Images";
+import Orientation from 'react-native-orientation';
 
 // Styles
 import { styles } from "../style/appStyles";
@@ -107,6 +108,7 @@ class Detail extends Component {
     }
 
     componentDidMount() {
+        Orientation.lockToPortrait();
         this.props.show();
         setTimeout(() => {
             this.props.hide();
@@ -247,6 +249,7 @@ class Detail extends Component {
     }
 
     loadGame() {
+        // Orientation.unlockAllOrientations();
         this.props.show();
         this.setState({
             openGame: !this.state.openGame
@@ -260,7 +263,6 @@ class Detail extends Component {
         let getAllGames = this.props.games.games;
         let html5RelatedList = getAllGames.filter(g => {return g.categoryId === this.state.categoryId && g.gameId !== this.state.game.gameId} );
         const { game, categoryId, categoryName, liked } = this.state;
-        console.log(game);
         return (
             <Container>
               <ImageBackground style={{ zIndex: 999 }}>
@@ -443,10 +445,10 @@ class Detail extends Component {
                             <Footer />
                         </ScrollView>
                     :
-                      <View style={{height: Globals.deviceHeight, width: Globals.deviceWidth, backgroundColor: 'black' }}>
+                      <View style={{height: Globals.deviceHeight, width: Globals.deviceWidth, backgroundColor: 'black'}}>
                         <WebView
-                            source={{ html: "<object width='100%' height='90%' data=" + game.gameFile + "></object>" }}
-                            style={{width: '100%', height: '100%', backgroundColor: 'transparent', paddingVertical: 200, paddingHorizontal: 15 }}
+                            source={{ html: "<object width='100%' height='89.5%' data=" + game.gameFile + "></object>" }}
+                            style={{width: '100%', height: '100%', backgroundColor: 'transparent', paddingVertical: 200, paddingHorizontal: 15}}
                         />
                       </View>
                     }

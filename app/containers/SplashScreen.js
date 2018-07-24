@@ -14,6 +14,7 @@ import { logo, background, splashBg } from "../assets/Images";
 import { console_log } from "../utils/helper";
 import Orientation from 'react-native-orientation';
 import Globals from '../constants/Globals';
+
 class SplashScreen extends Component {
     constructor(props) {
         super(props);
