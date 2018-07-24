@@ -63,7 +63,7 @@ class SearchPage extends Component {
         if (this.props.games)
         {
           html5Search = this.props.games.games.filter((g) => {
-             if (regEx.test(g.gameTitle) && g.gameType === 'HTML5') {
+             if (regEx.test(g.gameTitle)) {
                  return g
              }
           });

@@ -53,7 +53,7 @@ class Detail extends Component {
 
     componentWillMount(){
       this.getGameDetail(this.props.navigation.state.params.game.gameId);
-      this.getGameLikes(this.props.account.user.uid);this.state.bgImages
+      this.getGameLikes(this.props.account.user.uid);
     }
 
     getGameDetail(gameId)
@@ -258,7 +258,7 @@ class Detail extends Component {
 
     render() {
         let getAllGames = this.props.games.games;
-        let html5RelatedList = getAllGames.filter(g => {return g.gameType === this.state.gameType && g.categoryId === this.state.categoryId && g.gameId !== this.state.game.gameId} );
+        let html5RelatedList = getAllGames.filter(g => {return g.categoryId === this.state.categoryId && g.gameId !== this.state.game.gameId} );
         const { game, categoryId, categoryName, liked } = this.state;
         console.log(game);
         return (

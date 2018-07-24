@@ -285,7 +285,6 @@ class VOD extends Component {
                                </TouchableOpacity>
                              </View>
                            </View>
-
                        }
                       </View>
                   }

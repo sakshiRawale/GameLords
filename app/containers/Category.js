@@ -84,7 +84,7 @@ class Category extends Component {
     render() {
         let getAllGames = this.props.games.games;
         const category = this.state.category
-        let html5CategoryList = getAllGames.filter(g => {return g.gameType === this.state.gameType && g.categoryId === this.state.category.categoryId} );
+        let html5CategoryList = getAllGames.filter(g => {return g.categoryId === this.state.category.categoryId} );
         return (
             <Container>
               <ImageBackground  style={{ zIndex: 999 }}>
