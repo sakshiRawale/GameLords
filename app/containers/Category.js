@@ -122,7 +122,7 @@ class Category extends Component {
 
                         {html5CategoryList.map((game, gameIndex) => {
                             return (
-                                  <View style={{paddingHorizontal: Globals.DeviceType === 'Phone'? deviceWidth / 40 : deviceWidth / 50}}>
+                                  <View style={{paddingHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 40 :  deviceWidth / 45) :  deviceWidth / 45) : deviceWidth / 50}}>
                                     <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
                                   </View>
                                 )
