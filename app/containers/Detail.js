@@ -436,7 +436,7 @@ class Detail extends Component {
           <Footer />
       </ScrollView>
         :
-          <View style={{ height: Globals.DeviceType === 'Phone' ? Globals.deviceHeight - 80 : Globals.deviceHeight - 100, width: Globals.deviceWidth, backgroundColor: 'black', borderColor: 'red', borderWidth: 2}}>
+          <View style={{ height: Globals.DeviceType === 'Phone' ? Globals.deviceHeight - 80 : Globals.deviceHeight - 100, width: Globals.deviceWidth, backgroundColor: 'black' }}>
           <WebView
             source={{ html: "<object width='100%' height='100%' data=" + game.gameFile + "></object>" }}
             style={{ backgroundColor: 'transparent' }}
