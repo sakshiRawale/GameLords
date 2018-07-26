@@ -12,23 +12,23 @@ export default vodStyle = StyleSheet.create({
     },
     allCategory: {
         color: 'white',
-        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.medium :  FontSizes.medium) :  FontSizes.medium) : FontSizes.xLarge,
+        fontSize: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? FontSizes.medium : FontSizes.medium) : FontSizes.medium) : FontSizes.xLarge,
     },
     categoryName: {
         color: '#d51a92',
-        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.large :  FontSizes.large) :  FontSizes.large) : FontSizes.xLarge,
+        fontSize: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? FontSizes.large : FontSizes.large) : FontSizes.large) : FontSizes.xLarge,
     },
     favoriteSwitchText: {
         color: 'white',
-        fontSize: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  FontSizes.large :  FontSizes.large) :  FontSizes.large) : FontSizes.xLarge,
+        fontSize: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? FontSizes.large : FontSizes.large) : FontSizes.large) : FontSizes.xLarge,
     },
     browseAll: {
         color: '#d51a92',
         fontSize: FontSizes.large
     },
     bannerView: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3.8 :  deviceHeight / 3.12 ) :  deviceHeight / 2.9) : deviceHeight / 4.4,
-         // height: Globals.DeviceType === "Phone" ? deviceHeight / 3.15 :  deviceHeight / 3.8
+        height: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceHeight / 3.8 : deviceHeight / 3.12) : deviceHeight / 2.9) : deviceHeight / 4.4,
+        // height: Globals.DeviceType === "Phone" ? deviceHeight / 3.15 :  deviceHeight / 3.8
     },
     imageThmbnail: {
         width: deviceWidth / 2.8,
@@ -121,24 +121,23 @@ export default vodStyle = StyleSheet.create({
         width: '80%'
     },
     html5iconStyle: {
-      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  20 :  15) :  15) : 30,
-      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  20 :  15) :  15) : 30,
+        width: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? 20 : 15) : 15) : 30,
+        height: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? 20 : 15) : 15) : 30,
     },
     html5FavoriteView: {
-      flex: 2,
-      flexDirection: 'row',
-      paddingHorizontal: Globals.DeviceType === 'Phone'? 15 : 30,
-      paddingVertical: Globals.DeviceType === 'Phone'? 20 : 30,
+        flexDirection: 'row',
+        paddingHorizontal: Globals.DeviceType === 'Phone' ? 15 : 30,
+        paddingVertical: Globals.DeviceType === 'Phone' ? 20 : 30,
     },
     html5FavoriteViewLeft: {
-      width: '50%',
-      flexDirection: 'row',
-      alignItems: 'center'
+        width: '50%',
+        flexDirection: 'row',
+        alignItems: 'center'
     },
     html5FavoriteViewRight: {
-      width: '50%',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'flex-end'
+        width: '50%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-end'
     }
 });

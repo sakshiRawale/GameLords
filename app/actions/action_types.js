@@ -1,7 +1,4 @@
-export const TEMPLATE_ACTIONS = 'TEMPLATE_ACTIONS';
 export const HIDE_SPLASH = 'HIDE_SPLASH';
-export const OPEN_DRAWER = 'OPEN_DRAWER';
-export const CLOSE_DRAWER = 'CLOSE_DRAWER';
 export const ADD_UID = 'ADD_UID';
 export const HAS_ACCESS = 'HAS_ACCESS';
 export const IS_LOADING = 'IS_LOADING';
@@ -11,7 +8,6 @@ export const GET_DETAILS = 'GET_DETAILS';
 export const SET_DETAILS = 'SET_DETAILS';
 export const GET_INTERESTS = 'GET_INTERESTS';
 export const GET_CATEGORIES = 'GET_CATEGORIES';
-export const GET_CHANNELS = 'GET_CHANNELS';
 export const SET_PROFILE_PIC = 'SET_PROFILE_PIC';
 export const SET_HEADER_TITLE = 'SET_HEADER_TITLE';
 export const ON_BACK_CLICK = 'ON_BACK_CLICK';

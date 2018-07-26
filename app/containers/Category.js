@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Platform, Dimensions,View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
+import { Platform, Dimensions, View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import { Container } from "native-base";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -35,30 +35,29 @@ class Category extends Component {
         super(props);
         this.state = {
             color: '',
-            message:'',
-            showMessage:false,
+            message: '',
+            showMessage: false,
             gameType: 'HTML5',
             category: this.props.navigation.state.params.category,
         }
     }
 
-    componentWillMount(){
-      Orientation.lockToPortrait();
-      this.getFavouriteGames();
+    componentWillMount() {
+        Orientation.lockToPortrait();
+        this.getFavouriteGames();
     }
 
-    getFavouriteGames =()=>
-    {
-      axios.get(vars.BASE_API_URL_GL+'/getFavorites?uid='+this.props.account.user.uid)
-        .then((response) => {
-          console.log(response);
-            if (response.data.success) {
-                this.props.getFavouriteGames(response.data);
-            }
-        })
-        .catch((error) => {
-            this.setState({ isValid: false, errorMessage: 'Unable to fetch the data.'});
-        });
+    getFavouriteGames = () => {
+        axios.get(vars.BASE_API_URL_GL + '/getFavorites?uid=' + this.props.account.user.uid)
+            .then((response) => {
+                console.log(response);
+                if (response.data.success) {
+                    this.props.getFavouriteGames(response.data);
+                }
+            })
+            .catch((error) => {
+                this.setState({ isValid: false, errorMessage: 'Unable to fetch the data.' });
+            });
     }
 
     componentDidMount() {
@@ -70,14 +69,12 @@ class Category extends Component {
 
 
     handleMessageBar = (success) => {
-      if (success)
-      {
-        this.setState({color:'green', message: messages.addToFavorites, showMessage: !this.state.showMessage})
-      }
-      else
-      {
-        this.setState({color:'red', message: messages.removeFromFavorites, showMessage: !this.state.showMessage})
-      }
+        if (success) {
+            this.setState({ color: 'green', message: messages.addToFavorites, showMessage: !this.state.showMessage })
+        }
+        else {
+            this.setState({ color: 'red', message: messages.removeFromFavorites, showMessage: !this.state.showMessage })
+        }
     }
 
 
@@ -85,58 +82,58 @@ class Category extends Component {
     render() {
         let getAllGames = this.props.games.games;
         const category = this.state.category
-        let html5CategoryList = getAllGames.filter(g => {return g.categoryId === this.state.category.categoryId} );
+        let html5CategoryList = getAllGames.filter(g => { return g.categoryId === this.state.category.categoryId });
         return (
             <Container>
-              <ImageBackground  style={{ zIndex: 999 }}>
-              <Header
-                  isDrawer={false}
-                  isTitle={true}
-                  title={category.categoryName.toUpperCase()}
-                  isSearch={true}
-                  rightLabel=''
-              />
-              </ImageBackground>
-              <Loader visible={this.props.loader.isLoading} />
-                <Search from={"html5"}/>
+                <ImageBackground style={{ zIndex: 999 }}>
+                    <Header
+                        isDrawer={false}
+                        isTitle={true}
+                        title={category.categoryName.toUpperCase()}
+                        isSearch={true}
+                        rightLabel=''
+                    />
+                </ImageBackground>
+                <Loader visible={this.props.loader.isLoading} />
+                <Search from={"html5"} />
                 <View style={CategoryStyles.content}>
-                  <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message}/>
-                  <ScrollView style={{marginTop: 15}} contentContainerStyle={{minHeight: Globals.IphoneX ?  Globals.deviceHeight - 140 : Globals.deviceHeight - 100}}>
-                    <View style={{ flex: 3, width: '100%', backgroundColor: 'black', alignItems: 'center', paddingHorizontal: Globals.DeviceType === 'Phone'? 15 : 30 }}>
+                    <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message} />
+                    <ScrollView style={{ marginTop: 15 }} contentContainerStyle={{ minHeight: Globals.IphoneX ? Globals.deviceHeight - 140 : Globals.deviceHeight - 100 }}>
+                        <View style={{ flex: 3, width: '100%', backgroundColor: 'black', alignItems: 'center', paddingHorizontal: Globals.DeviceType === 'Phone' ? 15 : 30 }}>
 
-                        <View style={CategoryStyles.gameListBox}>
-                          <View style={{flexDirection: 'row', width: '50%', height: '100%'}}>
-                             <View style={CategoryStyles.transformView}>
-                               <Icon name={category.categoryIcon.slice(6)} size={ Globals.DeviceType === 'Phone'? 22 : 40 } style={CategoryStyles.iconStyle} color='#423620' />
-                               <Text numberOfLines={1} style={[styles.avRegular,CategoryStyles.headingText]}>
-                                   {category.categoryName.toUpperCase()}
-                               </Text>
-                             </View>
-                             <View style={CategoryStyles.viewAllStyle} />
-                           </View>
+                            <View style={CategoryStyles.gameListBox}>
+                                <View style={{ flexDirection: 'row', width: '50%', height: '100%' }}>
+                                    <View style={CategoryStyles.transformView}>
+                                        <Icon name={category.categoryIcon.slice(6)} size={Globals.DeviceType === 'Phone' ? 22 : 40} style={CategoryStyles.iconStyle} color='#423620' />
+                                        <Text numberOfLines={1} style={[styles.avRegular, CategoryStyles.headingText]}>
+                                            {category.categoryName.toUpperCase()}
+                                        </Text>
+                                    </View>
+                                    <View style={CategoryStyles.viewAllStyle} />
+                                </View>
+                            </View>
+
+                            <View style={{ flex: 3, backgroundColor: 'black' }}>
+
+                                <View style={{ backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingVertical: Globals.DeviceType === 'Phone' ? 12 : 20 }}>
+
+                                    {html5CategoryList.map((game, gameIndex) => {
+                                        return (
+                                            <View style={{ paddingHorizontal: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 40 : deviceWidth / 45) : deviceWidth / 45) : deviceWidth / 50 }}>
+                                                <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                            </View>
+                                        )
+                                    })
+                                    }
+
+
+                                </View>
+                            </View>
                         </View>
 
-                      <View style={{ flex: 3, backgroundColor: 'black' }}>
-
-                        <View style={{backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap',  paddingVertical: Globals.DeviceType === 'Phone'? 12 : 20}}>
-
-                        {html5CategoryList.map((game, gameIndex) => {
-                            return (
-                                  <View style={{paddingHorizontal: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 40 :  deviceWidth / 45) :  deviceWidth / 45) : deviceWidth / 50}}>
-                                    <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
-                                  </View>
-                                )
-                            })
-                          }
-
-
-                        </View>
-                      </View>
-                    </View>
-
-                    <Footer />
-                </ScrollView>
-              </View>
+                        <Footer />
+                    </ScrollView>
+                </View>
             </Container>
         );
     }

@@ -20,20 +20,20 @@ class MessageBar extends Component {
         MessageBarManager.unregisterMessageBar();
     }
 
-    componentWillReceiveProps(newProps){
-           if(newProps.showMessage !== this.props.showMessage){
-               MessageBarManager.registerMessageBar(this.refs.alert);
-                MessageBarManager.showAlert({
-                    message: newProps.message,
-                    alertType: newProps.color == 'green'? 'success':'error',
-                    messageStyle: { fontSize: Globals.DeviceType === 'Phone'? 12 : 14, textAlign: 'center', fontFamily: 'AvenirNextLTW01RegularRegular' },
-                    duration : 2000
-                });
-            }
+    componentWillReceiveProps(newProps) {
+        if (newProps.showMessage !== this.props.showMessage) {
+            MessageBarManager.registerMessageBar(this.refs.alert);
+            MessageBarManager.showAlert({
+                message: newProps.message,
+                alertType: newProps.color == 'green' ? 'success' : 'error',
+                messageStyle: { fontSize: Globals.DeviceType === 'Phone' ? 12 : 14, textAlign: 'center', fontFamily: 'AvenirNextLTW01RegularRegular' },
+                duration: 2000
+            });
+        }
     }
     render() {
         return (
-            <View style={{position: 'absolute', backgroundColor:'transparent', marginTop: 0, height: 40, zIndex: 100, width: '100%'}}>
+            <View style={{ position: 'absolute', backgroundColor: 'transparent', marginTop: 0, height: 40, zIndex: 100, width: '100%' }}>
                 <MessageBarAlert
                     ref="alert"
                 />

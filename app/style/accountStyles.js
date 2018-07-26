@@ -26,7 +26,7 @@ export default (accountStyles = StyleSheet.create({
   radioView: {
     flexDirection: "row",
     alignItems: "center",
-      height: 28,
+    height: 28,
     //marginTop: "3%"
   },
   logoView: {

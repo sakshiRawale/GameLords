@@ -18,14 +18,14 @@ export default staticScreenStyles = StyleSheet.create({
         alignSelf: 'center'
     },
     textDataHeader: {
-        color:'#ffffff',
+        color: '#ffffff',
         textAlign: 'left',
         fontSize: 16,
         paddingTop: 10,
         paddingBottom: 5
     },
     textData: {
-        color:'#ffffff',
+        color: '#ffffff',
         textAlign: Platform.OS === 'ios' ? 'justify' : 'left',
         fontSize: 14,
         paddingTop: 10,
@@ -40,7 +40,7 @@ export default staticScreenStyles = StyleSheet.create({
         padding: 8
     },
     textDataPointers: {
-        color:'#ffffff',
+        color: '#ffffff',
         textAlign: Platform.OS === 'ios' ? 'justify' : 'left',
         fontSize: 14,
         width: '90%'

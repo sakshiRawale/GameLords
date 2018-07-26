@@ -84,7 +84,7 @@ export default homeStyles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft : 5
+        marginLeft: 5
     },
     bannerText: {
         fontSize: FontSizes.large,

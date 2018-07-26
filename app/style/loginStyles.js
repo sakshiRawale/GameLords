@@ -27,12 +27,12 @@ export default loginStyles = StyleSheet.create({
     usernameView: {
         marginTop: 10,
         alignItems: 'center',
-        width: Globals.DeviceType === 'Phone' ?  deviceWidth / 1.9 :  deviceWidth / 2.5,
+        width: Globals.DeviceType === 'Phone' ? deviceWidth / 1.9 : deviceWidth / 2.5,
     },
     userNameText: {
         color: 'white',
         fontSize: FontSizes.medium,
-        width: Globals.DeviceType === 'Phone' ?  deviceWidth / 1.9 :  deviceWidth / 2.5,
+        width: Globals.DeviceType === 'Phone' ? deviceWidth / 1.9 : deviceWidth / 2.5,
     },
     errorStyles: {
         width: '100%',
@@ -42,7 +42,7 @@ export default loginStyles = StyleSheet.create({
     },
     inputV: {
         fontSize: FontSizes.medium,
-        width: Globals.DeviceType === 'Phone' ?  deviceWidth / 1.9 :  deviceWidth / 2.5,
+        width: Globals.DeviceType === 'Phone' ? deviceWidth / 1.9 : deviceWidth / 2.5,
         height: Platform.OS == "ios" ? 20 : 40,
         color: "#ffffff",
         borderBottomColor: "#ffffff",
@@ -54,7 +54,7 @@ export default loginStyles = StyleSheet.create({
     },
     loginButton: {
         backgroundColor: '#f6a50e',
-        width: Globals.DeviceType === 'Phone' ?  deviceWidth / 1.9 :  deviceWidth / 2.5,
+        width: Globals.DeviceType === 'Phone' ? deviceWidth / 1.9 : deviceWidth / 2.5,
         alignItems: 'center',
         flexDirection: 'row',
         height: 50,

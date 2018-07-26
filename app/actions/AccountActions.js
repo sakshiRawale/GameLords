@@ -1,5 +1,5 @@
 import * as action_types from './action_types';
-import {console_log} from "../utils/helper";
+import { console_log } from "../utils/helper";
 
 export const getDetails = (data) => {
     return {

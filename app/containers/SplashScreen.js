@@ -31,34 +31,34 @@ class SplashScreen extends Component {
         AsyncStorage
             .getItem("@AccessToken:key")
             .then((value) => {
-            if (value !== null) {
-                this.setState({accessToken: value, });
-            } else {
-                this.setState({accessToken: null, });
-            }
-        })
-        .done();
+                if (value !== null) {
+                    this.setState({ accessToken: value, });
+                } else {
+                    this.setState({ accessToken: null, });
+                }
+            })
+            .done();
 
-         setTimeout(() => {
-        this.setState({isLoading: false});
-         },1000)
+        setTimeout(() => {
+            this.setState({ isLoading: false });
+        }, 1000)
     }
 
     render() {
-              if (this.state.isLoading) {
-                return (
-                    <ImageBackground style = {{flex:1, width : window.width,height: window.height}} source = {splashBg}></ImageBackground>
-                        )
+        if (this.state.isLoading) {
+            return (
+                <ImageBackground style={{ flex: 1, width: window.width, height: window.height }} source={splashBg}></ImageBackground>
+            )
+        } else {
+            if (this.state.accessToken !== null) {
+                NavigationService.reset("DrawerVOD");
+                this.props.checkAccess(this.state.accessToken);
+                return null;
             } else {
-                  if (this.state.accessToken !== null) {
-                      NavigationService.reset("DrawerVOD");
-                      this.props.checkAccess(this.state.accessToken);
-                          return null;
-                  } else {
-                      NavigationService.reset("Login");
-                      return null;
-                  }
+                NavigationService.reset("Login");
+                return null;
             }
+        }
 
     }
 }

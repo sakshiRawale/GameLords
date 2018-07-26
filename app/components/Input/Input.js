@@ -12,15 +12,15 @@ export default class Input extends React.Component {
 
     render() {
         return (
-            <View style={[styles.container,this.props.heightstyle]}>
+            <View style={[styles.container, this.props.heightstyle]}>
                 {
                     this.props.icon ?
                         <Icon style={styles.icon} name={this.props.icon} />
                         : null
                 }
-                <Text style={[styles.avRegular,styles.errorText]}>{this.props.errorText}</Text>
+                <Text style={[styles.avRegular, styles.errorText]}>{this.props.errorText}</Text>
                 <TextInput
-                    style={[styles.input,this.props.style]}
+                    style={[styles.input, this.props.style]}
                     placeholder={this.props.placeholder}
                     onChangeText={this.props.onChangeText}
                     keyboardType={this.props.keyboardType ? this.props.keyboardType : "default"}

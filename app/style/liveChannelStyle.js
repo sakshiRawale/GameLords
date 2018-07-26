@@ -77,20 +77,20 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageThmbnailGames: {
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 2.6 :  deviceWidth / 2.5) :  deviceWidth / 2.5) : deviceWidth / 2.25,
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 3.8 :  deviceHeight / 3) :  deviceHeight / 3) : deviceHeight / 2.4,
+        width: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 2.6 : deviceWidth / 2.5) : deviceWidth / 2.5) : deviceWidth / 2.25,
+        height: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceHeight / 3.8 : deviceHeight / 3) : deviceHeight / 3) : deviceHeight / 2.4,
         backgroundColor: 'transparent',
         marginVertical: 20,
         marginHorizontal: 10,
         flexDirection: 'row',
         alignItems: 'stretch',
-        borderColor:'#555',
+        borderColor: '#555',
         borderWidth: 2
     },
 
     imageThmbnailCategory: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 4.7 :  deviceHeight / 4.5) :  deviceHeight / 3.2) : deviceHeight / 3.8, //deviceHeight/4.5, // Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.20 :  deviceWidth / 1.35) :  deviceWidth / 3.2) : deviceWidth / 1.6, //deviceWidth/1.35
+        height: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceHeight / 4.7 : deviceHeight / 4.5) : deviceHeight / 3.2) : deviceHeight / 3.8, //deviceHeight/4.5, // Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
+        width: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 1.20 : deviceWidth / 1.35) : deviceWidth / 3.2) : deviceWidth / 1.6, //deviceWidth/1.35
         backgroundColor: 'transparent',
         marginBottom: 20,
         flexDirection: 'row',
@@ -98,75 +98,75 @@ export default liveChannelStyle = StyleSheet.create({
     },
 
     imageBackground: {
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2) : deviceWidth / 4.8,
+        width: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 4.4 : deviceWidth / 3.2) : deviceWidth / 3.2) : deviceWidth / 4.8,
         height: '100%',
     },
 
     imageGame: {
-        height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight / 5.2 :  deviceHeight / 4.2) :  deviceHeight / 3.2) : deviceHeight / 3.2,
+        height: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceHeight / 5.2 : deviceHeight / 4.2) : deviceHeight / 3.2) : deviceHeight / 3.2,
     },
 
     gameImageView: {
-      marginHorizontal: Globals.DeviceType === 'Phone'? 8 : 12,
-      marginVertical: Globals.DeviceType === 'Phone'? 8 : 12,
+        marginHorizontal: Globals.DeviceType === 'Phone' ? 8 : 12,
+        marginVertical: Globals.DeviceType === 'Phone' ? 8 : 12,
     },
 
     gameNameFavorite: {
-      flexDirection: 'row',
-      justifyContent: 'space-between'
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
 
     imageBackgroundCategory: {
-        width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth / 1.3 :  deviceWidth / 1.5) :  deviceWidth / 3.2) : deviceWidth / 1.75, //deviceWidth/1.5,
+        width: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 1.3 : deviceWidth / 1.5) : deviceWidth / 3.2) : deviceWidth / 1.75, //deviceWidth/1.5,
         height: '100%'
     },
 
     imageVideoThmbnail: {
-        width: Globals.DeviceType === 'Phone'? Platform.OS == "ios" ? ((deviceHeight == 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2 : deviceWidth / 4.8,
-        height: Globals.DeviceType === 'Phone'?  Platform.OS == "ios" ? ((deviceHeight == 812) ?  deviceWidth / 2.9 :  deviceHeight / 3.9) :  deviceHeight / 3.9 : deviceWidth / 3.4,
+        width: Globals.DeviceType === 'Phone' ? Platform.OS == "ios" ? ((deviceHeight == 812) ? deviceWidth / 4.4 : deviceWidth / 3.2) : deviceWidth / 3.2 : deviceWidth / 4.8,
+        height: Globals.DeviceType === 'Phone' ? Platform.OS == "ios" ? ((deviceHeight == 812) ? deviceWidth / 2.9 : deviceHeight / 3.9) : deviceHeight / 3.9 : deviceWidth / 3.4,
         backgroundColor: 'transparent',
         marginBottom: 30,
-        marginLeft: Globals.DeviceType === 'Phone'?  6 : 25,
+        marginLeft: Globals.DeviceType === 'Phone' ? 6 : 25,
         //marginRight: 6,
         flexDirection: 'row',
         alignItems: 'stretch',
         overflow: 'hidden'
     },
     imageVideoListBackground: {
-        width: Globals.DeviceType === 'Phone'? Platform.OS == "ios" ? ((deviceHeight == 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2 : deviceWidth / 4.8,
+        width: Globals.DeviceType === 'Phone' ? Platform.OS == "ios" ? ((deviceHeight == 812) ? deviceWidth / 4.4 : deviceWidth / 3.2) : deviceWidth / 3.2 : deviceWidth / 4.8,
         //height: '100%',
-        height: Globals.DeviceType === 'Phone'?  Platform.OS == "ios" ? ((deviceHeight == 812) ?  deviceWidth / 2.9 :  deviceHeight / 4) :  deviceHeight / 4 : deviceWidth / 3.6,
+        height: Globals.DeviceType === 'Phone' ? Platform.OS == "ios" ? ((deviceHeight == 812) ? deviceWidth / 2.9 : deviceHeight / 4) : deviceHeight / 4 : deviceWidth / 3.6,
 
     },
     imageSearchVideoThmbnail: {
-        width: Globals.DeviceType === 'Phone'? Platform.OS == "ios" ? ((deviceHeight == 812) ?  deviceWidth / 4.4 :  deviceWidth / 3.2) :  deviceWidth / 3.2 : deviceWidth / 4.2,
-        height: Globals.DeviceType === 'Phone'?  Platform.OS == "ios" ? ((deviceHeight == 812) ?  deviceWidth / 2.9 :  deviceHeight / 4) :  deviceHeight / 4 : deviceWidth / 3.6,
+        width: Globals.DeviceType === 'Phone' ? Platform.OS == "ios" ? ((deviceHeight == 812) ? deviceWidth / 4.4 : deviceWidth / 3.2) : deviceWidth / 3.2 : deviceWidth / 4.2,
+        height: Globals.DeviceType === 'Phone' ? Platform.OS == "ios" ? ((deviceHeight == 812) ? deviceWidth / 2.9 : deviceHeight / 4) : deviceHeight / 4 : deviceWidth / 3.6,
         backgroundColor: 'transparent',
         marginBottom: 30,
-        marginLeft: Globals.DeviceType === 'Phone'?  6 : 8,
+        marginLeft: Globals.DeviceType === 'Phone' ? 6 : 8,
         //marginRight: 6,
         flexDirection: 'row',
         //alignItems: 'stretch',
         //overflow: 'hidden'
     },
     imageVideoListBackground_BD: {
-        width: Globals.DeviceType === 'Phone'?   110 : deviceWidth / 4.8,
+        width: Globals.DeviceType === 'Phone' ? 110 : deviceWidth / 4.8,
         height: '100%'
     },
     imageSearchVideoThmbnail_BD: {
-        width: Globals.DeviceType === 'Phone'?  110 : deviceWidth / 4.2,
-        height: Globals.DeviceType === 'Phone'? 65 : deviceWidth / 3.6,
+        width: Globals.DeviceType === 'Phone' ? 110 : deviceWidth / 4.2,
+        height: Globals.DeviceType === 'Phone' ? 65 : deviceWidth / 3.6,
         backgroundColor: 'transparent',
         marginBottom: 30,
-        marginLeft: Globals.DeviceType === 'Phone'?  6 : 8,
+        marginLeft: Globals.DeviceType === 'Phone' ? 6 : 8,
         //marginRight: 6,
         flexDirection: 'row',
         alignItems: 'stretch',
         overflow: 'hidden'
     },
     tvThmbnail: {
-        width: Globals.DeviceType === 'Phone'? deviceWidth / 1.8 : deviceWidth / 2.8,
-        height: Globals.DeviceType === 'Phone'? deviceHeight / 5.2 : deviceHeight / 6,
+        width: Globals.DeviceType === 'Phone' ? deviceWidth / 1.8 : deviceWidth / 2.8,
+        height: Globals.DeviceType === 'Phone' ? deviceHeight / 5.2 : deviceHeight / 6,
         backgroundColor: 'transparent',
         marginBottom: 10,
         marginLeft: 5,
@@ -180,13 +180,13 @@ export default liveChannelStyle = StyleSheet.create({
 
 
     tvImageBackground: {
-        width: Globals.DeviceType === 'Phone'? deviceWidth / 1.8 : deviceWidth / 2.8,
+        width: Globals.DeviceType === 'Phone' ? deviceWidth / 1.8 : deviceWidth / 2.8,
         height: '100%',
         //resizeMode: 'center'
     },
     favoriteView: {
-        height: Globals.DeviceType === 'Phone' ?  25 : 35,
-        width: Globals.DeviceType === 'Phone' ?  25 : 35,
+        height: Globals.DeviceType === 'Phone' ? 25 : 35,
+        width: Globals.DeviceType === 'Phone' ? 25 : 35,
         borderRadius: 20,
         backgroundColor: '#00000090',
         marginLeft: '75%',
@@ -205,8 +205,8 @@ export default liveChannelStyle = StyleSheet.create({
         alignItems: 'center'
     },
     tvFavoriteView: {
-        height: Globals.DeviceType === 'Phone' ?  25 : 35,
-        width: Globals.DeviceType === 'Phone' ?  25 : 35,
+        height: Globals.DeviceType === 'Phone' ? 25 : 35,
+        width: Globals.DeviceType === 'Phone' ? 25 : 35,
         borderRadius: 25,
         backgroundColor: '#00000090',
         marginTop: 4,
@@ -267,25 +267,25 @@ export default liveChannelStyle = StyleSheet.create({
         width: '80%'
     },
     liveNow: {
-       flexDirection: 'row',
-       alignItems: 'center'
+        flexDirection: 'row',
+        alignItems: 'center'
     },
     categoryNameText: {
-      bottom: 0,
-      right: 5,
-      position: 'absolute',
-      color: 'white',
-      zIndex: 4,
-      fontWeight: 'bold',
+        bottom: 0,
+        right: 5,
+        position: 'absolute',
+        color: 'white',
+        zIndex: 4,
+        fontWeight: 'bold',
     },
-    transformView:{
-      flex: 2,
-      flexDirection: 'row',
-      alignItems:"center",
-      backgroundColor:"#f4aa1c",
-      width:'70%',
-      height:"100%",
+    transformView: {
+        flex: 2,
+        flexDirection: 'row',
+        alignItems: "center",
+        backgroundColor: "#f4aa1c",
+        width: '70%',
+        height: "100%",
 
- }
+    }
 
 });

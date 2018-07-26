@@ -33,9 +33,9 @@ class Login extends Component {
         };
     }
 
-componentWillMount(){
-    Orientation.lockToPortrait();
-}
+    componentWillMount() {
+        Orientation.lockToPortrait();
+    }
     componentDidMount() {
 
         SplashScreen.hide();
@@ -53,21 +53,21 @@ componentWillMount(){
                         //NavigationService.reset("Drawer");
                         NavigationService.reset("DrawerVOD");
                     } else {
-                        this.setState({error: 'Please fill valid Access Code'});
+                        this.setState({ error: 'Please fill valid Access Code' });
                         this.props.hide();
                     }
                     //this.props.hide();
                 })
         } else {
-            this.setState({error: 'Please fill valid Access Code'});
+            this.setState({ error: 'Please fill valid Access Code' });
         }
     }
 
 
     render() {
         return (
-            <KeyboardAvoidingView style={loginStyles.content} behavior={Platform.OS=='ios'?'padding':''}>
-                <ImageBackground source={background} style={{flex: 1}}>
+            <KeyboardAvoidingView style={loginStyles.content} behavior={Platform.OS == 'ios' ? 'padding' : ''}>
+                <ImageBackground source={background} style={{ flex: 1 }}>
                     <View style={loginStyles.logoView}>
                         <Image source={logo} style={loginStyles.logo} />
                     </View>
@@ -85,7 +85,7 @@ componentWillMount(){
                                 defaultValue={this.state.accessCode}
                                 maxLength={40}
                                 multiline={false}
-                                autoCapitalize = "none"
+                                autoCapitalize="none"
                                 underlineColorAndroid={'transparent'}
                             />
                         </View>
@@ -94,7 +94,7 @@ componentWillMount(){
                         <TouchableHighlight underlayColor="transparent" activeOpacity={0.6} onPress={() => this.getAccessToken()}>
                             <View style={loginStyles.loginButton}>
                                 <Text style={[loginStyles.buttonText, styles.avRegular]}>
-                                  {'CONTINUE'}
+                                    {'CONTINUE'}
                                 </Text>
                             </View>
                         </TouchableHighlight>

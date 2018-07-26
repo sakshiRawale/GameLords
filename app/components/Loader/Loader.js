@@ -18,8 +18,8 @@ const Loader = props => {
                 justifyContent: "center",
                 backgroundColor: "transparent"
             }}>
-                <WebView source={Platform.OS === 'ios'? loaderHTML: {uri: "file:///android_asset/loader.html"}} style={{width: Dimensions.get("window").width, height: Dimensions.get("window").height, backgroundColor: 'transparent' }} javaScriptEnabled={true}
-                         domStorageEnabled={true}/>
+                <WebView source={Platform.OS === 'ios' ? loaderHTML : { uri: "file:///android_asset/loader.html" }} style={{ width: Dimensions.get("window").width, height: Dimensions.get("window").height, backgroundColor: 'transparent' }} javaScriptEnabled={true}
+                    domStorageEnabled={true} />
             </View>
 
         );

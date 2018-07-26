@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from  'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
@@ -43,7 +43,7 @@ export default sliderStyles = StyleSheet.create({
     },
     bannerText: {
         flex: 1,
-       // alignItems: 'flex-start',
+        // alignItems: 'flex-start',
         justifyContent: 'center',
         //paddingLeft: '1%',
         //width: '80%'

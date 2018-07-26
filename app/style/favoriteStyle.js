@@ -22,11 +22,11 @@ export default favoriteStyles = StyleSheet.create({
 
     },
     imageVideoThmbnail: {
-        width: Globals.DeviceType === 'Phone'? deviceWidth / 3.2 : deviceWidth / 4.2,
-        height: Globals.DeviceType === 'Phone'?  deviceHeight / 3.4 : deviceWidth / 3.6,
+        width: Globals.DeviceType === 'Phone' ? deviceWidth / 3.2 : deviceWidth / 4.2,
+        height: Globals.DeviceType === 'Phone' ? deviceHeight / 3.4 : deviceWidth / 3.6,
         backgroundColor: 'transparent',
         marginBottom: 30,
-        marginLeft: Globals.DeviceType === 'Phone'?  6 : 8,
+        marginLeft: Globals.DeviceType === 'Phone' ? 6 : 8,
         //marginRight: 6,
         flexDirection: 'row',
         alignItems: 'stretch',
@@ -171,58 +171,58 @@ export default favoriteStyles = StyleSheet.create({
 
 
     gameListBox: {
-      height: 35,
-      flexDirection: 'row',
-      backgroundColor: 'black',
-      alignItems: 'center',
-      color:"white",
-      borderBottomColor:"#f4aa1c",
-      borderBottomWidth:1,
-      width: '88%',
+        height: 35,
+        flexDirection: 'row',
+        backgroundColor: 'black',
+        alignItems: 'center',
+        color: "white",
+        borderBottomColor: "#f4aa1c",
+        borderBottomWidth: 1,
+        width: '88%',
 
     },
-    transformView:{
-      flexDirection: 'row',
-      alignItems:"center",
-      backgroundColor:"#f4aa1c",
-      width:'58%',
-      height:"100%",
+    transformView: {
+        flexDirection: 'row',
+        alignItems: "center",
+        backgroundColor: "#f4aa1c",
+        width: '58%',
+        height: "100%",
     },
     iconStyle: {
-      backgroundColor: 'transparent',
-      paddingHorizontal: 15
+        backgroundColor: 'transparent',
+        paddingHorizontal: 15
     },
     headingText: {
-      color: '#423620',
-      fontSize: 14,
-      fontWeight: '600',
-      fontSize: FontSizes.medium
+        color: '#423620',
+        fontSize: 14,
+        fontWeight: '600',
+        fontSize: FontSizes.medium
     },
     viewAllStyle: {
-      transform: Platform.OS == "ios" ? [{skewX: "30deg"}] :  [{skewY: "30deg"}, {rotate: '45deg'}],
-      width: Platform.OS == "ios" ? '10%' :  '20%',
-      backgroundColor:"#f4aa1c",
-      marginLeft: Platform.OS == "ios" ? -16 :  -27,
-      height: '100%'
+        transform: Platform.OS == "ios" ? [{ skewX: "30deg" }] : [{ skewY: "30deg" }, { rotate: '45deg' }],
+        width: Platform.OS == "ios" ? '10%' : '20%',
+        backgroundColor: "#f4aa1c",
+        marginLeft: Platform.OS == "ios" ? -16 : -27,
+        height: '100%'
     },
     html5iconStyle: {
-      // width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  45 :  40) :  40) : 70,
-      // height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  45 :  40) :  40) : 70,
+        // width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  45 :  40) :  40) : 70,
+        // height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  45 :  40) :  40) : 70,
     },
     favoriteTextStyle: {
-      fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge
+        fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge
     },
     discoverButton: {
-      width: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceWidth/2.1 :  deviceWidth/2.2) :  deviceWidth/2.2) : deviceWidth/2.9,// Globals.deviceWidth/1.8,
-      height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  deviceHeight/14 :  deviceHeight/14) :  deviceHeight/14) : deviceHeight/13,// Globals.deviceWidth/1.8,
-      paddingVertical: 14,
-      justifyContent: 'center',
-      backgroundColor: "#f2a11b",
-      alignItems: 'center',
-      borderRadius: 15
+        width: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 2.1 : deviceWidth / 2.2) : deviceWidth / 2.2) : deviceWidth / 2.9,// Globals.deviceWidth/1.8,
+        height: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceHeight / 14 : deviceHeight / 14) : deviceHeight / 14) : deviceHeight / 13,// Globals.deviceWidth/1.8,
+        paddingVertical: 14,
+        justifyContent: 'center',
+        backgroundColor: "#f2a11b",
+        alignItems: 'center',
+        borderRadius: 15
     },
     discoverButtonText: {
-      color: '#000',
-      fontSize: Globals.DeviceType == 'Phone' ? FontSizes.xLarge : FontSizes.xxLarge,
+        color: '#000',
+        fontSize: Globals.DeviceType == 'Phone' ? FontSizes.xLarge : FontSizes.xxLarge,
     },
 });

@@ -10,7 +10,7 @@ export const messages = {
     emailEmpty: "Email Address cannot be empty.",
     emailNotValid: "Email Address is not valid, please enter a proper email address.",
     locationEmpty: "Location cannot be empty.",
-    interests: "Select 3 area of interest.",
+    interests: "Select 4 area of interest.",
     profileSaved:  "Profile details saved.",
     profilePic: "Profile picture saved."
 };

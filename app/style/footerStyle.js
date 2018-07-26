@@ -4,7 +4,7 @@ const deviceHeight = Dimensions.get("window").height;
 
 export default footerStyle = StyleSheet.create({
     footerView: {
-       // flex: 1,
+        // flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
