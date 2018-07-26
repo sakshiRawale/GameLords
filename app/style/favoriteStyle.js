@@ -210,7 +210,9 @@ export default favoriteStyles = StyleSheet.create({
         // height: Globals.DeviceType === 'Phone'? (Platform.OS == "ios" ? ((deviceHeight === 812) ?  45 :  40) :  40) : 70,
     },
     favoriteTextStyle: {
-        fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge
+        fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge,
+        color: '#fff',
+        alignSelf: 'center',
     },
     discoverButton: {
         width: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 2.1 : deviceWidth / 2.2) : deviceWidth / 2.2) : deviceWidth / 2.9,// Globals.deviceWidth/1.8,
@@ -225,4 +227,17 @@ export default favoriteStyles = StyleSheet.create({
         color: '#000',
         fontSize: Globals.DeviceType == 'Phone' ? FontSizes.xLarge : FontSizes.xxLarge,
     },
+    gameviewFav: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      paddingHorizontal: Globals.DeviceType === 'Phone' ? 15 : 30
+    },
+    gameView: {
+      paddingHorizontal: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 40 : deviceWidth / 45) : deviceWidth / 45) : deviceWidth / 50
+    },
+    noGameFound: {
+      alignItems: 'center',
+      flex: 4,
+      paddingTop: 30
+    }
 });

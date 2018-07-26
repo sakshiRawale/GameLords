@@ -381,7 +381,7 @@ class Detail extends Component {
                           <View style={DetailStyles.gamePlayGameView}>
                             <Text style={[styles.avRegular, DetailStyles.gameDetailPlayGameTextStyle]} >
                               PLAY NOW
-                                            </Text>
+                            </Text>
                           </View>
                         </TouchableOpacity>
                       </View>
@@ -392,7 +392,7 @@ class Detail extends Component {
                 <View style={DetailStyles.shadowViewBottom} />
 
 
-                            </ImageBackground>
+              </ImageBackground>
 
 
               <View style={{ backgroundColor: '#000000', paddingVertical: 20, paddingHorizontal: Globals.DeviceType === 'Phone' ? 15 : 30 }}>
@@ -411,7 +411,7 @@ class Detail extends Component {
                       <TouchableOpacity onPress={() => this.viewCategoryGames(categoryId)}>
                         <Text style={[styles.avRegular, DetailStyles.browseAll]}>
                           VIEW ALL
-                                          </Text>
+                        </Text>
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -431,17 +431,17 @@ class Detail extends Component {
                   </ScrollView>
                 </View>
               </View>
-                              </View>
+            </View>
 
-                            <Footer />
-                        </ScrollView>
+          <Footer />
+      </ScrollView>
         :
-                      <View style={{ height: Globals.deviceHeight, width: Globals.deviceWidth, backgroundColor: 'black' }}>
+          <View style={{ height: Globals.DeviceType === 'Phone' ? Globals.deviceHeight - 80 : Globals.deviceHeight - 100, width: Globals.deviceWidth, backgroundColor: 'black', borderColor: 'red', borderWidth: 2}}>
           <WebView
-            source={{ html: "<object width='100%' height='89.5%' data=" + game.gameFile + "></object>" }}
-            style={{ width: '100%', height: '100%', backgroundColor: 'transparent', paddingVertical: 200, paddingHorizontal: 15 }}
+            source={{ html: "<object width='100%' height='100%' data=" + game.gameFile + "></object>" }}
+            style={{ backgroundColor: 'transparent' }}
           />
-        </View>
+          </View>
         }
 
               </View>

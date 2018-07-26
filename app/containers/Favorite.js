@@ -103,12 +103,12 @@ class Favorite extends Component {
         <View style={favoriteStyles.content}>
           <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message} />
           <ScrollView style={{ marginTop: 15 }} contentContainerStyle={{ minHeight: Globals.IphoneX ? Globals.deviceHeight - 140 : Globals.deviceHeight - 100 }}>
-            <View style={{ flex: 3, backgroundColor: 'black' }}>
+            <View style={{ flex: 3 }}>
 
-              <View style={{ backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingHorizontal: Globals.DeviceType === 'Phone' ? 15 : 30 }}>
+              <View style={favoriteStyles.gameviewFav}>
                 {favoriteGames.map((game, gameIndex) => {
                   return (
-                    <View style={{ paddingHorizontal: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 40 : deviceWidth / 45) : deviceWidth / 45) : deviceWidth / 50 }}>
+                    <View style={favoriteStyle.gameView}>
                       <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
                     </View>
 
@@ -116,19 +116,19 @@ class Favorite extends Component {
                 })
                 }
                 {(favoriteGames.length <= 0) &&
-                  <View style={{ alignItems: 'center', flex: 4, paddingTop: 30 }}>
+                  <View style={favoriteStyle.noGameFound}>
                     <View>
                       <Icon name={'html5'} size={Globals.DeviceType === 'Phone' ? 50 : 80} style={favoriteStyles.html5iconStyle} color='#f2a11b' />
                     </View>
                     <View style={{ paddingVertical: 10 }}>
-                      <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, { color: '#fff', marginTop: 5, alignSelf: 'center' }]}>No Favorite Game Yet</Text>
+                      <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, { marginTop: 5 }]}>No Favorite Game Yet</Text>
                     </View>
 
                     <View>
                       <View style={{ justifyContent: 'center' }}>
-                        <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, { color: '#fff', alignSelf: 'center' }]}>Add your favorite games to access</Text>
-                        <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, { color: '#fff', alignSelf: 'center' }]}>and</Text>
-                        <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, { color: '#fff', alignSelf: 'center' }]}>Play easily without any hassels.</Text>
+                        <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle]}>Add your favorite games to access</Text>
+                        <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle]}>and</Text>
+                        <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle]}>Play easily without any hassels.</Text>
                       </View>
                     </View>
 

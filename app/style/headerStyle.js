@@ -57,7 +57,7 @@ export default headerStyle = StyleSheet.create({
         width: '100%',
     },
     headerSearch: {
-        marginTop: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? 35 : 20) : 0) : 30,
+        marginTop: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? 35 : 19) : 0) : 30,
         flexDirection: 'row',
         backgroundColor: '#000',
         borderColor: '#ffa507',
