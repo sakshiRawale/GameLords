@@ -2,6 +2,7 @@ import { StyleSheet, Platform, Dimensions } from "react-native";
 import * as FontSizes from "../utils/fontsSizes";
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
+import Globals from '../constants/Globals';
 
 export default (accountStyles = StyleSheet.create({
   content: {
@@ -70,7 +71,7 @@ export default (accountStyles = StyleSheet.create({
     flexDirection: "row",
     borderBottomColor: "#606060",
     borderBottomWidth: 1,
-    height: Platform.OS == "ios" ? 25 : 35
+    height:  Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? 25 : 25) : 35) : Platform.OS == "ios" ? 35 : 40
   },
   userNameText: {
     color: "#bbb",
