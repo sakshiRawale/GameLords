@@ -47,5 +47,27 @@ export default StyleSheet.create({
     marginTop: 20,
     alignSelf: 'center',
     fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge,
+  },
+  gameView: {
+    paddingHorizontal: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 40 : deviceWidth / 45) : deviceWidth / 45) : deviceWidth / 50
+  },
+  gameViewInner: {
+    backgroundColor: 'black',
+    flexDirection: 'row',
+    flexWrap: 'wrap'
+  },
+  gameViewOuter: {
+    flex: 3,
+    backgroundColor: 'black',
+    paddingHorizontal: Globals.DeviceType === 'Phone' ? 15 : 30
+  },
+  gameListBoxHeading: {
+    flexDirection: 'row',
+    width: '60%',
+    height: '100%'
+  },
+  noGameFound: {
+    alignItems: 'center',
+    flex: 1
   }
 });

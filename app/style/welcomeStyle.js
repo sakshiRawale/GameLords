@@ -199,6 +199,27 @@ export default liveChannelStyle = StyleSheet.create({
       justifyContent: 'flex-end',
       alignItems: 'flex-end',
       width: '50%'
+    },
+    gameRatingIconOuter: {
+      width: "100%",
+      flexDirection: "row"
+    },
+    gameRatingIconInner: {
+      width: '77%',
+      paddingLeft: 10,
+      flexDirection: 'row'
+    },
+    html5Icon: {
+      width: '23%',
+      alignItems: 'center'
+    },
+    gameNameFavoriteOuter: {
+      width: "100%",
+      flexDirection: "row"
+    },
+    gameNameFavoriteInner: {
+      width: '80%',
+      paddingHorizontal: 5
     }
 
 });

@@ -145,8 +145,8 @@ class GameView extends Component {
           </View>
 
           <View style={WelcomeStyle.gameNameFavorite}>
-            <View style={{ width: "100%", flexDirection: "row" }}>
-              <View style={{ width: '80%', paddingHorizontal: 5 }}>
+            <View style={WelcomeStyle.gameNameFavoriteOuter}>
+              <View style={WelcomeStyle.gameNameFavoriteInner}>
                 <TouchableOpacity onPress={() => this._openHTML5Game(game)} >
                   <Text style={[styles.avRegular, WelcomeStyle.gameTitleText]} numberOfLines={1}> {game.gameTitle.toUpperCase()} </Text>
                 </TouchableOpacity>
@@ -164,8 +164,8 @@ class GameView extends Component {
           </View>
 
           <View style={WelcomeStyle.gameRatingIcon}>
-            <View style={{ width: "100%", flexDirection: "row" }}>
-              <View style={{ width: '77%', paddingLeft: 10, flexDirection: 'row' }}>
+            <View style={WelcomeStyle.gameRatingIconOuter}>
+              <View style={WelcomeStyle.gameRatingIconInner}>
 
                 {
                   [1, 2, 3, 4, 5].map((rate, index) => {
@@ -176,7 +176,7 @@ class GameView extends Component {
                 }
 
               </View>
-              <View style={{ width: '23%', alignItems: 'center' }}>
+              <View style={WelcomeStyle.html5Icon}>
                 <TouchableOpacity onPress={() => this._openHTML5Game(game)} >
                   <Icon name='html5' size={Globals.DeviceType === 'Phone' ? 18 : 26} color='#fff' />
                 </TouchableOpacity>

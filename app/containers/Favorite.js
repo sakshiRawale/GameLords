@@ -108,7 +108,7 @@ class Favorite extends Component {
               <View style={favoriteStyles.gameviewFav}>
                 {favoriteGames.map((game, gameIndex) => {
                   return (
-                    <View style={favoriteStyle.gameView}>
+                    <View style={favoriteStyles.gameView}>
                       <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
                     </View>
 
@@ -116,7 +116,7 @@ class Favorite extends Component {
                 })
                 }
                 {(favoriteGames.length <= 0) &&
-                  <View style={favoriteStyle.noGameFound}>
+                  <View style={favoriteStyles.noGameFound}>
                     <View>
                       <Icon name={'html5'} size={Globals.DeviceType === 'Phone' ? 50 : 80} style={favoriteStyles.html5iconStyle} color='#f2a11b' />
                     </View>

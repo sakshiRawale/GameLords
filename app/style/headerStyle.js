@@ -27,7 +27,8 @@ export default headerStyle = StyleSheet.create({
     titleView: {
         flex: 4,
         alignItems: 'center',
-        //justifyContent: 'center',
+        justifyContent: 'center',
+        height: '100%'
     },
     leftIconView: {
         flex: 1,

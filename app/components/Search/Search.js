@@ -92,7 +92,7 @@ class SearchPage extends Component {
 
                 <View style={{ paddingHorizontal: Globals.DeviceType === 'Phone' ? 20 : 30, marginTop: Globals.DeviceType === 'Phone' ? 40 : 80 }}>
                   <View style={SearchStyles.gameListBox}>
-                    <View style={{ flexDirection: 'row', width: '60%', height: '100%' }}>
+                    <View style={SearchStyles.gameListBoxHeading}>
 
                       <View style={SearchStyles.transformView}>
                         <Icon name={'rocket'} size={Globals.DeviceType === 'Phone' ? 22 : 40} style={SearchStyles.iconStyle} color='#423620' />
@@ -107,13 +107,13 @@ class SearchPage extends Component {
                 </View>
 
                 {((this.state.type == '' || this.state.type == "html5") && (html5Search.length > 0)) &&
-                  <View style={{ flex: 3, backgroundColor: 'black', paddingHorizontal: Globals.DeviceType === 'Phone' ? 15 : 30 }}>
+                  <View style={SearchStyles.gameViewOuter}>
 
-                    <View style={{ backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap' }}>
+                    <View style={SearchStyles.gameViewInner}>
 
                       {html5Search.map((game, gameIndex) => {
                         return (
-                          <View style={{ paddingHorizontal: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 40 : deviceWidth / 45) : deviceWidth / 45) : deviceWidth / 50 }}>
+                          <View style={SearchStyles.gameView}>
                             <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from={'Search'} parentProps={this.props.hideHeader} />
                           </View>
                         )
@@ -123,7 +123,7 @@ class SearchPage extends Component {
                   </View>
                 }
                 {(html5Search.length <= 0) &&
-                  <View style={{ alignItems: 'center', flex: 1 }}>
+                  <View style={SearchStyles.noGameFound}>
                     <Text style={[styles.avRegular, SearchStyles.noSearchText]}>No Game Found</Text>
                   </View>
 

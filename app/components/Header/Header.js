@@ -114,7 +114,7 @@ class HeaderComponent extends Component {
                         <View style={headerStyle.leftIconView}>
                             {this._renderLeftSection()}
                         </View>
-                        <View style={[headerStyle.titleView, { justifyContent: 'center', height: '100%' }]}>
+                        <View style={[headerStyle.titleView]}>
                             {
                                 isTitle ?
                                     <Text style={[styles.avRegular, headerStyle.title]}>{title}</Text>
