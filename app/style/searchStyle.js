@@ -49,7 +49,7 @@ export default StyleSheet.create({
     fontSize: Globals.DeviceType == 'Phone' ? FontSizes.large : FontSizes.xLarge,
   },
   gameView: {
-    paddingHorizontal: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 40 : deviceWidth / 45) : deviceWidth / 45) : deviceWidth / 50
+    paddingHorizontal: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 35 : deviceWidth / 45) : deviceWidth / 45) : deviceWidth / 50
   },
   gameViewInner: {
     backgroundColor: 'black',

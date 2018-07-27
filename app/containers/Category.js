@@ -113,13 +113,13 @@ class Category extends Component {
                                 </View>
                             </View>
 
-                            <View style={{ flex: 3, backgroundColor: 'black' }}>
+                            <View style={CategoryStyles.gameViewOuter}>
 
-                                <View style={{ backgroundColor: 'black', flexDirection: 'row', flexWrap: 'wrap', paddingVertical: Globals.DeviceType === 'Phone' ? 12 : 20 }}>
+                                <View style={CategoryStyles.gameViewInner}>
 
                                     {html5CategoryList.map((game, gameIndex) => {
                                         return (
-                                            <View style={{ paddingHorizontal: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 40 : deviceWidth / 45) : deviceWidth / 45) : deviceWidth / 50 }}>
+                                            <View style={CategoryStyles.gameView}>
                                                 <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
                                             </View>
                                         )

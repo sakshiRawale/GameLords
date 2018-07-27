@@ -44,4 +44,17 @@ export default categoryStyle = StyleSheet.create({
     marginLeft: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? -12 : -12) : -14) : -18, //Platform.OS == "ios" ? -18 :  -27,
     height: '100%',
   },
+  gameView: {
+    paddingHorizontal: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? deviceWidth / 35 : deviceWidth / 45) : deviceWidth / 45) : deviceWidth / 50
+  },
+  gameViewInner: {
+    backgroundColor: 'black',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingVertical: Globals.DeviceType === 'Phone' ? 12 : 20
+  },
+  gameViewOuter: {
+    flex: 3,
+    backgroundColor: 'black'
+  }
 });
