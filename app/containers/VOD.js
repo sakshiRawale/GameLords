@@ -141,6 +141,7 @@ class VOD extends Component {
         else {
             this.setState({ color: 'red', message: messages.removeFromFavorites, showMessage: !this.state.showMessage })
         }
+        this.getFavouriteGames();
     }
 
     _openBannerHTML5Game = () => {
