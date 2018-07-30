@@ -297,7 +297,7 @@ class VOD extends Component {
                                             favoriteGames.map((game, gameIndex) => {
                                                 return (
                                                     <View style={{ marginHorizontal: deviceWidth / 90 }}>
-                                                        <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                                                        <GameView game={game} gameIndex={gameIndex} handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
                                                     </View>
                                                 )
                                             })
