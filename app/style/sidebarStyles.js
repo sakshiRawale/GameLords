@@ -109,7 +109,7 @@ export default sidebarStyles = StyleSheet.create({
     },
     menuText: {
         color: "white",
-        fontSize: Globals.DeviceType === 'Phone' ? FontSizes.large : FontSizes.large,
+        fontSize: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? FontSizes.large : FontSizes.medium) : FontSizes.medium) : FontSizes.large,
         paddingLeft: 5
     },
     menuDividerStyle: {

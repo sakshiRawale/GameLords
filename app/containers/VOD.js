@@ -218,7 +218,7 @@ class VOD extends Component {
                                                             {
                                                                 games.map((game, gameIndex) => {
                                                                     return (
-                                                                        <View style={{ marginHorizontal: deviceWidth / 90 }}>
+                                                                        <View key={gameIndex} style={{ marginHorizontal: deviceWidth / 90 }}>
                                                                             <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
                                                                         </View>
                                                                     )
@@ -290,6 +290,7 @@ class VOD extends Component {
         )
 
     }
+
 
     testCallback = () => {
         this.setState({ hideHeader: !this.state.hideHeader });

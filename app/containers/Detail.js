@@ -156,12 +156,12 @@ class Detail extends Component {
 
     if (indexOf == -1) {
       likeGames.push(gameData);
-      this.handleLikeMessageBar(true)
+      // this.handleLikeMessageBar(true)
 
     }
     else {
       likeGames.splice(indexOf, 1);
-      this.handleLikeMessageBar(false)
+      // this.handleLikeMessageBar(false)
     }
 
     axios.post(vars.BASE_API_URL_GL + '/userLike', gameData)
@@ -345,29 +345,33 @@ class Detail extends Component {
                           </View>
 
                           <View style={DetailStyles.gameDetailsViewCol, {alignItems: 'center', paddingVertical: 20}}>
-                                        <View style={DetailStyles.gameDetailsViewColFavLikeIcon}>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                              <TouchableOpacity onPress={(e) => this._handleFavoriteClicked(game, e)}>
-                                <Icon
-                                  name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
-                                  size={Globals.DeviceType === 'Phone' ? 33 : 45}
-                                  style={[DetailStyles.iconStyle],{}} color="#f4aa1c" />
-                                            </TouchableOpacity>
-                              <TouchableOpacity onPress={(e) => this._handleRateClicked(game, e)} >
-                                <Icon
-                                  name={this.isGameLike(game.gameId) ? "thumbs-up" : "thumbs-o-up"}
-                                  size={Globals.DeviceType === 'Phone' ? 33 : 45}
-                                  style={[DetailStyles.iconStyle],{}} color="#f4aa1c" />
-                                            </TouchableOpacity>
+                          <View style={DetailStyles.gameDetailsViewColFavLikeIcon}>
+                            <View style={{ flexDirection: 'row'}}>
+                              <View style={{width: '70%'}}>
+                                <TouchableOpacity style={{ width: '30%'}} onPress={(e) => this._handleFavoriteClicked(game, e)}>
+                                  <Icon
+                                    name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
+                                    size={Globals.DeviceType === 'Phone' ? 33 : 45}
+                                    style={[DetailStyles.iconStyle],{}} color="#f4aa1c" />
+                                </TouchableOpacity>
+                              </View>
+                              <View style={{width: '30%'}}>
+                                <TouchableOpacity onPress={(e) => this._handleRateClicked(game, e)} >
+                                  <Icon
+                                    name={this.isGameLike(game.gameId) ? "thumbs-up" : "thumbs-o-up"}
+                                    size={Globals.DeviceType === 'Phone' ? 33 : 45}
+                                    style={[DetailStyles.iconStyle],{}} color="#f4aa1c" />
+                                </TouchableOpacity>
+                              </View>
                             </View>
                           </View>
 
                           <View style={DetailStyles.gameDetailsViewColFavLike}>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                              <View style={{}}>
+                            <View style={{ flexDirection: 'row'}}>
+                              <View style={{width: Globals.DeviceType === 'Phone' ? '65%' : '66.5%' }}>
                                 <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Favorite </Text>
                               </View>
-                              <View style={{ paddingRight: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? 6.5 : 10) : 10) : 10 }}>
+                              <View style={{ width: Globals.DeviceType === 'Phone' ? '35%' : '35%'}}>
                                 <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Rate </Text>
                               </View>
                             </View>
@@ -387,7 +391,7 @@ class Detail extends Component {
                       </View>
                     </View>
 
-                                  </View>
+                  </View>
                 </View>
                 <View style={DetailStyles.shadowViewBottom} />
 
