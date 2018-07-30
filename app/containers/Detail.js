@@ -348,7 +348,7 @@ class Detail extends Component {
                           <View style={DetailStyles.gameDetailsViewColFavLikeIcon}>
                             <View style={{ flexDirection: 'row'}}>
                               <View style={{width: '70%'}}>
-                                <TouchableOpacity style={{ width: '36%'}} onPress={(e) => this._handleFavoriteClicked(game, e)}>
+                                <TouchableOpacity style={{ width: '38%'}} onPress={(e) => this._handleFavoriteClicked(game, e)}>
                                   <Icon
                                     name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
                                     size={Globals.DeviceType === 'Phone' ? 33 : 45}
