@@ -64,72 +64,6 @@ class GameView extends Component {
     // NavigationService.navigate('Detail',{game: game});
   }
 
-  _handleFavoriteClicked = (data, current) => {
-    // this.refs[data.gameId].setNativeProps({name: "star"});
-    /****Comments *****/
-    // below code is working
-    // this.refs[data.gameId].setNativeProps({style: {color:"#c1c1c1"}});
-    // debugger;
-    this.gameFavorite(data);
-  }
-
-
-  gameFavorite(data) {
-    let favoriteGames = this.props.favorite.games;
-    let indexOf = favoriteGames.findIndex((f) => {
-      return f.gameId == data.gameId;
-    });
-
-    let gameData = {
-      uid: this.props.account.user.uid,
-      gameId: data.gameId,
-      isFavorite: !this.isGameFavorite(data.gameId)
-    };
-
-    if (indexOf == -1) {
-      favoriteGames.push(gameData);
-      axios.post(vars.BASE_API_URL_GL + "/favorite", gameData)
-        .then((response) => {
-          this.props.showMessage({
-            message: messages.addToFavorites,
-            type: true
-          });
-          console.log(response);
-        })
-        .catch((error) => {
-          console_log(error);
-        });
-      this.props.handleMessageBar(true)
-
-    }
-    else {
-      favoriteGames.splice(indexOf, 1);
-      axios.post(vars.BASE_API_URL_GL + "/favorite", gameData)
-        .then((response) => {
-          this.props.showMessage({
-            message: messages.addToFavorites,
-            type: true
-          });
-          console.log(response);
-        })
-        .catch((error) => {
-          console_log(error);
-        });
-      this.props.handleMessageBar(false)
-    }
-
-  }
-
-  isGameFavorite(gameId) {
-    let indexOf = this.props.favorite.games.findIndex((f) => {
-      return f.gameId == gameId;
-    });
-    if (indexOf != -1) {
-      return true;
-    }
-    return false;
-  }
-
   render() {
     const { game, gameIndex } = this.props;
     return (
@@ -152,10 +86,10 @@ class GameView extends Component {
                 </TouchableOpacity>
               </View>
               <View style={{ width: '20%' }}>
-                <TouchableOpacity onPress={(e) => this._handleFavoriteClicked(game, e)} >
+                <TouchableOpacity onPress={(e) => this.props.handleFavoriteClicked(game, e)} >
                   <Icon
                     ref={game.gameId}
-                    name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
+                    name={this.props.isGameFavorite? "star" : "star-o"}
                     size={Globals.DeviceType === 'Phone' ? 24 : 36}
                     style={WelcomeStyle.iconStyle,{zIndex: 1}} color="#f4aa1c" />
                           </TouchableOpacity>

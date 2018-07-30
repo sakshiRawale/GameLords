@@ -82,6 +82,56 @@ class Favorite extends Component {
     NavigationService.navigate('DrawerVOD');
   }
 
+  _handleFavoriteClicked = (data, current) => {
+    this.gameFavorite(data);
+  }
+
+
+  gameFavorite(data) {
+    let favoriteGames = this.props.favorite.games;
+    let indexOf = favoriteGames.findIndex((f) => {
+      return f.gameId == data.gameId;
+    });
+
+    let gameData = {
+      uid: this.props.account.user.uid,
+      gameId: data.gameId,
+      isFavorite: !this.isGameFavorite(data.gameId)
+    };
+
+    if (indexOf == -1) {
+      favoriteGames.push(gameData);
+      this.handleMessageBar(true)
+
+    }
+    else {
+      favoriteGames.splice(indexOf, 1);
+        this.handleMessageBar(false)
+    }
+
+    axios.post(vars.BASE_API_URL_GL + "/favorite", gameData)
+      .then((response) => {
+        this.props.showMessage({
+          message: messages.addToFavorites,
+          type: true
+        });
+        console.log(response);
+      })
+      .catch((error) => {
+        console_log(error);
+      });
+
+  }
+
+  isGameFavorite(gameId) {
+    let indexOf = this.props.favorite.games.findIndex((f) => {
+      return f.gameId == gameId;
+    });
+    if (indexOf != -1) {
+      return true;
+    }
+    return false;
+  }
 
   render() {
     let favoriteGames = this.props.favorite.games.filter(g => { return g.gameType === this.state.gameType });
@@ -109,7 +159,7 @@ class Favorite extends Component {
                 {favoriteGames.map((game, gameIndex) => {
                   return (
                     <View style={favoriteStyles.gameView}>
-                      <GameView game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} />
+                      <GameView game={game} gameIndex={gameIndex} handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
                     </View>
 
                   )

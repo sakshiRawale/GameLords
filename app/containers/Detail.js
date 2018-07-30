@@ -427,7 +427,7 @@ class Detail extends Component {
                       html5RelatedList.map((game, gameIndex) => {
                         return (
                           <View style={{ marginHorizontal: deviceWidth / 90 }}>
-                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} handleGame={this.handleGame} />
+                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleGame={this.handleGame}  handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
                           </View>
                         )
                       })

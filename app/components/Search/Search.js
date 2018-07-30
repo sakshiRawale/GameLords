@@ -45,6 +45,57 @@ class SearchPage extends Component {
     this.props.searchText(text);
   }
 
+  _handleFavoriteClicked = (data, current) => {
+    this.gameFavorite(data);
+  }
+
+
+  gameFavorite(data) {
+    let favoriteGames = this.props.favorite.games;
+    let indexOf = favoriteGames.findIndex((f) => {
+      return f.gameId == data.gameId;
+    });
+
+    let gameData = {
+      uid: this.props.account.user.uid,
+      gameId: data.gameId,
+      isFavorite: !this.isGameFavorite(data.gameId)
+    };
+
+    if (indexOf == -1) {
+      favoriteGames.push(gameData);
+      this.handleMessageBar(true)
+
+    }
+    else {
+      favoriteGames.splice(indexOf, 1);
+        this.handleMessageBar(false)
+    }
+
+    axios.post(vars.BASE_API_URL_GL + "/favorite", gameData)
+      .then((response) => {
+        this.props.showMessage({
+          message: messages.addToFavorites,
+          type: true
+        });
+        console.log(response);
+      })
+      .catch((error) => {
+        console_log(error);
+      });
+
+  }
+
+  isGameFavorite(gameId) {
+    let indexOf = this.props.favorite.games.findIndex((f) => {
+      return f.gameId == gameId;
+    });
+    if (indexOf != -1) {
+      return true;
+    }
+    return false;
+  }
+
   handleMessageBar = (success) => {
     if (success) {
       this.setState({ color: 'green', message: messages.addToFavorites, showMessage: !this.state.showMessage })
@@ -114,7 +165,7 @@ class SearchPage extends Component {
                       {html5Search.map((game, gameIndex) => {
                         return (
                           <View style={SearchStyles.gameView}>
-                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleMessageBar={this.handleMessageBar} from={'Search'} parentProps={this.props.hideHeader} />
+                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} from={'Search'} parentProps={this.props.hideHeader}  handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
                           </View>
                         )
                       })
@@ -143,6 +194,7 @@ class SearchPage extends Component {
 const mapStateToProps = (state) => {
   return {
     category: state.CategoryReducer,
+    account: state.AccountReducer,
     games: state.GamesReducer,
     favorite: state.FavoriteReducer,
     header: state.HeaderReducer,
