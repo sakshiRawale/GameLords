@@ -93,7 +93,6 @@ class VOD extends Component {
         }
     }
 
-
     componentDidMount() {
 
         this.setState({ dataLoad: true })
@@ -141,7 +140,7 @@ class VOD extends Component {
         else {
             this.setState({ color: 'red', message: messages.removeFromFavorites, showMessage: !this.state.showMessage })
         }
-        this.getFavouriteGames();
+        // this.getFavouriteGames();
     }
 
     _openBannerHTML5Game = () => {
@@ -176,7 +175,7 @@ class VOD extends Component {
 
       }
       else {
-        favoriteGames.splice(indexOf, 1);
+          favoriteGames.splice(indexOf, 1);
           this.handleMessageBar(false)
       }
 
@@ -187,6 +186,7 @@ class VOD extends Component {
             type: true
           });
           console.log(response);
+          this.getFavouriteGames();
         })
         .catch((error) => {
           console_log(error);

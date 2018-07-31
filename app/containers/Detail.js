@@ -45,6 +45,7 @@ class Detail extends Component {
       categoryName: '',
       liked: false,
       openGame: false,
+      hideHeader: false,
       bgImages: ["", Images.rpg, Images.augmentedReality, Images.virtualReality, Images.action, Images.adventure, Images.arcade, Images.racing, Images.sports, Images.utilities, Images.action, Images.adventure, Images.arcade, Images.racing, Images.sports, Images.rts, "", Images.premium, Images.premium, "", Images.premium, Images.premium]
       // game: this.props.navigation.state.params.game,
       // categoryId: this.props.navigation.state.params.game.categoryId,
@@ -207,6 +208,7 @@ class Detail extends Component {
           type: true
         });
         console.log(response);
+        this.getFavouriteGames();
       })
       .catch((error) => {
         console_log(error);
@@ -250,6 +252,10 @@ class Detail extends Component {
     }, 2000);
   }
 
+  testCallback = () => {
+      this.setState({ hideHeader: !this.state.hideHeader });
+  }
+
   render() {
     let getAllGames = this.props.games.games;
     let html5RelatedList = getAllGames.filter(g => { return g.categoryId === this.state.categoryId && g.gameId !== this.state.game.gameId });
@@ -263,10 +269,11 @@ class Detail extends Component {
             title={game.gameTitle}
             isSearch={true}
             rightLabel=''
+            hideHeader={this.state.hideHeader}
           />
         </ImageBackground>
         <Loader visible={this.props.loader.isLoading} />
-        <Search from={"html5"} />
+        <Search from={"html5"} hideHeader={() => this.testCallback()} />
         <View style={DetailStyles.content}>
 
           <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message} />

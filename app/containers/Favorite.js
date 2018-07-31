@@ -116,6 +116,7 @@ class Favorite extends Component {
           type: true
         });
         console.log(response);
+        this.getFavouriteGames();
       })
       .catch((error) => {
         console_log(error);
