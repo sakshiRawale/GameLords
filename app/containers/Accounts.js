@@ -119,14 +119,14 @@ class Accounts extends Component {
             this.setState({ color: 'red', message: messages.locationEmpty, showMessage: !this.state.showMessage })
             return false;
         }
-        if (this.state.interests.length != 5) {
-            this.props.showMessage({
-                message: messages.interests,
-                type: false
-            });
-            this.setState({ color: 'red', message: messages.interests, showMessage: !this.state.showMessage })
-            return false;
-        }
+        // if (this.state.interests.length != 5) {
+        //     this.props.showMessage({
+        //         message: messages.interests,
+        //         type: false
+        //     });
+        //     this.setState({ color: 'red', message: messages.interests, showMessage: !this.state.showMessage })
+        //     return false;
+        // }
         return true;
     }
 
