@@ -100,7 +100,7 @@ class VOD extends Component {
         setTimeout(() => {
             this.props.hide();
             SplashScreen.hide();
-        }, 1500);
+        }, 3000);
         BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     }
 
