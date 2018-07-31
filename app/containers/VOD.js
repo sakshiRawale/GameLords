@@ -112,8 +112,8 @@ class VOD extends Component {
     }
 
     switchFavorite() {
-        this.setState({ favoriteSwitch: !this.state.favoriteSwitch });
         this.getFavouriteGames();
+        this.setState({ favoriteSwitch: !this.state.favoriteSwitch });
     }
 
     viewCategoryGames(category) {
@@ -186,7 +186,6 @@ class VOD extends Component {
             type: true
           });
           console.log(response);
-          this.getFavouriteGames();
         })
         .catch((error) => {
           console_log(error);
@@ -290,7 +289,7 @@ class VOD extends Component {
                     :
                     <View>
                         {
-                            favoriteGames.length > 0 &&
+                            this.props.favorite.games.length > 0 &&
                             <View>
                                 <View style={{ flexDirection: "row" }}>
                                     <ScrollView horizontal={true} >
@@ -309,7 +308,7 @@ class VOD extends Component {
                             </View>
                         }
 
-                        {(favoriteGames.length <= 0) &&
+                        {(this.props.favorite.games.length <= 0) &&
                             <View style={{ alignItems: 'center', flex: 4, paddingTop: 30 }}>
                                 <View>
                                     <Image source={require('../assets/images/html5.png')} style={favoriteStyles.html5iconStyle} />

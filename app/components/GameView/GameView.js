@@ -82,7 +82,7 @@ class GameView extends Component {
             <View style={WelcomeStyle.gameNameFavoriteOuter}>
               <View style={WelcomeStyle.gameNameFavoriteInner}>
                 <TouchableOpacity onPress={() => this._openHTML5Game(game)} >
-                  <Text style={[styles.avRegular, WelcomeStyle.gameTitleText]} numberOfLines={1}> {game.gameTitle.toUpperCase()} </Text>
+                  <Text style={[styles.avRegular, WelcomeStyle.gameTitleText]} numberOfLines={1}> {game.gameTitle && game.gameTitle.toUpperCase()} </Text>
                 </TouchableOpacity>
               </View>
               <View style={{ width: '20%' }}>
