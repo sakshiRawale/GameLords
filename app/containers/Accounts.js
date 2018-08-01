@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { CameraRoll, View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableOpacity, Keyboard, AsyncStorage } from "react-native";
+import { BackHandler, CameraRoll, View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableOpacity, Keyboard, AsyncStorage } from "react-native";
 import { Container, CheckBox } from "native-base";
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
@@ -12,6 +12,8 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Input from '../components/Input/Input';
+import NavigationService from '../utils/NavigationService';
+
 
 // Styles
 import { styles } from "../style/appStyles";
@@ -28,6 +30,7 @@ import { getDetails, setDetails, setProfilePic, getInterests } from '../actions/
 import { setHeaderTitle } from '../actions/HeaderActions';
 import { console_log, parseQueryString } from '../utils/helper';
 import Globals from '../constants/Globals';
+import { checkAccess } from '../actions/WelcomeActions';
 
 const accountTypes = [
     { label: 'Standard' },
@@ -76,6 +79,12 @@ class Accounts extends Component {
         setTimeout(() => {
             this.props.hide();
         }, 1500);
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    }
+
+    handleBackPress = () => {
+        NavigationService.goBack();
+        return true;
     }
 
     editForm(e) {
@@ -195,6 +204,12 @@ class Accounts extends Component {
                 actions: [NavigationActions.navigate({ routeName: 'Drawer' })]
             })
         );
+    }
+
+    signOutUser(){
+        this.props.checkAccess('');
+        AsyncStorage.setItem('@AccessToken:key', '');
+        NavigationService.reset("Login");
     }
 
     _OpenGallery() {
@@ -347,6 +362,11 @@ class Accounts extends Component {
                                     :
                                     null
                                 }
+                                <View style ={{ height: 40,}}>
+                                    <TouchableOpacity onPress={()=> this.signOutUser()}>
+                                      <Text style={[styles.avRegular, accountStyles.sectionHeaders, {marginTop: 10, marginLeft: 5}]}>LOG OUT</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                             <View style={{ flex: 2 }}>
                                 <TouchableOpacity style={accountStyles.avtarStyle} onPress={this._OpenGallery.bind(this)}>
@@ -387,6 +407,7 @@ const mapDispatchToProps = (dispatch) => {
         getDetails,
         setDetails,
         setProfilePic,
+        checkAccess
     }, dispatch);
 };
 

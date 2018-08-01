@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SearchStyles from "../../style/searchStyle";
-import { Keyboard, Dimensions, Platform, Modal, Image, View, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, TouchableOpacity } from "react-native";
+import { BackHandler, Keyboard, Dimensions, Platform, Modal, Image, View, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, TouchableOpacity } from "react-native";
 import { Container, Content, Header, Item, Button, Input } from "native-base";
 import * as vars from '../../constants/api';
 import axios from 'axios';
@@ -39,6 +39,19 @@ class SearchPage extends Component {
 
   componentWillUnmount() {
     this.props.searchText('');
+  }
+
+  componentDidMount() {
+      Orientation.lockToPortrait();
+      BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+
+  handleBackPress = () => {
+      this.props.showSearchBar(false);
+      this.props.searchText('');
+      this.props.onShowSearchView(false);
+      return true;
   }
 
   onChange(text) {

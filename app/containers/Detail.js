@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Platform, WebView, Dimensions, View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
+import {BackHandler, Platform, WebView, Dimensions, View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import { Container } from "native-base";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -112,8 +112,13 @@ class Detail extends Component {
     setTimeout(() => {
       this.props.hide();
     }, 1500);
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
   }
 
+  handleBackPress = () => {
+      NavigationService.goBack();
+      return true;
+  }
 
   handleMessageBar = (success) => {
     if (success) {

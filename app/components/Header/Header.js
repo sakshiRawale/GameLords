@@ -80,7 +80,7 @@ class HeaderComponent extends Component {
             )
         } else {
             return (
-              
+
                 <TouchableHighlight underlayColor="transparent" activeOpacity={0.2} style={[headerStyle.iconsView]} onPress={() => { NavigationService.goBack(); }}>
                     <Icon name="angle-left" size={Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? 28 : 26) : 26) : 35} style={{ backgroundColor: 'transparent', marginLeft: Globals.DeviceType === 'Phone' ? 15 : 25 }} color="#f6a50e" />
                 </TouchableHighlight>
@@ -163,7 +163,6 @@ class HeaderComponent extends Component {
                                 this.props.searchText('');
                                 this.props.onShowSearchView(false);
                                 this.slideOut();
-
                             }} transparent>
                                 <Text style={[styles.avRegular, headerStyle.cancelTxt]}>Cancel</Text>
                             </TouchableOpacity>
