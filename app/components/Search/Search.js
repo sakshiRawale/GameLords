@@ -17,6 +17,7 @@ import GameView from '../GameView/GameView';
 import Globals from '../../constants/Globals';
 import { messages } from '../../constants/messages';
 import MessageBar from '../../components/Message/Message';
+import Orientation from 'react-native-orientation';
 
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
