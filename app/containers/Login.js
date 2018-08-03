@@ -23,6 +23,8 @@ import { console_log } from "../utils/helper";
 import * as vars from '../constants/api';
 import SplashScreen from 'react-native-splash-screen';
 import Orientation from 'react-native-orientation';
+import {PaymentAndroid} from '../components/Payment/PaymentAndroid';
+import {PaymentIOS} from '../components/Payment/PaymentIOS';
 
 class Login extends Component {
     constructor(props) {
@@ -63,6 +65,26 @@ class Login extends Component {
         }
     }
 
+    inAppPayment=()=>{
+        if(Platform.OS==='ios') {
+            PaymentIOS();
+        }
+        else{
+            PaymentAndroid(
+                (data)=>{
+                    //console.log('here***', data);
+                    if(data.purchaseState === 'PurchasedSuccessfully'){
+                        this.setState({accessCode: 'fdf098fcc6'});
+                        this.getAccessToken();
+                    }
+                },
+                (error)=>{
+                    //alert(error);
+                    console.log(error);
+                });
+        }
+    }
+
 
     render() {
         return (
@@ -98,6 +120,13 @@ class Login extends Component {
                                 </Text>
                             </View>
                         </TouchableHighlight>
+
+                        <TouchableOpacity style={{marginTop: 20, height: 40, alignSelf:'center'}} onPress = {()=> this.inAppPayment()}>
+                            <Text style = {{color: '#fff'}}>{ "New User?" }
+                                <Text style = {{color: 'red'}}>{ " Subscribe here" }</Text>
+                            </Text>
+                        </TouchableOpacity>
+
                     </View>
 
                 </ImageBackground>
