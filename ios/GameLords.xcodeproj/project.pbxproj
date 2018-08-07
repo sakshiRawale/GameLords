@@ -47,6 +47,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		871E38796C1C4D54A843202A /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B37DE237FE44F269709D7AB /* Roboto_medium.ttf */; };
 		913BAF00926C472BBF9A4E7D /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1981BE36648F48BB83B2C004 /* EvilIcons.ttf */; };
+		92914ED12118488E0078B448 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92914ED02118488E0078B448 /* StoreKit.framework */; };
 		93185788264F4A87964DD944 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B5A6698C2C147CF8D0B7894 /* Foundation.ttf */; };
 		934BEB1CB9E44296A1BA4ACB /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE63339C5FA40408C499D4B /* libBVLinearGradient.a */; };
 		A08F607EAB04478199A79621 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD43E8133A7740C49600A9B1 /* Entypo.ttf */; };
@@ -450,6 +451,7 @@
 		86CE07F3FF9A41A1B4C6F197 /* libInAppUtils.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libInAppUtils.a; sourceTree = "<group>"; };
 		8B745CBA952A4C0E9013030F /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		8D778CD4563440B082150FC4 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
+		92914ED02118488E0078B448 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		93498F227C69486681610249 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/native-base/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		965588E95ED548C2A115175B /* libRNDeviceInfo-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNDeviceInfo-tvOS.a"; sourceTree = "<group>"; };
 		9CE63339C5FA40408C499D4B /* libBVLinearGradient.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libBVLinearGradient.a; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				54E930C4B9864D7D9422BE32 /* libRCTOrientation.a in Frameworks */,
 				D83E9A2223544B0694928013 /* libSplashScreen.a in Frameworks */,
 				5C88A161681F4472AEB0146C /* libRNVectorIcons.a in Frameworks */,
+				92914ED12118488E0078B448 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +645,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				92914ED02118488E0078B448 /* StoreKit.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 			);
 			name = Frameworks;
@@ -907,6 +911,11 @@
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = V7P9FD3Y3Q;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;

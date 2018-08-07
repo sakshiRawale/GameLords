@@ -6,7 +6,7 @@ const { InAppUtils } = NativeModules
 export const PaymentIOS = () => {
 
     var productIdentifiers = [
-        'com.MobioTV.app.Okal',
+        'com.GameLords.app',
     ];
 
      InAppUtils.loadProducts(productIdentifiers,(errorOuter, product) => {
@@ -21,7 +21,4 @@ export const PaymentIOS = () => {
             Alert.alert('Not Allowed', 'This device is not allowed to make purchases. Please check restrictions on device');
         }
     });
-
-
-
 }
