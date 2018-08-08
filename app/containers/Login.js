@@ -121,11 +121,14 @@ class Login extends Component {
                             </View>
                         </TouchableHighlight>
 
-                        <TouchableOpacity style={{marginTop: 20, height: 40, alignSelf:'center'}} onPress = {()=> this.inAppPayment()}>
-                            <Text style = {{color: '#fff'}}>{ "New User?" }
-                                <Text style = {{color: 'red'}}>{ " Subscribe here" }</Text>
-                            </Text>
-                        </TouchableOpacity>
+                        {
+                          Platform.OS != "ios" &&
+                            <TouchableOpacity style={{marginTop: 20, height: 40, alignSelf:'center'}} onPress = {()=> this.inAppPayment()}>
+                                <Text style = {{color: '#fff'}}>{ "New User?" }
+                                    <Text style = {{color: 'red'}}>{ " Subscribe here" }</Text>
+                                </Text>
+                            </TouchableOpacity>
+                        }
 
                     </View>
 

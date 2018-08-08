@@ -77,6 +77,7 @@ class Detail extends Component {
   }
 
   handleGame = (game) => {
+    this.scroll.scrollTo({x: 0, y: 0, animated: true});
     this.getGameDetail(game.gameId);
   }
 
@@ -284,7 +285,7 @@ class Detail extends Component {
 
           {
             !this.state.openGame ?
-              <ScrollView bounces={false} contentContainerStyle={{ minHeight: Globals.IphoneX ? Globals.deviceHeight - 140 : Globals.deviceHeight - 100 }}>
+              <ScrollView ref={(c) => {this.scroll = c}} bounces={false} contentContainerStyle={{ minHeight: Globals.IphoneX ? Globals.deviceHeight - 140 : Globals.deviceHeight - 100 }}>
                 <View style={DetailStyles.gameDetailView}>
 
                   <ImageBackground source={this.state.bgImages[categoryId]} style={{ flex: 1 }}>

@@ -45,6 +45,11 @@ class GameView extends Component {
 
   _openHTML5Game(game) {
     // this.props.handleGame(game);
+     // if (this.props.screenView == 'Detail')
+     // {
+     //   console.log("ha bhai have set kar code");
+     // }
+
     if (this.props.handleGame) {
       this.props.handleGame(game);
     }

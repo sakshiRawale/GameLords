@@ -48,7 +48,7 @@ export default headerStyle = StyleSheet.create({
     },
     rightText: {
         color: 'white',
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.medium,
         textAlign: 'left',
         justifyContent: 'center'
     },

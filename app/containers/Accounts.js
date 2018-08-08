@@ -364,7 +364,7 @@ class Accounts extends Component {
                                 }
                                 <View style ={{ height: 40,}}>
                                     <TouchableOpacity onPress={()=> this.signOutUser()}>
-                                      <Text style={[styles.avRegular, accountStyles.sectionHeaders, {marginTop: 10, marginLeft: 5}]}>LOG OUT</Text>
+                                      <Text style={[styles.avRegular, accountStyles.sectionHeadersLogOut, {marginTop: 10, marginLeft: 5}]}>LOG OUT</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>

@@ -20,6 +20,10 @@ export default (accountStyles = StyleSheet.create({
     color: "#f6a50e",
     fontSize: FontSizes.small
   },
+  sectionHeadersLogOut: {
+    color: "#f6a50e",
+    fontSize: FontSizes.medium
+  },
   sectionSubHeaders: {
     color: "#ffffff",
     fontSize: FontSizes.small
