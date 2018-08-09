@@ -23,8 +23,8 @@ import { console_log } from "../utils/helper";
 import * as vars from '../constants/api';
 import SplashScreen from 'react-native-splash-screen';
 import Orientation from 'react-native-orientation';
-import {PaymentAndroid} from '../components/Payment/PaymentAndroid';
-import {PaymentIOS} from '../components/Payment/PaymentIOS';
+import { PaymentAndroid } from '../components/Payment/PaymentAndroid';
+import { PaymentIOS } from '../components/Payment/PaymentIOS';
 
 class Login extends Component {
     constructor(props) {
@@ -39,7 +39,6 @@ class Login extends Component {
         Orientation.lockToPortrait();
     }
     componentDidMount() {
-
         SplashScreen.hide();
     }
 
@@ -52,34 +51,30 @@ class Login extends Component {
                     if (res.data.success === true) {
                         this.props.checkAccess(res.data.data.token);
                         AsyncStorage.setItem('@AccessToken:key', res.data.data.token);
-                        //NavigationService.reset("Drawer");
                         NavigationService.reset("DrawerVOD");
                     } else {
                         this.setState({ error: 'Please fill valid Access Code' });
                         this.props.hide();
                     }
-                    //this.props.hide();
                 })
         } else {
             this.setState({ error: 'Please fill valid Access Code' });
         }
     }
 
-    inAppPayment=()=>{
-        if(Platform.OS==='ios') {
+    inAppPayment = () => {
+        if (Platform.OS === 'ios') {
             PaymentIOS();
         }
-        else{
+        else {
             PaymentAndroid(
-                (data)=>{
-                    //console.log('here***', data);
-                    if(data.purchaseState === 'PurchasedSuccessfully'){
-                        this.setState({accessCode: 'fdf098fcc6'});
+                (data) => {
+                    if (data.purchaseState === 'PurchasedSuccessfully') {
+                        this.setState({ accessCode: 'fdf098fcc6' });
                         this.getAccessToken();
                     }
                 },
-                (error)=>{
-                    //alert(error);
+                (error) => {
                     console.log(error);
                 });
         }
@@ -122,23 +117,21 @@ class Login extends Component {
                         </TouchableHighlight>
 
                         {
-                          Platform.OS != "ios" &&
-                            <TouchableOpacity style={{marginTop: 20, height: 40, alignSelf:'center'}} onPress = {()=> this.inAppPayment()}>
-                                <Text style = {{color: '#fff'}}>{ "New User?" }
-                                    <Text style = {{color: 'red'}}>{ " Subscribe here" }</Text>
+                            Platform.OS != "ios" &&
+                            <TouchableOpacity style={loginStyles.newUser} onPress={() => this.inAppPayment()}>
+                                <Text style={{ color: '#fff' }}>{"New User?"}
+                                    <Text style={{ color: 'red' }}>{" Subscribe here"}</Text>
                                 </Text>
                             </TouchableOpacity>
                         }
 
                     </View>
-
                 </ImageBackground>
                 <Loader visible={this.props.loader.isLoading} />
             </KeyboardAvoidingView>
         );
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {

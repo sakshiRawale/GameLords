@@ -13,7 +13,6 @@ export default detailStyle = StyleSheet.create({
   gameListBox: {
     height: Globals.DeviceType === 'Phone' ? 45 : 65,
     flexDirection: 'row',
-    // backgroundColor: '#000000',
     alignItems: 'center',
     width: '100%',
     alignSelf: 'center',
@@ -27,7 +26,6 @@ export default detailStyle = StyleSheet.create({
   },
   iconStyle: {
     backgroundColor: 'transparent',
-    // paddingHorizontal: 15
   },
   headingText: {
     alignSelf: 'center',
@@ -39,7 +37,6 @@ export default detailStyle = StyleSheet.create({
     transform: Platform.OS == "ios" ? [{ skewX: "30deg" }] : [{ skewY: "30deg" }, { rotate: '135deg' }],
     width: Globals.DeviceType === 'Phone' ? '18%' : '10%',
     backgroundColor: "#f4aa1c",
-    // backgroundColor:"red",
     marginLeft: Globals.DeviceType === 'Phone' ? (Platform.OS == "ios" ? ((deviceHeight === 812) ? -12 : -12) : -14) : -18, //Platform.OS == "ios" ? -18 :  -27,
     height: '100%',
   },
@@ -125,7 +122,6 @@ export default detailStyle = StyleSheet.create({
   },
   gameFavRateIcon: {
     zIndex: 1,
-    // paddingHorizontal: 25
   },
   gameFavRateText: {
     marginRight: 25
@@ -174,7 +170,20 @@ export default detailStyle = StyleSheet.create({
   gameDetailView: {
     flex: 3,
     width: '100%',
-    // backgroundColor: 'rgba(0,0,0, 0.8)',
-    // paddingTop: Globals.DeviceType === 'Phone'? 15 : 25,
   },
+  gameListBoxLeft: { 
+    flexDirection: 'row', 
+    width: '50%', 
+    height: '100%' 
+  },
+  gameListBoxRight: { 
+    justifyContent: 'flex-end', 
+    alignItems: 'flex-end', 
+    width: '50%' 
+  },
+  gameTextView: { 
+    alignItems: 'flex-start', 
+    paddingHorizontal: 15, 
+    paddingVertical: 20 
+  }
 });

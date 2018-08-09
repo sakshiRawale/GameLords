@@ -206,7 +206,7 @@ class Accounts extends Component {
         );
     }
 
-    signOutUser(){
+    signOutUser() {
         this.props.checkAccess('');
         AsyncStorage.setItem('@AccessToken:key', '');
         NavigationService.reset("Login");
@@ -362,9 +362,9 @@ class Accounts extends Component {
                                     :
                                     null
                                 }
-                                <View style ={{ height: 40,}}>
-                                    <TouchableOpacity onPress={()=> this.signOutUser()}>
-                                      <Text style={[styles.avRegular, accountStyles.sectionHeadersLogOut, {marginTop: 10, marginLeft: 5}]}>LOG OUT</Text>
+                                <View style={{ height: 40, }}>
+                                    <TouchableOpacity onPress={() => this.signOutUser()}>
+                                        <Text style={[styles.avRegular, accountStyles.sectionHeadersLogOut, { marginTop: 10, marginLeft: 5 }]}>LOG OUT</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>

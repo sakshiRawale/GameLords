@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {BackHandler, Platform, WebView, Dimensions, View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
+import { BackHandler, Platform, WebView, Dimensions, View, TouchableHighlight, TextInput, Text, Image, ImageBackground, ScrollView, TouchableWithoutFeedback, TouchableOpacity } from "react-native";
 import { Container } from "native-base";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -47,9 +47,6 @@ class Detail extends Component {
       openGame: false,
       hideHeader: false,
       bgImages: ["", Images.rpg, Images.augmentedReality, Images.virtualReality, Images.action, Images.adventure, Images.arcade, Images.racing, Images.sports, Images.utilities, Images.action, Images.adventure, Images.arcade, Images.racing, Images.sports, Images.rts, "", Images.premium, Images.premium, "", Images.premium, Images.premium]
-      // game: this.props.navigation.state.params.game,
-      // categoryId: this.props.navigation.state.params.game.categoryId,
-      // categoryName: this.props.navigation.state.params.game.categoryName,
     }
   }
 
@@ -59,7 +56,6 @@ class Detail extends Component {
   }
 
   getGameDetail(gameId) {
-
     axios.get(vars.BASE_API_URL_GL + '/getGames?gameId=' + gameId)
       .then((response) => {
         if (response.data.success) {
@@ -77,7 +73,7 @@ class Detail extends Component {
   }
 
   handleGame = (game) => {
-    this.scroll.scrollTo({x: 0, y: 0, animated: true});
+    this.scroll.scrollTo({ x: 0, y: 0, animated: true });
     this.getGameDetail(game.gameId);
   }
 
@@ -117,8 +113,8 @@ class Detail extends Component {
   }
 
   handleBackPress = () => {
-      NavigationService.goBack();
-      return true;
+    NavigationService.goBack();
+    return true;
   }
 
   handleMessageBar = (success) => {
@@ -143,8 +139,6 @@ class Detail extends Component {
     this.gameFavorite(data);
   }
 
-
-
   _handleRateClicked = (data, current) => {
     this.gameRate(data);
   }
@@ -163,12 +157,9 @@ class Detail extends Component {
 
     if (indexOf == -1) {
       likeGames.push(gameData);
-      // this.handleLikeMessageBar(true)
-
     }
     else {
       likeGames.splice(indexOf, 1);
-      // this.handleLikeMessageBar(false)
     }
 
     axios.post(vars.BASE_API_URL_GL + '/userLike', gameData)
@@ -220,7 +211,6 @@ class Detail extends Component {
       });
   }
 
-
   isGameFavorite(gameId) {
     let indexOf = this.props.favorite.games.findIndex((f) => {
       return f.gameId == gameId;
@@ -247,7 +237,6 @@ class Detail extends Component {
   }
 
   loadGame() {
-    // Orientation.unlockAllOrientations();
     this.props.show();
     this.setState({
       openGame: !this.state.openGame
@@ -258,7 +247,7 @@ class Detail extends Component {
   }
 
   testCallback = () => {
-      this.setState({ hideHeader: !this.state.hideHeader });
+    this.setState({ hideHeader: !this.state.hideHeader });
   }
 
   render() {
@@ -285,136 +274,132 @@ class Detail extends Component {
 
           {
             !this.state.openGame ?
-              <ScrollView ref={(c) => {this.scroll = c}} bounces={false} contentContainerStyle={{ minHeight: Globals.IphoneX ? Globals.deviceHeight - 140 : Globals.deviceHeight - 100 }}>
+              <ScrollView ref={(c) => { this.scroll = c }} bounces={false} contentContainerStyle={{ minHeight: Globals.IphoneX ? Globals.deviceHeight - 140 : Globals.deviceHeight - 100 }}>
                 <View style={DetailStyles.gameDetailView}>
 
                   <ImageBackground source={this.state.bgImages[categoryId]} style={{ flex: 1 }}>
 
-                    <View style={DetailStyles.shadowViewTop} />
-                    <View style={DetailStyles.detailViewStyle}>
-                      <View style={{ alignSelf: 'center' }}>
-                        <View style={DetailStyles.gameImage}>
-                          <Image style={DetailStyles.imageGameStyle} resizeMode="stretch" source={{ uri: game.gameImage }} />
-                        </View>
-                      </View>
-
-                      <View style={{ alignItems: 'flex-start', paddingHorizontal: 15, paddingVertical: 20 }}>
-                        <Text style={[styles.avRegular, DetailStyles.gameTextStyle]} > {game.gameTitle && game.gameTitle.toUpperCase()} </Text>
-                        <View style={{ paddingHorizontal: 5, paddingVertical: 5 }}>
-                          <View style={{ flexDirection: 'row' }}>
-                            {
-                              [1, 2, 3, 4, 5].map((rate, index) => {
-                                return (
-                                  <Icon key={index} name={game.userRating < rate ? 'star-o' : 'star'} size={Globals.DeviceType === 'Phone' ? 27 : 36} style={DetailStyles.iconRatingStyle} color='#f4aa1c' />
-                                )
-                              })
-                            }
+                      <View style={DetailStyles.shadowViewTop} />
+                      <View style={DetailStyles.detailViewStyle}>
+                        <View style={{ alignSelf: 'center' }}>
+                          <View style={DetailStyles.gameImage}>
+                            <Image style={DetailStyles.imageGameStyle} resizeMode="stretch" source={{ uri: game.gameImage }} />
                           </View>
                         </View>
 
-                        <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > {parseFloat(game.userRating).toFixed('1')} average user rating based on {game.totalUserReview} reviews </Text>
-
-                        <View style={DetailStyles.gameDetailsView}>
-
-                          <View style={DetailStyles.gameDetailsViewCol}>
-                            <View style={DetailStyles.gameDetailsViewLeft}>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Category </Text>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
-                            </View>
-                            <View style={DetailStyles.gameDetailsViewRight}>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{categoryName} </Text>
-                            </View>
-                          </View>
-
-                          <View style={DetailStyles.gameDetailsViewCol}>
-                            <View style={DetailStyles.gameDetailsViewLeft}>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Platforms </Text>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
-                            </View>
-                            <View style={DetailStyles.gameDetailsViewRight}>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{game.platforms} </Text>
+                        <View style={DetailStyles.gameTextView}>
+                          <Text style={[styles.avRegular, DetailStyles.gameTextStyle]} > {game.gameTitle && game.gameTitle.toUpperCase()} </Text>
+                          <View style={{ paddingHorizontal: 5, paddingVertical: 5 }}>
+                            <View style={{ flexDirection: 'row' }}>
+                              {
+                                [1, 2, 3, 4, 5].map((rate, index) => {
+                                  return (
+                                    <Icon key={index} name={game.userRating < rate ? 'star-o' : 'star'} size={Globals.DeviceType === 'Phone' ? 27 : 36} style={DetailStyles.iconRatingStyle} color='#f4aa1c' />
+                                  )
+                                })
+                              }
                             </View>
                           </View>
 
-                          <View style={DetailStyles.gameDetailsViewCol}>
-                            <View style={DetailStyles.gameDetailsViewLeft}>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Type </Text>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
-                            </View>
-                            <View style={DetailStyles.gameDetailsViewRight}>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{game.gameType} </Text>
-                            </View>
-                          </View>
+                          <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > {parseFloat(game.userRating).toFixed('1')} average user rating based on {game.totalUserReview} reviews </Text>
 
-                          <View style={DetailStyles.gameDetailsViewCol}>
-                            <View style={DetailStyles.gameDetailsViewLeft}>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Description </Text>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
-                            </View>
-                            <View style={[DetailStyles.gameDetailsViewRight]}>
-                              <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{game.gameDesc} </Text>
-                            </View>
-                          </View>
+                          <View style={DetailStyles.gameDetailsView}>
 
-                          <View style={DetailStyles.gameDetailsViewCol, {alignItems: 'center', paddingVertical: 20}}>
-                          <View style={DetailStyles.gameDetailsViewColFavLikeIcon}>
-                            <View style={{ flexDirection: 'row'}}>
-                              <View style={{width: '70%'}}>
-                                <TouchableOpacity style={{ width: '38%'}} onPress={(e) => this._handleFavoriteClicked(game, e)}>
-                                  <Icon
-                                    name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
-                                    size={Globals.DeviceType === 'Phone' ? 33 : 45}
-                                    style={[DetailStyles.iconStyle],{}} color="#f4aa1c" />
-                                </TouchableOpacity>
+                            <View style={DetailStyles.gameDetailsViewCol}>
+                              <View style={DetailStyles.gameDetailsViewLeft}>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Category </Text>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
                               </View>
-                              <View style={{width: '30%'}}>
-                                <TouchableOpacity onPress={(e) => this._handleRateClicked(game, e)} >
-                                  <Icon
-                                    name={this.isGameLike(game.gameId) ? "thumbs-up" : "thumbs-o-up"}
-                                    size={Globals.DeviceType === 'Phone' ? 33 : 45}
-                                    style={[DetailStyles.iconStyle],{}} color="#f4aa1c" />
-                                </TouchableOpacity>
+                              <View style={DetailStyles.gameDetailsViewRight}>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{categoryName} </Text>
                               </View>
                             </View>
-                          </View>
 
-                          <View style={DetailStyles.gameDetailsViewColFavLike}>
-                            <View style={{ flexDirection: 'row'}}>
-                              <View style={{width: Globals.DeviceType === 'Phone' ? '65%' : '66.5%' }}>
-                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Favorite </Text>
+                            <View style={DetailStyles.gameDetailsViewCol}>
+                              <View style={DetailStyles.gameDetailsViewLeft}>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Platforms </Text>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
                               </View>
-                              <View style={{ width: Globals.DeviceType === 'Phone' ? '35%' : '35%'}}>
-                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Rate </Text>
+                              <View style={DetailStyles.gameDetailsViewRight}>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{game.platforms} </Text>
                               </View>
                             </View>
+
+                            <View style={DetailStyles.gameDetailsViewCol}>
+                              <View style={DetailStyles.gameDetailsViewLeft}>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Type </Text>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
+                              </View>
+                              <View style={DetailStyles.gameDetailsViewRight}>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{game.gameType} </Text>
+                              </View>
+                            </View>
+
+                            <View style={DetailStyles.gameDetailsViewCol}>
+                              <View style={DetailStyles.gameDetailsViewLeft}>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Description </Text>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{':'}</Text>
+                              </View>
+                              <View style={[DetailStyles.gameDetailsViewRight]}>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} >{game.gameDesc} </Text>
+                              </View>
+                            </View>
+
+                            <View style={DetailStyles.gameDetailsViewCol, {alignItems: 'center', paddingVertical: 20}}>
+                            <View style={DetailStyles.gameDetailsViewColFavLikeIcon}>
+                              <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: '70%' }}>
+                                  <TouchableOpacity style={{ width: '38%' }} onPress={(e) => this._handleFavoriteClicked(game, e)}>
+                                    <Icon
+                                      name={this.isGameFavorite(game.gameId) ? "star" : "star-o"}
+                                      size={Globals.DeviceType === 'Phone' ? 33 : 45}
+                                      style={[DetailStyles.iconStyle],{}} color="#f4aa1c" />
+                                  </TouchableOpacity>
+                                </View>
+                                <View style={{ width: '30%' }}>
+                                  <TouchableOpacity onPress={(e) => this._handleRateClicked(game, e)} >
+                                    <Icon
+                                      name={this.isGameLike(game.gameId) ? "thumbs-up" : "thumbs-o-up"}
+                                      size={Globals.DeviceType === 'Phone' ? 33 : 45}
+                                      style={[DetailStyles.iconStyle],{}} color="#f4aa1c" />
+                                  </TouchableOpacity>
+                                </View>
+                              </View>
+                            </View>
+
+                            <View style={DetailStyles.gameDetailsViewColFavLike}>
+                              <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: Globals.DeviceType === 'Phone' ? '65%' : '66.5%' }}>
+                                  <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Favorite </Text>
+                                </View>
+                                <View style={{ width: Globals.DeviceType === 'Phone' ? '35%' : '35%' }}>
+                                  <Text style={[styles.avRegular, DetailStyles.gameDetailTextStyle]} > Rate </Text>
+                                </View>
+                              </View>
+                            </View>
+
                           </View>
 
+                          <View style={DetailStyles.gameDetailsViewCol, {alignItems: 'center'}}>
+                            <TouchableOpacity onPress={() => this.loadGame(game)} >
+                              <View style={DetailStyles.gamePlayGameView}>
+                                <Text style={[styles.avRegular, DetailStyles.gameDetailPlayGameTextStyle]} >
+                                  PLAY NOW
+                                  </Text>
+                              </View>
+                            </TouchableOpacity>
+                          </View>
                         </View>
 
-
-                        <View style={DetailStyles.gameDetailsViewCol, {alignItems: 'center'}}>
-                                        <TouchableOpacity onPress={() => this.loadGame(game)} >
-                          <View style={DetailStyles.gamePlayGameView}>
-                            <Text style={[styles.avRegular, DetailStyles.gameDetailPlayGameTextStyle]} >
-                              PLAY NOW
-                            </Text>
-                          </View>
-                        </TouchableOpacity>
-                      </View>
                     </View>
-
                   </View>
-                </View>
-                <View style={DetailStyles.shadowViewBottom} />
+                  <View style={DetailStyles.shadowViewBottom} />
 
-
-              </ImageBackground>
-
+                  </ImageBackground>
 
               <View style={{ backgroundColor: '#000000', paddingVertical: 20, paddingHorizontal: Globals.DeviceType === 'Phone' ? 15 : 30 }}>
-
                 <View style={DetailStyles.gameListBox}>
-                  <View style={{ flexDirection: 'row', width: '50%', height: '100%' }}>
+                  <View style={DetailStyles.gameListBoxLeft}>
                     <View style={DetailStyles.transformView}>
                       <Text numberOfLines={1} style={[styles.avRegular, DetailStyles.headingText]}>
                         {'RELATED GAMES'}
@@ -422,7 +407,7 @@ class Detail extends Component {
                     </View>
                     <View style={DetailStyles.viewAllStyle} />
                   </View>
-                  <View style={{ justifyContent: 'flex-end', alignItems: 'flex-end', width: '50%' }}>
+                  <View style={DetailStyles.gameListBoxRight}>
                     <View style={DetailStyles.viewAllViewStyle}>
                       <TouchableOpacity onPress={() => this.viewCategoryGames(categoryId)}>
                         <Text style={[styles.avRegular, DetailStyles.browseAll]}>
@@ -439,7 +424,7 @@ class Detail extends Component {
                       html5RelatedList.map((game, gameIndex) => {
                         return (
                           <View style={{ marginHorizontal: deviceWidth / 90 }}>
-                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleGame={this.handleGame}  handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
+                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleGame={this.handleGame} handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
                           </View>
                         )
                       })
@@ -447,22 +432,21 @@ class Detail extends Component {
                   </ScrollView>
                 </View>
               </View>
+
             </View>
 
           <Footer />
       </ScrollView>
         :
           <View style={{ height: Globals.DeviceType === 'Phone' ? Globals.deviceHeight - 80 : Globals.deviceHeight - 100, width: Globals.deviceWidth, backgroundColor: 'black' }}>
-          <WebView
-            source={{ html: "<object width='100%' height='100%' data=" + game.gameFile + "></object>" }}
-            style={{ backgroundColor: 'transparent' }}
-          />
+            <WebView
+              source={{ html: "<object width='100%' height='100%' data=" + game.gameFile + "></object>" }}
+              style={{ backgroundColor: 'transparent' }} />
           </View>
         }
-
-              </View>
-            </Container >
-        );
+        </View>
+      </Container >
+    );
   }
 }
 

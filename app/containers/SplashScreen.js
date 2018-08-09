@@ -27,7 +27,6 @@ class SplashScreen extends Component {
     }
     componentDidMount() {
         Orientation.lockToPortrait();
-        //Globals.type = 'uk';
         AsyncStorage
             .getItem("@AccessToken:key")
             .then((value) => {
@@ -62,7 +61,6 @@ class SplashScreen extends Component {
 
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {

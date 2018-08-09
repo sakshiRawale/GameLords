@@ -137,7 +137,6 @@ class VOD extends Component {
         else {
             this.setState({ color: 'red', message: messages.removeFromFavorites, showMessage: !this.state.showMessage })
         }
-        // this.getFavouriteGames();
     }
 
     _openBannerHTML5Game = () => {
@@ -150,54 +149,53 @@ class VOD extends Component {
     }
 
     _handleFavoriteClicked = (data, current) => {
-      this.gameFavorite(data);
+        this.gameFavorite(data);
     }
 
-
     gameFavorite(data) {
-      let favoriteGames = this.props.favorite.games;
-      let indexOf = favoriteGames.findIndex((f) => {
-        return f.gameId == data.gameId;
-      });
-
-      let gameData = {
-        uid: this.props.account.user.uid,
-        gameId: data.gameId,
-        isFavorite: !this.isGameFavorite(data.gameId)
-      };
-
-      if (indexOf == -1) {
-        favoriteGames.push(gameData);
-        this.handleMessageBar(true)
-
-      }
-      else {
-          favoriteGames.splice(indexOf, 1);
-          this.handleMessageBar(false)
-      }
-
-      axios.post(vars.BASE_API_URL_GL + "/favorite", gameData)
-        .then((response) => {
-          this.props.showMessage({
-            message: messages.addToFavorites,
-            type: true
-          });
-          console.log(response);
-        })
-        .catch((error) => {
-          console_log(error);
+        let favoriteGames = this.props.favorite.games;
+        let indexOf = favoriteGames.findIndex((f) => {
+            return f.gameId == data.gameId;
         });
+
+        let gameData = {
+            uid: this.props.account.user.uid,
+            gameId: data.gameId,
+            isFavorite: !this.isGameFavorite(data.gameId)
+        };
+
+        if (indexOf == -1) {
+            favoriteGames.push(gameData);
+            this.handleMessageBar(true)
+
+        }
+        else {
+            favoriteGames.splice(indexOf, 1);
+            this.handleMessageBar(false)
+        }
+
+        axios.post(vars.BASE_API_URL_GL + "/favorite", gameData)
+            .then((response) => {
+                this.props.showMessage({
+                    message: messages.addToFavorites,
+                    type: true
+                });
+                console.log(response);
+            })
+            .catch((error) => {
+                console_log(error);
+            });
 
     }
 
     isGameFavorite(gameId) {
-      let indexOf = this.props.favorite.games.findIndex((f) => {
-        return f.gameId == gameId;
-      });
-      if (indexOf != -1) {
-        return true;
-      }
-      return false;
+        let indexOf = this.props.favorite.games.findIndex((f) => {
+            return f.gameId == gameId;
+        });
+        if (indexOf != -1) {
+            return true;
+        }
+        return false;
     }
 
     LoadHTMLGames = () => {
@@ -252,13 +250,12 @@ class VOD extends Component {
                                                             <TouchableOpacity onPress={() => this.viewCategoryGames(category)}>
                                                                 <Text style={[styles.avRegular, WelcomeStyle.browseAll]}>
                                                                     VIEW ALL
-                                                          </Text>
+                                                                </Text>
                                                             </TouchableOpacity>
                                                         </View>
                                                     </View>
 
                                                 </View>
-
 
                                                 <View style={WelcomeStyle.gameView}>
                                                     <View style={{ flexDirection: "row" }}>
@@ -299,7 +296,6 @@ class VOD extends Component {
                                                 )
                                             })
                                         }
-
                                     </ScrollView>
                                 </View>
                             </View>
@@ -322,7 +318,6 @@ class VOD extends Component {
                                     </View>
                                 </View>
 
-
                                 <View style={{ paddingVertical: 40 }}>
                                     <TouchableOpacity onPress={() => this.discoverClick()} >
                                         <View style={favoriteStyles.discoverButton}>
@@ -338,7 +333,6 @@ class VOD extends Component {
         )
 
     }
-
 
     testCallback = () => {
         this.setState({ hideHeader: !this.state.hideHeader });
@@ -386,7 +380,7 @@ class VOD extends Component {
                                     <View style={{ paddingRight: Globals.DeviceType === 'Phone' ? 5 : 10 }}>
                                         <Text style={[styles.avRegular, VODStyle.favoriteSwitchText]}>
                                             Favorites
-                                  </Text>
+                                        </Text>
                                     </View>
                                     <View>
                                         <Switch style={{ transform: [{ scaleX: .85 }, { scaleY: .75 }] }} value={this.state.favoriteSwitch} onValueChange={this.switchFavorite} />

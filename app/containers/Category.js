@@ -84,54 +84,54 @@ class Category extends Component {
 
 
     _handleFavoriteClicked = (data, current) => {
-      this.gameFavorite(data);
+        this.gameFavorite(data);
     }
 
 
     gameFavorite(data) {
-      let favoriteGames = this.props.favorite.games;
-      let indexOf = favoriteGames.findIndex((f) => {
-        return f.gameId == data.gameId;
-      });
-
-      let gameData = {
-        uid: this.props.account.user.uid,
-        gameId: data.gameId,
-        isFavorite: !this.isGameFavorite(data.gameId)
-      };
-
-      if (indexOf == -1) {
-        favoriteGames.push(gameData);
-        this.handleMessageBar(true)
-
-      }
-      else {
-        favoriteGames.splice(indexOf, 1);
-          this.handleMessageBar(false)
-      }
-
-      axios.post(vars.BASE_API_URL_GL + "/favorite", gameData)
-        .then((response) => {
-          this.props.showMessage({
-            message: messages.addToFavorites,
-            type: true
-          });
-          console.log(response);
-        })
-        .catch((error) => {
-          console_log(error);
+        let favoriteGames = this.props.favorite.games;
+        let indexOf = favoriteGames.findIndex((f) => {
+            return f.gameId == data.gameId;
         });
+
+        let gameData = {
+            uid: this.props.account.user.uid,
+            gameId: data.gameId,
+            isFavorite: !this.isGameFavorite(data.gameId)
+        };
+
+        if (indexOf == -1) {
+            favoriteGames.push(gameData);
+            this.handleMessageBar(true)
+
+        }
+        else {
+            favoriteGames.splice(indexOf, 1);
+            this.handleMessageBar(false)
+        }
+
+        axios.post(vars.BASE_API_URL_GL + "/favorite", gameData)
+            .then((response) => {
+                this.props.showMessage({
+                    message: messages.addToFavorites,
+                    type: true
+                });
+                console.log(response);
+            })
+            .catch((error) => {
+                console_log(error);
+            });
 
     }
 
     isGameFavorite(gameId) {
-      let indexOf = this.props.favorite.games.findIndex((f) => {
-        return f.gameId == gameId;
-      });
-      if (indexOf != -1) {
-        return true;
-      }
-      return false;
+        let indexOf = this.props.favorite.games.findIndex((f) => {
+            return f.gameId == gameId;
+        });
+        if (indexOf != -1) {
+            return true;
+        }
+        return false;
     }
 
 
@@ -155,10 +155,10 @@ class Category extends Component {
                 <View style={CategoryStyles.content}>
                     <MessageBar showMessage={this.state.showMessage} color={this.state.color} message={this.state.message} />
                     <ScrollView style={{ marginTop: 15 }} contentContainerStyle={{ minHeight: Globals.IphoneX ? Globals.deviceHeight - 140 : Globals.deviceHeight - 100 }}>
-                        <View style={{ flex: 3, width: '100%', backgroundColor: 'black', alignItems: 'center', paddingHorizontal: Globals.DeviceType === 'Phone' ? 15 : 30 }}>
+                        <View style={CategoryStyles.scrollView}>
 
                             <View style={CategoryStyles.gameListBox}>
-                                <View style={{ flexDirection: 'row', width: '50%', height: '100%' }}>
+                                <View style={CategoryStyles.gameListBoxLeft}>
                                     <View style={CategoryStyles.transformView}>
                                         <Icon name={category.categoryIcon.slice(6)} size={Globals.DeviceType === 'Phone' ? 22 : 40} style={CategoryStyles.iconStyle} color='#423620' />
                                         <Text numberOfLines={1} style={[styles.avRegular, CategoryStyles.headingText]}>
@@ -170,19 +170,16 @@ class Category extends Component {
                             </View>
 
                             <View style={CategoryStyles.gameViewOuter}>
-
                                 <View style={CategoryStyles.gameViewInner}>
-
-                                    {html5CategoryList.map((game, gameIndex) => {
-                                        return (
-                                            <View style={CategoryStyles.gameView}>
-                                                <GameView game={game} gameIndex={gameIndex}  handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
-                                            </View>
-                                        )
-                                    })
+                                    {
+                                        html5CategoryList.map((game, gameIndex) => {
+                                            return (
+                                                <View style={CategoryStyles.gameView}>
+                                                    <GameView game={game} gameIndex={gameIndex} handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
+                                                </View>
+                                            )
+                                        })
                                     }
-
-
                                 </View>
                             </View>
                         </View>

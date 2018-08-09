@@ -56,5 +56,17 @@ export default categoryStyle = StyleSheet.create({
   gameViewOuter: {
     flex: 3,
     backgroundColor: 'black'
+  },
+  gameListBoxLeft: {
+    flexDirection: 'row', 
+    width: '50%', 
+    height: '100%' 
+  },
+  scrollView: { 
+    flex: 3, 
+    width: '100%', 
+    backgroundColor: 'black', 
+    alignItems: 'center', 
+    paddingHorizontal: Globals.DeviceType === 'Phone' ? 15 : 30 
   }
 });

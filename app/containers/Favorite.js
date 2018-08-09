@@ -70,8 +70,8 @@ class Favorite extends Component {
   }
 
   handleBackPress = () => {
-      NavigationService.goBack();
-      return true;
+    NavigationService.goBack();
+    return true;
   }
 
   handleMessageBar = (success) => {
@@ -90,7 +90,6 @@ class Favorite extends Component {
   _handleFavoriteClicked = (data, current) => {
     this.gameFavorite(data);
   }
-
 
   gameFavorite(data) {
     let favoriteGames = this.props.favorite.games;
@@ -111,7 +110,7 @@ class Favorite extends Component {
     }
     else {
       favoriteGames.splice(indexOf, 1);
-        this.handleMessageBar(false)
+      this.handleMessageBar(false)
     }
 
     axios.post(vars.BASE_API_URL_GL + "/favorite", gameData)
@@ -140,7 +139,6 @@ class Favorite extends Component {
 
   render() {
     let favoriteGames = this.props.favorite.games.filter(g => { return g.gameType === this.state.gameType });
-    console.log(favoriteGames);
 
     return (
       <Container>
@@ -161,42 +159,42 @@ class Favorite extends Component {
             <View style={{ flex: 3 }}>
 
               <View style={favoriteStyles.gameviewFav}>
-                {favoriteGames.map((game, gameIndex) => {
-                  return (
-                    <View style={favoriteStyles.gameView}>
-                      <GameView game={game} gameIndex={gameIndex} handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
-                    </View>
-
-                  )
-                })
+                {
+                  favoriteGames.map((game, gameIndex) => {
+                    return (
+                      <View style={favoriteStyles.gameView}>
+                        <GameView game={game} gameIndex={gameIndex} handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
+                      </View>
+                    )
+                  })
                 }
-                {(favoriteGames.length <= 0) &&
-                  <View style={favoriteStyles.noGameFound}>
-                    <View>
-                      <Icon name={'html5'} size={Globals.DeviceType === 'Phone' ? 50 : 80} style={favoriteStyles.html5iconStyle} color='#f2a11b' />
-                    </View>
-                    <View style={{ paddingVertical: 10 }}>
-                      <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, { marginTop: 5 }]}>No Favorite Game Yet</Text>
-                    </View>
 
-                    <View>
-                      <View style={{ justifyContent: 'center' }}>
-                        <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle]}>Add your favorite games to access</Text>
-                        <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle]}>and</Text>
-                        <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle]}>Play easily without any hassels.</Text>
+                {
+                  (favoriteGames.length <= 0) &&
+                    <View style={favoriteStyles.noGameFound}>
+                      <View>
+                        <Icon name={'html5'} size={Globals.DeviceType === 'Phone' ? 50 : 80} style={favoriteStyles.html5iconStyle} color='#f2a11b' />
+                      </View>
+                      <View style={{ paddingVertical: 10 }}>
+                        <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, { marginTop: 5 }]}>No Favorite Game Yet</Text>
+                      </View>
+
+                      <View>
+                        <View style={{ justifyContent: 'center' }}>
+                          <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle]}>Add your favorite games to access</Text>
+                          <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle]}>and</Text>
+                          <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle]}>Play easily without any hassels.</Text>
+                        </View>
+                      </View>
+
+                      <View style={{ paddingVertical: 40 }}>
+                        <TouchableOpacity onPress={() => this.discoverClick()} >
+                          <View style={favoriteStyles.discoverButton}>
+                            <Text style={[styles.avRegular, favoriteStyles.discoverButtonText]} > DISCOVER </Text>
+                          </View>
+                        </TouchableOpacity>
                       </View>
                     </View>
-
-
-                    <View style={{ paddingVertical: 40 }}>
-                      <TouchableOpacity onPress={() => this.discoverClick()} >
-                        <View style={favoriteStyles.discoverButton}>
-                          <Text style={[styles.avRegular, favoriteStyles.discoverButtonText]} > DISCOVER </Text>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
-
                 }
               </View>
             </View>

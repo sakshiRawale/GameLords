@@ -65,5 +65,10 @@ export default loginStyles = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         fontSize: FontSizes.xLarge
+    },
+    newUser:{
+        marginTop: 20, 
+        height: 40, 
+        alignSelf:'center'
     }
 });
