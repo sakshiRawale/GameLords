@@ -34,25 +34,20 @@ class SearchPage extends Component {
     };
   }
 
-  componentWillMount() {
-
-  }
-
   componentWillUnmount() {
     this.props.searchText('');
   }
 
   componentDidMount() {
-      Orientation.lockToPortrait();
-      BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    Orientation.lockToPortrait();
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
   }
 
-
   handleBackPress = () => {
-      this.props.showSearchBar(false);
-      this.props.searchText('');
-      this.props.onShowSearchView(false);
-      return true;
+    this.props.showSearchBar(false);
+    this.props.searchText('');
+    this.props.onShowSearchView(false);
+    return true;
   }
 
   onChange(text) {
@@ -62,7 +57,6 @@ class SearchPage extends Component {
   _handleFavoriteClicked = (data, current) => {
     this.gameFavorite(data);
   }
-
 
   gameFavorite(data) {
     let favoriteGames = this.props.favorite.games;
@@ -83,7 +77,7 @@ class SearchPage extends Component {
     }
     else {
       favoriteGames.splice(indexOf, 1);
-        this.handleMessageBar(false)
+      this.handleMessageBar(false)
     }
 
     axios.post(vars.BASE_API_URL_GL + "/favorite", gameData)
@@ -92,7 +86,6 @@ class SearchPage extends Component {
           message: messages.addToFavorites,
           type: true
         });
-        console.log(response);
       })
       .catch((error) => {
         console_log(error);
@@ -171,28 +164,28 @@ class SearchPage extends Component {
                   </View>
                 </View>
 
-                {((this.state.type == '' || this.state.type == "html5") && (html5Search.length > 0)) &&
-                  <View style={SearchStyles.gameViewOuter}>
-
-                    <View style={SearchStyles.gameViewInner}>
-
-                      {html5Search.map((game, gameIndex) => {
-                        return (
-                          <View style={SearchStyles.gameView}>
-                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} from={'Search'} parentProps={this.props.hideHeader}  handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
-                          </View>
-                        )
-                      })
-                      }
+                {
+                  ((this.state.type == '' || this.state.type == "html5") && (html5Search.length > 0)) &&
+                    <View style={SearchStyles.gameViewOuter}>
+                      <View style={SearchStyles.gameViewInner}>
+                        {
+                          html5Search.map((game, gameIndex) => {
+                            return (
+                              <View style={SearchStyles.gameView}>
+                                <GameView key={gameIndex} game={game} gameIndex={gameIndex} from={'Search'} parentProps={this.props.hideHeader} handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
+                              </View>
+                            )
+                          })
+                        }
+                      </View>
                     </View>
-                  </View>
-                }
-                {(html5Search.length <= 0) &&
-                  <View style={SearchStyles.noGameFound}>
-                    <Text style={[styles.avRegular, SearchStyles.noSearchText]}>No Game Found</Text>
-                  </View>
-
-                }
+                  }
+                  {
+                    (html5Search.length <= 0) &&
+                      <View style={SearchStyles.noGameFound}>
+                        <Text style={[styles.avRegular, SearchStyles.noSearchText]}>No Game Found</Text>
+                      </View>
+                  }
               </View>
             }
 

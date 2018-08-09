@@ -44,12 +44,6 @@ class GameView extends Component {
   }
 
   _openHTML5Game(game) {
-    // this.props.handleGame(game);
-     // if (this.props.screenView == 'Detail')
-     // {
-     //   console.log("ha bhai have set kar code");
-     // }
-
     if (this.props.handleGame) {
       this.props.handleGame(game);
     }
@@ -66,7 +60,6 @@ class GameView extends Component {
 
   _changeHTML5Game(game) {
     this.props.handleGame(game);
-    // NavigationService.navigate('Detail',{game: game});
   }
 
   render() {
@@ -97,7 +90,7 @@ class GameView extends Component {
                     name={this.props.isGameFavorite? "star" : "star-o"}
                     size={Globals.DeviceType === 'Phone' ? 24 : 36}
                     style={WelcomeStyle.iconStyle,{zIndex: 1}} color="#f4aa1c" />
-                          </TouchableOpacity>
+                </TouchableOpacity>
               </View>
             </View>
           </View>

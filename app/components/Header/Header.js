@@ -52,14 +52,6 @@ class HeaderComponent extends Component {
                 status: true
             });
         }
-
-        //console.log('this.props.showSearchBar:', newProps.header.hideSearchBar);
-        // if(newProps.header.hideSearchBar){
-        //     this.slideOut();
-        //     this.setState({
-        //         status: false
-        //       });
-        // }
     }
 
     clearText() {
