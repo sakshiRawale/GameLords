@@ -85,11 +85,8 @@ class VOD extends Component {
                     if (interests.data.data) {
                         this.props.getInterests(interests.data.data);
                     }
-
-
                     this.setState({ dataLoad: true })
                 }));
-
         }
     }
 
