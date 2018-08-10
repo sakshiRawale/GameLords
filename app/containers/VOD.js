@@ -15,6 +15,8 @@ import Banner from '../components/Banner/Banner';
 import { styles } from "../style/appStyles";
 import VODStyle from "../style/vodStyle";
 import WelcomeStyle from "../style/welcomeStyle";
+import { html5 } from "../assets/Images";
+
 // Other data/helper functions
 import { showMessage } from '../actions/FlashMessageActions';
 import { show, hide } from '../actions/ActivityIndicatorActions';
@@ -302,9 +304,9 @@ class VOD extends Component {
                         }
 
                         {(this.props.favorite.games.length <= 0) &&
-                            <View style={{ alignItems: 'center', flex: 4, paddingTop: 30 }}>
+                            <View style={favoriteStyles.discoverView}>
                                 <View>
-                                    <Image source={require('../assets/images/html5.png')} style={favoriteStyles.html5iconStyle} />
+                                    <Image source={html5} style={favoriteStyles.html5iconStyle} />
                                 </View>
                                 <View style={{ paddingVertical: 10 }}>
                                     <Text style={[styles.avRegular, favoriteStyles.favoriteTextStyle, { marginTop: 5 }]}>No Favorite Game Yet</Text>

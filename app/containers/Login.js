@@ -18,7 +18,7 @@ import { checkAccess } from '../actions/WelcomeActions';
 import { show, hide } from '../actions/ActivityIndicatorActions';
 
 // Other data/helper functions
-import { loginLogo, background, logo } from "../assets/Images";
+import { background, logo } from "../assets/Images";
 import { console_log } from "../utils/helper";
 import * as vars from '../constants/api';
 import SplashScreen from 'react-native-splash-screen';
@@ -79,7 +79,6 @@ class Login extends Component {
                 });
         }
     }
-
 
     render() {
         return (

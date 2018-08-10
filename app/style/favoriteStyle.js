@@ -239,5 +239,10 @@ export default favoriteStyles = StyleSheet.create({
       alignItems: 'center',
       flex: 4,
       paddingTop: 30
+    },
+    discoverView: {
+      alignItems: 'center',
+      flex: 4,
+      paddingTop: 30
     }
 });
