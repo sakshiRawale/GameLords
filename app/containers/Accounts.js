@@ -5,7 +5,6 @@ import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
-import ModalSelector from 'react-native-modal-selector';
 import Loader from '../components/Loader/Loader';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
