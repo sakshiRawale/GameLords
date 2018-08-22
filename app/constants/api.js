@@ -7,11 +7,17 @@
 
 {/* Game Lord */}
 
+// const hostGL = "http://play.game-lords.com";
+// const portGL = "3003";
+// export const BASE_API_URL_GL =  `${hostGL}:${portGL}/api`;
+// export const BASE_URL_GL =  `${hostGL}:${portGL}/`;
+
+
 {/* Game Lord */}
 const hostGL = "http://play.game-lords.com";
 const portGL = "3003";
-export const BASE_API_URL_GL =  `${hostGL}:${portGL}/api`;
-export const BASE_URL_GL =  `${hostGL}:${portGL}/`;
+export const BASE_API_URL_GL =  `${hostGL}/api`;
+export const BASE_URL_GL =  `${hostGL}/`;
 
 {/* Profile Pic */}
 

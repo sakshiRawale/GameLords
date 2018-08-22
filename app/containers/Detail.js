@@ -254,6 +254,7 @@ class Detail extends Component {
     let getAllGames = this.props.games.games;
     let html5RelatedList = getAllGames.filter(g => { return g.categoryId === this.state.categoryId && g.gameId !== this.state.game.gameId });
     const { game, categoryId, categoryName, liked } = this.state;
+    console.log(this.state.game);
     return (
       <Container>
         <ImageBackground style={{ zIndex: 999 }}>
@@ -423,8 +424,9 @@ class Detail extends Component {
                     {
                       html5RelatedList.map((game, gameIndex) => {
                         return (
-                          <View style={{ marginHorizontal: deviceWidth / 90 }}>
-                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleGame={this.handleGame} handleFavoriteClicked={this._handleFavoriteClicked} isGameFavorite={this.isGameFavorite(game.gameId)} />
+                          <View key={gameIndex} style={{ marginHorizontal: deviceWidth / 90 }}>
+                            <GameView key={gameIndex} game={game} gameIndex={gameIndex} handleGame={this.handleGame} handleFavoriteClicked={this._handleFavoriteClicked}
+                            isGameFavorite={this.isGameFavorite(game.gameId)} />
                           </View>
                         )
                       })
@@ -440,7 +442,16 @@ class Detail extends Component {
         :
           <View style={{ height: Globals.DeviceType === 'Phone' ? Globals.deviceHeight - 80 : Globals.deviceHeight - 100, width: Globals.deviceWidth, backgroundColor: 'black' }}>
             <WebView
-              source={{ html: "<object width='100%' height='100%' data=" + game.gameFile + "></object>" }}
+              nativeConfig = {{props: {webContentsDebuggingEnabled: true}}}
+              scrollEnabled = {false}
+
+              ref="webview"
+              automaticallyAdjustContentInsets={false}
+              source={{uri: game.gameFile}}
+              javaScriptEnabled={true}
+              domStorageEnabled={true}
+              decelerationRate="normal"
+              startInLoadingState={false}
               style={{ backgroundColor: 'transparent' }} />
           </View>
         }
