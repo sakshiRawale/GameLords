@@ -7,8 +7,6 @@ import FeatherIcon from 'react-native-vector-icons/dist/Feather';
 import MaterialIcon from 'react-native-vector-icons/dist/MaterialIcons';
 import Globals from '../../constants/Globals';
 
-// Components
-
 // Styles
 import { styles } from "../../style/appStyles";
 import sidebarStyles from "../../style/sidebarStyles";
@@ -48,12 +46,9 @@ class SideBar extends Component {
 	}
 
 	componentWillReceiveProps(newProps) {
-		//console.log(newProps.account.user.profilePic, '*before**',this.state.profilePic )
 		if (newProps.account.user.profilePic !== this.state.profilePic) {
-			//console.log(newProps.account.user.profilePic, '***',this.state.profilePic )
 			this.setState({ profilePic: vars.BASE_URL_PP + 'uploads/' + newProps.account.user.profilePic, newProfilePic: 'sd' });
 		}
-		//console.log('newProps:', newProps.account.user.profilePic);
 	}
 
 	menuClicked(route, event) {
@@ -95,7 +90,6 @@ class SideBar extends Component {
 			default:
 				break;
 		}
-
 	}
 
 	render() {
@@ -151,7 +145,6 @@ class SideBar extends Component {
 												: null
 											: null}
 									</View>
-
 								)
 							})
 						}

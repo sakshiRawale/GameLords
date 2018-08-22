@@ -8,36 +8,42 @@ import axios from 'axios';
 import ModalSelector from 'react-native-modal-selector';
 import Loader from '../components/Loader/Loader';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+
 // Components
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Input from '../components/Input/Input';
-import NavigationService from '../utils/NavigationService';
-
+import MessageBar from '../components/Message/Message';
 
 // Styles
 import { styles } from "../style/appStyles";
 import accountStyles from "../style/accountStyles";
 import Orientation from 'react-native-orientation';
-// Other data/helper functions
-import { background } from "../assets/Images";
-import { timezones } from "../utils/timezones";
-import * as vars from '../constants/api';
-import { messages } from '../constants/messages';
+
+// Actions
 import { show, hide } from '../actions/ActivityIndicatorActions';
 import { showMessage } from '../actions/FlashMessageActions';
 import { getDetails, setDetails, setProfilePic, getInterests } from '../actions/AccountActions';
 import { setHeaderTitle } from '../actions/HeaderActions';
+import { checkAccess } from '../actions/WelcomeActions';
+
+// Other data/helper functions
+import NavigationService from '../utils/NavigationService';
+import { background } from "../assets/Images";
+import { timezones } from "../utils/timezones";
+import * as vars from '../constants/api';
+import { messages } from '../constants/messages';
 import { console_log, parseQueryString } from '../utils/helper';
 import Globals from '../constants/Globals';
-import { checkAccess } from '../actions/WelcomeActions';
 
 const accountTypes = [
     { label: 'Standard' },
     { label: 'Premium' }
 ];
-import MessageBar from '../components/Message/Message';
+
+// ImagePicker
 var ImagePicker = require('react-native-image-picker');
+
 class Accounts extends Component {
     constructor(props) {
         super(props);
@@ -128,14 +134,6 @@ class Accounts extends Component {
             this.setState({ color: 'red', message: messages.locationEmpty, showMessage: !this.state.showMessage })
             return false;
         }
-        // if (this.state.interests.length != 5) {
-        //     this.props.showMessage({
-        //         message: messages.interests,
-        //         type: false
-        //     });
-        //     this.setState({ color: 'red', message: messages.interests, showMessage: !this.state.showMessage })
-        //     return false;
-        // }
         return true;
     }
 

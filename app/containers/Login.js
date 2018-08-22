@@ -3,10 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import axios from 'axios';
 import { TouchableOpacity, View, TouchableHighlight, TextInput, Text, Image, ImageBackground, AsyncStorage, KeyboardAvoidingView, Platform } from "react-native";
+import SplashScreen from 'react-native-splash-screen';
+import Orientation from 'react-native-orientation';
 
 // Components
 import Input from '../components/Input/Input';
 import Loader from '../components/Loader/Loader';
+import { PaymentAndroid } from '../components/Payment/PaymentAndroid';
+import { PaymentIOS } from '../components/Payment/PaymentIOS';
 import NavigationService from '../utils/NavigationService';
 
 // Styles
@@ -21,10 +25,6 @@ import { show, hide } from '../actions/ActivityIndicatorActions';
 import { background, logo } from "../assets/Images";
 import { console_log } from "../utils/helper";
 import * as vars from '../constants/api';
-import SplashScreen from 'react-native-splash-screen';
-import Orientation from 'react-native-orientation';
-import { PaymentAndroid } from '../components/Payment/PaymentAndroid';
-import { PaymentIOS } from '../components/Payment/PaymentIOS';
 
 class Login extends Component {
     constructor(props) {

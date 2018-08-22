@@ -7,7 +7,6 @@ var initialState = {
 };
 
 export const AccountReducer = (state = initialState, action = {}) => {
-    //console_log(action.type, action.data);
     switch (action.type) {
         case action_types.GET_DETAILS:
             return {

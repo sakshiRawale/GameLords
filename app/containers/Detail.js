@@ -5,13 +5,17 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import axios from 'axios';
+import Orientation from 'react-native-orientation';
+
 // Components
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Loader from '../components/Loader/Loader';
 import GameView from '../components/GameView/GameView';
+
+// Images
 import { background } from "../assets/Images";
-import Orientation from 'react-native-orientation';
+import * as Images from "../assets/Images";
 
 // Styles
 import { styles } from "../style/appStyles";
@@ -24,10 +28,13 @@ import { messages } from '../constants/messages';
 import { console_log } from '../utils/helper';
 import * as vars from '../constants/api';
 import Search from '../components/Search/Search';
+
 // Other data/helper functions
 import MessageBar from '../components/Message/Message';
 import Globals from "../constants/Globals";
-import * as Images from "../assets/Images";
+
+
+// Get Device Height and Width
 const deviceWidth = Dimensions.get("window").width;
 const deviceHeight = Dimensions.get("window").height;
 
@@ -441,10 +448,10 @@ class Detail extends Component {
       </ScrollView>
         :
           <View style={{ height: Globals.DeviceType === 'Phone' ? Globals.deviceHeight - 80 : Globals.deviceHeight - 100, width: Globals.deviceWidth, backgroundColor: 'black' }}>
+            {/* WebView for Game Playing screen */}
             <WebView
               nativeConfig = {{props: {webContentsDebuggingEnabled: true}}}
               scrollEnabled = {false}
-
               ref="webview"
               automaticallyAdjustContentInsets={false}
               source={{uri: game.gameFile}}

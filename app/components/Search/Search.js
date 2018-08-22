@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import SearchStyles from "../../style/searchStyle";
 import { BackHandler, Keyboard, Dimensions, Platform, Modal, Image, View, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, TouchableOpacity } from "react-native";
 import { Container, Content, Header, Item, Button, Input } from "native-base";
-import * as vars from '../../constants/api';
-import axios from 'axios';
-import { showSearchBar, HideSearchBar, onShowSearchView } from '../../actions/HeaderActions';
-import { searchText } from '../../actions/SearchActions';
-import { console_log } from '../../utils/helper';
-import { styles } from "../../style/appStyles";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import NavigationService from '../../utils/NavigationService';
+import axios from 'axios';
+import Orientation from 'react-native-orientation';
+
+// components
 import Footer from '../Footer/Footer';
 import GameView from '../GameView/GameView';
+
+// Styles
+import SearchStyles from "../../style/searchStyle";
+import { styles } from "../../style/appStyles";
+
+// Actions
+import { showSearchBar, HideSearchBar, onShowSearchView } from '../../actions/HeaderActions';
+import { searchText } from '../../actions/SearchActions';
+
+// Other data/helper functions
+import * as vars from '../../constants/api';
+import { console_log } from '../../utils/helper';
+import NavigationService from '../../utils/NavigationService';
 import Globals from '../../constants/Globals';
 import { messages } from '../../constants/messages';
 import MessageBar from '../../components/Message/Message';
-import Orientation from 'react-native-orientation';
 
+// Get Device Height and Width
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 

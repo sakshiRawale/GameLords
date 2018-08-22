@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Image, View, Text, TouchableHighlight } from "react-native";
 
-import NavigationService from '../../utils/NavigationService';
-
 // Styles
 import { styles } from "../../style/appStyles";
 import footerStyle from "../../style/footerStyle";
-import Globals from '../../constants/Globals';
+
 // Other data/helper functions
+import Globals from '../../constants/Globals';
 import { console_log } from "../../utils/helper";
+import NavigationService from '../../utils/NavigationService';
 
 class Footer extends Component {
     constructor(props) {

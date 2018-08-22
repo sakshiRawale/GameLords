@@ -5,30 +5,36 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import axios from 'axios';
+import Orientation from 'react-native-orientation';
+
 // Components
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import Loader from '../components/Loader/Loader';
 import GameView from '../components/GameView/GameView';
+import Search from '../components/Search/Search';
 
+// Images
 import * as Images from "../assets/Images";
+
+// Actions
+import { show, hide } from '../actions/ActivityIndicatorActions';
+import { setFavouriteGames, getFavouriteGames } from '../actions/FavoriteActions';
+import { showMessage } from '../actions/FlashMessageActions';
 
 // Styles
 import { styles } from "../style/appStyles";
 import favoriteStyles from "../style/favoriteStyle";
-import { show, hide } from '../actions/ActivityIndicatorActions';
-import { setFavouriteGames, getFavouriteGames } from '../actions/FavoriteActions';
-import { showMessage } from '../actions/FlashMessageActions';
 import NavigationService from "../utils/NavigationService";
 import { messages } from '../constants/messages';
 import { console_log } from '../utils/helper';
 import * as vars from '../constants/api';
-import Search from '../components/Search/Search';
+
 // Other data/helper functions
 import MessageBar from '../components/Message/Message';
 import Globals from "../constants/Globals";
-import Orientation from 'react-native-orientation';
 
+// Get Device Height and Width
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 

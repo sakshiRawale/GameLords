@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Dimensions, BackHandler, Image, View, StatusBar, Linking, TouchableHighlight, Text, ImageBackground, ScrollView, Switch, FlatList, TouchableOpacity } from "react-native";
 import { Container, Content } from "native-base";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import SplashScreen from 'react-native-splash-screen';
+import Orientation from 'react-native-orientation';
 
 // Components
 import Header from '../components/Header/Header';
@@ -15,6 +17,8 @@ import Banner from '../components/Banner/Banner';
 import { styles } from "../style/appStyles";
 import VODStyle from "../style/vodStyle";
 import WelcomeStyle from "../style/welcomeStyle";
+
+//Images
 import { html5 } from "../assets/Images";
 
 // Other data/helper functions
@@ -31,15 +35,14 @@ import NavigationService from "../utils/NavigationService";
 import Loader from '../components/Loader/Loader';
 import Search from '../components/Search/Search';
 import { showSearchBar, HideSearchBar, onShowSearchView } from '../actions/HeaderActions';
-
 import MessageBar from '../components/Message/Message';
 import GameView from '../components/GameView/GameView';
 import CategoryList from '../components/CategoryList/CategoryList';
 import Globals from '../constants/Globals';
 import DeviceType from '../../App';
 import favoriteStyles from "../style/favoriteStyle";
-import SplashScreen from 'react-native-splash-screen';
-import Orientation from 'react-native-orientation';
+
+// Get Device width
 const deviceWidth = Dimensions.get("window").width;
 
 class VOD extends Component {
@@ -93,7 +96,6 @@ class VOD extends Component {
     }
 
     componentDidMount() {
-
         this.setState({ dataLoad: true })
         this.props.show();
         setTimeout(() => {
@@ -122,7 +124,6 @@ class VOD extends Component {
     getFavouriteGames = () => {
         axios.get(vars.BASE_API_URL_GL + '/getFavorites?uid=' + this.props.account.user.uid)
             .then((response) => {
-                console.log(response);
                 if (response.data.success) {
                     this.props.getFavouriteGames(response.data);
                 }
@@ -211,6 +212,7 @@ class VOD extends Component {
             <View>
                 {!this.state.favoriteSwitch ?
                     <View>
+                        {/* category slider */}
                         {
                             html5CategoryList.length > 0 &&
                             <ScrollView horizontal={true} >
@@ -226,6 +228,8 @@ class VOD extends Component {
                             </ScrollView>
                         }
 
+
+                        {/* gamelist category wise */}
                         {
                             html5CategoryList.length > 0 &&
                             <View>
@@ -284,6 +288,7 @@ class VOD extends Component {
                     </View>
                     :
                     <View>
+                        {/* view when favorite */}
                         {
                             this.props.favorite.games.length > 0 &&
                             <View>
@@ -303,6 +308,7 @@ class VOD extends Component {
                             </View>
                         }
 
+                        {/* view when none of favorite */}
                         {(this.props.favorite.games.length <= 0) &&
                             <View style={favoriteStyles.discoverView}>
                                 <View>

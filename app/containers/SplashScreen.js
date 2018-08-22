@@ -3,16 +3,21 @@ import { Animated, Image, View, Text, ImageBackground, AsyncStorage, Alert } fro
 import { Container } from "native-base";
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Orientation from 'react-native-orientation';
+
+// Actions
 import NavigationService from '../utils/NavigationService';
 import { checkAccess } from '../actions/WelcomeActions';
+
 // Styles
 import { styles } from "../style/appStyles";
 import { splashScreenStyles } from "../style/splashScreenStyles";
 
-// Other data/helper function
+// Images
 import { logo, background, splashBg } from "../assets/Images";
+
+// Other data/helper function
 import { console_log } from "../utils/helper";
-import Orientation from 'react-native-orientation';
 import Globals from '../constants/Globals';
 
 class SplashScreen extends Component {

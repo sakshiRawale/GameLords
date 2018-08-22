@@ -6,12 +6,13 @@ import { Dimensions, Image, View, StatusBar, Linking, TouchableHighlight, Text, 
 import { Container, Content } from "native-base";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-// Components
+// styles
 import { styles } from "../../style/appStyles";
 import VODStyle from "../../style/vodStyle";
 import WelcomeStyle from "../../style/welcomeStyle";
 
-// Other data/helper functions
+// Actions
+import { searchText } from '../../actions/SearchActions';
 import { showMessage } from '../../actions/FlashMessageActions';
 import { show, hide } from '../../actions/ActivityIndicatorActions';
 import { getGames } from "../../actions/GamesActions";
@@ -19,14 +20,16 @@ import { getFavouriteGames, setFavouriteGames } from "../../actions/FavoriteActi
 import { getDetails, getInterests } from '../../actions/AccountActions';
 import { getCategories } from "../../actions/CategoryActions";
 import { showSearchBar, HideSearchBar, onShowSearchView } from '../../actions/HeaderActions';
-import { searchText } from '../../actions/SearchActions';
+
+// Other data/helper functions
 import * as vars from '../../constants/api';
 import { messages } from '../../constants/messages';
 import { console_log } from '../../utils/helper';
 import NavigationService from "../../utils/NavigationService";
-
 import Globals from '../../constants/Globals';
 import DeviceType from '../../../App';
+
+// Get Device Height and Width
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 

@@ -1,9 +1,15 @@
 import React, { Component } from "react";
 import { Image, View, Text, TouchableHighlight, Animated } from "react-native";
+
+// styles
 import { styles } from "../../style/appStyles";
+
+// Other data/helper functions
 import Globals from "../../constants/Globals";
+
 var MessageBarAlert = require('react-native-message-bar').MessageBar;
 var MessageBarManager = require('react-native-message-bar').MessageBarManager;
+
 class MessageBar extends Component {
     constructor(props) {
         super(props);

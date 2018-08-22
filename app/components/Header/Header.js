@@ -7,17 +7,22 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import NavigationService from '../../utils/NavigationService';
 
+// Actions
+import { showSearchBar, HideSearchBar, onShowSearchView } from '../../actions/HeaderActions';
+import { searchText } from '../../actions/SearchActions';
+
 // Styles
 import { styles } from '../../style/appStyles';
 import headerStyle from '../../style/headerStyle';
-import { showSearchBar, HideSearchBar, onShowSearchView } from '../../actions/HeaderActions';
-import { searchText } from '../../actions/SearchActions';
+
 // Other data/helper functions
 import { headerLogo, loginLogo } from "../../assets/Images";
 import { console_log } from "../../utils/helper";
+import Globals from '../../constants/Globals';
+
+// Get Device Height and Width
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
-import Globals from '../../constants/Globals';
 
 
 class HeaderComponent extends Component {

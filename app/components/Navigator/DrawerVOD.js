@@ -1,19 +1,17 @@
 import React from 'react';
-
 import { DrawerNavigator } from 'react-navigation';
+import { Platform, Dimensions } from "react-native";
 
-// Components
-
+// Components and Containers
 import SideBar from '../Sidebar/Sidebar';
 import VOD from '../../containers/VOD';
 
+// Other data/helper functions
 import Globals from '../../constants/Globals';
-import { Platform, Dimensions } from "react-native";
+
+// Get Device Height and Width
 const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
-// Styles
-
-// Other data/helper functions
 
 const DrawerVOD = DrawerNavigator(
     {

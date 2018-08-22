@@ -3,18 +3,17 @@ import { Image, View, TouchableHighlight, Text, ImageBackground, ScrollView, Swi
 import { Container, Content } from "native-base";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import LinearGradient from 'react-native-linear-gradient';
-import Globals from '../../constants/Globals';
-// Components
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 // Styles
 import { styles } from "../../style/appStyles";
 import bannerStyles from "../../style/bannerStyles";
 
 // Other data / functions
+import Globals from '../../constants/Globals';
 import * as BannerImg from "../../assets/Images";
 import NavigationService from "../../utils/NavigationService";
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 class Banner extends Component {
     constructor(props) {
