@@ -1,44 +1,4 @@
-<View>
-   {html5CategoryList.length > 0 ?
-               {
-                   html5CategoryList.map((category, index) => {
-                       return (
-                         <ScrollView horizontal={true} >
-                           <View style={{ flexDirection: 'row' }}>
-                               <View style={liveChannelStyle.imageThmbnail} key={index}>
-                                 <TouchableOpacity onPress={this._onPressButton.bind(this, {cat: category})}>
-                                     <ImageBackground style={liveChannelStyle.imageBackground} source={{uri: category.categoryImage}}>
-                                     </ImageBackground>
-                                     <Text style={liveChannelStyle.categoryNameText}>{category.categoryName}</Text>
-                                 </TouchableOpacity>
-                             </View>
-                            </View>
-                          </ScrollView>
-                       )
-                   })
-               }
-       :
-       <Text style={{color: 'white'}}> nathi brbr error avr che </Text>
+Client Repo
 
-      }
-    </View>
-
-
-    <View style={liveChannelStyle.imageThmbnailCategory} key={index}>
-      <TouchableOpacity onPress={this._onPressButton.bind(this, {cat: category})}>
-          <ImageBackground style={liveChannelStyle.imageBackgroundCategory} source={{uri: category.categoryImage}}>
-              <TouchableOpacity style={liveChannelStyle.tvFavoriteBg} onPress={this._handleFavoriteClicked.bind(this, {cat: category})}>
-                  <View style={liveChannelStyle.tvFavoriteView}>
-                  <Icon name='star' size={15} style={{ backgroundColor: 'transparent' }} color={this.isCategoryFavorite(category.categoryId) ? "#FFC107" : "#fff"} />
-                  </View>
-              </TouchableOpacity>
-          </ImageBackground>
-          <Text style={liveChannelStyle.categoryNameText}>{category.categoryName}</Text>
-
-      </TouchableOpacity>
-    </View>
-
-
-    {
-      // let games = getAllGames.filter((g) => {return g.categoryId == category.categoryId}).length > 0) ? this.props.games.games.filter((g) => {return g.categoryId == category.categoryId}).slice(0, 10);
-    }
+origin	https://git.sam-media.com/content/gamelord-reactnative.git (fetch)
+origin	https://git.sam-media.com/content/gamelord-reactnative.git (push)
