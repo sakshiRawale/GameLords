@@ -42,12 +42,12 @@ class SideBar extends Component {
 	}
 
 	componentDidMount() {
-		this.setState({ profilePic: (this.props.account.user.profilePic) ? vars.BASE_URL_PP + 'uploads/' + this.props.account.user.profilePic : 'http://43.241.63.15:3003/uploads/1520249460987_thumbnail-3.jpg' })
+		this.setState({ profilePic: (this.props.account.user.profilePic) ? this.props.account.user.profilePic : 'http://43.241.63.15:3003/uploads/1520249460987_thumbnail-3.jpg' })
 	}
 
 	componentWillReceiveProps(newProps) {
 		if (newProps.account.user.profilePic !== this.state.profilePic) {
-			this.setState({ profilePic: vars.BASE_URL_PP + 'uploads/' + newProps.account.user.profilePic, newProfilePic: 'sd' });
+			this.setState({ profilePic: newProps.account.user.profilePic, newProfilePic: 'sd' });
 		}
 	}
 

@@ -241,7 +241,7 @@ class Accounts extends Component {
                 });
 
                 const imageLoad = 'data:image/jpeg;base64,' + response.data;
-                axios.post(vars.BASE_API_URL_PP + "/uploadProfilePic", { image: imageLoad })
+                axios.post(vars.BASE_API_URL_PP + "/profile/upload", { profilePic: imageLoad })
                     .then((response) => {
                         this.setState({ color: 'green', message: messages.profilePic, showMessage: !this.state.showMessage })
                         this.props.setProfilePic(response.data.data.profilePic);
@@ -249,6 +249,7 @@ class Accounts extends Component {
                     })
                     .catch((error) => {
                         this.props.hide();
+                        console.log(error);
                         console_log(error);
                     });
             }
@@ -256,6 +257,7 @@ class Accounts extends Component {
     };
 
     render() {
+        console.log(this.props.account.user);
         return (
             <Container>
                 <ImageBackground style={{ zIndex: 999 }}>
@@ -367,7 +369,7 @@ class Accounts extends Component {
                             </View>
                             <View style={{ flex: 2 }}>
                                 <TouchableOpacity style={accountStyles.avtarStyle} onPress={this._OpenGallery.bind(this)}>
-                                    <Image style={accountStyles.cover} source={(this.state.photo) ? this.state.photo : ((this.props.account.user.profilePic) ? { uri: vars.BASE_URL_PP + 'uploads/' + this.props.account.user.profilePic } : { uri: 'http://43.241.63.15:3003/uploads/1520249460987_thumbnail-3.jpg' })} />
+                                    <Image style={accountStyles.cover} source={(this.state.photo) ? this.state.photo : ((this.props.account.user.profilePic) ? { uri: this.props.account.user.profilePic } : { uri: 'http://43.241.63.15:3003/uploads/1520249460987_thumbnail-3.jpg' })} />
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={this._OpenGallery.bind(this)} style={{ alignItems: 'center', justifyContent: 'center' }}>
                                     <Text style={{ color: '#bbb', marginTop: '8%' }}>{"EDIT PHOTO"}</Text>

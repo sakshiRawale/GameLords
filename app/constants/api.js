@@ -23,5 +23,5 @@ export const BASE_URL_GL =  `${hostGL}/`;
 
 const hostPP = "http://play.game-lords.com";
 const portPP = "3003";
-export const BASE_API_URL_PP =  `${hostPP}:${portPP}/api`;
+export const BASE_API_URL_PP =  `${hostPP}/api`;
 export const BASE_URL_PP =  `${hostPP}:${portPP}/`;
